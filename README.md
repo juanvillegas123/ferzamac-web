@@ -1,43 +1,42 @@
-# Astro Starter Kit: Minimal
+# Ferzamac Web
 
-```sh
-npm create astro@latest -- --template minimal
+Sitio web corporativo de **Ferzamac** (Sucre, Bolivia): diseño, construcción, montaje, mantenimiento y consultoría de plantas, equipos y máquinas industriales, más sistemas hospitalarios (agua purificada, aire comprimido medicinal y redes en hospitales).
+
+## Requisitos
+
+- **Node.js:** `>= 22.12.0` (recomendado Node 22 LTS).
+- **Gestor de paquetes:** `npm`.
+
+## Stack tecnológico
+
+- **Framework:** Astro 7.x (salida estática, sin adaptador para Cloudflare Pages).
+- **Estilos:** Tailwind CSS 4.x con `@tailwindcss/vite` y tokens corporativos definidos en `@theme` (`src/styles/global.css`).
+- **Tipografía:** Autohospedada vía Fontsource (`Sora Variable` para títulos y `Manrope Variable` para cuerpo).
+- **Verificación:** `@astrojs/check` y TypeScript estricto.
+- **Formateo:** Prettier con plugins para Astro y Tailwind CSS.
+
+## Comandos disponibles
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor local de desarrollo (http://localhost:4321)
+npm run dev
+
+# Comprobar tipos y validar colecciones
+npm run check
+
+# Formatear el código con Prettier
+npm run format
+
+# Construir sitio estático de producción (./dist)
+npm run build
+
+# Previsualizar el build de producción
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Reglas y guías de desarrollo
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Para convenciones de arquitectura, tokens de color, manejo de datos y privacidad de clientes, consulta [AGENTS.md](AGENTS.md).
