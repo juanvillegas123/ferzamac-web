@@ -1,0 +1,51 @@
+---
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+---
+
+<nav aria-label="Migas de pan" class={`text-xs sm:text-sm ${className}`}>
+  <ol class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-muted">
+    <li>
+      <a
+        href="/"
+        class="transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-ink rounded"
+      >
+        Inicio
+      </a>
+    </li>
+    {
+      items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return (
+          <li class="flex items-center gap-1.5 sm:gap-2">
+            <span class="text-line" aria-hidden="true">/</span>
+            {isLast || !item.href ? (
+              <span
+                class="font-medium text-ink truncate max-w-[200px] sm:max-w-none"
+                aria-current={isLast ? 'page' : undefined}
+              >
+                {item.label}
+              </span>
+            ) : (
+              <a
+                href={item.href}
+                class="transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-ink rounded"
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

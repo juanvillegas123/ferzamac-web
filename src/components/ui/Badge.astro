@@ -1,0 +1,28 @@
+---
+interface Props {
+  variant?: 'neutral' | 'industrial' | 'hospitalaria';
+  class?: string;
+}
+
+const { variant = 'neutral', class: className = '' } = Astro.props;
+
+// Text always remains in `ink` for guaranteed >= 5.5:1 contrast on white and light surfaces
+const variantStyles = {
+  neutral: 'bg-surface text-ink border-line',
+  industrial: 'bg-[#EAF7ED] text-ink border-[#99DFAB]',
+  hospitalaria: 'bg-[#EBF7FB] text-ink border-[#A4DCF0]',
+};
+
+const dotStyles = {
+  neutral: 'bg-muted',
+  industrial: 'bg-industrial',
+  hospitalaria: 'bg-hospitalaria',
+};
+---
+
+<span
+  class={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-semibold tracking-wide border ${variantStyles[variant]} ${className}`}
+>
+  <span class={`h-1.5 w-1.5 rounded-full ${dotStyles[variant]}`} aria-hidden="true"></span>
+  <slot />
+</span>
