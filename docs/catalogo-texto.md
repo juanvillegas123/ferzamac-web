@@ -1,0 +1,485 @@
+# Texto literal del catálogo de Ferzamac
+
+> Extraído página por página del PDF `CATALOGO_FERZAMAC_INDUSTRIAL_pdf.pdf` (67 páginas). **No está corregido**: conserva los errores originales. Las correcciones están en `docs/text-fixes.csv`.
+> Es la **única fuente permitida** para datos técnicos del sitio. Si un dato no está aquí ni en `docs/inventory.csv`, es `[por confirmar]`.
+> Las páginas sin texto contienen solo imágenes (ver `docs/inventory.csv`).
+
+## Pág. 1
+SOLUCIONES INTEGRALES
+PRESENTACION
+DE
+PROYECTOS
+
+## Pág. 2
+Es una empresa especializada en diseño, construcción, montaje, mantenimiento preventivo, correctivo,
+puesta en marcha de plantas, equipos y m´áquinas industriales. Asimismo de servicios de consultoría
+en auditoria técnica de tipo industrial, valoración, dimensionamiento, elaboración de memoria de
+calculó, entre otros.
+
+## Pág. 3
+Contamos con personal especializado en el área de:
+Ingeniería Industrial
+Ingeniería Mecánica
+Ingeniería Mecatrónica
+Ingeniería Eléctrica y Electrónica
+Especialistas en Automatización de Procesos
+Personal técnico especializado
+NUESTRO EQUIPO DE TRABAJO
+
+## Pág. 4
+EXPERIENCIA EMPRESARIAL
+
+## Pág. 5
+DISEÑO-CONSTRUCCIÓN-MONTAJE
+Soluciones Integrales
+
+## Pág. 6
+DISEÑO PLANTA SEPARADORA DE RESIDUOS SÓLIDOS
+CAPACIDAD 300 TONELADAS/DÍA
+
+## Pág. 7
+DISEÑO SISTEMA DE ENFRIAMIENTO PARA MATADERO DE POLLOS
+
+## Pág. 8
+_(sin texto: solo imágenes)_
+
+## Pág. 9
+DISEÑO Y CONSTRUCCIÓN DE TAMBORES PARA ELEVADOR DE
+CANGILONES
+DATOS TÉCNICOS
+EJE MACIZO SAE1045
+ACERO A36
+PERNOS GRADO 8
+ACERO ANTIABRASIVO
+
+## Pág. 10
+DISEÑO Y CONSTRUCCIÓN DE MOLINO DE MARTILLOS
+DIMENSINES TÉCNICAS
+Para línea de producción de harina
+APLICACIÓN:
+MOLER, TRITURAR,
+PULVERIZAR
+RESULTADO FINAL:
+TIPO HARINA.
+(DIVERSOS GRANOS Y
+CEREALES)
+CAPACIDAD:
+200 - 300 KG/HORA.
+FABRICACIÓN TOTAL:
+ACERO INOXIDABLE
+SANITARIO AISI 304.
+INTERCAMBIABLE.
+DISEÑO:
+TOLVA DE INGRESO
+SALIDA DE PRODUCTO.
+
+## Pág. 11
+PROYECTO EJECUTADO:
+SANTA CRUZ - PLANTA CUATRO CAÑADAS
+
+## Pág. 12
+PROYECTO EJECUTADO:
+SANTA CRUZ - PLANTA CUATRO CAÑADAS
+
+## Pág. 13
+DISEÑO YCONTRUCCIÓN DE EQUIPO HUMIDIFICADOR DE GRANOS
+DATOS TÉCNICOS
+CAPACIDAD: 4 TONELADAS /HORA
+MATERIAL DE CONSTRUCCION:
+ACERO INOXIDABLE 308
+
+## Pág. 14
+DISEÑO Y CONTRUCCIÓN DE TORNILLO HELICOIDAL
+DATOS TÉCNICOS
+45GRADOS DEINCLINACIÓN
+MATERIAL DE CONSTRUCCIÓN:
+ACERO INOXIDABLE 308
+LONGITUD 2.80 METROS
+
+## Pág. 15
+DISEÑO Y CONSTRUCCIÓN DE ENSACADORA DE SACO VALVULADO
+Tiempo de llenado 10 s.
+Bolsas de 20 kg
+Material de construcción acero A-36
+Tornillo transportador en acero inoxidable 308
+Estructura de tubo estructural de 2 plg
+Capacidad de tolva 1000 kg
+Protección superficial con pintura anticorrosiva
+DATOS TÉCNICOS
+
+## Pág. 16
+PROYECTO EJECUTADO:
+SANTA CRUZ - PLANTA CUATRO CAÑADAS
+
+## Pág. 17
+DISEÑO Y CONSTRUCCIÓN DE BANDEJAS PARA
+ELEVADOR DE CANGILONES
+DATOS TÉCNICOS
+ACERO A36
+MATERIAL DE CONSTRUCCIÓN ANTIABRASIVO
+PARA LA SUPERFICIE DE MAYOR CONTACTO CON
+MATERIAL ABRASIVO
+
+## Pág. 18
+DISEÑO, CONSTRUCCIÓN, MONTAJE Y PUESTA EN MARCHA DE PLANTA DE
+TRATAMIENTO DE AGUA PURIFICADA DE TIPO INDUSTRIAL Y HOSPITALARIO
+ETAPAS:
+Preparación
+Pretratamiento
+Tratamiento
+Distribución
+DESCRIPCIÓN TÉCNICA
+Tanque de agua cruda
+Tanques de filtros de
+Sedimento, carbón y resina
+carbón activo
+Resina catiónica
+Osmosis Inversa
+Tanque de salmuera
+Tablero de control
+Sistema de desinfección UV
+Tanque de acumulación de
+agua tratada
+
+## Pág. 19
+PROYECTO EJECUTADO:
+SUCRE - HOSPITAL JAIME MENDOZA
+
+## Pág. 20
+DISEÑO E INSTALACIÓN DE SISTEMA DE CONTROL Y MONITOREO
+REMOTO POR MEDIO DE DISPOSITIVOS ELÉCTRÓNICOS
+TIPO DE LLAMADA
+LLAMADOR DE SUPERVISOR
+LLAMADA DE EMERGENCIA A PERSONAL TÉCNICO
+
+## Pág. 21
+INSTALACIÓN DE ANILLOS DE DISTRIBUCIÓN DE
+AGUA PURIFICADA
+Tubería pex de ¾ de pulgadas
+Codos abiertos de bronce
+Puntos de unión a presión
+DATOS TÉCNICOS
+
+## Pág. 22
+PROYECTO EJECUTADO:
+SUCRE - HOSPITAL CHUQUISACA (TERCER NIVEL)
+
+## Pág. 23
+DISEÑO Y MONTAJE DE SISTEMA GENERADOR DE AIRE COMPRIMIDO
+DE TIPO INDUSTRIAL
+DATOS TÉCNICOS
+• Compresor de Pistón
+• Condensador de aire
+• Filtros
+• Secador
+• Red de tuberías
+Dimensiones Técnicas
+
+## Pág. 24
+PROYECTO EJECUTADO:
+SUCRE - HOSPITAL JAIME MENDOZA
+
+## Pág. 25
+PROYECTO EJECUTADO:
+CNS CHUQUISACA- CENTINELA COVID 19
+
+## Pág. 26
+GRUPO ELECTRÓGENO
+Dimensiones Técnicas
+
+## Pág. 27
+PROYECTO EJECUTADO:
+SUCRE- CENTRO DE SALUD CENTINELA
+
+## Pág. 28
+PROYECTO EJECUTADO:
+BENI - EMPRESA BOLIVIANA DE ALIMENTOS EBA
+
+## Pág. 29
+CONSULTORIA
+Soluciones Integrales
+
+## Pág. 30
+ESTUDIO Y DISEÑO TÉCNICO DE PLANTA INDUSTRIAL DE ACOPIO Y
+TRANSFORMACIÓN DE CHIRIMOYA Y DURAZNO (MUNICIPIO DE PRESTO)
+Gráfico: Planta de Procesamiento de Durazno
+TECNOLOGÍA
+1.MAQUINARIA
+2.EQUIPO INDUSTRIAL
+3.HERRAMIENTAS
+LÍNEAS DE PRODUCCIÓN
+1.EMPAQUETADO Y CONSERVACIÓN
+2.PULPA DURAZNO Y CHIRIMOYA
+3.ESCENCIA DURAZNO Y CHIRIMOYA
+4.DURAZNO AL JUGO
+
+## Pág. 31
+ESTUDIO Y DISEÑO TÉCNICO DE PLANTA PROCESADORA DE HORTALIZAS
+(MUNICIPIO DE LAS CARRERAS)
+Gráfico: Planta de Procesamiento de hortalizas
+TECNOLOGÍA
+1.MAQUINARIA
+2.EQUIPO INDUSTRIAL
+3.HERRAMIENTAS
+LÍNEAS DE PRODUCCIÓN
+1.EMPAQUETADO Y CONSERVACIÓN
+2.ESCABECHE
+3.MERMELADA DE ZANAHORIA
+4.TÉ DE ZANAHORIA
+5.ZUMO DE ZANAHORIA
+6.CREMA COSMÉTICA DE ZANAHORIA
+
+## Pág. 32
+ESTUDIO Y DISEÑO TÉCNICO DE PLANTA PROCESADORA DE ALIMENTO
+BALANCEADO (MUNICIPIO DE SUCRE)
+Gráfico: Planta Procesadora de alimento balanceado
+TECNOLOGÍA
+1.MAQUINARIA
+2.EQUIPO INDUSTRIAL
+3.HERRAMIENTAS
+LÍNEAS DE PRODUCCIÓN
+1.AFRECHILLO
+2.ALIMENTO BALANCEADO
+3.ALIMENTO PELETIZADO
+
+## Pág. 33
+ESTUDIO Y DISEÑO TÉCNICO DE PLANTA PROCESADORA DE ALIMENTO
+BALANCEADO (MUNICIPIO DE TARIJA)
+TECNOLOGÍA
+1.MAQUINARIA
+2.EQUIPO INDUSTRIAL
+3.HERRAMIENTAS
+LÍNEAS DE PRODUCCIÓN
+1.AFRECHILLO
+2.ALIMENTO BALANCEADO
+3.ALIMENTO PELETIZADO
+Gráfico: Planta Procesadora de alimento balanceado
+
+## Pág. 34
+ESTUDIO Y DISEÑO TÉCNICO DE PLANTA EMPAQUETADORA DE MANZANA
+(MUNICIPIO DE CULPINA)
+Gráfico: Planta de planta empaquetadora de manzana
+TECNOLOGÍA
+1.MAQUINARIA
+2.EQUIPO INDUSTRIAL
+3.HERRAMIENTAS
+LÍNEAS DE PRODUCCIÓN
+EMPAQUETADO Y CONSERVACIÓN
+
+## Pág. 35
+MANTENIMIENTO INDUSTRIAL
+Soluciones Integrales
+
+## Pág. 36
+SUMERGIBLES
+PERIFÉRICAS
+CENTRÍFUGAS
+MULTIETÁPICAS
+EMBOBINADO Y MANTENIMIENTO DE MOTORES
+ELÉCTRICOS DE BOMBAS DE AGUA
+BOMBAS
+
+## Pág. 37
+PROYECTO EJECUTADO:
+ZUDAÑEZ, CHUQUISACA - ENVIBOL
+
+## Pág. 38
+MANTENIMIENTO
+·LIMPIEZA Y AJUSTE DE COMPONENTES ELÉCTRICOS
+·LIMPIEZA, DESGRASADO Y MANTENIMIENTO GENERAL
+·VERIFICACIÓN DE SENSORES Y PANEL DE CONTROL
+·MANTENIMIENTO DE MOTOR
+·MANTENIMIENTO DE INYECTORES DE AIRE
+·LIMPIEZA Y LUBRICACIÓN DE COMPONENTES
+·LIMPIEZA Y AJUSTE DEL SISTEMA DE EXTRACCIÓN
+·LIMPIEZA Y DESINFECCIÓN DEL CALDEROS
+·LIMPIEZA Y VERIFICACIÓN DE FILTROS DE INGRESO DE AGUA
+·REEMPLAZO DE MANGUERAS DE CONEXIÓN DE GAS
+·VERIFICACIÓN Y CONTROL ELÉCTRICO
+PRUEBAS DE FUNCIONAMIENTO
+MANTENIMIENTO DE CAMPANAS, DUCTOS, COCINAS
+Y HORNOS INDUSTRIALES
+
+## Pág. 39
+PROYECTO EJECUTADO:
+LA PAZ - CAJA BANCARIA ESTATAL DE SALUD
+
+## Pág. 40
+_(sin texto: solo imágenes)_
+
+## Pág. 41
+MANTENIMIENTO DE PLANTA PURIFICADORA DE
+AGUA PARA HEMODIÁLISIS
+GOBIERNO AUTÓNOMO MUNICIPAL LA GUARDIA
+MANTENIMIENTO PREVENTIVO CORRECTIVO DE PLANTA DE TRATAMIENTO DE AGUA
+PARAHEMODIÁLISISQUE ESUTILIZADAENELCENTRODESALUDINTEGRALEL
+CARMEN KM10DELMUNICIPIOLAGUARDIA
+
+## Pág. 42
+REACONIDICONAMIENTO INTEGRAL DE LA
+ESTRUCTURA METALICA
+REVESTIMIENTO METALICO
+REACONDICIONAMIENTO DEL CIERRE HERMETICO
+CONTROL DE TEMPERATURA DIGITAL
+MANTENIMIENTO DE OLLAS MARMITAS
+CAPACIDAD : 15LT
+
+## Pág. 43
+PROYECTO EJECUTADO:
+CNS CHUQUISACA - SERVICIO DE NUTRICIÓN
+
+## Pág. 44
+CAPACIDAD: 18 BANDEJAS 30X40
+MANTENIMIENTO CARRO TERMO ELÉCTRICO
+
+## Pág. 45
+DATOS TÉCNICOS
+HORNO CONVECTOR
+
+## Pág. 46
+CAPACIDAD 80 TONELADAS
+CERTIFICACIÓN IBMETRO
+MANTENIMIENTO Y REPARACIÓN DE BALANZAS CAMIONERAS Y
+PESAS PATRÓN
+
+## Pág. 47
+PROYECTO EJECUTADO:
+UYUNI - YACIMIENTOSDELITIO BOLIVIANOS YLB
+
+## Pág. 48
+PARÁMETROS BÁSICOS
+Maniobra y conexión/desconexión de transformadores
+Desarmado de tapa de transformador y Desarmado de la
+parte activa
+Revisión y verificación del parámetro “resistencia de bobinas”.
+Vaciado del aceite dieléctrico.
+Desencubado de la parte activa
+Inspección de la parte activa.
+Limpieza y pintado de cuba
+Toma de muestra de aceite, análisis ensayos dieléctricos, rigidez
+dieléctrica e índice de polarización.
+MANTENIMIENTO DE TRANSFORMADORES ELÉCTRICOS
+
+## Pág. 49
+PROYECTO EJECUTADO:
+ORURO - PLANTA PROCESADORA DE LÁCTEOS CHALLAPATA”
+
+## Pág. 50
+PROYECTO EJECUTADO:
+TARIJA - PLANTA PROCESADORA DE LÁCTEOS
+SAN LORENZO
+
+## Pág. 51
+PROYECTO EJECUTADO:
+BENI: PLANTA PROCESADORA DE LÁCTEOS
+SAN ANDRÉS
+
+## Pág. 52
+PROYECTO EJECUTADO:
+SOPACHUY - LINEA DE EMBUTIDOS
+
+## Pág. 53
+Sistema de almacenamiento y
+distribución de GLP
+PROYECTO SOPACHUY
+LINEA DE EMBUTIDOS
+Carro de transporte y colgado de
+embutidos
+
+## Pág. 54
+Picadora de carne industrial
+PROYECTO SOPACHUY
+LINEA DE EMBUTIDOS
+Sierra cinta industrial para corte
+de carne
+
+## Pág. 55
+Balanza industrial
+PROYECTO SOPACHUY: LINEA DE EMBUTIDOS
+Embutidora manual horizontal de
+embutidos
+Maquina Envasadora al
+vacío
+
+## Pág. 56
+Cutter
+industrial
+PROYECTO SOPACHUY: LINEA DE EMBUTIDOS
+Mezcladora de carne
+Carro/ Tolva
+de transporte
+
+## Pág. 57
+PROYECTO SOPACHUY - LINEA DE EMBUTIDOS
+Cámara de frio
+
+## Pág. 58
+PROYECTO SOPACHUY - LINEA DE EMBUTIDOS
+Cámara de frio
+Espacio destinado al almacenamiento y
+conservación de carnes y productos
+cárnicos bajo condiciones de
+temperatura controlada. Su función es
+mantener la cadena de frío, preservar la
+calidad de los embutidos y contribuir a
+garantizar su inocuidad durante el
+almacenamiento.
+
+## Pág. 59
+CAJÓN DE NOQUEO VACUNO
+SOPACHUY
+DESCRIPCION
+DATOS TECNICOS
+
+## Pág. 60
+CAJÓN DE NOQUEO VACUNO
+SOPACHUY
+Cierra divisoria
+Descripción:
+Balanza tipo gancho
+Descripción:
+
+## Pág. 61
+Cajón de noqueo
+de cerdos
+Tuna de
+escaldado
+Mesa de
+degollado
+Descripción Descripción Descripción
+
+## Pág. 62
+DATOS TÉCNICOS
+PELADORA DE CERDOS
+SOPACHUY
+
+## Pág. 63
+LINEA DE ENVASADO Y CLASIFICACION DE
+NARANJAS
+PROYECTO HUACARETA
+DESCRIPCIÓN
+
+## Pág. 64
+DATOS TÉCNICOS
+GENERACION DE VAPOR
+PROYECTO HUACARETA
+Instalación de
+caldero
+Instalación de riel
+de garrafones
+manifold
+
+## Pág. 65
+Los proyectos grandes implican la supervisión de muchos elementos
+cambiantes, a menudo a cargo de diferentes personas. Para lograr una
+implementación exitosa, los gestores de proyectos se apoyan en un plan bien
+concebido que permita alcanzar los objetivos fijados dentro de los plazos y los
+presupuestos aprobados. Un plan de proyecto es un documento aprobado
+formalmente que se utiliza para definir los objetivos del proyecto, delimitar su
+alcance, monitorear los resultados y mitigar riesgos
+
+## Pág. 66
+TRABAJAMOS CON MARCAS RECONOCIDAS
+
+## Pág. 67
+SOLUCIONES INTEGRALES
