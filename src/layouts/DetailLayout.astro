@@ -1,0 +1,112 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageHeader from '../components/sections/PageHeader.astro';
+import type { BreadcrumbItem } from '../components/ui/Breadcrumbs.astro';
+import Button from '../components/ui/Button.astro';
+import { getWhatsAppLink, hasWhatsApp } from '../lib/whatsapp';
+import { SITE } from '../lib/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  breadcrumbs: BreadcrumbItem[];
+  intro?: string;
+  area: 'industrial' | 'hospitalaria';
+  eyebrow?: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  breadcrumbs,
+  intro,
+  area,
+  eyebrow,
+  image,
+  noindex = false,
+} = Astro.props;
+
+const whatsappMessage = `Hola, quiero cotizar: ${title}`;
+const isWhatsAppAvailable = hasWhatsApp();
+const quoteHref = isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/contacto';
+---
+
+<BaseLayout
+  title={title}
+  description={description || intro}
+  image={image}
+  noindex={noindex}
+>
+  <PageHeader
+    title={title}
+    breadcrumbs={breadcrumbs}
+    intro={intro}
+    area={area}
+    eyebrow={eyebrow}
+  />
+
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <!-- Columna principal de contenido técnico (8 columnas en lg) -->
+      <div class="lg:col-span-8 space-y-10">
+        <!-- Contenido principal y descripción -->
+        <div class="prose prose-slate max-w-none text-ink leading-relaxed space-y-6">
+          <slot />
+        </div>
+
+        <!-- Slot para tablas técnicas y especificaciones -->
+        <slot name="specs" />
+
+        <!-- Slot para galería de imágenes y videos -->
+        <slot name="multimedia" />
+      </div>
+
+      <!-- Barra lateral: sticky solo desde breakpoint lg; en móvil va debajo del contenido principal -->
+      <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+        <!-- Tarjeta destacada de solicitud de cotización -->
+        <div class="rounded border border-line bg-surface p-6 shadow-xs space-y-4">
+          <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+            Cotización técnica
+          </span>
+          <h2 class="font-display text-lg font-semibold text-ink">
+            Solicitar cotización de {title}
+          </h2>
+          <p class="text-xs sm:text-sm text-muted leading-relaxed">
+            Consulte directamente con nuestro equipo de ingeniería sobre plazos, costos de fabricación y alcance de instalación.
+          </p>
+
+          <div class="pt-2 flex flex-col gap-2.5">
+            <Button
+              href={quoteHref}
+              variant="primary"
+              size="md"
+              class="w-full"
+            >
+              Cotizar por WhatsApp
+            </Button>
+            <Button
+              href="/contacto"
+              variant="secondary"
+              size="md"
+              class="w-full"
+            >
+              Formulario de contacto
+            </Button>
+          </div>
+
+          <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
+            <span>Atención telefónica:</span>
+            <a href={`tel:${SITE.phoneRaw}`} class="font-semibold text-ink hover:underline">
+              {SITE.phone}
+            </a>
+          </div>
+        </div>
+
+        <!-- Slot para proyectos o soluciones relacionados -->
+        <slot name="sidebar" />
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
