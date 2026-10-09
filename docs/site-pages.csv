@@ -1,0 +1,30 @@
+#,Ruta provisional,Tipo,Área,Título H1 propuesto,Frase objetivo SEO (hipótesis a validar),Fuentes en el catálogo / video,Estado del contenido,Qué falta
+1,/proyectos/sopachuy-linea-embutidos-y-matadero,Proyecto,Industrial,Línea de embutidos y equipos de matadero en Sopachuy,equipos para matadero y línea de embutidos Bolivia,P52–P62 + clip y fotogramas de cámara de frío + fotogramas del cajón,Parcial,Datos técnicos de P59–P62 (no disponibles): se publica con nombre y foto.
+2,/proyectos/huacareta-clasificacion-naranjas-y-vapor,Proyecto,Industrial,Línea de clasificación de naranjas y generación de vapor en Huacareta,línea de clasificación de frutas Bolivia,P63–P64 + 4 clips y 5 fotogramas,Parcial,Capacidad de la línea y del caldero [por confirmar].
+3,/proyectos/hospital-jaime-mendoza-agua-purificada,Proyecto,Hospitalaria,Agua purificada y sistemas en el Hospital Jaime Mendoza (Sucre),planta de tratamiento de agua hospitalaria Bolivia,"P18, P19, P21, P24",Completo,Permiso para nombrar al cliente.
+4,/proyectos/aire-comprimido-y-sistemas-en-salud,Proyecto,Hospitalaria,Aire comprimido y sistemas en hospitales y centros de salud,instalación de aire comprimido hospitalario,"P22, P23, P25",Parcial,Detalle del alcance en el Hospital Chuquisaca.
+5,/proyectos/mantenimiento-transformadores-ylb-y-lacteos,Proyecto,Industrial,Mantenimiento de transformadores en YLB (Uyuni) y plantas de lácteos,mantenimiento de transformadores eléctricos Bolivia,P47–P51 + texto P48,Completo,Permiso para nombrar a YLB.
+6,/proyectos/mantenimiento-cocinas-y-hornos-industriales,Proyecto,Industrial,Mantenimiento de cocinas y hornos industriales (La Paz y Sucre),mantenimiento de hornos industriales,"P38–P40, P42–P44",Parcial,Fotos de P40 y P43 de baja calidad.
+7,/proyectos/grupo-electrogeno-eba-y-centro-de-salud,Proyecto,Industrial,Grupos electrógenos en EBA (Beni) y Centro de Salud Centinela,instalación de grupo electrógeno Bolivia,P26–P28,Parcial,Potencia y modelo de los equipos.
+8,/proyectos/planta-cuatro-canadas,Proyecto,Industrial,Planta Cuatro Cañadas (Santa Cruz),—,"P11, P12, P16",Parcial,Solo fotos; sin datos del proyecto.
+9,/industrial/ensacadora-saco-valvulado,Solución,Industrial,Ensacadora de saco valvulado,ensacadora de saco valvulado,P15 (+ posible P16),Completo,Foto principal de mejor calidad.
+10,/industrial/molino-de-martillos,Solución,Industrial,Molino de martillos en acero inoxidable,molino de martillos acero inoxidable,P10,Completo,
+11,/industrial/humidificador-de-granos,Solución,Industrial,Humidificador de granos de 4 t/h,humidificador de granos,P13,Completo,
+12,/industrial/tornillo-helicoidal,Solución,Industrial,Tornillo helicoidal transportador,tornillo helicoidal transportador,P14,Completo,
+13,/industrial/elevador-de-cangilones,Solución,Industrial,Elevador de cangilones: tambores y bandejas,elevador de cangilones,"P9, P17",Completo,
+14,/industrial/planta-separadora-residuos-solidos,Solución,Industrial,Planta separadora de residuos sólidos de 300 t/día,planta separadora de residuos sólidos,P6,Parcial,Descripción del proceso.
+15,/industrial/sistema-enfriamiento-matadero-pollos,Solución,Industrial,Sistema de enfriamiento para matadero de pollos,enfriamiento para matadero de pollos,"P7, P8",Parcial,Descripción técnica.
+16,/industrial/grupo-electrogeno,Solución,Industrial,Diseño y montaje de grupo electrógeno,grupo electrógeno instalación,P26,Parcial,Datos técnicos.
+17,/industrial/mantenimiento-transformadores-electricos,Solución,Industrial,Mantenimiento de transformadores eléctricos,mantenimiento de transformadores eléctricos,P48,Completo,
+18,/industrial/mantenimiento-balanzas-camioneras-ibmetro,Solución,Industrial,Mantenimiento y reparación de balanzas camioneras con certificación IBMETRO,mantenimiento de balanzas camioneras IBMETRO,P46,Parcial,Alcance del servicio.
+19,/industrial/mantenimiento-motores-y-bombas,Solución,Industrial,Embobinado y mantenimiento de motores de bombas de agua,embobinado de motores eléctricos,"P36, P37",Parcial,
+20,/industrial/mantenimiento-campanas-ductos-cocinas-hornos,Solución,Industrial,"Mantenimiento de campanas, ductos, cocinas y hornos industriales",mantenimiento de campanas y ductos industriales,P38,Completo,
+21,/industrial/mantenimiento-ollas-marmitas-y-carro-termico,Solución,Industrial,Mantenimiento de ollas marmitas y carros termo eléctricos,mantenimiento de ollas marmitas,"P42, P44",Completo,
+22,/hospitalaria/planta-tratamiento-agua-purificada,Solución,Hospitalaria,Planta de tratamiento de agua purificada industrial y hospitalaria,planta de agua purificada hospital,"P18, P21",Completo,
+23,/hospitalaria/mantenimiento-planta-agua-hemodialisis,Solución,Hospitalaria,Mantenimiento de plantas de agua para hemodiálisis,mantenimiento planta de agua hemodiálisis,P41,Completo,Permiso para nombrar al municipio.
+24,/hospitalaria/aire-comprimido,Solución,Hospitalaria,Generación y montaje de sistemas de aire comprimido,sistema de aire comprimido hospitalario,P23,Completo,
+25,/hospitalaria/sistema-control-monitoreo-remoto,Solución,Hospitalaria,Sistema de control y monitoreo remoto por llamadores,sistema de llamado de emergencia hospital,P20,Parcial,Sin fotos propias.
+26,/consultoria/estudios-y-diseno-de-plantas,Servicio,Consultoría,Estudios y diseño técnico de plantas industriales,diseño de plantas procesadoras de alimentos,P30–P34,Completo,Diagramas a redibujar.
+27,/,Página,General,Inicio,fabricación de maquinaria industrial en Sucre,"P2, P6–P8, P64, logo",Parcial,Cifras de trayectoria (P4 vacía).
+28,/nosotros,Página,General,Nosotros,empresa de ingeniería industrial en Sucre,"P2, P3, P66",Parcial,Años de experiencia; permiso para logos de marcas.
+29,/contacto,Página,General,Contacto,—,"Sitio actual: calle René Moreno Nº 162, Sucre; tel. (+591) 72877116",Parcial,"WhatsApp, correo, horarios."

@@ -1,0 +1,11 @@
+#,Tarea,Responsable,Estado,Detalle
+1,"Mejorar con IA las fotos marcadas ""Usar tras mejorar""",Tú,Pendiente,Escalar sin regenerar: la maquinaria debe verse igual que en la realidad. Mínimo 1600 px en fotos principales y 1200 px en galería.
+2,Mejorar con IA los 5 clips recortados,Tú,Pendiente,Escalar ×2 sin regenerar; entregar en MP4 sin audio.
+3,Confirmar permiso para nombrar clientes públicamente,Tú,Pendiente,"Hospital Jaime Mendoza, CNS, Hospital Chuquisaca, YLB, EBA, ENVIBOL, Caja Bancaria Estatal de Salud, Gobierno Municipal de La Guardia."
+4,Conseguir años de trayectoria y cantidad de proyectos (P4 vacía),Tú,Pendiente,Sin esos datos no se puede armar la franja de cifras de la home.
+5,"Datos de contacto: WhatsApp, correo y horarios",Tú,Pendiente,Teléfono y dirección ya están en el sitio actual.
+6,Conseguir los logos de las marcas (P66) en SVG,Tú,Pendiente,"Titular sugerido: ""Marcas con las que trabajamos"". No sugerir distribución autorizada si no lo es."
+7,Confirmar si la ensacadora de la P16 es la misma de la P15,Tú,Pendiente,La P15 tiene una foto de 333×453; la P16 podría ofrecer una mejor.
+8,"Recortar las fotos individuales de las tiras (P11, 12, 25, 28, 37, 39, 41, 44, 47)",Claude,Pendiente,Se hace en la fase de armado del proyecto.
+9,Redactar textos largos con datos reales y marcas [por confirmar],Claude,Pendiente,"Mínimo ~300 palabras por página, sin inventar especificaciones."
+10,Definir la estructura del proyecto y las rutas definitivas,Ambos,Siguiente,"Siguiente paso, ya con este inventario."
