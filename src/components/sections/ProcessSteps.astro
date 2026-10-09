@@ -1,0 +1,61 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const steps = [
+  {
+    number: '01',
+    title: 'Diseño e ingeniería',
+    description: 'Levantamiento en planta, cálculo estructural, dimensionamiento termomecánico y modelado 3D de piezas y líneas de tubería.',
+  },
+  {
+    number: '02',
+    title: 'Fabricación',
+    description: 'Calderería, mecanizado de precisión, soldadura calificada y construcción de estructuras en taller especializado.',
+  },
+  {
+    number: '03',
+    title: 'Instalación y montaje',
+    description: 'Transporte a obra, montaje mecánico y eléctrico, pruebas hidrostáticas de presión y calibración de instrumentos.',
+  },
+  {
+    number: '04',
+    title: 'Mantenimiento continuo',
+    description: 'Planes preventivos programados, diagnóstico de fallas, reacondicionamiento de calderos y soporte de repuestos.',
+  },
+];
+---
+
+<section class={`py-16 sm:py-20 bg-white ${className}`} aria-labelledby="process-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+    <SectionHeading
+      eyebrow="Metodología de trabajo"
+      title="Proceso integral de ejecución"
+      intro="Acompañamos cada proyecto desde la concepción en plano hasta la puesta en marcha definitiva y el mantenimiento en régimen continuo."
+      align="center"
+    />
+
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        steps.map((step) => (
+          <div class="relative flex flex-col rounded border border-line bg-surface/50 p-6 shadow-xs space-y-3">
+            <span class="font-display text-3xl font-bold text-ink/20">
+              {step.number}
+            </span>
+            <h3 class="text-lg font-display font-semibold text-ink">
+              {step.title}
+            </h3>
+            <p class="text-sm text-muted leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

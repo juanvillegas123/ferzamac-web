@@ -1,0 +1,44 @@
+---
+export interface BrandItem {
+  nombre: string;
+  logo: string;
+  mostrar: boolean;
+}
+
+interface Props {
+  marcas?: BrandItem[];
+  class?: string;
+}
+
+const { marcas = [], class: className = '' } = Astro.props;
+
+// Regla estricta de AGENTS.md: solo renderizar marcas autorizadas con mostrar: true
+const activeBrands = marcas.filter((b) => b.mostrar === true);
+const hasActiveBrands = activeBrands.length > 0;
+---
+
+{
+  hasActiveBrands && (
+    <section class={`py-12 bg-surface/60 border-t border-line ${className}`} aria-labelledby="brands-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <h2 id="brands-title" class="text-xs font-bold uppercase tracking-wider text-muted">
+          Marcas con las que trabajamos
+        </h2>
+        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 opacity-80">
+          {activeBrands.map((brand) => (
+            <div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-200">
+              <img
+                src={brand.logo}
+                alt={brand.nombre}
+                class="h-8 sm:h-10 w-auto object-contain"
+                loading="lazy"
+                width="120"
+                height="40"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

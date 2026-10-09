@@ -1,0 +1,51 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import AreaCard from '../ui/AreaCard.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const industrialHighlights = [
+  'Calderos de vapor y redes de tubería a presión (piping)',
+  'Plantas procesadoras de alimentos y líneas de envasado',
+  'Mantenimiento preventivo, correctivo y montaje electromecánico',
+];
+
+const hospitalariaHighlights = [
+  'Plantas y sistemas de agua purificada para diálisis y uso hospitalario',
+  'Redes de aire comprimido medicinal y gases clínicos',
+  'Mantenimiento técnico especializado bajo normas sanitarias',
+];
+---
+
+<section class={`py-16 sm:py-20 bg-surface/50 ${className}`} aria-labelledby="areas-split-title">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+    <SectionHeading
+      eyebrow="Áreas de especialidad"
+      title="Dos divisiones técnicas para la industria y la salud"
+      intro="Respuestas de ingeniería con capacidad técnica comprobada en campo, montaje en sitio y servicio post-instalación continuo."
+      align="center"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <AreaCard
+        title="Área Industrial"
+        href="/industrial"
+        area="industrial"
+        description="Soluciones de diseño, construcción, montaje y mantenimiento para plantas de alimentos, generación de vapor, piping y maquinaria pesada."
+        highlights={industrialHighlights}
+      />
+
+      <AreaCard
+        title="Área Hospitalaria"
+        href="/hospitalaria"
+        area="hospitalaria"
+        description="Sistemas críticos para infraestructura médica y sanitaria: plantas de agua purificada, aire comprimido medicinal y redes de fluidos clínicos."
+        highlights={hospitalariaHighlights}
+      />
+    </div>
+  </div>
+</section>

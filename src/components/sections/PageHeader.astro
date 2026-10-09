@@ -1,0 +1,61 @@
+---
+import Breadcrumbs from '../ui/Breadcrumbs.astro';
+import type { BreadcrumbItem } from '../ui/Breadcrumbs.astro';
+import Badge from '../ui/Badge.astro';
+
+interface Props {
+  title: string;
+  breadcrumbs?: BreadcrumbItem[];
+  intro?: string;
+  area?: 'industrial' | 'hospitalaria';
+  eyebrow?: string;
+  class?: string;
+}
+
+const {
+  title,
+  breadcrumbs,
+  intro,
+  area,
+  eyebrow,
+  class: className = '',
+} = Astro.props;
+
+const areaLabels = {
+  industrial: 'Área Industrial',
+  hospitalaria: 'Área Hospitalaria',
+};
+---
+
+<header class={`border-b border-line bg-surface py-10 sm:py-14 ${className}`}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-4">
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <Breadcrumbs items={breadcrumbs} />
+    )}
+
+    <div class="flex flex-wrap items-center gap-2 pt-1">
+      {area && (
+        <Badge variant={area}>
+          {areaLabels[area]}
+        </Badge>
+      )}
+      {eyebrow && !area && (
+        <span class="text-xs font-bold uppercase tracking-wider text-muted">
+          {eyebrow}
+        </span>
+      )}
+    </div>
+
+    <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink tracking-tight">
+      {title}
+    </h1>
+
+    {
+      intro && (
+        <p class="text-base sm:text-lg text-muted max-w-3xl leading-relaxed">
+          {intro}
+        </p>
+      )
+    }
+  </div>
+</header>
