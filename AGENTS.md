@@ -51,6 +51,7 @@ ferzamac-web/
 ├── README.md
 ├── astro.config.mjs · tsconfig.json · package.json
 ├── docs/
+│   ├── components.md        # catálogo de componentes y plantillas de UI
 │   ├── inventory.csv        # qué imagen/video/texto va en qué página
 │   ├── site-pages.csv       # páginas, títulos H1 y frases objetivo SEO
 │   ├── text-fixes.csv       # errores de ortografía del catálogo
@@ -188,7 +189,7 @@ Colecciones (`src/content.config.ts`):
 Para cambios grandes: primero un plan breve, luego la implementación en pasos pequeños.
 
 - [x] **F0 · Base:** proyecto Astro 7 + Tailwind 4, tokens, fuentes, layout, header/footer, logo.
-- [ ] **F1 · Sistema de diseño:** componentes `ui/` y `sections/`, plantillas `DetailLayout`.
+- [x] **F1 · Sistema de diseño:** componentes `ui/` y `sections/`, plantillas `DetailLayout` (ver `docs/components.md`).
 - [ ] **F2 · Contenido:** `content.config.ts`, colecciones y carga de las 8 fichas de proyecto y las fichas de solución completas.
 - [ ] **F3 · Páginas:** home, áreas, proyectos, consultoría, nosotros, contacto.
 - [ ] **F4 · SEO, accesibilidad y rendimiento:** JSON-LD, sitemap, Lighthouse.
