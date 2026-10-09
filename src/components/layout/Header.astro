@@ -19,7 +19,11 @@ function isActive(href: string): boolean {
 <header class="sticky top-0 z-40 w-full border-b border-line bg-white/95 backdrop-blur-xs">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-4 rounded" aria-label="Ir al inicio de Ferzamac">
+    <a
+      href="/"
+      class="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-4 rounded"
+      aria-label="Ir al inicio de Ferzamac"
+    >
       <img
         src="/logo/logo-ferzamac.svg"
         alt="Ferzamac"
@@ -31,25 +35,26 @@ function isActive(href: string): boolean {
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden items-center gap-1 md:flex lg:gap-2" aria-label="Navegación principal">
-      {
-        NAV_ITEMS.map((item) => {
-          const active = isActive(item.href);
-          return (
-            <a
-              href={item.href}
-              aria-current={active ? 'page' : undefined}
-              class={`px-3 py-2 text-sm font-medium transition-colors rounded ${
-                active
-                  ? 'text-ink font-semibold border-b-2 border-ink -mb-[2px]'
-                  : 'text-muted hover:text-ink'
-              } focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2`}
-            >
-              {item.label}
-            </a>
-          );
-        })
-      }
+    <nav
+      class="hidden items-center gap-1 md:flex lg:gap-2"
+      aria-label="Navegación principal"
+    >
+      {NAV_ITEMS.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <a
+            href={item.href}
+            aria-current={active ? 'page' : undefined}
+            class={`px-3 py-2 text-sm font-medium transition-colors rounded ${
+              active
+                ? 'text-ink font-semibold border-b-2 border-ink -mb-[2px]'
+                : 'text-muted hover:text-ink'
+            } focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
     </nav>
 
     <!-- Desktop CTA Action -->
@@ -76,7 +81,12 @@ function isActive(href: string): boolean {
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
       </svg>
       <svg
         id="icon-menu-close"
@@ -86,7 +96,12 @@ function isActive(href: string): boolean {
         viewBox="0 0 24 24"
         aria-hidden="true"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
       </svg>
     </button>
   </div>
@@ -98,24 +113,22 @@ function isActive(href: string): boolean {
     aria-label="Navegación móvil"
   >
     <div class="flex flex-col space-y-1">
-      {
-        NAV_ITEMS.map((item) => {
-          const active = isActive(item.href);
-          return (
-            <a
-              href={item.href}
-              aria-current={active ? 'page' : undefined}
-              class={`px-3 py-2.5 text-base font-medium rounded transition-colors ${
-                active
-                  ? 'bg-surface text-ink font-semibold border-l-4 border-ink'
-                  : 'text-muted hover:bg-surface hover:text-ink'
-              } focus-visible:outline-2 focus-visible:outline-ink`}
-            >
-              {item.label}
-            </a>
-          );
-        })
-      }
+      {NAV_ITEMS.map((item) => {
+        const active = isActive(item.href);
+        return (
+          <a
+            href={item.href}
+            aria-current={active ? 'page' : undefined}
+            class={`px-3 py-2.5 text-base font-medium rounded transition-colors ${
+              active
+                ? 'bg-surface text-ink font-semibold border-l-4 border-ink'
+                : 'text-muted hover:bg-surface hover:text-ink'
+            } focus-visible:outline-2 focus-visible:outline-ink`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
       <div class="pt-4">
         <Button href="/contacto" variant="primary" size="md" class="w-full">
           Solicitar cotización

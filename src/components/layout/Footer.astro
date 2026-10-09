@@ -9,7 +9,10 @@ const currentYear = new Date().getFullYear();
     <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
       <!-- Columna 1: Marca y descripción -->
       <div class="md:col-span-1 space-y-4">
-        <a href="/" class="inline-block focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-4 rounded">
+        <a
+          href="/"
+          class="inline-block focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-4 rounded"
+        >
           <img
             src="/logo/logo-ferzamac-blanco.svg"
             alt="Ferzamac"
@@ -19,9 +22,7 @@ const currentYear = new Date().getFullYear();
             loading="lazy"
           />
         </a>
-        <p class="text-sm text-white/80 leading-relaxed">
-          {SITE.tagline}
-        </p>
+        <p class="text-sm text-white/80 leading-relaxed">{SITE.tagline}</p>
       </div>
 
       <!-- Columna 2: Áreas de especialidad -->
@@ -31,17 +32,26 @@ const currentYear = new Date().getFullYear();
         </h3>
         <ul class="space-y-2.5 text-sm">
           <li>
-            <a href="/industrial" class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href="/industrial"
+              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               Área Industrial
             </a>
           </li>
           <li>
-            <a href="/hospitalaria" class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href="/hospitalaria"
+              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               Área Hospitalaria
             </a>
           </li>
           <li>
-            <a href="/consultoria" class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href="/consultoria"
+              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               Consultoría e Ingeniería
             </a>
           </li>
@@ -55,17 +65,26 @@ const currentYear = new Date().getFullYear();
         </h3>
         <ul class="space-y-2.5 text-sm">
           <li>
-            <a href="/nosotros" class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href="/nosotros"
+              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               Nosotros
             </a>
           </li>
           <li>
-            <a href="/proyectos" class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href="/proyectos"
+              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               Proyectos Realizados
             </a>
           </li>
           <li>
-            <a href="/contacto" class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href="/contacto"
+              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               Contacto y Cotizaciones
             </a>
           </li>
@@ -84,33 +103,35 @@ const currentYear = new Date().getFullYear();
           </li>
           <li class="flex items-center gap-2">
             <span class="sr-only">Teléfono:</span>
-            <a href={`tel:${SITE.phoneRaw}`} class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
+            <a
+              href={`tel:${SITE.phoneRaw}`}
+              class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
               {SITE.phone}
             </a>
           </li>
-          {
-            SITE.email && (
-              <li>
-                <a href={`mailto:${SITE.email}`} class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white">
-                  {SITE.email}
-                </a>
-              </li>
-            )
-          }
-          {
-            SITE.schedule && (
-              <li class="text-xs text-white/70">
-                Horario: {SITE.schedule}
-              </li>
-            )
-          }
+          {SITE.email && (
+            <li>
+              <a
+                href={`mailto:${SITE.email}`}
+                class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              >
+                {SITE.email}
+              </a>
+            </li>
+          )}
+          {SITE.schedule && (
+            <li class="text-xs text-white/70">Horario: {SITE.schedule}</li>
+          )}
         </ul>
       </div>
     </div>
 
     <!-- Barra inferior copyright -->
     <div class="mt-12 border-t border-white/15 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 gap-4">
-      <p>© {currentYear} {SITE.name}. Todos los derechos reservados.</p>
+      <p>
+        © {currentYear} {SITE.name}. Todos los derechos reservados.
+      </p>
       <p>{SITE.city}</p>
     </div>
   </div>

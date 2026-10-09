@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  description="La página que busca no existe o ha sido movida."
+  noindex={true}
+>
+  <section class="py-24 sm:py-32">
+    <div class="mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8 space-y-6">
+      <p class="font-display text-4xl sm:text-6xl font-bold text-ink">404</p>
+      <h1 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
+        Página no encontrada
+      </h1>
+      <p class="text-base text-muted max-w-md mx-auto leading-relaxed">
+        El enlace que siguió no existe o la dirección ha cambiado. Puede
+        regresar a la página principal o consultar nuestras áreas de servicio.
+      </p>
+      <div class="pt-4 flex flex-wrap justify-center gap-4">
+        <Button href="/" variant="primary" size="md">
+          Volver al inicio
+        </Button>
+        <Button href="/contacto" variant="secondary" size="md">
+          Contactar soporte
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

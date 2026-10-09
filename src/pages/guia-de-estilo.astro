@@ -1,0 +1,279 @@
+---
+/**
+ * PÁGINA TEMPORAL PARA FASE F0
+ * IMPORTANTE: Esta página debe excluirse del sitemap y eliminarse antes del lanzamiento oficial.
+ * Sirve para validar colores, tipografías, botones, contraste y componentes base en 375px, 768px y 1280px.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Guía de estilo (F0 - Temporal)"
+  description="Página interna de validación de sistema de diseño y tokens de Ferzamac."
+  noindex={true}
+>
+  <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <!-- Encabezado de la página -->
+    <header class="border-b border-line pb-6 space-y-2">
+      <span class="inline-block px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider bg-surface text-muted border border-line rounded">
+        Fase F0 · Validación visual
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-display font-semibold text-ink">
+        Guía de estilo y sistema de diseño
+      </h1>
+      <p class="text-muted text-sm sm:text-base max-w-3xl">
+        Esta página valida los tokens corporativos, tipografía autohospedada
+        (Sora y Manrope), variantes de botones y reglas de accesibilidad WCAG
+        AA.
+      </p>
+    </header>
+
+    <!-- 1. Paleta de colores y tokens -->
+    <section class="space-y-6" aria-labelledby="tokens-title">
+      <h2
+        id="tokens-title"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        1. Tokens de color corporativos
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- ink -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-ink"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">ink</p>
+            <p class="text-muted font-mono">#0A4D5C</p>
+            <p class="text-muted">Texto, títulos, botones principales</p>
+          </div>
+        </div>
+
+        <!-- ink-deep -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-ink-deep"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">ink-deep</p>
+            <p class="text-muted font-mono">#06323C</p>
+            <p class="text-muted">Hero, footer, bandas oscuras</p>
+          </div>
+        </div>
+
+        <!-- industrial -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-industrial"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">industrial</p>
+            <p class="text-muted font-mono">#00B020</p>
+            <p class="text-muted">Acento área Industrial</p>
+          </div>
+        </div>
+
+        <!-- hospitalaria -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-hospitalaria"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">hospitalaria</p>
+            <p class="text-muted font-mono">#1DA1D2</p>
+            <p class="text-muted">Acento área Hospitalaria</p>
+          </div>
+        </div>
+
+        <!-- surface -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-surface border-b border-line"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">surface</p>
+            <p class="text-muted font-mono">#F4F8F9</p>
+            <p class="text-muted">Fondos alternos y tarjetas</p>
+          </div>
+        </div>
+
+        <!-- line -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-line"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">line</p>
+            <p class="text-muted font-mono">#D9E4E7</p>
+            <p class="text-muted">Bordes y separadores</p>
+          </div>
+        </div>
+
+        <!-- muted -->
+        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
+          <div class="h-20 bg-muted"></div>
+          <div class="p-3 text-xs space-y-1">
+            <p class="font-bold text-ink text-sm">muted</p>
+            <p class="text-muted font-mono">#4F6D75</p>
+            <p class="text-muted">Texto secundario (~5.5:1)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Tipografía (Sora + Manrope) -->
+    <section class="space-y-6" aria-labelledby="typography-title">
+      <h2
+        id="typography-title"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        2. Tipografía (Sora y Manrope)
+      </h2>
+      <div class="space-y-4 bg-surface p-6 rounded border border-line">
+        <div>
+          <span class="text-xs font-mono text-muted uppercase">
+            H1 · Sora Semibold 36px/48px
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-display font-semibold text-ink">
+            Ingeniería y montaje de plantas industriales
+          </h1>
+        </div>
+        <div>
+          <span class="text-xs font-mono text-muted uppercase">
+            H2 · Sora Semibold 28px/36px
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-display font-semibold text-ink">
+            Sistemas hospitalarios de agua purificada y aire medicinal
+          </h2>
+        </div>
+        <div>
+          <span class="text-xs font-mono text-muted uppercase">
+            H3 · Sora Semibold 20px/28px
+          </span>
+          <h3 class="text-xl sm:text-2xl font-display font-semibold text-ink">
+            Calderos, piping y mantenimiento preventivo continuo
+          </h3>
+        </div>
+        <div>
+          <span class="text-xs font-mono text-muted uppercase">
+            Párrafo regular · Manrope 16px
+          </span>
+          <p class="text-base text-ink leading-relaxed">
+            Ferzamac desarrolla soluciones técnicas adaptadas a los
+            requerimientos de la industria boliviana y centros de salud,
+            garantizando continuidad operativa mediante montaje especializado y
+            monitoreo de equipos críticos.
+          </p>
+        </div>
+        <div>
+          <span class="text-xs font-mono text-muted uppercase">
+            Texto secundario · Manrope muted 14px
+          </span>
+          <p class="text-sm text-muted">
+            Calle René Moreno Nº 162, Sucre · Teléfono: (+591) 72877116 ·
+            Información sujeta a confirmación técnica.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Botones -->
+    <section class="space-y-6" aria-labelledby="buttons-title">
+      <h2
+        id="buttons-title"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        3. Variantes y tamaños de botón
+      </h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-sm font-semibold text-muted uppercase tracking-wider mb-3">
+            Botón Primario (bg-ink)
+          </h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button variant="primary" size="sm">
+              Primario pequeño (sm)
+            </Button>
+            <Button variant="primary" size="md">
+              Primario estándar (md)
+            </Button>
+            <Button variant="primary" size="lg">
+              Primario grande (lg)
+            </Button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-semibold text-muted uppercase tracking-wider mb-3">
+            Botón Secundario (border-ink)
+          </h3>
+          <div class="flex flex-wrap items-center gap-4">
+            <Button variant="secondary" size="sm">
+              Secundario pequeño (sm)
+            </Button>
+            <Button variant="secondary" size="md">
+              Secundario estándar (md)
+            </Button>
+            <Button variant="secondary" size="lg">
+              Secundario grande (lg)
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Reglas de contraste y acentos de área -->
+    <section class="space-y-6" aria-labelledby="contrast-title">
+      <h2
+        id="contrast-title"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        4. Reglas de color y contraste (Sección 6 AGENTS.md)
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Tarjeta Industrial (acento verde) -->
+        <div class="border border-line rounded p-6 bg-white border-t-4 border-t-industrial space-y-3">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-industrial">
+            <span class="h-2 w-2 rounded-full bg-industrial"></span>
+            Área Industrial
+          </span>
+          <h3 class="text-xl font-display font-semibold text-ink">
+            Plantas de alimentos y calderos de vapor
+          </h3>
+          <p class="text-sm text-muted">
+            Regla: El verde (#00B020) sobre blanco solo se utiliza en bordes,
+            indicadores y títulos grandes. El texto regular permanece en `ink` o
+            `muted`.
+          </p>
+        </div>
+
+        <!-- Tarjeta Hospitalaria (acento celeste) -->
+        <div class="border border-line rounded p-6 bg-white border-t-4 border-t-hospitalaria space-y-3">
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-hospitalaria">
+            <span class="h-2 w-2 rounded-full bg-hospitalaria"></span>
+            Área Hospitalaria
+          </span>
+          <h3 class="text-xl font-display font-semibold text-ink">
+            Gases medicinales y agua purificada
+          </h3>
+          <p class="text-sm text-muted">
+            Regla: El celeste (#1DA1D2) sobre blanco solo se utiliza en líneas
+            de acento, bordes e íconos. Nunca en texto secundario pequeño.
+          </p>
+        </div>
+
+        <!-- Demostración sobre ink-deep -->
+        <div class="md:col-span-2 bg-ink-deep text-white rounded p-6 space-y-3">
+          <h3 class="text-lg font-display font-semibold text-white">
+            Texto sobre fondo oscuro (ink-deep)
+          </h3>
+          <p class="text-sm text-white/80">
+            Sobre{' '}
+            <code class="bg-white/10 px-1 py-0.5 rounded font-mono">
+              ink-deep
+            </code>{' '}
+            (#06323C), el texto blanco o blanco al 80% supera holgadamente el
+            ratio 4.5:1 exigido por WCAG AA.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <span class="text-sm font-semibold text-industrial">
+              Acento industrial visible
+            </span>
+            <span class="text-sm font-semibold text-hospitalaria">
+              Acento hospitalario visible
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
