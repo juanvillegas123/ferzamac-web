@@ -1,0 +1,80 @@
+---
+import Badge from './Badge.astro';
+
+interface Props {
+  title: string;
+  href: string;
+  area: 'industrial' | 'hospitalaria';
+  description: string;
+  highlights: string[];
+  class?: string;
+}
+
+const {
+  title,
+  href,
+  area,
+  description,
+  highlights,
+  class: className = '',
+} = Astro.props;
+
+const areaAccents = {
+  industrial: 'border-t-industrial hover:border-industrial',
+  hospitalaria: 'border-t-hospitalaria hover:border-hospitalaria',
+};
+
+const areaLabels = {
+  industrial: 'Área Industrial',
+  hospitalaria: 'Área Hospitalaria',
+};
+
+const dotColors = {
+  industrial: 'bg-industrial',
+  hospitalaria: 'bg-hospitalaria',
+};
+---
+
+<article
+  class={`group relative flex flex-col justify-between rounded border border-line bg-white p-6 sm:p-8 shadow-xs transition-shadow duration-200 hover:shadow-md border-t-6 ${areaAccents[area]} ${className}`}
+>
+  <div class="space-y-4">
+    <div class="flex items-center justify-between">
+      <Badge variant={area}>
+        {areaLabels[area]}
+      </Badge>
+    </div>
+
+    <h3 class="text-2xl font-display font-semibold text-ink tracking-tight">
+      <a href={href} class="focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 rounded">
+        <span class="absolute inset-0" aria-hidden="true"></span>
+        {title}
+      </a>
+    </h3>
+
+    <p class="text-sm sm:text-base text-muted leading-relaxed">
+      {description}
+    </p>
+
+    <div class="pt-2">
+      <h4 class="text-xs font-bold uppercase tracking-wider text-muted mb-2.5">
+        Especialidades clave:
+      </h4>
+      <ul class="space-y-2 text-sm text-ink">
+        {
+          highlights.map((item) => (
+            <li class="flex items-start gap-2.5">
+              <span class={`mt-1.5 h-2 w-2 rounded-full ${dotColors[area]} shrink-0`} aria-hidden="true"></span>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="pt-6 mt-6 border-t border-line flex items-center justify-between text-sm font-semibold text-ink group-hover:text-ink-deep">
+    <span>Explorar catálogo del área</span>
+    <span aria-hidden="true">→</span>
+  </div>
+</article>
