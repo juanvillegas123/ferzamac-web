@@ -22,7 +22,7 @@ const currentYear = new Date().getFullYear();
             loading="lazy"
           />
         </a>
-        <p class="text-sm text-white/80 leading-relaxed">{SITE.tagline}</p>
+        <p class="text-sm text-surface leading-relaxed">{SITE.tagline}</p>
       </div>
 
       <!-- Columna 2: Áreas de especialidad -->
@@ -34,25 +34,25 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               href="/industrial"
-              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              class="text-surface hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
             >
-              Área Industrial
+              Industrial
             </a>
           </li>
           <li>
             <a
               href="/hospitalaria"
-              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              class="text-surface hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
             >
-              Área Hospitalaria
+              Hospitalaria
             </a>
           </li>
           <li>
             <a
               href="/consultoria"
-              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              class="text-surface hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
             >
-              Consultoría e Ingeniería
+              Consultoría
             </a>
           </li>
         </ul>
@@ -66,26 +66,26 @@ const currentYear = new Date().getFullYear();
         <ul class="space-y-2.5 text-sm">
           <li>
             <a
+              href="/proyectos"
+              class="text-surface hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
+              Proyectos
+            </a>
+          </li>
+          <li>
+            <a
               href="/nosotros"
-              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              class="text-surface hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
             >
               Nosotros
             </a>
           </li>
           <li>
             <a
-              href="/proyectos"
-              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
-            >
-              Proyectos Realizados
-            </a>
-          </li>
-          <li>
-            <a
               href="/contacto"
-              class="text-white/80 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              class="text-surface hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
             >
-              Contacto y Cotizaciones
+              Contacto
             </a>
           </li>
         </ul>
@@ -96,7 +96,7 @@ const currentYear = new Date().getFullYear();
         <h3 class="font-display text-sm font-semibold tracking-wider uppercase text-white mb-4">
           Contacto
         </h3>
-        <ul class="space-y-2.5 text-sm text-white/80">
+        <ul class="space-y-2.5 text-sm text-surface">
           <li class="flex items-start gap-2">
             <span class="sr-only">Dirección:</span>
             <span>{SITE.address}</span>
@@ -121,14 +121,14 @@ const currentYear = new Date().getFullYear();
             </li>
           )}
           {SITE.schedule && (
-            <li class="text-xs text-white/70">Horario: {SITE.schedule}</li>
+            <li class="text-xs text-surface">Horario: {SITE.schedule}</li>
           )}
         </ul>
       </div>
     </div>
 
     <!-- Barra inferior copyright -->
-    <div class="mt-12 border-t border-white/15 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/70 gap-4">
+    <div class="mt-12 border-t border-white/15 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-surface gap-4">
       <p>
         © {currentYear} {SITE.name}. Todos los derechos reservados.
       </p>
