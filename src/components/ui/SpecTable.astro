@@ -17,37 +17,41 @@ const {
 } = Astro.props;
 ---
 
-<div class={`w-full rounded border border-line bg-white shadow-xs overflow-hidden ${className}`}>
+<div
+  class={`w-full rounded border border-line bg-white shadow-xs overflow-hidden ${className}`}
+>
   <table class="w-full text-left text-sm">
     <caption class="border-b border-line bg-surface px-4 py-3 text-left font-display text-sm font-semibold text-ink">
       {caption}
     </caption>
     <thead class="hidden sm:table-header-group border-b border-line bg-surface/50 text-xs font-semibold uppercase tracking-wider text-muted">
       <tr>
-        <th scope="col" class="px-4 py-2.5 w-1/2">Parámetro</th>
-        <th scope="col" class="px-4 py-2.5 w-1/2">Especificación</th>
+        <th scope="col" class="px-4 py-2.5 w-1/2">
+          Parámetro
+        </th>
+        <th scope="col" class="px-4 py-2.5 w-1/2">
+          Especificación
+        </th>
       </tr>
     </thead>
     <tbody class="divide-y divide-line">
-      {
-        rows.map((row, index) => (
-          <tr
-            class={`flex flex-col sm:table-row ${
-              index % 2 === 0 ? 'bg-white' : 'bg-surface/60'
-            }`}
+      {rows.map((row, index) => (
+        <tr
+          class={`flex flex-col sm:table-row ${
+            index % 2 === 0 ? 'bg-white' : 'bg-surface/60'
+          }`}
+        >
+          <th
+            scope="row"
+            class="px-4 pt-3 pb-1 sm:py-3 font-medium text-ink sm:w-1/2 font-sans text-left"
           >
-            <th
-              scope="row"
-              class="px-4 pt-3 pb-1 sm:py-3 font-medium text-ink sm:w-1/2 font-sans text-left"
-            >
-              {row.label}
-            </th>
-            <td class="px-4 pb-3 pt-0 sm:py-3 text-muted sm:text-ink sm:w-1/2">
-              {row.value}
-            </td>
-          </tr>
-        ))
-      }
+            {row.label}
+          </th>
+          <td class="px-4 pb-3 pt-0 sm:py-3 text-muted sm:text-ink sm:w-1/2">
+            {row.value}
+          </td>
+        </tr>
+      ))}
     </tbody>
   </table>
 </div>

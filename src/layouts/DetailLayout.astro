@@ -30,7 +30,9 @@ const {
 
 const whatsappMessage = `Hola, quiero cotizar: ${title}`;
 const isWhatsAppAvailable = hasWhatsApp();
-const quoteHref = isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/contacto';
+const quoteHref = isWhatsAppAvailable
+  ? getWhatsAppLink(whatsappMessage)
+  : '/contacto';
 ---
 
 <BaseLayout
@@ -74,16 +76,12 @@ const quoteHref = isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/con
             Solicitar cotización de {title}
           </h2>
           <p class="text-xs sm:text-sm text-muted leading-relaxed">
-            Consulte directamente con nuestro equipo de ingeniería sobre plazos, costos de fabricación y alcance de instalación.
+            Consulte directamente con nuestro equipo de ingeniería sobre plazos,
+            costos de fabricación y alcance de instalación.
           </p>
 
           <div class="pt-2 flex flex-col gap-2.5">
-            <Button
-              href={quoteHref}
-              variant="primary"
-              size="md"
-              class="w-full"
-            >
+            <Button href={quoteHref} variant="primary" size="md" class="w-full">
               Cotizar por WhatsApp
             </Button>
             <Button
@@ -98,7 +96,10 @@ const quoteHref = isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/con
 
           <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
             <span>Atención telefónica:</span>
-            <a href={`tel:${SITE.phoneRaw}`} class="font-semibold text-ink hover:underline">
+            <a
+              href={`tel:${SITE.phoneRaw}`}
+              class="font-semibold text-ink hover:underline"
+            >
               {SITE.phone}
             </a>
           </div>

@@ -34,11 +34,7 @@ const areaLabels = {
     )}
 
     <div class="flex flex-wrap items-center gap-2 pt-1">
-      {area && (
-        <Badge variant={area}>
-          {areaLabels[area]}
-        </Badge>
-      )}
+      {area && <Badge variant={area}>{areaLabels[area]}</Badge>}
       {eyebrow && !area && (
         <span class="text-xs font-bold uppercase tracking-wider text-muted">
           {eyebrow}
@@ -50,12 +46,10 @@ const areaLabels = {
       {title}
     </h1>
 
-    {
-      intro && (
-        <p class="text-base sm:text-lg text-muted max-w-3xl leading-relaxed">
-          {intro}
-        </p>
-      )
-    }
+    {intro && (
+      <p class="text-base sm:text-lg text-muted max-w-3xl leading-relaxed">
+        {intro}
+      </p>
+    )}
   </div>
 </header>

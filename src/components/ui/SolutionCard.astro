@@ -37,30 +37,29 @@ const areaLabels = {
 <article
   class={`group relative flex flex-col overflow-hidden rounded border border-line bg-white shadow-xs transition-shadow duration-200 hover:shadow-md border-t-4 ${areaAccents[area]} ${className}`}
 >
-  {
-    image && (
-      <div class="aspect-16/9 w-full overflow-hidden bg-surface">
-        <Picture
-          src={image}
-          formats={['avif', 'webp']}
-          alt={title}
-          widths={[400, 700]}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-102"
-        />
-      </div>
-    )
-  }
+  {image && (
+    <div class="aspect-16/9 w-full overflow-hidden bg-surface">
+      <Picture
+        src={image}
+        formats={['avif', 'webp']}
+        alt={title}
+        widths={[400, 700]}
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-102"
+      />
+    </div>
+  )}
 
   <div class="flex flex-1 flex-col p-5 space-y-3">
     <div>
-      <Badge variant={area}>
-        {areaLabels[area]}
-      </Badge>
+      <Badge variant={area}>{areaLabels[area]}</Badge>
     </div>
 
     <h3 class="text-lg font-display font-semibold text-ink leading-snug">
-      <a href={href} class="focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 rounded">
+      <a
+        href={href}
+        class="focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 rounded"
+      >
         <span class="absolute inset-0" aria-hidden="true"></span>
         {title}
       </a>
@@ -70,18 +69,16 @@ const areaLabels = {
       {summary}
     </p>
 
-    {
-      specs && specs.length > 0 && (
-        <div class="pt-2 border-t border-line space-y-1 text-xs">
-          {specs.slice(0, 3).map((spec) => (
-            <div class="flex justify-between py-0.5 text-muted border-b border-line/40 last:border-none">
-              <span class="font-medium text-ink">{spec.label}:</span>
-              <span class="text-right">{spec.value}</span>
-            </div>
-          ))}
-        </div>
-      )
-    }
+    {specs && specs.length > 0 && (
+      <div class="pt-2 border-t border-line space-y-1 text-xs">
+        {specs.slice(0, 3).map((spec) => (
+          <div class="flex justify-between py-0.5 text-muted border-b border-line/40 last:border-none">
+            <span class="font-medium text-ink">{spec.label}:</span>
+            <span class="text-right">{spec.value}</span>
+          </div>
+        ))}
+      </div>
+    )}
 
     <div class="pt-2 flex items-center gap-1 text-xs font-semibold text-ink group-hover:underline">
       <span>Ver especificaciones técnicas</span>

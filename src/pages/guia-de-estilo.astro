@@ -1,277 +1,508 @@
 ---
 /**
- * PÁGINA TEMPORAL PARA FASE F0
+ * PÁGINA TEMPORAL PARA FASE F1 · SISTEMA DE DISEÑO
  * IMPORTANTE: Esta página debe excluirse del sitemap y eliminarse antes del lanzamiento oficial.
- * Sirve para validar colores, tipografías, botones, contraste y componentes base en 375px, 768px y 1280px.
+ * Sirve para validar todos los componentes reutilizables, tokens, contraste y responsive en 375px, 768px y 1280px.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
+import Badge from '../components/ui/Badge.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+import SpecTable from '../components/ui/SpecTable.astro';
+import Gallery from '../components/ui/Gallery.astro';
+import VideoFrame from '../components/ui/VideoFrame.astro';
+import AreaCard from '../components/ui/AreaCard.astro';
+import SolutionCard from '../components/ui/SolutionCard.astro';
+import ProjectCard from '../components/ui/ProjectCard.astro';
+
+import StatsStrip from '../components/sections/StatsStrip.astro';
+import AreasSplit from '../components/sections/AreasSplit.astro';
+import ProcessSteps from '../components/sections/ProcessSteps.astro';
+import EngineeringShowcase from '../components/sections/EngineeringShowcase.astro';
+import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
+import BrandsStrip from '../components/sections/BrandsStrip.astro';
+import CtaBanner from '../components/sections/CtaBanner.astro';
+import PageHeader from '../components/sections/PageHeader.astro';
+
+import foto1 from '../assets/images/fotogramas/cajon-noqueo-vacuno-sopachuy-estructura.png';
+import foto2 from '../assets/images/fotogramas/camara-de-frio-sopachuy-puerta.png';
+import foto3 from '../assets/images/fotogramas/huacareta-clasificacion-naranjas-lavado.png';
+import foto4 from '../assets/images/fotogramas/huacareta-clasificacion-naranjas-canales-de-clasificacion.png';
+
+const breadcrumbSample = [
+  { label: 'Industrial', href: '/industrial' },
+  { label: 'Calderos de vapor y piping', href: '/industrial/calderos' },
+  { label: 'Ficha técnica de ejemplo' },
+];
+
+const sampleSpecs = [
+  { label: 'Capacidad de generación térmica', value: '1500 BHP / 24 Bar' },
+  { label: 'Combustible compatible', value: 'Gas natural / Diésel / GLP' },
+  { label: 'Material del cuerpo de presión', value: 'Acero SA-516 Grado 70' },
+  { label: 'Norma técnica de diseño', value: 'ASME Sección I / NBIC' },
+  {
+    label: 'Sistema de control y seguridad',
+    value: 'Modulante automatizado con corte por bajo nivel',
+  },
+];
+
+const gallerySample = [
+  {
+    src: foto1,
+    alt: 'Estructura metálica y cajón de noqueo',
+    caption: 'Montaje de estructura mecánica',
+  },
+  {
+    src: foto2,
+    alt: 'Puerta frigorífica industrial instalada',
+    caption: 'Aislamiento térmico en cámara de frío',
+  },
+  {
+    src: foto3,
+    alt: 'Línea de lavado y selección de cítricos',
+    caption: 'Lavado continuo de naranja',
+  },
+  {
+    src: foto4,
+    alt: 'Canales de clasificación por calibre',
+    caption: 'Clasificación mecánica por tamaño',
+  },
+];
 ---
 
 <BaseLayout
-  title="Guía de estilo (F0 - Temporal)"
-  description="Página interna de validación de sistema de diseño y tokens de Ferzamac."
+  title="Catálogo de componentes (F1 - Temporal)"
+  description="Validación completa del sistema de diseño, componentes UI y secciones para Ferzamac."
   noindex={true}
 >
-  <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-    <!-- Encabezado de la página -->
-    <header class="border-b border-line pb-6 space-y-2">
-      <span class="inline-block px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider bg-surface text-muted border border-line rounded">
-        Fase F0 · Validación visual
+  <!-- Cabecera de la guía -->
+  <header class="border-b border-line bg-surface py-10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-3">
+      <span class="inline-block px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider bg-white text-ink border border-line rounded">
+        Fase F1 · Sistema de diseño
       </span>
       <h1 class="text-3xl sm:text-4xl font-display font-semibold text-ink">
-        Guía de estilo y sistema de diseño
+        Catálogo interactivo de componentes y secciones
       </h1>
-      <p class="text-muted text-sm sm:text-base max-w-3xl">
-        Esta página valida los tokens corporativos, tipografía autohospedada
-        (Sora y Manrope), variantes de botones y reglas de accesibilidad WCAG
-        AA.
+      <p class="text-sm sm:text-base text-muted max-w-3xl leading-relaxed">
+        Página de verificación de tokens, contraste WCAG AA, componentes UI,
+        multimedia y maquetación responsiva a 375 px, 768 px y 1280 px.
       </p>
-    </header>
+    </div>
+  </header>
 
-    <!-- 1. Paleta de colores y tokens -->
-    <section class="space-y-6" aria-labelledby="tokens-title">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-20">
+    <!-- 1. Tokens de color corporativos -->
+    <section class="space-y-6" aria-labelledby="sec-tokens">
       <h2
-        id="tokens-title"
+        id="sec-tokens"
         class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
       >
         1. Tokens de color corporativos
       </h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        <!-- ink -->
         <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-ink"></div>
+          <div class="h-16 bg-ink"></div>
           <div class="p-3 text-xs space-y-1">
             <p class="font-bold text-ink text-sm">ink</p>
             <p class="text-muted font-mono">#0A4D5C</p>
-            <p class="text-muted">Texto, títulos, botones principales</p>
           </div>
         </div>
-
-        <!-- ink-deep -->
         <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-ink-deep"></div>
+          <div class="h-16 bg-ink-deep"></div>
           <div class="p-3 text-xs space-y-1">
             <p class="font-bold text-ink text-sm">ink-deep</p>
             <p class="text-muted font-mono">#06323C</p>
-            <p class="text-muted">Hero, footer, bandas oscuras</p>
           </div>
         </div>
-
-        <!-- industrial -->
         <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-industrial"></div>
+          <div class="h-16 bg-industrial"></div>
           <div class="p-3 text-xs space-y-1">
             <p class="font-bold text-ink text-sm">industrial</p>
             <p class="text-muted font-mono">#00B020</p>
-            <p class="text-muted">Acento área Industrial</p>
           </div>
         </div>
-
-        <!-- hospitalaria -->
         <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-hospitalaria"></div>
+          <div class="h-16 bg-hospitalaria"></div>
           <div class="p-3 text-xs space-y-1">
             <p class="font-bold text-ink text-sm">hospitalaria</p>
             <p class="text-muted font-mono">#1DA1D2</p>
-            <p class="text-muted">Acento área Hospitalaria</p>
-          </div>
-        </div>
-
-        <!-- surface -->
-        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-surface border-b border-line"></div>
-          <div class="p-3 text-xs space-y-1">
-            <p class="font-bold text-ink text-sm">surface</p>
-            <p class="text-muted font-mono">#F4F8F9</p>
-            <p class="text-muted">Fondos alternos y tarjetas</p>
-          </div>
-        </div>
-
-        <!-- line -->
-        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-line"></div>
-          <div class="p-3 text-xs space-y-1">
-            <p class="font-bold text-ink text-sm">line</p>
-            <p class="text-muted font-mono">#D9E4E7</p>
-            <p class="text-muted">Bordes y separadores</p>
-          </div>
-        </div>
-
-        <!-- muted -->
-        <div class="rounded border border-line overflow-hidden bg-white shadow-xs">
-          <div class="h-20 bg-muted"></div>
-          <div class="p-3 text-xs space-y-1">
-            <p class="font-bold text-ink text-sm">muted</p>
-            <p class="text-muted font-mono">#4F6D75</p>
-            <p class="text-muted">Texto secundario (~5.5:1)</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. Tipografía (Sora + Manrope) -->
-    <section class="space-y-6" aria-labelledby="typography-title">
+    <!-- 2. Badges y Botones -->
+    <section class="space-y-6" aria-labelledby="sec-buttons-badges">
       <h2
-        id="typography-title"
+        id="sec-buttons-badges"
         class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
       >
-        2. Tipografía (Sora y Manrope)
-      </h2>
-      <div class="space-y-4 bg-surface p-6 rounded border border-line">
-        <div>
-          <span class="text-xs font-mono text-muted uppercase">
-            H1 · Sora Semibold 36px/48px
-          </span>
-          <h1 class="text-3xl sm:text-4xl font-display font-semibold text-ink">
-            Ingeniería y montaje de plantas industriales
-          </h1>
-        </div>
-        <div>
-          <span class="text-xs font-mono text-muted uppercase">
-            H2 · Sora Semibold 28px/36px
-          </span>
-          <h2 class="text-2xl sm:text-3xl font-display font-semibold text-ink">
-            Sistemas hospitalarios de agua purificada y aire medicinal
-          </h2>
-        </div>
-        <div>
-          <span class="text-xs font-mono text-muted uppercase">
-            H3 · Sora Semibold 20px/28px
-          </span>
-          <h3 class="text-xl sm:text-2xl font-display font-semibold text-ink">
-            Calderos, piping y mantenimiento preventivo continuo
-          </h3>
-        </div>
-        <div>
-          <span class="text-xs font-mono text-muted uppercase">
-            Párrafo regular · Manrope 16px
-          </span>
-          <p class="text-base text-ink leading-relaxed">
-            Ferzamac desarrolla soluciones técnicas adaptadas a los
-            requerimientos de la industria boliviana y centros de salud,
-            garantizando continuidad operativa mediante montaje especializado y
-            monitoreo de equipos críticos.
-          </p>
-        </div>
-        <div>
-          <span class="text-xs font-mono text-muted uppercase">
-            Texto secundario · Manrope muted 14px
-          </span>
-          <p class="text-sm text-muted">
-            Calle René Moreno Nº 162, Sucre · Teléfono: (+591) 72877116 ·
-            Información sujeta a confirmación técnica.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Botones -->
-    <section class="space-y-6" aria-labelledby="buttons-title">
-      <h2
-        id="buttons-title"
-        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
-      >
-        3. Variantes y tamaños de botón
+        2. Badges y Botones
       </h2>
       <div class="space-y-6">
         <div>
-          <h3 class="text-sm font-semibold text-muted uppercase tracking-wider mb-3">
-            Botón Primario (bg-ink)
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            Badges (Texto siempre en ink)
+          </h3>
+          <div class="flex flex-wrap items-center gap-3">
+            <Badge variant="neutral">Neutro / General</Badge>
+            <Badge variant="industrial">División Industrial</Badge>
+            <Badge variant="hospitalaria">División Hospitalaria</Badge>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            Botones interactivos
           </h3>
           <div class="flex flex-wrap items-center gap-4">
             <Button variant="primary" size="sm">
-              Primario pequeño (sm)
+              Primario sm
             </Button>
             <Button variant="primary" size="md">
-              Primario estándar (md)
+              Primario md
             </Button>
             <Button variant="primary" size="lg">
-              Primario grande (lg)
+              Primario lg
             </Button>
-          </div>
-        </div>
-
-        <div>
-          <h3 class="text-sm font-semibold text-muted uppercase tracking-wider mb-3">
-            Botón Secundario (border-ink)
-          </h3>
-          <div class="flex flex-wrap items-center gap-4">
             <Button variant="secondary" size="sm">
-              Secundario pequeño (sm)
+              Secundario sm
             </Button>
             <Button variant="secondary" size="md">
-              Secundario estándar (md)
+              Secundario md
             </Button>
             <Button variant="secondary" size="lg">
-              Secundario grande (lg)
+              Secundario lg
             </Button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. Reglas de contraste y acentos de área -->
-    <section class="space-y-6" aria-labelledby="contrast-title">
+    <!-- 3. Encabezados, Breadcrumbs y Tabla de Especificaciones -->
+    <section class="space-y-6" aria-labelledby="sec-ui-elements">
       <h2
-        id="contrast-title"
+        id="sec-ui-elements"
         class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
       >
-        4. Reglas de color y contraste (Sección 6 AGENTS.md)
+        3. Breadcrumbs, SectionHeading y SpecTable
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Tarjeta Industrial (acento verde) -->
-        <div class="border border-line rounded p-6 bg-white border-t-4 border-t-industrial space-y-3">
-          <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-industrial">
-            <span class="h-2 w-2 rounded-full bg-industrial"></span>
-            Área Industrial
-          </span>
-          <h3 class="text-xl font-display font-semibold text-ink">
-            Plantas de alimentos y calderos de vapor
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-2">
+            Migas de pan (Breadcrumbs)
           </h3>
-          <p class="text-sm text-muted">
-            Regla: El verde (#00B020) sobre blanco solo se utiliza en bordes,
-            indicadores y títulos grandes. El texto regular permanece en `ink` o
-            `muted`.
-          </p>
+          <Breadcrumbs items={breadcrumbSample} />
         </div>
 
-        <!-- Tarjeta Hospitalaria (acento celeste) -->
-        <div class="border border-line rounded p-6 bg-white border-t-4 border-t-hospitalaria space-y-3">
-          <span class="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-hospitalaria">
-            <span class="h-2 w-2 rounded-full bg-hospitalaria"></span>
-            Área Hospitalaria
-          </span>
-          <h3 class="text-xl font-display font-semibold text-ink">
-            Gases medicinales y agua purificada
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-2">
+            Encabezado de sección (SectionHeading)
           </h3>
-          <p class="text-sm text-muted">
-            Regla: El celeste (#1DA1D2) sobre blanco solo se utiliza en líneas
-            de acento, bordes e íconos. Nunca en texto secundario pequeño.
-          </p>
+          <SectionHeading
+            eyebrow="Ejemplo de eyebrow"
+            title="Título de sección en tipografía Sora semibold"
+            intro="Texto de introducción en tipografía Manrope para contextualizar bloques técnicos."
+          />
         </div>
 
-        <!-- Demostración sobre ink-deep -->
-        <div class="md:col-span-2 bg-ink-deep text-white rounded p-6 space-y-3">
-          <h3 class="text-lg font-display font-semibold text-white">
-            Texto sobre fondo oscuro (ink-deep)
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-2">
+            Tabla de especificaciones apilable (SpecTable)
           </h3>
-          <p class="text-sm text-white/80">
-            Sobre{' '}
-            <code class="bg-white/10 px-1 py-0.5 rounded font-mono">
-              ink-deep
-            </code>{' '}
-            (#06323C), el texto blanco o blanco al 80% supera holgadamente el
-            ratio 4.5:1 exigido por WCAG AA.
-          </p>
-          <div class="flex flex-wrap gap-4 pt-2">
-            <span class="text-sm font-semibold text-industrial">
-              Acento industrial visible
-            </span>
-            <span class="text-sm font-semibold text-hospitalaria">
-              Acento hospitalario visible
-            </span>
+          <SpecTable
+            caption="Ficha técnica de caldero de vapor piotubular"
+            rows={sampleSpecs}
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Galería multimedia con visor modal y VideoFrame -->
+    <section class="space-y-6" aria-labelledby="sec-multimedia">
+      <h2
+        id="sec-multimedia"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        4. Multimedia accesible (Gallery con diálogo nativo y VideoFrame)
+      </h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            Galería de fotogramas con visor modal accesible por teclado
+            (&lt;dialog&gt;)
+          </h3>
+          <Gallery images={gallerySample} columns={4} />
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            Reproductor de video controlado por IntersectionObserver (sin CLS)
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div class="space-y-2">
+              <span class="text-xs font-semibold text-muted">
+                Video panorámico ('wide')
+              </span>
+              <VideoFrame
+                src="/video/huacareta-clasificacion-naranjas-01-alimentacion.mp4"
+                poster={foto3.src}
+                orientation="wide"
+                caption="Planta de Huacareta: elevador de alimentación continua."
+              />
+            </div>
+            <div class="space-y-2">
+              <span class="text-xs font-semibold text-muted">
+                Video vertical ('vertical')
+              </span>
+              <VideoFrame
+                src="/video/camara-de-frio-sopachuy-puerta-y-tablero.mp4"
+                poster={foto2.src}
+                orientation="vertical"
+                caption="Cámara de frío de Sopachuy: puerta frigorífica y tablero de potencia."
+              />
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Tarjetas (AreaCard, SolutionCard, ProjectCard) -->
+    <section class="space-y-6" aria-labelledby="sec-cards">
+      <h2
+        id="sec-cards"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        5. Tarjetas de catálogo y proyectos
+      </h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            AreaCard (División de especialidad)
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <AreaCard
+              title="Área Industrial"
+              href="/industrial"
+              area="industrial"
+              description="Soluciones de diseño, construcción y mantenimiento de plantas industriales y calderos de vapor."
+              highlights={[
+                'Calderos y piping',
+                'Líneas de proceso',
+                'Montaje electromecánico',
+              ]}
+            />
+            <AreaCard
+              title="Área Hospitalaria"
+              href="/hospitalaria"
+              area="hospitalaria"
+              description="Sistemas de agua purificada, aire comprimido medicinal y redes de fluidos clínicos."
+              highlights={[
+                'Agua para diálisis',
+                'Aire comprimido medicinal',
+                'Mantenimiento sanitario',
+              ]}
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            SolutionCard (Acento según área)
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <SolutionCard
+              title="Calderos de vapor y recipientes a presión"
+              href="/industrial/calderos-de-vapor"
+              area="industrial"
+              summary="Diseño, construcción y mantenimiento de calderos pirotubulares para la industria de alimentos y bebidas."
+              specs={[
+                { label: 'Presión de trabajo', value: '10 a 25 Bar' },
+                { label: 'Capacidad', value: '500 a 3000 BHP' },
+              ]}
+              image={foto1}
+            />
+            <SolutionCard
+              title="Plantas hospitalarias de agua purificada"
+              href="/hospitalaria/agua-purificada"
+              area="hospitalaria"
+              summary="Sistemas de ósmosis inversa, desinfección UV y desionización para centros médicos y unidades de hemodiálisis."
+              specs={[
+                { label: 'Pureza', value: '< 1.3 µS/cm' },
+                { label: 'Caudal de suministro', value: '500 a 2000 L/h' },
+              ]}
+              image={foto2}
+            />
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
+            ProjectCard (Ficha de caso real)
+          </h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <ProjectCard
+              title="Línea de procesamiento de cítricos en Huacareta"
+              href="/proyectos/planta-huacareta"
+              area="industrial"
+              location="Huacareta, Chuquisaca"
+              summary="Diseño integral de línea de transporte, lavado por inmersión y clasificación por calibres."
+              image={foto3}
+              scope={[
+                'Calderería en acero',
+                'Montaje electromecánico',
+                'Pruebas en carga',
+              ]}
+            />
+            <ProjectCard
+              title="Sistema de aire comprimido hospitalario"
+              href="/proyectos/hospital-sucre-aire"
+              area="hospitalaria"
+              location="Hospital de Sucre"
+              summary="Suministro e interconexión de compresores medicinales con secadores desecantes y manifolds redundantes."
+              image={foto4}
+              scope={[
+                'Redes de cobre medicinal',
+                'Filtros bacteriológicos',
+                'Monitoreo de punto de rocío',
+              ]}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Secciones estructurales -->
+    <section class="space-y-6" aria-labelledby="sec-sections">
+      <h2
+        id="sec-sections"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        6. Secciones estructurales completas
+      </h2>
+      <div class="space-y-12 border border-line rounded p-4 sm:p-6 bg-white">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            StatsStrip (Solo si tiene datos)
+          </h3>
+          <StatsStrip
+            stats={[
+              { value: '+15', label: 'Años de experiencia [por confirmar]' },
+              { value: '100%', label: 'Capacidad de montaje local' },
+            ]}
+          />
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            AreasSplit
+          </h3>
+          <AreasSplit />
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            ProcessSteps
+          </h3>
+          <ProcessSteps />
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            EngineeringShowcase
+          </h3>
+          <EngineeringShowcase />
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            FeaturedProjects
+          </h3>
+          <FeaturedProjects />
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            BrandsStrip
+          </h3>
+          <BrandsStrip />
+        </div>
+
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
+            CtaBanner
+          </h3>
+          <CtaBanner />
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Maqueta de Ficha Técnica con DetailLayout -->
+    <section class="space-y-6" aria-labelledby="sec-detail-mockup">
+      <h2
+        id="sec-detail-mockup"
+        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
+      >
+        7. Maqueta representativa de DetailLayout
+      </h2>
+      <div class="rounded border-2 border-dashed border-line p-6 bg-surface space-y-6">
+        <PageHeader
+          title="Ficha técnica de demostración: Caldero pirotubular industrial"
+          breadcrumbs={breadcrumbSample}
+          area="industrial"
+          intro="Ejemplo de estructura de página de detalle para equipos industriales o sistemas hospitalarios."
+        />
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-8 space-y-8">
+            <div class="space-y-4 text-sm text-ink leading-relaxed">
+              <h3 class="text-xl font-display font-semibold text-ink">
+                Descripción del equipo
+              </h3>
+              <p>
+                Los calderos pirotubulares construidos por Ferzamac están
+                diseñados para una máxima transferencia térmica, minimizando el
+                consumo de combustible mediante recirculación eficiente de gases
+                y aislamientos de alta densidad.
+              </p>
+            </div>
+
+            <SpecTable
+              caption="Parámetros técnicos del equipo de prueba"
+              rows={sampleSpecs}
+            />
+
+            <div>
+              <h3 class="text-lg font-display font-semibold text-ink mb-3">
+                Registro fotográfico del proyecto
+              </h3>
+              <Gallery images={gallerySample.slice(0, 3)} columns={3} />
+            </div>
+          </div>
+
+          <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+            <div class="rounded border border-line bg-white p-6 shadow-xs space-y-4">
+              <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+                Cotización técnica
+              </span>
+              <h3 class="font-display text-lg font-semibold text-ink">
+                Solicitar cotización de Caldero pirotubular
+              </h3>
+              <p class="text-xs text-muted leading-relaxed">
+                Consulte con nuestro equipo de ingeniería sobre plazos, costos
+                de fabricación y alcance de instalación.
+              </p>
+              <Button
+                href="/contacto"
+                variant="primary"
+                size="md"
+                class="w-full"
+              >
+                Cotizar por WhatsApp
+              </Button>
+            </div>
+          </aside>
         </div>
       </div>
     </section>

@@ -23,6 +23,9 @@ const dotStyles = {
 <span
   class={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-semibold tracking-wide border ${variantStyles[variant]} ${className}`}
 >
-  <span class={`h-1.5 w-1.5 rounded-full ${dotStyles[variant]}`} aria-hidden="true"></span>
+  <span
+    class={`h-1.5 w-1.5 rounded-full ${dotStyles[variant]}`}
+    aria-hidden="true"
+  ></span>
   <slot />
 </span>

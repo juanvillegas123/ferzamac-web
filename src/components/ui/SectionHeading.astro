@@ -21,22 +21,18 @@ const alignmentClasses = {
 };
 ---
 
-<div class={`flex flex-col space-y-3 max-w-3xl ${alignmentClasses[align]} ${className}`}>
-  {
-    eyebrow && (
-      <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
-        {eyebrow}
-      </span>
-    )
-  }
+<div
+  class={`flex flex-col space-y-3 max-w-3xl ${alignmentClasses[align]} ${className}`}
+>
+  {eyebrow && (
+    <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+      {eyebrow}
+    </span>
+  )}
   <h2 class="text-2xl sm:text-3xl lg:text-4xl font-display font-semibold text-ink tracking-tight">
     {title}
   </h2>
-  {
-    intro && (
-      <p class="text-base sm:text-lg text-muted leading-relaxed">
-        {intro}
-      </p>
-    )
-  }
+  {intro && (
+    <p class="text-base sm:text-lg text-muted leading-relaxed">{intro}</p>
+  )}
 </div>

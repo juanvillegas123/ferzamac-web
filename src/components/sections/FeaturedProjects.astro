@@ -30,7 +30,8 @@ const defaultProjects: FeaturedProjectItem[] = [
     href: '/proyectos/planta-huacareta',
     area: 'industrial',
     location: 'Huacareta, Chuquisaca',
-    summary: 'Diseño, fabricación y montaje de línea completa de lavado, selección, secado y clasificación por calibres.',
+    summary:
+      'Diseño, fabricación y montaje de línea completa de lavado, selección, secado y clasificación por calibres.',
     image: sampleProjectImg1,
     scope: ['Caldero de vapor', 'Cintas de transporte', 'Paneles de control'],
   },
@@ -39,7 +40,8 @@ const defaultProjects: FeaturedProjectItem[] = [
     href: '/proyectos/camara-frio-sopachuy',
     area: 'industrial',
     location: 'Sopachuy, Chuquisaca',
-    summary: 'Instalación de paneles aislantes, puertas frigoríficas, evaporadores y sistema electromecánico de control térmico.',
+    summary:
+      'Instalación de paneles aislantes, puertas frigoríficas, evaporadores y sistema electromecánico de control térmico.',
     image: sampleProjectImg2,
     scope: ['Tablero electromecánico', 'Cortinas PVC', 'Circuito frigorífico'],
   },
@@ -48,7 +50,8 @@ const defaultProjects: FeaturedProjectItem[] = [
     href: '/proyectos/matadero-sopachuy',
     area: 'industrial',
     location: 'Sopachuy, Chuquisaca',
-    summary: 'Construcción y montaje de cajón de noqueo, rielería aérea estructural en acero y líneas de faena especializada.',
+    summary:
+      'Construcción y montaje de cajón de noqueo, rielería aérea estructural en acero y líneas de faena especializada.',
     image: sampleProjectImg3,
     scope: ['Estructuras de acero', 'Mecanismos neumáticos', 'Rielería aérea'],
   },
@@ -62,14 +65,13 @@ const {
 } = Astro.props;
 ---
 
-<section class={`py-16 sm:py-20 bg-white ${className}`} aria-labelledby="featured-projects-title">
+<section
+  class={`py-16 sm:py-20 bg-white ${className}`}
+  aria-labelledby="featured-projects-title"
+>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-      <SectionHeading
-        eyebrow="Casos reales"
-        title={title}
-        intro={intro}
-      />
+      <SectionHeading eyebrow="Casos reales" title={title} intro={intro} />
       <div>
         <Button href="/proyectos" variant="secondary" size="md">
           Ver todos los proyectos
@@ -78,19 +80,17 @@ const {
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        projects.map((project) => (
-          <ProjectCard
-            title={project.title}
-            href={project.href}
-            area={project.area}
-            location={project.location}
-            summary={project.summary}
-            image={project.image}
-            scope={project.scope}
-          />
-        ))
-      }
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          href={project.href}
+          area={project.area}
+          location={project.location}
+          summary={project.summary}
+          image={project.image}
+          scope={project.scope}
+        />
+      ))}
     </div>
   </div>
 </section>

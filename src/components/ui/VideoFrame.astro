@@ -40,19 +40,21 @@ const orientationClasses = {
       </p>
     </video>
   </div>
-  {
-    caption && (
-      <figcaption class="mt-2 text-xs text-muted leading-normal">
-        {caption}
-      </figcaption>
-    )
-  }
+  {caption && (
+    <figcaption class="mt-2 text-xs text-muted leading-normal">
+      {caption}
+    </figcaption>
+  )}
 </figure>
 
 <script>
   function setupVideoFrames() {
-    const videos = document.querySelectorAll<HTMLVideoElement>('.video-frame-player');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const videos = document.querySelectorAll<HTMLVideoElement>(
+      '.video-frame-player'
+    );
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
 
     videos.forEach((video) => {
       if (prefersReducedMotion) {

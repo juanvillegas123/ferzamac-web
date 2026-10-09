@@ -16,8 +16,11 @@ const {
 } = Astro.props;
 
 // Canonical URL resolution based on Astro.site
-const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
-const imageURL = Astro.site && image.startsWith('/') ? new URL(image, Astro.site).href : image;
+const canonicalURL = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : null;
+const imageURL =
+  Astro.site && image.startsWith('/') ? new URL(image, Astro.site).href : image;
 ---
 
 <!-- Primary Meta Tags -->
@@ -25,22 +28,15 @@ const imageURL = Astro.site && image.startsWith('/') ? new URL(image, Astro.site
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-{
-  canonicalURL ? (
-    <link rel="canonical" href={canonicalURL} />
-  ) : (
-    <!-- TODO: definir site en astro.config.mjs para generar la etiqueta canonical absoluta -->
-  )
-}
+{canonicalURL && <link rel="canonical" href={canonicalURL} />}
+{/* TODO: definir site en astro.config.mjs para generar la etiqueta canonical absoluta */}
 
 <!-- Robots -->
-{
-  noindex ? (
-    <meta name="robots" content="noindex, nofollow" />
-  ) : (
-    <meta name="robots" content="index, follow" />
-  )
-}
+{noindex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow" />
+)}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
