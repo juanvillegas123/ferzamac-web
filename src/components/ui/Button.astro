@@ -1,0 +1,51 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  target?: string;
+  rel?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: className = '',
+  target,
+  rel,
+  ...rest
+} = Astro.props;
+
+const baseStyles =
+  'inline-flex items-center justify-center font-medium rounded transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink select-none cursor-pointer text-center';
+
+const variantStyles = {
+  primary: 'bg-ink text-white hover:bg-ink-deep border border-transparent shadow-xs',
+  secondary: 'bg-transparent text-ink border border-ink hover:bg-surface',
+};
+
+const sizeStyles = {
+  sm: 'text-xs px-3 py-1.5 min-h-[34px] gap-1.5',
+  md: 'text-sm px-4 py-2 min-h-[40px] gap-2',
+  lg: 'text-base px-5 py-2.5 min-h-[46px] gap-2.5 font-semibold',
+};
+
+const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
+---
+
+{
+  href ? (
+    <a href={href} class={combinedClasses} target={target} rel={rel} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={combinedClasses} {...rest}>
+      <slot />
+    </button>
+  )
+}

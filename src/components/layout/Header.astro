@@ -1,0 +1,162 @@
+---
+import { NAV_ITEMS } from '../../lib/site';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const currentPath = Astro.props.currentPath ?? Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-40 w-full border-b border-line bg-white/95 backdrop-blur-xs">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-4 rounded" aria-label="Ir al inicio de Ferzamac">
+      <img
+        src="/logo/logo-ferzamac.svg"
+        alt="Ferzamac"
+        class="h-11 w-auto"
+        width="180"
+        height="44"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden items-center gap-1 md:flex lg:gap-2" aria-label="Navegación principal">
+      {
+        NAV_ITEMS.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={item.href}
+              aria-current={active ? 'page' : undefined}
+              class={`px-3 py-2 text-sm font-medium transition-colors rounded ${
+                active
+                  ? 'text-ink font-semibold border-b-2 border-ink -mb-[2px]'
+                  : 'text-muted hover:text-ink'
+              } focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2`}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <!-- Desktop CTA Action -->
+    <div class="hidden items-center md:flex">
+      <Button href="/contacto" variant="primary" size="sm">
+        Solicitar cotización
+      </Button>
+    </div>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button
+      id="menu-toggle-btn"
+      type="button"
+      class="inline-flex items-center justify-center rounded p-2 text-ink hover:bg-surface focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 md:hidden"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+    >
+      <svg
+        id="icon-menu-open"
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg
+        id="icon-menu-close"
+        class="hidden h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Navigation -->
+  <nav
+    id="mobile-navigation"
+    class="hidden border-b border-line bg-white px-4 pt-2 pb-6 md:hidden sm:px-6"
+    aria-label="Navegación móvil"
+  >
+    <div class="flex flex-col space-y-1">
+      {
+        NAV_ITEMS.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <a
+              href={item.href}
+              aria-current={active ? 'page' : undefined}
+              class={`px-3 py-2.5 text-base font-medium rounded transition-colors ${
+                active
+                  ? 'bg-surface text-ink font-semibold border-l-4 border-ink'
+                  : 'text-muted hover:bg-surface hover:text-ink'
+              } focus-visible:outline-2 focus-visible:outline-ink`}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+      <div class="pt-4">
+        <Button href="/contacto" variant="primary" size="md" class="w-full">
+          Solicitar cotización
+        </Button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  function setupMobileMenu() {
+    const toggleBtn = document.getElementById('menu-toggle-btn');
+    const mobileNav = document.getElementById('mobile-navigation');
+    const openIcon = document.getElementById('icon-menu-open');
+    const closeIcon = document.getElementById('icon-menu-close');
+
+    if (!toggleBtn || !mobileNav || !openIcon || !closeIcon) return;
+
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      const nextState = !isExpanded;
+
+      toggleBtn.setAttribute('aria-expanded', String(nextState));
+      toggleBtn.setAttribute(
+        'aria-label',
+        nextState ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'
+      );
+
+      if (nextState) {
+        mobileNav.classList.remove('hidden');
+        openIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileNav.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    });
+  }
+
+  // Run on initial load and after client navigation if any
+  setupMobileMenu();
+  document.addEventListener('astro:after-swap', setupMobileMenu);
+</script>
