@@ -22,6 +22,7 @@ const isWhatsAppAvailable = hasWhatsApp();
 const targetHref = isWhatsAppAvailable
   ? getWhatsAppLink(whatsappMessage)
   : '/contacto';
+const effectiveCtaText = isWhatsAppAvailable ? ctaText : 'Solicitar cotización';
 ---
 
 <section
@@ -42,11 +43,10 @@ const targetHref = isWhatsAppAvailable
       <div class="shrink-0 flex flex-wrap gap-4 items-center">
         <Button
           href={targetHref}
-          variant="primary"
+          variant="inverted"
           size="lg"
-          class="bg-white text-ink hover:bg-surface border-transparent"
         >
-          {ctaText}
+          {effectiveCtaText}
         </Button>
         <Button
           href="/contacto"

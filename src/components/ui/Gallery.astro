@@ -23,7 +23,7 @@ const colClasses = {
 };
 ---
 
-<div class={`space-y-4 ${className}`}>
+<div class={`gallery-container space-y-4 ${className}`}>
   {images.length === 0 && import.meta.env.DEV && (
     <div class="rounded border border-dashed border-line bg-surface p-6 text-center text-xs font-mono text-muted">
       <span>Galería pendiente</span>
@@ -69,15 +69,13 @@ const colClasses = {
 
   <!-- Visor modal nativo accesible con <dialog> -->
   <dialog
-    id="gallery-dialog"
-    class="backdrop:bg-ink-deep/80 max-w-4xl w-[92vw] rounded-lg border border-line bg-white p-4 shadow-2xl focus:outline-none"
+    class="gallery-dialog backdrop:bg-ink-deep/80 max-w-4xl w-[92vw] rounded-lg border border-line bg-white p-4 shadow-2xl focus:outline-none"
     aria-label="Visor ampliado de imagen"
   >
     <div class="relative flex flex-col items-center">
       <button
-        id="dialog-close-btn"
         type="button"
-        class="absolute -top-2 -right-2 z-10 rounded-full bg-white border border-line p-2 text-ink shadow-sm hover:bg-surface focus-visible:outline-2 focus-visible:outline-ink cursor-pointer"
+        class="dialog-close-btn absolute -top-2 -right-2 z-10 rounded-full bg-white border border-line p-2 text-ink shadow-sm hover:bg-surface focus-visible:outline-2 focus-visible:outline-ink cursor-pointer"
         aria-label="Cerrar visor de imagen"
       >
         <svg
@@ -98,66 +96,68 @@ const colClasses = {
 
       <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded bg-surface">
         <img
-          id="dialog-img"
           src=""
           alt=""
-          class="max-h-[75vh] max-w-full object-contain"
+          class="dialog-img max-h-[75vh] max-w-full object-contain"
         />
       </div>
 
-      <p id="dialog-caption" class="mt-3 text-sm text-ink text-center"></p>
+      <p class="dialog-caption mt-3 text-sm text-ink text-center"></p>
     </div>
   </dialog>
 </div>
 
 <script>
   function setupGallery() {
-    const dialog = document.getElementById(
-      'gallery-dialog'
-    ) as HTMLDialogElement | null;
-    const dialogImg = document.getElementById(
-      'dialog-img'
-    ) as HTMLImageElement | null;
-    const dialogCaption = document.getElementById('dialog-caption');
-    const closeBtn = document.getElementById('dialog-close-btn');
-    const triggers =
-      document.querySelectorAll<HTMLButtonElement>('.gallery-trigger');
+    const containers =
+      document.querySelectorAll<HTMLElement>('.gallery-container');
 
-    if (!dialog || !dialogImg || !dialogCaption || !closeBtn) return;
+    containers.forEach((container) => {
+      const dialog =
+        container.querySelector<HTMLDialogElement>('.gallery-dialog');
+      const dialogImg = container.querySelector<HTMLImageElement>('.dialog-img');
+      const dialogCaption = container.querySelector<HTMLElement>('.dialog-caption');
+      const closeBtn =
+        container.querySelector<HTMLButtonElement>('.dialog-close-btn');
+      const triggers =
+        container.querySelectorAll<HTMLButtonElement>('.gallery-trigger');
 
-    let lastActiveTrigger: HTMLButtonElement | null = null;
+      if (!dialog || !dialogImg || !dialogCaption || !closeBtn) return;
 
-    triggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        lastActiveTrigger = trigger;
-        const src = trigger.dataset.src || '';
-        const alt = trigger.dataset.alt || '';
-        const caption = trigger.dataset.caption || '';
+      let lastActiveTrigger: HTMLButtonElement | null = null;
 
-        dialogImg.src = src;
-        dialogImg.alt = alt;
-        dialogCaption.textContent = caption;
+      triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          lastActiveTrigger = trigger;
+          const src = trigger.dataset.src || '';
+          const alt = trigger.dataset.alt || '';
+          const caption = trigger.dataset.caption || '';
 
-        dialog.showModal();
-        closeBtn.focus();
+          dialogImg.src = src;
+          dialogImg.alt = alt;
+          dialogCaption.textContent = caption;
+
+          dialog.showModal();
+          closeBtn.focus();
+        });
       });
-    });
 
-    function closeDialog() {
-      if (dialog && dialog.open) {
-        dialog.close();
-        lastActiveTrigger?.focus();
+      function closeDialog() {
+        if (dialog && dialog.open) {
+          dialog.close();
+          lastActiveTrigger?.focus();
+        }
       }
-    }
 
-    closeBtn.addEventListener('click', closeDialog);
+      closeBtn.addEventListener('click', closeDialog);
 
-    dialog.addEventListener('click', (e) => {
-      if (e.target === dialog) closeDialog();
-    });
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) closeDialog();
+      });
 
-    dialog.addEventListener('close', () => {
-      lastActiveTrigger?.focus();
+      dialog.addEventListener('close', () => {
+        lastActiveTrigger?.focus();
+      });
     });
   }
 
