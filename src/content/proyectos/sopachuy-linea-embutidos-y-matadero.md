@@ -21,7 +21,7 @@ alcance:
   - "Tina de escaldado"
   - "Mesa de degollado"
   - "Peladora de cerdos"
-imagenPrincipal: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-linea-embutidos-01.jpg"
+imagenPrincipal: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-linea-embutidos-02.jpg"
 galeria:
   - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-camara-de-frio-01.jpg"
     alt: "Puerta y panel exterior de cámara de frío"
