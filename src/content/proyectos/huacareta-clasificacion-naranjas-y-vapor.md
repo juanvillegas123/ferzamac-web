@@ -48,8 +48,8 @@ destacado: true
 estado: "parcial"
 ---
 
-Proyecto integral en Huacareta enfocado en procesamiento citrícola y servicios térmicos auxiliares.
+Línea de envasado y clasificación de naranjas y generación de vapor en Huacareta.
 
-El área de procesamiento comprende una línea de envasado y clasificación de naranjas integrada por elevador de alimentación desde cajas, cinta transportadora, módulo de lavado con agua, panel de control con indicadores luminosos, mesas de inspección y canales con tolvas receptoras hacia cajas.
+La línea de procesamiento de naranjas comprende elevador de alimentación desde cajas, cinta transportadora, módulo de lavado con agua, panel de control, mesas de trabajo y canales de clasificación hacia cajas.
 
-El área de servicios térmicos comprende la instalación de caldero y la instalación de riel de garrafones manifold para suministro y distribución de vapor.
+Para la generación de vapor se realizó la instalación de caldero y la instalación de riel de garrafones manifold.

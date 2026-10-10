@@ -25,7 +25,7 @@ videos: []
 proyectosRelacionados: []
 pendientes:
   - "confirmar si los 10 s son por bolsa"
-  - "potencia del motorreductor"
+  - "otros datos técnicos del equipo"
   - "dimensiones generales y altura de descarga"
   - "confirmar si la ensacadora de la página 16 corresponde al mismo equipo"
 seo:
@@ -38,4 +38,4 @@ orden: 1
 
 Diseño y construcción de ensacadora de saco valvulado.
 
-El equipo incorpora una tolva de 1000 kg de capacidad y un tornillo transportador fabricado en acero inoxidable 308. La estructura principal está construida en tubo estructural de 2 pulgadas y acero A-36, con protección superficial mediante pintura anticorrosiva. Registra un tiempo de llenado de 10 segundos y preparación para bolsas de 20 kg.
+El equipo cuenta con una tolva de 1000 kg de capacidad y un tornillo transportador en acero inoxidable 308. La estructura está construida en tubo estructural de 2 plg y acero A-36, con protección superficial con pintura anticorrosiva. Registra un tiempo de llenado de 10 s y bolsas de 20 kg.
