@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'neutral' | 'industrial' | 'hospitalaria';
+  variant?: 'neutral' | 'industrial' | 'hospitalaria' | 'consultoria';
   class?: string;
 }
 
@@ -11,12 +11,14 @@ const variantStyles = {
   neutral: 'bg-surface text-ink border-line',
   industrial: 'bg-[#EAF7ED] text-ink border-[#99DFAB]',
   hospitalaria: 'bg-[#EBF7FB] text-ink border-[#A4DCF0]',
+  consultoria: 'bg-surface text-ink border-line',
 };
 
 const dotStyles = {
   neutral: 'bg-muted',
   industrial: 'bg-industrial',
   hospitalaria: 'bg-hospitalaria',
+  consultoria: 'bg-ink',
 };
 ---
 

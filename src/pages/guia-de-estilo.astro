@@ -24,12 +24,23 @@ import EngineeringShowcase from '../components/sections/EngineeringShowcase.astr
 import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
 import BrandsStrip from '../components/sections/BrandsStrip.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
-import PageHeader from '../components/sections/PageHeader.astro';
 
 import foto1 from '../assets/images/fotogramas/cajon-noqueo-vacuno-sopachuy-estructura.png';
 import foto2 from '../assets/images/fotogramas/camara-de-frio-sopachuy-puerta.png';
 import foto3 from '../assets/images/fotogramas/huacareta-clasificacion-naranjas-lavado.png';
 import foto4 from '../assets/images/fotogramas/huacareta-clasificacion-naranjas-canales-de-clasificacion.png';
+
+import { getEntry, render } from 'astro:content';
+import DetailLayout from '../layouts/DetailLayout.astro';
+
+// Carga de las 3 fichas reales de referencia (F2a) desde las colecciones
+const ensacadoraEntry = await getEntry('soluciones', 'ensacadora-saco-valvulado');
+const huacaretaEntry = await getEntry('proyectos', 'huacareta-clasificacion-naranjas-y-vapor');
+const sopachuyEntry = await getEntry('proyectos', 'sopachuy-linea-embutidos-y-matadero');
+
+const ensacadoraRender = ensacadoraEntry ? await render(ensacadoraEntry) : null;
+const huacaretaRender = huacaretaEntry ? await render(huacaretaEntry) : null;
+const sopachuyRender = sopachuyEntry ? await render(sopachuyEntry) : null;
 
 // --- FIXTURES TEMPORALES DE PRUEBA (MARCADORES OBVIAMENTE FALSOS) ---
 const breadcrumbSample = [
@@ -514,73 +525,178 @@ const featuredProjectsSample = [
       </div>
     </section>
 
-    <!-- 7. Maqueta de Ficha Técnica con DetailLayout -->
-    <section class="space-y-6" aria-labelledby="sec-detail-mockup">
-      <h2
-        id="sec-detail-mockup"
-        class="text-2xl font-display font-semibold text-ink border-b border-line pb-2"
-      >
-        7. Maqueta representativa de DetailLayout
-      </h2>
-      <div class="rounded border-2 border-dashed border-line p-6 bg-surface space-y-6">
-        <PageHeader
-          title="Título de ficha técnica de ejemplo"
-          breadcrumbs={breadcrumbSample}
-          area="industrial"
-          intro="Texto de introducción de ejemplo para la ficha técnica del equipo o servicio."
-        />
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div class="lg:col-span-8 space-y-8">
-            <div class="space-y-4 text-sm text-ink leading-relaxed">
-              <h3 class="text-xl font-display font-semibold text-ink">
-                Descripción del equipo o servicio de ejemplo
-              </h3>
-              <p>
-                Texto de ejemplo describiendo el funcionamiento, diseño y
-                aplicaciones del equipo o sistema. Este párrafo es un marcador
-                visual para validar el espaciado y la tipografía en la
-                plantilla.
-              </p>
-            </div>
-
-            <SpecTable
-              caption="Parámetros técnicos de ejemplo"
-              rows={sampleSpecs}
-            />
-
-            <div>
-              <h3 class="text-lg font-display font-semibold text-ink mb-3">
-                Registro fotográfico de ejemplo
-              </h3>
-              <Gallery images={gallerySample.slice(0, 3)} columns={3} />
-            </div>
-          </div>
-
-          <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            <div class="rounded border border-line bg-white p-6 shadow-xs space-y-4">
-              <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
-                Cotización técnica
-              </span>
-              <h3 class="font-display text-lg font-semibold text-ink">
-                Solicitar cotización de Título de ejemplo
-              </h3>
-              <p class="text-xs text-muted leading-relaxed">
-                Texto de ejemplo para solicitar cotización técnica y consultar
-                plazos de ejecución.
-              </p>
-              <Button
-                href="/contacto"
-                variant="primary"
-                size="md"
-                class="w-full"
-              >
-                Cotizar por WhatsApp
-              </Button>
-            </div>
-          </aside>
-        </div>
+    <!-- 7. Fichas reales de referencia (cargadas desde colecciones con DetailLayout) -->
+    <section class="space-y-12" aria-labelledby="sec-reference-sheets">
+      <div class="border-b border-line pb-4 space-y-2">
+        <span class="inline-block px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider bg-ink text-white rounded">
+          Fase F2a · Fichas de referencia
+        </span>
+        <h2
+          id="sec-reference-sheets"
+          class="text-2xl sm:text-3xl font-display font-semibold text-ink"
+        >
+          7. Fichas reales de referencia
+        </h2>
+        <p class="text-sm text-muted max-w-3xl leading-relaxed">
+          Estas 3 fichas se cargan directamente desde las colecciones de contenido (<code>src/content/</code>)
+          y se maquetan utilizando la plantilla <code>DetailLayout</code> con sus slots técnicos (especificaciones, multimedia y cuerpo MDX).
+        </p>
       </div>
+
+      <!-- Ficha 1: Ensacadora de saco valvulado (soluciones) -->
+      {ensacadoraEntry && ensacadoraRender && (
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <Badge variant="industrial">Solución industrial</Badge>
+            <span class="text-xs font-mono text-muted">src/content/soluciones/ensacadora-saco-valvulado.md</span>
+          </div>
+          <DetailLayout
+            title={ensacadoraEntry.data.title}
+            intro={ensacadoraEntry.data.resumen}
+            area={ensacadoraEntry.data.area}
+            eyebrow="Ficha de solución · Pág. 15 del catálogo"
+            breadcrumbs={[
+              { label: 'Inicio', href: '/' },
+              { label: 'Industrial', href: '/industrial' },
+              { label: ensacadoraEntry.data.title },
+            ]}
+            embedded={true}
+          >
+            <ensacadoraRender.Content />
+
+            <div slot="specs">
+              <SpecTable
+                caption="Especificaciones técnicas documentadas en catálogo"
+                rows={ensacadoraEntry.data.specs}
+              />
+            </div>
+
+            <div slot="multimedia" class="space-y-4">
+              <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico</h3>
+              {ensacadoraEntry.data.imagenPrincipal && (
+                <div class="max-w-sm rounded border border-line bg-surface p-3 space-y-2">
+                  <img
+                    src={ensacadoraEntry.data.imagenPrincipal.src}
+                    alt={ensacadoraEntry.data.title}
+                    width={ensacadoraEntry.data.imagenPrincipal.width}
+                    height={ensacadoraEntry.data.imagenPrincipal.height}
+                    class="rounded w-full h-auto object-cover"
+                  />
+                  <p class="text-xs font-mono text-muted">
+                    Nota: {ensacadoraEntry.data.imagenNota || 'Imagen del catálogo'}
+                  </p>
+                </div>
+              )}
+            </div>
+          </DetailLayout>
+        </div>
+      )}
+
+      <!-- Ficha 2: Huacareta (proyectos) -->
+      {huacaretaEntry && huacaretaRender && (
+        <div class="space-y-4 pt-10 border-t border-line">
+          <div class="flex items-center gap-3">
+            <Badge variant="industrial">Proyecto industrial</Badge>
+            <span class="text-xs font-mono text-muted">src/content/proyectos/huacareta-clasificacion-naranjas-y-vapor.md</span>
+          </div>
+          <DetailLayout
+            title={huacaretaEntry.data.title}
+            intro={huacaretaEntry.data.resumen}
+            area={huacaretaEntry.data.area}
+            eyebrow={`Proyecto · Ubicación: ${huacaretaEntry.data.ubicacion}`}
+            breadcrumbs={[
+              { label: 'Inicio', href: '/' },
+              { label: 'Proyectos', href: '/proyectos' },
+              { label: 'Huacareta' },
+            ]}
+            embedded={true}
+          >
+            <huacaretaRender.Content />
+
+            <div slot="specs">
+              <SpecTable
+                caption="Partidas de alcance registradas en catálogo"
+                rows={huacaretaEntry.data.alcance.map((item, idx) => ({
+                  label: `Partida ${idx + 1}`,
+                  value: item,
+                }))}
+              />
+            </div>
+
+            <div slot="multimedia" class="space-y-6">
+              <div class="space-y-3">
+                <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico y fotogramas</h3>
+                <Gallery images={huacaretaEntry.data.galeria} columns={3} />
+              </div>
+
+              {huacaretaEntry.data.videos && huacaretaEntry.data.videos.length > 0 && (
+                <div class="space-y-3">
+                  <h3 class="text-base font-display font-semibold text-ink">Clips de video de la planta</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {huacaretaEntry.data.videos.map((vid) => (
+                      <VideoFrame src={vid.src} caption={vid.caption} />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </DetailLayout>
+        </div>
+      )}
+
+      <!-- Ficha 3: Sopachuy (proyectos) -->
+      {sopachuyEntry && sopachuyRender && (
+        <div class="space-y-4 pt-10 border-t border-line">
+          <div class="flex items-center gap-3">
+            <Badge variant="industrial">Proyecto industrial</Badge>
+            <span class="text-xs font-mono text-muted">src/content/proyectos/sopachuy-linea-embutidos-y-matadero.md</span>
+          </div>
+          <DetailLayout
+            title={sopachuyEntry.data.title}
+            intro={sopachuyEntry.data.resumen}
+            area={sopachuyEntry.data.area}
+            eyebrow={`Proyecto · Ubicación: ${sopachuyEntry.data.ubicacion}`}
+            breadcrumbs={[
+              { label: 'Inicio', href: '/' },
+              { label: 'Proyectos', href: '/proyectos' },
+              { label: 'Sopachuy' },
+            ]}
+            embedded={true}
+          >
+            <sopachuyRender.Content />
+
+            <div slot="specs">
+              <SpecTable
+                caption="Equipamiento registrado en catálogo"
+                rows={sopachuyEntry.data.alcance.map((item, idx) => ({
+                  label: `Equipo ${idx + 1}`,
+                  value: item,
+                }))}
+              />
+            </div>
+
+            <div slot="multimedia" class="space-y-6">
+              <div class="space-y-3">
+                <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico de la planta</h3>
+                <Gallery images={sopachuyEntry.data.galeria} columns={3} />
+              </div>
+
+              {sopachuyEntry.data.videos && sopachuyEntry.data.videos.length > 0 && (
+                <div class="space-y-3">
+                  <h3 class="text-base font-display font-semibold text-ink">Video de cámara de frío</h3>
+                  <div class="max-w-md">
+                    <VideoFrame
+                      src={sopachuyEntry.data.videos[0].src}
+                      caption={sopachuyEntry.data.videos[0].caption}
+                      orientation={sopachuyEntry.data.videos[0].orientacion === 'vertical' ? 'vertical' : 'wide'}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </DetailLayout>
+        </div>
+      )}
     </section>
   </div>
 </BaseLayout>
