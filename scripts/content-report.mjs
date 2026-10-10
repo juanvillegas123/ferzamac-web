@@ -55,7 +55,7 @@ function parseFrontmatter(content) {
 function analyzeEntry(col, file) {
   const filePath = path.join(contentDir, col, file);
   const raw = fs.readFileSync(filePath, 'utf-8');
-  const { frontmatter, body, rawFm } = parseFrontmatter(raw);
+  const { frontmatter, rawFm } = parseFrontmatter(raw);
 
   const title = frontmatter.title || frontmatter.nombre || file;
   const estado = frontmatter.estado || (col === 'clientes' || col === 'marcas' ? 'n/a' : 'sin-definir');
