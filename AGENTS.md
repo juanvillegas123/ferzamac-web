@@ -123,19 +123,21 @@ Los tres primeros colores de marca vienen del cliente; `ink-deep`, `surface`, `l
 
 ## 7. Contenido
 
+**Fuente única de datos técnicos:** `docs/catalogo-texto.md` (texto literal del catálogo página por página). Es la única fuente permitida para datos técnicos del sitio junto con `docs/inventory.csv`, `docs/site-pages.csv`, `docs/text-fixes.csv` y `docs/pending.csv`. Todo dato técnico, cifra, cliente o capacidad que no esté ahí es estrictamente `[por confirmar]`. Prohibido completar con conocimiento general (normas, potencias, rangos típicos).
+
 Colecciones (`src/content.config.ts`):
 
-- **soluciones:** `title`, `area` (`industrial` | `hospitalaria` | `consultoria`), `tipo` (`diseno-construccion` | `mantenimiento` | `consultoria`), `resumen` (≤160 caracteres), `specs` (lista `{label, value}`), `imagenPrincipal`, `galeria`, `video?`, `proyectosRelacionados`, `seo` (`title`, `description`, `keyword`), `estado` (`completo` | `parcial`), `orden`.
-- **proyectos:** `title`, `cliente` (referencia), `ubicacion`, `area`, `resumen`, `alcance` (lista), `resultado?`, `galeria`, `videos` (`src`, `poster`, `orientacion`), `solucionesRelacionadas`, `destacado`, `estado`.
+- **soluciones:** `title`, `area` (`industrial` | `hospitalaria` | `consultoria`), `tipo` (`diseno-construccion` | `mantenimiento` | `consultoria`), `resumen` (≤160 caracteres), `specs` (lista `{label, value}`), `imagenPrincipal?`, `imagenNota?`, `galeria?`, `video?`, `proyectosRelacionados?`, `seo` (`title`, `description`, `keyword`), `estado` (`completo` | `parcial`), `orden`.
+- **proyectos:** `title`, `cliente?` (referencia opcional), `ubicacion`, `area`, `resumen`, `alcance` (lista), `resultado?`, `imagenPrincipal?`, `imagenNota?`, `galeria?`, `videos` (`src`, `poster`, `orientacion`, `caption`), `solucionesRelacionadas?`, `destacado`, `estado`.
 - **clientes:** `nombre`, `sector`, `ciudad`, **`mostrarNombre` (boolean, `false` por defecto)**, `logo?`.
-- **marcas:** `nombre`, `logo`, `mostrar` (boolean).
+- **marcas:** `nombre`, `logo?`, **`mostrar` (boolean, `false` por defecto)**.
 
 **Reglas**
-1. **No inventes datos técnicos.** Usa solo lo que está en `docs/inventory.csv` y en el contenido de la colección. Lo que falte se marca `[por confirmar]` y sale en `docs/pending.csv`.
-2. **Clientes:** si `mostrarNombre` es `false`, publica el proyecto sin nombrar al cliente ("hospital de Sucre"). Esto aplica a hospitales, CNS, YLB, EBA, ENVIBOL, Caja Bancaria Estatal de Salud y el municipio de La Guardia hasta que haya permiso.
+1. **No inventes datos técnicos.** Usa solo lo que está en `docs/catalogo-texto.md` y `docs/inventory.csv`. Lo que falte se marca `[por confirmar]` y sale en `docs/pending.csv`.
+2. **Clientes:** si `mostrarNombre` es `false`, publica el proyecto sin nombrar al cliente ("hospital de Sucre"). Esto aplica a hospitales, CNS, YLB, EBA, ENVIBOL, Caja Bancaria Estatal de Salud y el municipio de La Guardia hasta que haya permiso. En proyectos sin cliente documentado, `cliente` se omite y se usa solo `ubicacion`.
 3. **Marcas (Atlas Copco, Schulz, Kaeser, Honda, etc.):** son marcas con las que trabajan, no clientes. Título: "Marcas con las que trabajamos". No insinuar distribución autorizada.
 4. **Ortografía:** corrige según `docs/text-fixes.csv`. Reescribe textos largos con tono profesional y claro; mínimo ~300 palabras útiles por página de solución cuando haya datos suficientes, sin relleno.
-5. **Páginas P59–P63 del catálogo** (matadero de Sopachuy): sin datos técnicos disponibles. Publicar con nombre y foto, sin especificaciones.
+5. **Páginas P59–P63 del catálogo** (matadero de Sopachuy): sin datos técnicos disponibles. Publicar solo con nombre claro y foto, sin especificaciones inventadas. Equipos de denominación dudosa (p. ej. "Cierra divisoria") se retienen en `docs/pending.csv`.
 6. **Sin stock** (manos con engranajes, hombre con casco): descartado.
 
 ## 8. Multimedia
@@ -190,7 +192,9 @@ Para cambios grandes: primero un plan breve, luego la implementación en pasos p
 
 - [x] **F0 · Base:** proyecto Astro 7 + Tailwind 4, tokens, fuentes, layout, header/footer, logo.
 - [x] **F1 · Sistema de diseño:** componentes `ui/` y `sections/`, plantillas `DetailLayout` (ver `docs/components.md`).
-- [ ] **F2 · Contenido:** `content.config.ts`, colecciones y carga de las 8 fichas de proyecto y las fichas de solución completas.
+- [ ] **F2 · Contenido:**
+  - [x] **F2a · Esquema y 3 fichas de referencia:** `src/content.config.ts`, 4 colecciones con loader `glob`, auditoría con `npm run content:report`, y fichas de referencia `ensacadora-saco-valvulado`, `huacareta-clasificacion-naranjas-y-vapor` y `sopachuy-linea-embutidos-y-matadero`.
+  - [ ] **F2b · Carga completa:** 8 fichas de proyectos restantes y fichas de soluciones completas.
 - [ ] **F3 · Páginas:** home, áreas, proyectos, consultoría, nosotros, contacto.
 - [ ] **F4 · SEO, accesibilidad y rendimiento:** JSON-LD, sitemap, Lighthouse.
 - [ ] **F5 · Despliegue:** Cloudflare Pages, dominio, Search Console y perfil de Google Business.
