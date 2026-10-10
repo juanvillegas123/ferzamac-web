@@ -24,7 +24,14 @@ const colClasses = {
 ---
 
 <div class={`space-y-4 ${className}`}>
-  <div class={`grid gap-4 ${colClasses[columns]}`}>
+  {images.length === 0 && import.meta.env.DEV && (
+    <div class="rounded border border-dashed border-line bg-surface p-6 text-center text-xs font-mono text-muted">
+      <span>Galería pendiente</span>
+    </div>
+  )}
+
+  {images.length > 0 && (
+    <div class={`grid gap-4 ${colClasses[columns]}`}>
     {images.map((img, index) => (
       <figure class="group relative m-0 overflow-hidden rounded border border-line bg-surface">
         <button
@@ -58,6 +65,7 @@ const colClasses = {
       </figure>
     ))}
   </div>
+  )}
 
   <!-- Visor modal nativo accesible con <dialog> -->
   <dialog
