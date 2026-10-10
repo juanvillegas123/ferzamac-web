@@ -24,40 +24,52 @@ alcance:
 imagenPrincipal: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-linea-embutidos-01.jpg"
 galeria:
   - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-camara-de-frio-01.jpg"
-    alt: "Cámara de frío con puerta y cortina"
+    alt: "Puerta aislada y panel exterior de cámara de frío"
     caption: "Cámara de frío"
   - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-gas-glp-carro-colgado-embutidos-01.jpg"
-    alt: "Sistema de GLP y carro de colgado de embutidos"
-    caption: "Sistema de GLP y carro de colgado"
+    alt: "Cilindros de GLP para almacenamiento y distribución de gas"
+    caption: "Sistema de GLP"
   - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-picadora-sierra-cinta-01.jpg"
-    alt: "Picadora de carne industrial y sierra cinta"
-    caption: "Picadora de carne y sierra cinta"
+    alt: "Picadora de carne industrial"
+    caption: "Picadora de carne industrial"
   - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-balanza-embutidora-envasadora-vacio-02.jpg"
-    alt: "Balanza industrial, embutidora manual y envasadora al vacío"
-    caption: "Balanza, embutidora y envasadora al vacío"
+    alt: "Embutidora manual horizontal de embutidos"
+    caption: "Embutidora manual horizontal"
   - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-cutter-mezcladora-carro-tolva-01.jpg"
-    alt: "Cutter industrial, mezcladora y carro tolva"
-    caption: "Cutter industrial y mezcladora"
-  - src: "../../assets/images/fotogramas/cajon-noqueo-vacuno-sopachuy-estructura.png"
-    alt: "Estructura metálica del cajón de noqueo vacuno"
+    alt: "Cutter industrial para procesamiento cárnico"
+    caption: "Cutter industrial"
+  - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-cajon-noqueo-vacuno-01.jpg"
+    alt: "Cajón de noqueo vacuno en estructura metálica"
     caption: "Cajón de noqueo vacuno"
-  - src: "../../assets/images/fotogramas/cajon-noqueo-vacuno-sopachuy-nave.png"
-    alt: "Nave de matadero en Sopachuy"
-    caption: "Nave de faena"
+  - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-balanza-gancho-cierre-divisorio-01.jpg"
+    alt: "Balanza industrial tipo gancho en riel"
+    caption: "Balanza tipo gancho"
+  - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-cajon-noqueo-cerdos-escaldado-degollado-01.jpg"
+    alt: "Cajón de noqueo para cerdos en nave de faena"
+    caption: "Cajón de noqueo de cerdos"
+  - src: "../../assets/images/proyectos/sopachuy-linea-embutidos-y-matadero/sopachuy-peladora-de-cerdos-01.jpg"
+    alt: "Peladora mecánica de cerdos"
+    caption: "Peladora de cerdos"
 videos:
   - src: "/video/camara-de-frio-sopachuy-puerta-y-tablero.mp4"
     orientacion: "vertical"
     caption: "Puerta y tablero de control de la cámara de frío"
 solucionesRelacionadas: []
+pendientes:
+  - "la foto de 800x450 de la pág. 60 muestra una sierra colgante con marca FZM; el catálogo dice 'Cierra divisoria', ¿es 'sierra divisoria'? confirmar con el cliente"
+  - "potencia, capacidades y especificaciones técnicas de los equipos de matadero"
+  - "dimensiones y rango de temperatura de trabajo de la cámara de frío"
+  - "cliente y entidad contratante"
+  - "ubicación detallada (departamento y municipio)"
 destacado: true
 estado: "parcial"
 ---
 
-Proyecto documentado en las páginas 52 a 62 del catálogo bajo la denominación Proyecto Sopachuy.
+Instalación y montaje de equipamiento integral para procesamiento cárnico y faena animal en Sopachuy.
 
-### Línea de embutidos
+### Línea de elaboración de embutidos
 
-Equipamiento registrado en las páginas 52 a 58:
+La línea integra maquinaria para preparación, picado, mezclado, embutido y envasado de productos cárnicos:
 
 - Sistema de almacenamiento y distribución de GLP.
 - Carro de transporte y colgado de embutidos.
@@ -72,11 +84,11 @@ Equipamiento registrado en las páginas 52 a 58:
 
 ### Cámara de frío
 
-Texto literal del catálogo (pág. 58): espacio destinado al almacenamiento y conservación de carnes y productos cárnicos bajo condiciones de temperatura controlada. Su función es mantener la cadena de frío, preservar la calidad de los embutidos y contribuir a garantizar su inocuidad durante el almacenamiento. Capacidad y dimensiones: [por confirmar].
+Espacio destinado al almacenamiento y conservación de carnes y productos cárnicos bajo condiciones de temperatura controlada. Su función es mantener la cadena de frío, preservar la calidad de los embutidos y contribuir a garantizar su inocuidad durante el almacenamiento.
 
 ### Área de matadero
 
-Equipos registrados en las páginas 59 a 62 con denominación clara (sin especificaciones técnicas en catálogo):
+Equipamiento instalado para faena vacuna y porcina:
 
 - Cajón de noqueo vacuno.
 - Balanza tipo gancho.
@@ -84,10 +96,3 @@ Equipos registrados en las páginas 59 a 62 con denominación clara (sin especif
 - Tina de escaldado.
 - Mesa de degollado.
 - Peladora de cerdos.
-
-### Pendientes
-
-- Datos técnicos de potencia, capacidades y dimensiones de los equipos de matadero: [por confirmar].
-- Equipo de la pág. 60 sin nombre confirmado en catálogo (registrado como "Cierra divisoria"): pendiente de confirmación técnica.
-- Ubicación detallada (departamento y municipio): [por confirmar].
-- Cliente y entidad contratante: [por confirmar].

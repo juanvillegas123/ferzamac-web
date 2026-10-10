@@ -2,11 +2,11 @@
 title: "Ensacadora de saco valvulado"
 area: "industrial"
 tipo: "diseno-construccion"
-resumen: "Diseño y construcción de ensacadora de saco valvulado con tolva de 1000 kg y tiempo de llenado de 10 s para bolsas de 20 kg."
+resumen: "Diseño y construcción de ensacadora de saco valvulado con tolva de 1000 kg, tiempo de llenado de 10 s y bolsas de 20 kg."
 specs:
   - label: "Tiempo de llenado"
     value: "10 s"
-  - label: "Capacidad por bolsa"
+  - label: "Bolsas"
     value: "20 kg"
   - label: "Capacidad de tolva"
     value: "1000 kg"
@@ -19,9 +19,15 @@ specs:
   - label: "Protección superficial"
     value: "Pintura anticorrosiva"
 imagenPrincipal: "../../assets/images/soluciones/ensacadora-saco-valvulado/ensacadora-saco-valvulado-01.jpg"
-imagenNota: "imagen de baja resolución"
+notaInterna: "imagen de baja resolución"
 galeria: []
+videos: []
 proyectosRelacionados: []
+pendientes:
+  - "confirmar si los 10 s son por bolsa"
+  - "potencia del motorreductor"
+  - "dimensiones generales y altura de descarga"
+  - "confirmar si la ensacadora de la página 16 corresponde al mismo equipo"
 seo:
   title: "Ensacadora de saco valvulado | Ferzamac"
   description: "Diseño y construcción de ensacadora de saco valvulado con tolva de 1000 kg y tornillo en acero inoxidable en Bolivia."
@@ -30,17 +36,6 @@ estado: "parcial"
 orden: 1
 ---
 
-Diseño y construcción de ensacadora de saco valvulado para embolsado de material.
+Diseño y construcción de ensacadora de saco valvulado.
 
-### Datos técnicos del catálogo
-
-- **Tiempo de llenado:** 10 s por bolsa de 20 kg.
-- **Capacidad de tolva:** 1000 kg.
-- **Material de construcción:** acero A-36.
-- **Tornillo transportador:** acero inoxidable 308.
-- **Estructura soportante:** tubo estructural de 2 pulgadas.
-- **Protección superficial:** pintura anticorrosiva.
-
-### Pendientes
-
-- Otros datos técnicos [por confirmar].
+El equipo incorpora una tolva de 1000 kg de capacidad y un tornillo transportador fabricado en acero inoxidable 308. La estructura principal está construida en tubo estructural de 2 pulgadas y acero A-36, con protección superficial mediante pintura anticorrosiva. Registra un tiempo de llenado de 10 segundos y preparación para bolsas de 20 kg.

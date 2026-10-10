@@ -2,57 +2,54 @@
 title: "Línea de envasado y clasificación de naranjas y generación de vapor"
 ubicacion: "Huacareta"
 area: "industrial"
-resumen: "Línea de envasado y clasificación de naranjas e instalación de caldero de vapor, riel de garrafones y manifold en Huacareta."
+resumen: "Línea de envasado y clasificación de naranjas, instalación de caldero e instalación de riel de garrafones manifold en Huacareta."
 alcance:
   - "Línea de envasado y clasificación de naranjas"
   - "Instalación de caldero"
-  - "Instalación de riel de garrafones"
-  - "Instalación de manifold"
+  - "Instalación de riel de garrafones manifold"
 imagenPrincipal: "../../assets/images/proyectos/huacareta-clasificacion-naranjas-y-vapor/huacareta-generacion-vapor-caldero-01.jpg"
 galeria:
   - src: "../../assets/images/fotogramas/huacareta-clasificacion-naranjas-elevador-alimentacion.png"
-    alt: "Elevador con cajas de naranjas"
-    caption: "Elevador y cajas de fruta"
+    alt: "Elevador de fruta con cajas plásticas"
+    caption: "Elevador con cajas de fruta"
   - src: "../../assets/images/fotogramas/huacareta-clasificacion-naranjas-lavado.png"
-    alt: "Módulo de lavado de naranjas con agua"
-    caption: "Lavado de fruta con agua"
+    alt: "Baño de lavado de fruta con agua"
+    caption: "Lavado con agua"
   - src: "../../assets/images/fotogramas/huacareta-clasificacion-naranjas-panel-de-control.png"
-    alt: "Panel de control con botonera y luces"
+    alt: "Panel de control con botonera y luces piloto"
     caption: "Panel de control"
   - src: "../../assets/images/fotogramas/huacareta-clasificacion-naranjas-mesas-de-seleccion.png"
-    alt: "Mesas de selección con personas trabajando"
-    caption: "Mesas de selección"
+    alt: "Mesas y canales metálicos de la línea"
+    caption: "Mesas y canales de la línea"
   - src: "../../assets/images/fotogramas/huacareta-clasificacion-naranjas-canales-de-clasificacion.png"
-    alt: "Canales de descarga hacia cajas"
-    caption: "Canales y cajas de recepción"
+    alt: "Canales de descarga y cajas receptoras"
+    caption: "Canales y cajas receptoras"
 videos:
   - src: "/video/huacareta-clasificacion-naranjas-01-alimentacion.mp4"
     orientacion: "horizontal"
-    caption: "Elevador de alimentación y cajas de naranjas"
+    caption: "Elevador con cajas de fruta"
   - src: "/video/huacareta-clasificacion-naranjas-02-cinta.mp4"
     orientacion: "horizontal"
-    caption: "Cinta transportadora con fruta"
+    caption: "Cinta transportadora en movimiento"
   - src: "/video/huacareta-clasificacion-naranjas-03-lavado-y-panel.mp4"
     orientacion: "horizontal"
-    caption: "Lavado de naranjas y panel de control"
+    caption: "Lavado de fruta y panel de control"
   - src: "/video/huacareta-clasificacion-naranjas-04-canales-clasificacion.mp4"
     orientacion: "horizontal"
-    caption: "Canales de clasificación con cajas"
+    caption: "Canales y cajas receptoras"
 solucionesRelacionadas: []
+pendientes:
+  - "confirmar si 'manifold' describe el riel o es un componente aparte"
+  - "capacidad de procesamiento horario de la línea de naranjas"
+  - "parámetros técnicos del caldero (potencia, presión y combustible)"
+  - "cliente y entidad contratante"
+  - "ubicación detallada (departamento y municipio)"
 destacado: true
 estado: "parcial"
 ---
 
-Proyecto documentado en las páginas 63 y 64 del catálogo bajo la denominación Proyecto Huacareta.
+Proyecto integral en Huacareta enfocado en procesamiento citrícola y servicios térmicos auxiliares.
 
-### Componentes registrados en catálogo
+El área de procesamiento comprende una línea de envasado y clasificación de naranjas integrada por elevador de alimentación desde cajas, cinta transportadora, módulo de lavado con agua, panel de control con indicadores luminosos, mesas de inspección y canales con tolvas receptoras hacia cajas.
 
-- **Línea de envasado y clasificación de naranjas:** en los registros visuales se observan un elevador de alimentación, cinta transportadora, área de lavado con agua, panel de control con botoneras e indicadores luminosos, mesas de selección y canales con cajas receptoras.
-- **Generación de vapor:** instalación de caldero, instalación de riel de garrafones y manifold.
-
-### Datos pendientes
-
-- Capacidad de procesamiento de la línea: [por confirmar].
-- Especificaciones técnicas del caldero y manifold: [por confirmar].
-- Cliente y datos de la entidad contratante: [por confirmar].
-- Ubicación detallada (departamento y municipio): [por confirmar].
+El área de servicios térmicos comprende la instalación de caldero y la instalación de riel de garrafones manifold para suministro y distribución de vapor.
