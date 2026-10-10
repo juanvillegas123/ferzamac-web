@@ -20,6 +20,7 @@ interface Props {
   imageCompact?: boolean;
   noindex?: boolean;
   embedded?: boolean;
+  tipo?: 'solucion' | 'proyecto';
 }
 
 const {
@@ -34,11 +35,23 @@ const {
   imageCompact = false,
   noindex = false,
   embedded = false,
+  tipo = 'solucion',
 } = Astro.props;
+
+const isProject =
+  tipo === 'proyecto' ||
+  Boolean(eyebrow?.toLowerCase().includes('proyecto')) ||
+  breadcrumbs.some(
+    (b) => b.href === '/proyectos' || b.label.toLowerCase() === 'proyectos'
+  );
+
+const sidebarHeading = isProject
+  ? '¿Necesita un proyecto similar?'
+  : `Solicitar cotización de ${title}`;
 
 const whatsappMessage = `Hola, quiero cotizar: ${title}`;
 const isWhatsAppAvailable = hasWhatsApp();
-const quoteHref = isWhatsAppAvailable
+const whatsappHref = isWhatsAppAvailable
   ? getWhatsAppLink(whatsappMessage)
   : '/contacto';
 
@@ -93,25 +106,37 @@ const ogImage = typeof image === 'string' ? image : image?.src;
                 Cotización técnica
               </span>
               <h2 class="font-display text-lg font-semibold text-ink">
-                Solicitar cotización de {title}
+                {sidebarHeading}
               </h2>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">
-                Consulte directamente con nuestro equipo de ingeniería sobre plazos,
-                costos de fabricación y alcance de instalación.
+                Consulte con nuestro equipo.
               </p>
 
               <div class="pt-2 flex flex-col gap-2.5">
-                <Button href={quoteHref} variant="primary" size="md" class="w-full">
-                  Cotizar por WhatsApp
-                </Button>
-                <Button
-                  href="/contacto"
-                  variant="secondary"
-                  size="md"
-                  class="w-full"
-                >
-                  Formulario de contacto
-                </Button>
+                {isWhatsAppAvailable ? (
+                  <>
+                    <Button href={whatsappHref} variant="primary" size="md" class="w-full">
+                      WhatsApp
+                    </Button>
+                    <Button
+                      href="/contacto"
+                      variant="secondary"
+                      size="md"
+                      class="w-full"
+                    >
+                      Formulario de contacto
+                    </Button>
+                  </>
+                ) : (
+                  <Button
+                    href="/contacto"
+                    variant="primary"
+                    size="md"
+                    class="w-full"
+                  >
+                    Solicitar cotización
+                  </Button>
+                )}
               </div>
 
               <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
@@ -182,25 +207,37 @@ const ogImage = typeof image === 'string' ? image : image?.src;
                 Cotización técnica
               </span>
               <h2 class="font-display text-lg font-semibold text-ink">
-                Solicitar cotización de {title}
+                {sidebarHeading}
               </h2>
               <p class="text-xs sm:text-sm text-muted leading-relaxed">
-                Consulte directamente con nuestro equipo de ingeniería sobre plazos,
-                costos de fabricación y alcance de instalación.
+                Consulte con nuestro equipo.
               </p>
 
               <div class="pt-2 flex flex-col gap-2.5">
-                <Button href={quoteHref} variant="primary" size="md" class="w-full">
-                  Cotizar por WhatsApp
-                </Button>
-                <Button
-                  href="/contacto"
-                  variant="secondary"
-                  size="md"
-                  class="w-full"
-                >
-                  Formulario de contacto
-                </Button>
+                {isWhatsAppAvailable ? (
+                  <>
+                    <Button href={whatsappHref} variant="primary" size="md" class="w-full">
+                      WhatsApp
+                    </Button>
+                    <Button
+                      href="/contacto"
+                      variant="secondary"
+                      size="md"
+                      class="w-full"
+                    >
+                      Formulario de contacto
+                    </Button>
+                  </>
+                ) : (
+                  <Button
+                    href="/contacto"
+                    variant="primary"
+                    size="md"
+                    class="w-full"
+                  >
+                    Solicitar cotización
+                  </Button>
+                )}
               </div>
 
               <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
