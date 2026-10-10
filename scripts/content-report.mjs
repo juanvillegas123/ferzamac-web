@@ -50,6 +50,23 @@ function parseFrontmatter(content) {
   return { frontmatter, body, rawFm };
 }
 
+const catalogoPath = path.join(rootDir, 'docs', 'catalogo-texto.md');
+const catalogoText = fs.existsSync(catalogoPath) ? fs.readFileSync(catalogoPath, 'utf-8') : '';
+
+const marketingTerms = [
+  'alta precisión',
+  'mínimo',
+  'minimo',
+  'integral',
+  'integrales',
+  'óptimo',
+  'optimo',
+  'líder',
+  'lider',
+  'municipal',
+  'suministro',
+];
+
 function analyzeEntry(col, file) {
   const filePath = path.join(contentDir, col, file);
   const raw = fs.readFileSync(filePath, 'utf-8');
@@ -70,6 +87,34 @@ function analyzeEntry(col, file) {
   }
   if (/p[aá]g\.?/i.test(body)) {
     bodyViolations.push('mención de "pág." o "página" en el cuerpo');
+  }
+
+  // Número con unidad en specs, resumen y cuerpo que deba aparecer en docs/catalogo-texto.md
+  const unconfirmedNumbers = [];
+  const textToCheckForNumbers = `${frontmatter.resumen || ''} ${body} ${rawFm}`;
+  const numberUnitRegex = /\b(\d+(?:[.,]\d+)?)\s*(kg|s|seg|segundos|t|toneladas|tonelada|plg|pulgadas|metros|metro|m|lt|l|litros|bar|bhp|kw|hp|mm|cm|v|w|hz|°|%)\b/gi;
+  let match;
+  while ((match = numberUnitRegex.exec(textToCheckForNumbers)) !== null) {
+    const rawNumber = match[1];
+    const fullMatch = match[0];
+    // Check if the number appears in docs/catalogo-texto.md
+    if (catalogoText && !catalogoText.includes(rawNumber)) {
+      if (!unconfirmedNumbers.includes(fullMatch)) {
+        unconfirmedNumbers.push(fullMatch);
+      }
+    }
+  }
+
+  // Frases de marketing no respaldadas en resumen y cuerpo
+  const marketingWarnings = [];
+  const textToCheckForMarketing = `${frontmatter.resumen || ''} ${body}`;
+  for (const term of marketingTerms) {
+    const regex = new RegExp(`\\b${term}\\b`, 'i');
+    if (regex.test(textToCheckForMarketing)) {
+      if (!marketingWarnings.includes(term)) {
+        marketingWarnings.push(term);
+      }
+    }
   }
 
   // Pendientes list
@@ -97,6 +142,8 @@ function analyzeEntry(col, file) {
     hasGallery,
     pendientes,
     bodyViolations,
+    unconfirmedNumbers,
+    marketingWarnings,
     isPrivateClient,
     clientRef,
     mostrarNombre: frontmatter.mostrarNombre,
@@ -114,6 +161,8 @@ let totalSinImgPrincipal = 0;
 let totalSinGaleria = 0;
 let totalPrivateClients = 0;
 let allViolations = [];
+let allUnconfirmedNumbers = [];
+let allMarketingWarnings = [];
 
 for (const col of collections) {
   const colPath = path.join(contentDir, col);
@@ -145,6 +194,20 @@ for (const col of collections) {
       allViolations.push({
         entry: `${col}/${file}`,
         violations: data.bodyViolations,
+      });
+    }
+
+    if (data.unconfirmedNumbers.length > 0) {
+      allUnconfirmedNumbers.push({
+        entry: `${col}/${file}`,
+        numbers: data.unconfirmedNumbers,
+      });
+    }
+
+    if (data.marketingWarnings.length > 0) {
+      allMarketingWarnings.push({
+        entry: `${col}/${file}`,
+        warnings: data.marketingWarnings,
       });
     }
 
@@ -185,6 +248,14 @@ for (const col of collections) {
       console.log(`  ⚠️ VIOLACIONES EN CUERPO: ${data.bodyViolations.join(', ')}`);
     }
 
+    if (data.unconfirmedNumbers.length > 0) {
+      console.log(`  ❌ NÚMEROS NO CONFIRMADOS EN CATÁLOGO: ${data.unconfirmedNumbers.join(', ')}`);
+    }
+
+    if (data.marketingWarnings.length > 0) {
+      console.log(`  ⚠️ ADVERTENCIA MARKETING: ${data.marketingWarnings.join(', ')}`);
+    }
+
     console.log('');
   }
 }
@@ -200,14 +271,37 @@ console.log(`Fichas sin galería:                   ${totalSinGaleria}`);
 console.log(`Clientes con mostrarNombre: false:    ${totalPrivateClients}`);
 console.log('============================================================\n');
 
+let hasErrors = false;
+
 if (allViolations.length > 0) {
+  hasErrors = true;
   console.error('❌ ERROR: Se detectaron notas internas o menciones prohibidas en cuerpos Markdown:');
   for (const v of allViolations) {
     console.error(`   - ${v.entry}: ${v.violations.join(', ')}`);
   }
   console.error('El cuerpo Markdown no debe incluir [por confirmar], catálogo ni pág.\n');
+}
+
+if (allUnconfirmedNumbers.length > 0) {
+  hasErrors = true;
+  console.error('❌ ERROR: Se detectaron números con unidad no respaldados en docs/catalogo-texto.md:');
+  for (const item of allUnconfirmedNumbers) {
+    console.error(`   - ${item.entry}: ${item.numbers.join(', ')}`);
+  }
+  console.error('Todos los números técnicos deben provenir de docs/catalogo-texto.md.\n');
+}
+
+if (allMarketingWarnings.length > 0) {
+  console.warn('⚠️ ADVERTENCIA: Se detectaron frases de marketing no respaldadas (revisar para evitar adjetivos sin sustento):');
+  for (const item of allMarketingWarnings) {
+    console.warn(`   - ${item.entry}: ${item.warnings.join(', ')}`);
+  }
+  console.log('');
+}
+
+if (hasErrors) {
   process.exit(1);
 } else {
-  console.log('✅ Validación de cuerpos Markdown aprobada (sin notas internas ni menciones prohibidas).\n');
+  console.log('✅ Validación de contenido aprobada (sin menciones prohibidas ni números inventados).\n');
   process.exit(0);
 }

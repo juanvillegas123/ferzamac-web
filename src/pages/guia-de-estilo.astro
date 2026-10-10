@@ -42,7 +42,7 @@ const ensacadoraRender = ensacadoraEntry ? await render(ensacadoraEntry) : null;
 const huacaretaRender = huacaretaEntry ? await render(huacaretaEntry) : null;
 const sopachuyRender = sopachuyEntry ? await render(sopachuyEntry) : null;
 
-// --- FIXTURES TEMPORALES DE PRUEBA (MARCADORES OBVIAMENTE FALSOS) ---
+
 const breadcrumbSample = [
   { label: 'Área de ejemplo', href: '#' },
   { label: 'Categoría de ejemplo', href: '#' },
@@ -555,6 +555,9 @@ const featuredProjectsSample = [
             intro={ensacadoraEntry.data.resumen}
             area={ensacadoraEntry.data.area}
             eyebrow="Solución de diseño y construcción"
+            image={ensacadoraEntry.data.imagenPrincipal}
+            imageAlt={ensacadoraEntry.data.title}
+            imageCompact={true}
             breadcrumbs={[
               { label: 'Inicio', href: '/' },
               { label: 'Industrial', href: '/industrial' },
@@ -571,23 +574,12 @@ const featuredProjectsSample = [
               />
             </div>
 
-            <div slot="multimedia" class="space-y-4">
-              <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico</h3>
-              {ensacadoraEntry.data.imagenPrincipal && (
-                <div class="max-w-sm rounded border border-line bg-surface p-3 space-y-2">
-                  <img
-                    src={ensacadoraEntry.data.imagenPrincipal.src}
-                    alt={ensacadoraEntry.data.title}
-                    width={ensacadoraEntry.data.imagenPrincipal.width}
-                    height={ensacadoraEntry.data.imagenPrincipal.height}
-                    class="rounded w-full h-auto object-cover"
-                  />
-                  <p class="text-xs font-mono text-muted">
-                    Nota: {ensacadoraEntry.data.notaInterna || 'Fotografía documentada'}
-                  </p>
-                </div>
-              )}
-            </div>
+            {ensacadoraEntry.data.galeria && ensacadoraEntry.data.galeria.length > 0 && (
+              <div slot="multimedia" class="space-y-4">
+                <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico</h3>
+                <Gallery images={ensacadoraEntry.data.galeria} columns={3} />
+              </div>
+            )}
           </DetailLayout>
         </div>
       )}
@@ -604,6 +596,8 @@ const featuredProjectsSample = [
             intro={huacaretaEntry.data.resumen}
             area={huacaretaEntry.data.area}
             eyebrow={`Proyecto · Ubicación: ${huacaretaEntry.data.ubicacion}`}
+            image={huacaretaEntry.data.imagenPrincipal}
+            imageAlt={huacaretaEntry.data.title}
             breadcrumbs={[
               { label: 'Inicio', href: '/' },
               { label: 'Proyectos', href: '/proyectos' },
@@ -624,17 +618,23 @@ const featuredProjectsSample = [
             </div>
 
             <div slot="multimedia" class="space-y-6">
-              <div class="space-y-3">
-                <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico y fotogramas</h3>
-                <Gallery images={huacaretaEntry.data.galeria} columns={3} />
-              </div>
+              {huacaretaEntry.data.galeria && huacaretaEntry.data.galeria.length > 0 && (
+                <div class="space-y-3">
+                  <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico y fotogramas</h3>
+                  <Gallery images={huacaretaEntry.data.galeria} columns={3} />
+                </div>
+              )}
 
               {huacaretaEntry.data.videos && huacaretaEntry.data.videos.length > 0 && (
                 <div class="space-y-3">
                   <h3 class="text-base font-display font-semibold text-ink">Clips de video de la planta</h3>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {huacaretaEntry.data.videos.map((vid) => (
-                      <VideoFrame src={vid.src} caption={vid.caption} />
+                      <VideoFrame
+                        src={vid.src}
+                        orientation={vid.orientacion === 'vertical' ? 'vertical' : 'wide'}
+                        caption={vid.caption}
+                      />
                     ))}
                   </div>
                 </div>
@@ -656,6 +656,8 @@ const featuredProjectsSample = [
             intro={sopachuyEntry.data.resumen}
             area={sopachuyEntry.data.area}
             eyebrow={`Proyecto · Ubicación: ${sopachuyEntry.data.ubicacion}`}
+            image={sopachuyEntry.data.imagenPrincipal}
+            imageAlt={sopachuyEntry.data.title}
             breadcrumbs={[
               { label: 'Inicio', href: '/' },
               { label: 'Proyectos', href: '/proyectos' },
@@ -676,10 +678,12 @@ const featuredProjectsSample = [
             </div>
 
             <div slot="multimedia" class="space-y-6">
-              <div class="space-y-3">
-                <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico de la planta</h3>
-                <Gallery images={sopachuyEntry.data.galeria} columns={3} />
-              </div>
+              {sopachuyEntry.data.galeria && sopachuyEntry.data.galeria.length > 0 && (
+                <div class="space-y-3">
+                  <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico de la planta</h3>
+                  <Gallery images={sopachuyEntry.data.galeria} columns={3} />
+                </div>
+              )}
 
               {sopachuyEntry.data.videos && sopachuyEntry.data.videos.length > 0 && (
                 <div class="space-y-3">
