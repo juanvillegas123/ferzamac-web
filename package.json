@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "content:report": "node scripts/content-report.mjs",
     "format": "prettier --write .",
     "astro": "astro"
   },
