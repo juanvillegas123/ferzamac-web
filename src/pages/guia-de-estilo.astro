@@ -554,7 +554,7 @@ const featuredProjectsSample = [
             title={ensacadoraEntry.data.title}
             intro={ensacadoraEntry.data.resumen}
             area={ensacadoraEntry.data.area}
-            eyebrow="Ficha de solución · Pág. 15 del catálogo"
+            eyebrow="Solución de diseño y construcción"
             breadcrumbs={[
               { label: 'Inicio', href: '/' },
               { label: 'Industrial', href: '/industrial' },
@@ -566,7 +566,7 @@ const featuredProjectsSample = [
 
             <div slot="specs">
               <SpecTable
-                caption="Especificaciones técnicas documentadas en catálogo"
+                caption="Especificaciones técnicas documentadas"
                 rows={ensacadoraEntry.data.specs}
               />
             </div>
@@ -583,7 +583,7 @@ const featuredProjectsSample = [
                     class="rounded w-full h-auto object-cover"
                   />
                   <p class="text-xs font-mono text-muted">
-                    Nota: {ensacadoraEntry.data.imagenNota || 'Imagen del catálogo'}
+                    Nota: {ensacadoraEntry.data.notaInterna || 'Fotografía documentada'}
                   </p>
                 </div>
               )}
@@ -615,7 +615,7 @@ const featuredProjectsSample = [
 
             <div slot="specs">
               <SpecTable
-                caption="Partidas de alcance registradas en catálogo"
+                caption="Partidas de alcance registradas"
                 rows={huacaretaEntry.data.alcance.map((item, idx) => ({
                   label: `Partida ${idx + 1}`,
                   value: item,
@@ -667,7 +667,7 @@ const featuredProjectsSample = [
 
             <div slot="specs">
               <SpecTable
-                caption="Equipamiento registrado en catálogo"
+                caption="Equipamiento registrado"
                 rows={sopachuyEntry.data.alcance.map((item, idx) => ({
                   label: `Equipo ${idx + 1}`,
                   value: item,
