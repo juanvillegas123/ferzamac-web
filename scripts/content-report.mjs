@@ -18,7 +18,6 @@ function parseFrontmatter(content) {
   const body = match[2];
   const frontmatter = {};
 
-  // Simple key-value extractor for typical frontmatter lines
   const lines = rawFm.split(/\r?\n/);
   let currentKey = null;
 
@@ -40,7 +39,6 @@ function parseFrontmatter(content) {
       }
       frontmatter[key] = value;
     } else if (currentKey && line.match(/^\s+-\s+/)) {
-      // array items
       if (!Array.isArray(frontmatter[currentKey])) {
         frontmatter[currentKey] = [];
       }
@@ -55,19 +53,31 @@ function parseFrontmatter(content) {
 function analyzeEntry(col, file) {
   const filePath = path.join(contentDir, col, file);
   const raw = fs.readFileSync(filePath, 'utf-8');
-  const { frontmatter, rawFm } = parseFrontmatter(raw);
+  const { frontmatter, body, rawFm } = parseFrontmatter(raw);
 
   const title = frontmatter.title || frontmatter.nombre || file;
   const estado = frontmatter.estado || (col === 'clientes' || col === 'marcas' ? 'n/a' : 'sin-definir');
   const slug = file.replace(/\.(md|mdx)$/, '');
 
-  // Por confirmar occurrences
-  const totalRaw = raw;
-  const unconfirmedMatches = (totalRaw.match(/\[por confirmar\]/gi) || []).length;
+  // Body prohibited content checks
+  // Prohibited in body: "[por confirmar]", "catálogo", "catalogo", "pág.", "pág", "pag."
+  const bodyViolations = [];
+  if (/\[por confirmar\]/i.test(body)) {
+    bodyViolations.push('mención de "[por confirmar]" en el cuerpo');
+  }
+  if (/cat[aá]logo/i.test(body)) {
+    bodyViolations.push('mención de "catálogo" en el cuerpo');
+  }
+  if (/p[aá]g\.?/i.test(body)) {
+    bodyViolations.push('mención de "pág." o "página" en el cuerpo');
+  }
+
+  // Pendientes list
+  const pendientes = Array.isArray(frontmatter.pendientes) ? frontmatter.pendientes : [];
 
   // Images analysis
   const hasMainImage = Boolean(frontmatter.imagenPrincipal && frontmatter.imagenPrincipal !== '');
-  const imageNote = frontmatter.imagenNota || null;
+  const notaInterna = frontmatter.notaInterna || frontmatter.imagenNota || null;
   const rawFmHasGaleria = /galeria:\s*(\r?\n\s+-\s+|\s*\[\s*\{|\s*\[\s*["'])/.test(rawFm);
   const rawFmHasEmptyGaleria = /galeria:\s*\[\s*\]/.test(rawFm);
   const hasGallery = rawFmHasGaleria && !rawFmHasEmptyGaleria;
@@ -83,9 +93,10 @@ function analyzeEntry(col, file) {
     title,
     estado,
     hasMainImage,
-    imageNote,
+    notaInterna,
     hasGallery,
-    unconfirmedMatches,
+    pendientes,
+    bodyViolations,
     isPrivateClient,
     clientRef,
     mostrarNombre: frontmatter.mostrarNombre,
@@ -101,8 +112,8 @@ let totalParcial = 0;
 let totalCompleto = 0;
 let totalSinImgPrincipal = 0;
 let totalSinGaleria = 0;
-let totalUnconfirmedCount = 0;
 let totalPrivateClients = 0;
+let allViolations = [];
 
 for (const col of collections) {
   const colPath = path.join(contentDir, col);
@@ -128,8 +139,14 @@ for (const col of collections) {
     if (data.estado === 'completo') totalCompleto++;
     if (!data.hasMainImage && (col === 'soluciones' || col === 'proyectos')) totalSinImgPrincipal++;
     if (!data.hasGallery && (col === 'soluciones' || col === 'proyectos')) totalSinGaleria++;
-    totalUnconfirmedCount += data.unconfirmedMatches;
     if (col === 'clientes' && data.mostrarNombre === false) totalPrivateClients++;
+
+    if (data.bodyViolations.length > 0) {
+      allViolations.push({
+        entry: `${col}/${file}`,
+        violations: data.bodyViolations,
+      });
+    }
 
     console.log(`• [${data.slug}]`);
     console.log(`  Título:               ${data.title}`);
@@ -139,7 +156,7 @@ for (const col of collections) {
 
     if (col === 'soluciones' || col === 'proyectos') {
       const imgStatus = data.hasMainImage
-        ? `Sí${data.imageNote ? ` (${data.imageNote})` : ''}`
+        ? `Sí${data.notaInterna ? ` (${data.notaInterna})` : ''}`
         : 'PENDIENTE (no asignada)';
       console.log(`  Foto principal:       ${imgStatus}`);
 
@@ -155,7 +172,19 @@ for (const col of collections) {
       console.log(`  Cliente ref:          ${data.clientRef}`);
     }
 
-    console.log(`  [por confirmar]:      ${data.unconfirmedMatches} mención${data.unconfirmedMatches !== 1 ? 'es' : ''}`);
+    console.log(`  Pendientes (${data.pendientes.length}):`);
+    if (data.pendientes.length === 0) {
+      console.log(`    (ninguno registrado)`);
+    } else {
+      for (const p of data.pendientes) {
+        console.log(`    - ${p}`);
+      }
+    }
+
+    if (data.bodyViolations.length > 0) {
+      console.log(`  ⚠️ VIOLACIONES EN CUERPO: ${data.bodyViolations.join(', ')}`);
+    }
+
     console.log('');
   }
 }
@@ -168,6 +197,17 @@ console.log(`Fichas con estado PARCIAL:            ${totalParcial}`);
 console.log(`Fichas con estado COMPLETO:           ${totalCompleto}`);
 console.log(`Fichas sin foto principal:            ${totalSinImgPrincipal}`);
 console.log(`Fichas sin galería:                   ${totalSinGaleria}`);
-console.log(`Menciones totales [por confirmar]:    ${totalUnconfirmedCount}`);
 console.log(`Clientes con mostrarNombre: false:    ${totalPrivateClients}`);
 console.log('============================================================\n');
+
+if (allViolations.length > 0) {
+  console.error('❌ ERROR: Se detectaron notas internas o menciones prohibidas en cuerpos Markdown:');
+  for (const v of allViolations) {
+    console.error(`   - ${v.entry}: ${v.violations.join(', ')}`);
+  }
+  console.error('El cuerpo Markdown no debe incluir [por confirmar], catálogo ni pág.\n');
+  process.exit(1);
+} else {
+  console.log('✅ Validación de cuerpos Markdown aprobada (sin notas internas ni menciones prohibidas).\n');
+  process.exit(0);
+}

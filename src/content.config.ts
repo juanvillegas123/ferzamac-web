@@ -19,7 +19,7 @@ const soluciones = defineCollection({
         )
         .default([]),
       imagenPrincipal: image().optional(),
-      imagenNota: z.string().optional(),
+      notaInterna: z.string().optional(),
       galeria: z
         .array(
           z.object({
@@ -30,11 +30,22 @@ const soluciones = defineCollection({
         )
         .optional()
         .default([]),
-      video: z.string().optional(),
+      videos: z
+        .array(
+          z.object({
+            src: z.string(),
+            poster: image().optional(),
+            orientacion: z.enum(['horizontal', 'vertical']).default('horizontal'),
+            caption: z.string().optional(),
+          })
+        )
+        .optional()
+        .default([]),
       proyectosRelacionados: z
         .array(reference('proyectos'))
         .optional()
         .default([]),
+      pendientes: z.array(z.string()).default([]),
       seo: z.object({
         title: z.string().max(60),
         description: z.string().max(155),
@@ -57,7 +68,7 @@ const proyectos = defineCollection({
       alcance: z.array(z.string()),
       resultado: z.string().optional(),
       imagenPrincipal: image().optional(),
-      imagenNota: z.string().optional(),
+      notaInterna: z.string().optional(),
       galeria: z
         .array(
           z.object({
@@ -83,6 +94,7 @@ const proyectos = defineCollection({
         .array(reference('soluciones'))
         .optional()
         .default([]),
+      pendientes: z.array(z.string()).default([]),
       destacado: z.boolean().default(false),
       estado: z.enum(['completo', 'parcial']),
     }),
