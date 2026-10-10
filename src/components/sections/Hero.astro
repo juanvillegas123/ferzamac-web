@@ -5,20 +5,22 @@ import Button from '../ui/Button.astro';
 import defaultHeroImage from '../../assets/images/home/hero-generacion-vapor-huacareta.jpg';
 
 interface Props {
-  title?: string;
-  subtitle?: string;
+  title: string;
+  subtitle: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   backgroundImage?: ImageMetadata;
+  imageAlt?: string;
   class?: string;
 }
 
 const {
-  title = 'Ingeniería, montaje y mantenimiento industrial y hospitalario',
-  subtitle = 'Diseño y construcción de plantas, calderos de vapor, redes de piping y sistemas hospitalarios de agua purificada y aire comprimido en Bolivia.',
-  primaryCta = { label: 'Área Industrial', href: '/industrial' },
-  secondaryCta = { label: 'Área Hospitalaria', href: '/hospitalaria' },
+  title,
+  subtitle,
+  primaryCta = { label: 'Industrial', href: '/industrial' },
+  secondaryCta = { label: 'Hospitalaria', href: '/hospitalaria' },
   backgroundImage = defaultHeroImage,
+  imageAlt = 'Instalación técnica de Ferzamac',
   class: className = '',
 } = Astro.props;
 ---
@@ -32,7 +34,7 @@ const {
     <Picture
       src={backgroundImage}
       formats={['avif', 'webp']}
-      alt="Caldero de vapor industrial instalado por Ferzamac"
+      alt={imageAlt}
       widths={[640, 1024, 1600, 2000]}
       sizes="100vw"
       loading="eager"

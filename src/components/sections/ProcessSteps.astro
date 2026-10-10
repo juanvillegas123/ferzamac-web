@@ -1,38 +1,54 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 
+export interface ProcessStep {
+  number: string;
+  title: string;
+  description: string;
+}
+
 interface Props {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  steps?: ProcessStep[];
   class?: string;
 }
 
-const { class: className = '' } = Astro.props;
-
-const steps = [
+const defaultSteps: ProcessStep[] = [
   {
     number: '01',
-    title: 'Diseño e ingeniería',
+    title: 'Diseño',
     description:
-      'Levantamiento en planta, cálculo estructural, dimensionamiento termomecánico y modelado 3D de piezas y líneas de tubería.',
+      'Levantamiento técnico, cálculo y desarrollo de planos de ingeniería.',
   },
   {
     number: '02',
     title: 'Fabricación',
     description:
-      'Calderería, mecanizado de precisión, soldadura calificada y construcción de estructuras en taller especializado.',
+      'Construcción mecánica, calderería y mecanizado en taller especializado.',
   },
   {
     number: '03',
-    title: 'Instalación y montaje',
+    title: 'Instalación',
     description:
-      'Transporte a obra, montaje mecánico y eléctrico, pruebas hidrostáticas de presión y calibración de instrumentos.',
+      'Montaje en obra, interconexión de líneas y pruebas operativas.',
   },
   {
     number: '04',
-    title: 'Mantenimiento continuo',
+    title: 'Mantenimiento',
     description:
-      'Planes preventivos programados, diagnóstico de fallas, reacondicionamiento de calderos y soporte de repuestos.',
+      'Planes preventivos y soporte técnico para continuidad de operación.',
   },
 ];
+
+const {
+  eyebrow = 'Metodología',
+  title = 'Proceso de trabajo',
+  intro,
+  steps = defaultSteps,
+  class: className = '',
+} = Astro.props;
 ---
 
 <section
@@ -41,9 +57,9 @@ const steps = [
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
     <SectionHeading
-      eyebrow="Metodología de trabajo"
-      title="Proceso integral de ejecución"
-      intro="Acompañamos cada proyecto desde la concepción en plano hasta la puesta en marcha definitiva y el mantenimiento en régimen continuo."
+      eyebrow={eyebrow}
+      title={title}
+      intro={intro}
       align="center"
     />
 

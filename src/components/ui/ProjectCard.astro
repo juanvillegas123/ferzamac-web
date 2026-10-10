@@ -10,6 +10,8 @@ interface Props {
   location?: string;
   summary: string;
   image?: ImageMetadata;
+  imageAspectRatio?: '16/9' | '4/3' | '3/4' | '1/1';
+  imagePosition?: string;
   scope?: string[];
   class?: string;
 }
@@ -21,9 +23,18 @@ const {
   location,
   summary,
   image,
+  imageAspectRatio = '16/9',
+  imagePosition = 'object-center',
   scope,
   class: className = '',
 } = Astro.props;
+
+const aspectClasses = {
+  '16/9': 'aspect-16/9',
+  '4/3': 'aspect-4/3',
+  '3/4': 'aspect-3/4',
+  '1/1': 'aspect-square',
+};
 
 const areaAccents = {
   industrial: 'border-t-industrial hover:border-industrial/60',
@@ -40,14 +51,16 @@ const areaLabels = {
   class={`group relative flex flex-col overflow-hidden rounded border border-line bg-white shadow-xs transition-shadow duration-200 hover:shadow-md border-t-4 ${areaAccents[area]} ${className}`}
 >
   {image && (
-    <div class="aspect-16/9 w-full overflow-hidden bg-surface">
+    <div
+      class={`${aspectClasses[imageAspectRatio]} w-full overflow-hidden bg-surface`}
+    >
       <Picture
         src={image}
         formats={['avif', 'webp']}
         alt={title}
         widths={[400, 700]}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-102"
+        class={`h-full w-full object-cover ${imagePosition} transition-transform duration-200 group-hover:scale-102`}
       />
     </div>
   )}

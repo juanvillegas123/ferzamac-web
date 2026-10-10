@@ -3,22 +3,30 @@ import SectionHeading from '../ui/SectionHeading.astro';
 import AreaCard from '../ui/AreaCard.astro';
 
 interface Props {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  industrialTitle?: string;
+  industrialDescription?: string;
+  industrialHighlights?: string[];
+  hospitalariaTitle?: string;
+  hospitalariaDescription?: string;
+  hospitalariaHighlights?: string[];
   class?: string;
 }
 
-const { class: className = '' } = Astro.props;
-
-const industrialHighlights = [
-  'Calderos de vapor y redes de tubería a presión (piping)',
-  'Plantas procesadoras de alimentos y líneas de envasado',
-  'Mantenimiento preventivo, correctivo y montaje electromecánico',
-];
-
-const hospitalariaHighlights = [
-  'Plantas y sistemas de agua purificada para diálisis y uso hospitalario',
-  'Redes de aire comprimido medicinal y gases clínicos',
-  'Mantenimiento técnico especializado bajo normas sanitarias',
-];
+const {
+  eyebrow = 'Áreas de especialidad',
+  title = 'Divisiones técnicas',
+  intro,
+  industrialTitle = 'Área Industrial',
+  industrialDescription = 'Diseño, construcción, montaje y mantenimiento para el sector industrial.',
+  industrialHighlights = [],
+  hospitalariaTitle = 'Área Hospitalaria',
+  hospitalariaDescription = 'Sistemas especializados de agua purificada, aire comprimido y redes hospitalarias.',
+  hospitalariaHighlights = [],
+  class: className = '',
+} = Astro.props;
 ---
 
 <section
@@ -27,26 +35,26 @@ const hospitalariaHighlights = [
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
     <SectionHeading
-      eyebrow="Áreas de especialidad"
-      title="Dos divisiones técnicas para la industria y la salud"
-      intro="Respuestas de ingeniería con capacidad técnica comprobada en campo, montaje en sitio y servicio post-instalación continuo."
+      eyebrow={eyebrow}
+      title={title}
+      intro={intro}
       align="center"
     />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <AreaCard
-        title="Área Industrial"
+        title={industrialTitle}
         href="/industrial"
         area="industrial"
-        description="Soluciones de diseño, construcción, montaje y mantenimiento para plantas de alimentos, generación de vapor, piping y maquinaria pesada."
+        description={industrialDescription}
         highlights={industrialHighlights}
       />
 
       <AreaCard
-        title="Área Hospitalaria"
+        title={hospitalariaTitle}
         href="/hospitalaria"
         area="hospitalaria"
-        description="Sistemas críticos para infraestructura médica y sanitaria: plantas de agua purificada, aire comprimido medicinal y redes de fluidos clínicos."
+        description={hospitalariaDescription}
         highlights={hospitalariaHighlights}
       />
     </div>

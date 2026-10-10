@@ -2,7 +2,8 @@
 /**
  * PÁGINA TEMPORAL PARA FASE F1 · SISTEMA DE DISEÑO
  * IMPORTANTE: Esta página debe excluirse del sitemap y eliminarse antes del lanzamiento oficial.
- * Sirve para validar todos los componentes reutilizables, tokens, contraste y responsive en 375px, 768px y 1280px.
+ * Todos los datos contenidos en esta página son MARCADORES DE EJEMPLO OBVIAMENTE FALSOS
+ * para validar componentes, responsive, contraste y accesibilidad.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/ui/Button.astro';
@@ -30,43 +31,90 @@ import foto2 from '../assets/images/fotogramas/camara-de-frio-sopachuy-puerta.pn
 import foto3 from '../assets/images/fotogramas/huacareta-clasificacion-naranjas-lavado.png';
 import foto4 from '../assets/images/fotogramas/huacareta-clasificacion-naranjas-canales-de-clasificacion.png';
 
+// --- FIXTURES TEMPORALES DE PRUEBA (MARCADORES OBVIAMENTE FALSOS) ---
 const breadcrumbSample = [
-  { label: 'Industrial', href: '/industrial' },
-  { label: 'Calderos de vapor y piping', href: '/industrial/calderos' },
-  { label: 'Ficha técnica de ejemplo' },
+  { label: 'Área de ejemplo', href: '#' },
+  { label: 'Categoría de ejemplo', href: '#' },
+  { label: 'Título de ejemplo' },
 ];
 
 const sampleSpecs = [
-  { label: 'Capacidad de generación térmica', value: '1500 BHP / 24 Bar' },
-  { label: 'Combustible compatible', value: 'Gas natural / Diésel / GLP' },
-  { label: 'Material del cuerpo de presión', value: 'Acero SA-516 Grado 70' },
-  { label: 'Norma técnica de diseño', value: 'ASME Sección I / NBIC' },
+  { label: 'Parámetro de ejemplo 1', value: '000 unidad' },
+  { label: 'Parámetro de ejemplo 2', value: '000 unidad' },
   {
-    label: 'Sistema de control y seguridad',
-    value: 'Modulante automatizado con corte por bajo nivel',
+    label: 'Parámetro de ejemplo 3',
+    value: 'Valor de especificación de ejemplo',
   },
+  { label: 'Norma técnica de ejemplo', value: 'Norma de ejemplo 000' },
+  { label: 'Sistema de control', value: 'Control de ejemplo' },
 ];
 
 const gallerySample = [
   {
     src: foto1,
-    alt: 'Estructura metálica y cajón de noqueo',
-    caption: 'Montaje de estructura mecánica',
+    alt: 'Imagen de ejemplo 1',
+    caption: 'Pie de foto de ejemplo 1',
   },
   {
     src: foto2,
-    alt: 'Puerta frigorífica industrial instalada',
-    caption: 'Aislamiento térmico en cámara de frío',
+    alt: 'Imagen de ejemplo 2',
+    caption: 'Pie de foto de ejemplo 2',
   },
   {
     src: foto3,
-    alt: 'Línea de lavado y selección de cítricos',
-    caption: 'Lavado continuo de naranja',
+    alt: 'Imagen de ejemplo 3',
+    caption: 'Pie de foto de ejemplo 3',
   },
   {
     src: foto4,
-    alt: 'Canales de clasificación por calibre',
-    caption: 'Clasificación mecánica por tamaño',
+    alt: 'Imagen de ejemplo 4',
+    caption: 'Pie de foto de ejemplo 4',
+  },
+];
+
+const showcaseImagesSample = [
+  { src: foto1, alt: 'Fotografía de ejemplo 1', label: 'Imagen de ejemplo 1' },
+  { src: foto4, alt: 'Fotografía de ejemplo 2', label: 'Imagen de ejemplo 2' },
+  { src: foto2, alt: 'Fotografía de ejemplo 3', label: 'Imagen de ejemplo 3' },
+];
+
+const featuredProjectsSample = [
+  {
+    title: 'Título de proyecto de ejemplo 1',
+    href: '#',
+    area: 'industrial' as const,
+    location: 'Ubicación de ejemplo',
+    summary:
+      'Texto de ejemplo sobre el alcance del proyecto industrial para pruebas.',
+    image: foto3,
+    scope: [
+      'Alcance de ejemplo 1',
+      'Alcance de ejemplo 2',
+      'Alcance de ejemplo 3',
+    ],
+  },
+  {
+    title: 'Título de proyecto de ejemplo 2',
+    href: '#',
+    area: 'industrial' as const,
+    location: 'Ubicación de ejemplo',
+    summary:
+      'Texto de ejemplo con imagen vertical adaptada mediante object-position.',
+    image: foto2,
+    imageAspectRatio: '4/3' as const,
+    imagePosition: 'object-top',
+    scope: ['Alcance de ejemplo 1', 'Alcance de ejemplo 2'],
+  },
+  {
+    title: 'Título de proyecto de ejemplo 3',
+    href: '#',
+    area: 'hospitalaria' as const,
+    location: 'Ubicación de ejemplo',
+    summary: 'Texto de ejemplo con imagen vertical adaptada en encuadre.',
+    image: foto1,
+    imageAspectRatio: '4/3' as const,
+    imagePosition: 'object-top',
+    scope: ['Alcance de ejemplo 1', 'Alcance de ejemplo 2'],
   },
 ];
 ---
@@ -147,9 +195,9 @@ const gallerySample = [
             Badges (Texto siempre en ink)
           </h3>
           <div class="flex flex-wrap items-center gap-3">
-            <Badge variant="neutral">Neutro / General</Badge>
-            <Badge variant="industrial">División Industrial</Badge>
-            <Badge variant="hospitalaria">División Hospitalaria</Badge>
+            <Badge variant="neutral">Neutro de ejemplo</Badge>
+            <Badge variant="industrial">Industrial de ejemplo</Badge>
+            <Badge variant="hospitalaria">Hospitalaria de ejemplo</Badge>
           </div>
         </div>
         <div>
@@ -201,9 +249,9 @@ const gallerySample = [
             Encabezado de sección (SectionHeading)
           </h3>
           <SectionHeading
-            eyebrow="Ejemplo de eyebrow"
-            title="Título de sección en tipografía Sora semibold"
-            intro="Texto de introducción en tipografía Manrope para contextualizar bloques técnicos."
+            eyebrow="Eyebrow de ejemplo"
+            title="Título de sección de ejemplo"
+            intro="Texto de introducción de ejemplo para contextualizar bloques técnicos."
           />
         </div>
 
@@ -212,7 +260,7 @@ const gallerySample = [
             Tabla de especificaciones apilable (SpecTable)
           </h3>
           <SpecTable
-            caption="Ficha técnica de caldero de vapor piotubular"
+            caption="Tabla de especificaciones de ejemplo"
             rows={sampleSpecs}
           />
         </div>
@@ -230,15 +278,14 @@ const gallerySample = [
       <div class="space-y-8">
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
-            Galería de fotogramas con visor modal accesible por teclado
-            (&lt;dialog&gt;)
+            Galería con visor modal accesible por teclado (&lt;dialog&gt;)
           </h3>
           <Gallery images={gallerySample} columns={4} />
         </div>
 
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
-            Reproductor de video controlado por IntersectionObserver (sin CLS)
+            Reproductor de video con IntersectionObserver (sin CLS)
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <div class="space-y-2">
@@ -249,7 +296,7 @@ const gallerySample = [
                 src="/video/huacareta-clasificacion-naranjas-01-alimentacion.mp4"
                 poster={foto3.src}
                 orientation="wide"
-                caption="Planta de Huacareta: elevador de alimentación continua."
+                caption="Pie de foto de ejemplo para video panorámico."
               />
             </div>
             <div class="space-y-2">
@@ -260,7 +307,7 @@ const gallerySample = [
                 src="/video/camara-de-frio-sopachuy-puerta-y-tablero.mp4"
                 poster={foto2.src}
                 orientation="vertical"
-                caption="Cámara de frío de Sopachuy: puerta frigorífica y tablero de potencia."
+                caption="Pie de foto de ejemplo para video vertical."
               />
             </div>
           </div>
@@ -283,25 +330,25 @@ const gallerySample = [
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <AreaCard
-              title="Área Industrial"
+              title="Área Industrial de ejemplo"
               href="/industrial"
               area="industrial"
-              description="Soluciones de diseño, construcción y mantenimiento de plantas industriales y calderos de vapor."
+              description="Texto de ejemplo para la descripción de servicios y capacidades del área industrial."
               highlights={[
-                'Calderos y piping',
-                'Líneas de proceso',
-                'Montaje electromecánico',
+                'Especialidad de ejemplo A',
+                'Especialidad de ejemplo B',
+                'Especialidad de ejemplo C',
               ]}
             />
             <AreaCard
-              title="Área Hospitalaria"
+              title="Área Hospitalaria de ejemplo"
               href="/hospitalaria"
               area="hospitalaria"
-              description="Sistemas de agua purificada, aire comprimido medicinal y redes de fluidos clínicos."
+              description="Texto de ejemplo para la descripción de servicios y capacidades del área hospitalaria."
               highlights={[
-                'Agua para diálisis',
-                'Aire comprimido medicinal',
-                'Mantenimiento sanitario',
+                'Especialidad de ejemplo X',
+                'Especialidad de ejemplo Y',
+                'Especialidad de ejemplo Z',
               ]}
             />
           </div>
@@ -309,63 +356,67 @@ const gallerySample = [
 
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
-            SolutionCard (Acento según área)
+            SolutionCard (Acento según área y encuadre ajustable)
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <SolutionCard
-              title="Calderos de vapor y recipientes a presión"
-              href="/industrial/calderos-de-vapor"
+              title="Título de ejemplo de solución industrial"
+              href="#"
               area="industrial"
-              summary="Diseño, construcción y mantenimiento de calderos pirotubulares para la industria de alimentos y bebidas."
+              summary="Texto de ejemplo describiendo las características generales del equipo o servicio."
               specs={[
-                { label: 'Presión de trabajo', value: '10 a 25 Bar' },
-                { label: 'Capacidad', value: '500 a 3000 BHP' },
+                { label: 'Parámetro de ejemplo', value: '000 unidad' },
+                { label: 'Capacidad de ejemplo', value: '000 unidad' },
               ]}
               image={foto1}
+              imageAspectRatio="4/3"
+              imagePosition="object-top"
             />
             <SolutionCard
-              title="Plantas hospitalarias de agua purificada"
-              href="/hospitalaria/agua-purificada"
+              title="Título de ejemplo de solución hospitalaria"
+              href="#"
               area="hospitalaria"
-              summary="Sistemas de ósmosis inversa, desinfección UV y desionización para centros médicos y unidades de hemodiálisis."
+              summary="Texto de ejemplo describiendo las características generales del sistema hospitalario."
               specs={[
-                { label: 'Pureza', value: '< 1.3 µS/cm' },
-                { label: 'Caudal de suministro', value: '500 a 2000 L/h' },
+                { label: 'Parámetro de ejemplo', value: '000 unidad' },
+                { label: 'Caudal de ejemplo', value: '000 unidad' },
               ]}
               image={foto2}
+              imageAspectRatio="4/3"
+              imagePosition="object-top"
             />
           </div>
         </div>
 
         <div>
           <h3 class="text-sm font-bold uppercase tracking-wider text-muted mb-3">
-            ProjectCard (Ficha de caso real)
+            ProjectCard (Ficha de caso real de ejemplo)
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <ProjectCard
-              title="Línea de procesamiento de cítricos en Huacareta"
-              href="/proyectos/planta-huacareta"
+              title="Título de proyecto de ejemplo A"
+              href="#"
               area="industrial"
-              location="Huacareta, Chuquisaca"
-              summary="Diseño integral de línea de transporte, lavado por inmersión y clasificación por calibres."
+              location="Ubicación de ejemplo"
+              summary="Texto de ejemplo resumiendo el alcance técnico general del proyecto realizado."
               image={foto3}
               scope={[
-                'Calderería en acero',
-                'Montaje electromecánico',
-                'Pruebas en carga',
+                'Alcance de ejemplo 1',
+                'Alcance de ejemplo 2',
+                'Alcance de ejemplo 3',
               ]}
             />
             <ProjectCard
-              title="Sistema de aire comprimido hospitalario"
-              href="/proyectos/hospital-sucre-aire"
+              title="Título de proyecto de ejemplo B"
+              href="#"
               area="hospitalaria"
-              location="Hospital de Sucre"
-              summary="Suministro e interconexión de compresores medicinales con secadores desecantes y manifolds redundantes."
+              location="Ubicación de ejemplo"
+              summary="Texto de ejemplo resumiendo el alcance técnico con imagen vertical ajustada."
               image={foto4}
               scope={[
-                'Redes de cobre medicinal',
-                'Filtros bacteriológicos',
-                'Monitoreo de punto de rocío',
+                'Alcance de ejemplo 1',
+                'Alcance de ejemplo 2',
+                'Alcance de ejemplo 3',
               ]}
             />
           </div>
@@ -384,12 +435,12 @@ const gallerySample = [
       <div class="space-y-12 border border-line rounded p-4 sm:p-6 bg-white">
         <div>
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
-            StatsStrip (Solo si tiene datos)
+            StatsStrip (Solo si tiene datos confirmados)
           </h3>
           <StatsStrip
             stats={[
-              { value: '+15', label: 'Años de experiencia [por confirmar]' },
-              { value: '100%', label: 'Capacidad de montaje local' },
+              { value: '00', label: 'Cifra de ejemplo [por confirmar]' },
+              { value: '00%', label: 'Porcentaje de ejemplo [por confirmar]' },
             ]}
           />
         </div>
@@ -398,33 +449,55 @@ const gallerySample = [
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
             AreasSplit
           </h3>
-          <AreasSplit />
+          <AreasSplit
+            title="Divisiones técnicas de ejemplo"
+            intro="Texto de ejemplo sobre las áreas de especialidad."
+            industrialHighlights={[
+              'Especialidad de ejemplo 1',
+              'Especialidad de ejemplo 2',
+            ]}
+            hospitalariaHighlights={[
+              'Especialidad de ejemplo A',
+              'Especialidad de ejemplo B',
+            ]}
+          />
         </div>
 
         <div>
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
             ProcessSteps
           </h3>
-          <ProcessSteps />
+          <ProcessSteps
+            title="Proceso de trabajo de ejemplo"
+            intro="Texto de ejemplo sobre las fases de ejecución."
+          />
         </div>
 
         <div>
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
-            EngineeringShowcase
+            EngineeringShowcase (Rotulado como imágenes de ejemplo)
           </h3>
-          <EngineeringShowcase />
+          <EngineeringShowcase
+            title="Capacidad técnica de ejemplo"
+            intro="Texto de ejemplo sobre modelado y diseño técnico."
+            images={showcaseImagesSample}
+          />
         </div>
 
         <div>
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
             FeaturedProjects
           </h3>
-          <FeaturedProjects />
+          <FeaturedProjects
+            title="Proyectos destacados de ejemplo"
+            intro="Texto de ejemplo sobre proyectos realizados."
+            projects={featuredProjectsSample}
+          />
         </div>
 
         <div>
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
-            BrandsStrip
+            BrandsStrip (Solo marcas con mostrar: true)
           </h3>
           <BrandsStrip />
         </div>
@@ -433,7 +506,10 @@ const gallerySample = [
           <h3 class="text-xs font-bold uppercase tracking-wider text-muted mb-2">
             CtaBanner
           </h3>
-          <CtaBanner />
+          <CtaBanner
+            title="Título de llamado a la acción de ejemplo"
+            description="Texto de ejemplo para solicitar cotización técnica de plantas o equipos."
+          />
         </div>
       </div>
     </section>
@@ -448,34 +524,34 @@ const gallerySample = [
       </h2>
       <div class="rounded border-2 border-dashed border-line p-6 bg-surface space-y-6">
         <PageHeader
-          title="Ficha técnica de demostración: Caldero pirotubular industrial"
+          title="Título de ficha técnica de ejemplo"
           breadcrumbs={breadcrumbSample}
           area="industrial"
-          intro="Ejemplo de estructura de página de detalle para equipos industriales o sistemas hospitalarios."
+          intro="Texto de introducción de ejemplo para la ficha técnica del equipo o servicio."
         />
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div class="lg:col-span-8 space-y-8">
             <div class="space-y-4 text-sm text-ink leading-relaxed">
               <h3 class="text-xl font-display font-semibold text-ink">
-                Descripción del equipo
+                Descripción del equipo o servicio de ejemplo
               </h3>
               <p>
-                Los calderos pirotubulares construidos por Ferzamac están
-                diseñados para una máxima transferencia térmica, minimizando el
-                consumo de combustible mediante recirculación eficiente de gases
-                y aislamientos de alta densidad.
+                Texto de ejemplo describiendo el funcionamiento, diseño y
+                aplicaciones del equipo o sistema. Este párrafo es un marcador
+                visual para validar el espaciado y la tipografía en la
+                plantilla.
               </p>
             </div>
 
             <SpecTable
-              caption="Parámetros técnicos del equipo de prueba"
+              caption="Parámetros técnicos de ejemplo"
               rows={sampleSpecs}
             />
 
             <div>
               <h3 class="text-lg font-display font-semibold text-ink mb-3">
-                Registro fotográfico del proyecto
+                Registro fotográfico de ejemplo
               </h3>
               <Gallery images={gallerySample.slice(0, 3)} columns={3} />
             </div>
@@ -487,11 +563,11 @@ const gallerySample = [
                 Cotización técnica
               </span>
               <h3 class="font-display text-lg font-semibold text-ink">
-                Solicitar cotización de Caldero pirotubular
+                Solicitar cotización de Título de ejemplo
               </h3>
               <p class="text-xs text-muted leading-relaxed">
-                Consulte con nuestro equipo de ingeniería sobre plazos, costos
-                de fabricación y alcance de instalación.
+                Texto de ejemplo para solicitar cotización técnica y consultar
+                plazos de ejecución.
               </p>
               <Button
                 href="/contacto"
