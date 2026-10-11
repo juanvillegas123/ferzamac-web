@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/sections/PageHeader.astro';
+import SolutionCard from '../components/ui/SolutionCard.astro';
+import CtaBanner from '../components/sections/CtaBanner.astro';
+
+const solutions = await getCollection('soluciones', (s) => s.data.area === 'hospitalaria');
+const hasSolutions = solutions.length > 0;
+---
+
+<BaseLayout
+  title="Área Hospitalaria | Ferzamac"
+  description="Plantas de tratamiento de agua purificada, aire comprimido y mantenimiento de plantas hospitalarias en Bolivia."
+  noindex={true}
+>
+  <PageHeader
+    title="Área Hospitalaria"
+    area="hospitalaria"
+    breadcrumbs={[{ label: 'Hospitalaria' }]}
+    intro="Instalaciones técnicas para establecimientos de salud: tratamiento de agua purificada, aire comprimido y mantenimiento de sistemas para hemodiálisis."
+  />
+
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-12">
+    <!-- Resumen técnico según catálogo págs. 18, 23 y 41 -->
+    <section class="max-w-4xl space-y-6">
+      <h2 class="font-display text-2xl font-semibold text-ink">
+        Sistemas técnicos hospitalarios
+      </h2>
+      <div class="space-y-4 text-sm sm:text-base text-ink/90 leading-relaxed">
+        <p>
+          Ferzamac ejecuta diseño, construcción, montaje y puesta en marcha de plantas de tratamiento de agua purificada
+          de tipo industrial y hospitalario, incluyendo etapas de preparación, pretratamiento, tratamiento y distribución
+          (tanques de filtros de sedimento, carbón activado, resina catiónica, ósmosis inversa y desinfección UV).
+        </p>
+        <p>
+          Asimismo, desarrolla diseño y montaje de sistemas generadores de aire comprimido con compresores, condensadores de aire,
+          filtros, secadores y redes de tuberías, y servicios de mantenimiento preventivo y correctivo de plantas purificadoras de agua para hemodiálisis.
+        </p>
+      </div>
+    </section>
+
+    {hasSolutions ? (
+      <div class="space-y-6">
+        <h2 class="font-display text-xl font-semibold text-ink">
+          Soluciones registradas
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {solutions.map((solution) => (
+            <SolutionCard
+              title={solution.data.title}
+              href={`/industrial/${solution.id}`}
+              area="hospitalaria"
+              summary={solution.data.resumen}
+              specs={solution.data.specs}
+              image={solution.data.imagenPrincipal}
+              imageAlt={solution.data.imagenPrincipalAlt}
+            />
+          ))}
+        </div>
+      </div>
+    ) : (
+      <div class="rounded-lg border border-dashed border-line bg-surface p-8 text-center text-sm text-muted">
+        <p>Contenido en preparación</p>
+      </div>
+    )}
+
+    <CtaBanner
+      title="¿Requiere cotización técnica hospitalaria?"
+      description="Consulte con nuestro equipo para asesoramiento técnico y formulación de proyectos en salud."
+      primaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
+      secondaryCta={{ label: 'Ver proyectos ejecutados', href: '/proyectos' }}
+    />
+  </div>
+</BaseLayout>
