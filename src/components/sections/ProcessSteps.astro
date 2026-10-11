@@ -4,7 +4,7 @@ import SectionHeading from '../ui/SectionHeading.astro';
 export interface ProcessStep {
   number: string;
   title: string;
-  description: string;
+  description?: string;
 }
 
 interface Props {
@@ -19,26 +19,22 @@ const defaultSteps: ProcessStep[] = [
   {
     number: '01',
     title: 'Diseño',
-    description:
-      'Levantamiento técnico, cálculo y desarrollo de planos de ingeniería.',
   },
   {
     number: '02',
-    title: 'Fabricación',
-    description:
-      'Construcción mecánica, calderería y mecanizado en taller especializado.',
+    title: 'Construcción',
   },
   {
     number: '03',
-    title: 'Instalación',
-    description:
-      'Montaje en obra, interconexión de líneas y pruebas operativas.',
+    title: 'Montaje',
   },
   {
     number: '04',
-    title: 'Mantenimiento',
-    description:
-      'Planes preventivos y soporte técnico para continuidad de operación.',
+    title: 'Mantenimiento preventivo y correctivo',
+  },
+  {
+    number: '05',
+    title: 'Puesta en marcha',
   },
 ];
 
@@ -63,16 +59,20 @@ const {
       align="center"
     />
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div
+      class={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${steps.length === 5 ? 'lg:grid-cols-5' : 'lg:grid-cols-4'}`}
+    >
       {steps.map((step) => (
-        <div class="relative flex flex-col rounded border border-line bg-surface/50 p-6 shadow-xs space-y-3">
+        <div class="relative flex flex-col justify-start rounded border border-line bg-surface/50 p-6 shadow-xs space-y-3">
           <span class="font-display text-3xl font-bold text-ink/20">
             {step.number}
           </span>
-          <h3 class="text-lg font-display font-semibold text-ink">
+          <h3 class="text-base sm:text-lg font-display font-semibold text-ink leading-snug">
             {step.title}
           </h3>
-          <p class="text-sm text-muted leading-relaxed">{step.description}</p>
+          {step.description && (
+            <p class="text-sm text-muted leading-relaxed">{step.description}</p>
+          )}
         </div>
       ))}
     </div>

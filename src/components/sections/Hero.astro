@@ -7,6 +7,7 @@ import defaultHeroImage from '../../assets/images/home/hero-generacion-vapor-hua
 interface Props {
   title: string;
   subtitle: string;
+  eyebrow?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
   backgroundImage?: ImageMetadata;
@@ -17,8 +18,9 @@ interface Props {
 const {
   title,
   subtitle,
-  primaryCta = { label: 'Industrial', href: '/industrial' },
-  secondaryCta = { label: 'Hospitalaria', href: '/hospitalaria' },
+  eyebrow = 'Sucre, Bolivia',
+  primaryCta = { label: 'Ver proyectos', href: '/proyectos' },
+  secondaryCta = { label: 'Solicitar cotización', href: '/contacto' },
   backgroundImage = defaultHeroImage,
   imageAlt = 'Instalación técnica de Ferzamac',
   class: className = '',
@@ -47,10 +49,12 @@ const {
 
   <div class="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="max-w-3xl space-y-6">
-      <div class="inline-flex items-center gap-2 rounded bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-xs">
-        <span class="h-2 w-2 rounded-full bg-industrial"></span>
-        <span>Sucre · Cobertura a nivel Bolivia</span>
-      </div>
+      {eyebrow && (
+        <div class="inline-flex items-center gap-2 rounded bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-xs">
+          <span class="h-2 w-2 rounded-full bg-industrial"></span>
+          <span>{eyebrow}</span>
+        </div>
+      )}
 
       <h1 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl leading-tight">
         {title}
