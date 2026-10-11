@@ -21,91 +21,87 @@ const colClasses = {
   3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
   4: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
 };
+const hasImages = Boolean(images && images.length > 0);
 ---
 
-<div class={`gallery-container space-y-4 ${className}`}>
-  {images.length === 0 && import.meta.env.DEV && (
-    <div class="rounded border border-dashed border-line bg-surface p-6 text-center text-xs font-mono text-muted">
-      <span>Galería pendiente</span>
-    </div>
-  )}
-
-  {images.length > 0 && (
-    <div class={`grid gap-4 ${colClasses[columns]}`}>
-    {images.map((img, index) => (
-      <figure class="group relative m-0 overflow-hidden rounded border border-line bg-surface">
-        <button
-          type="button"
-          class="gallery-trigger block w-full text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2"
-          data-index={index}
-          data-src={img.src.src}
-          data-alt={img.alt}
-          data-caption={img.caption || ''}
-          aria-label={`Ampliar imagen: ${img.alt}`}
-        >
-          <div class="aspect-4/3 w-full overflow-hidden bg-surface">
-            <Picture
-              src={img.src}
-              formats={['avif', 'webp']}
-              alt={img.alt}
-              widths={[400, 800]}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-102"
-            />
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center bg-ink-deep/0 transition-colors duration-200 group-hover:bg-ink-deep/20">
-            <span class="sr-only">Ampliar imagen</span>
-          </div>
-        </button>
-        {img.caption && (
-          <figcaption class="p-2.5 text-xs text-muted border-t border-line bg-white truncate">
-            {img.caption}
-          </figcaption>
-        )}
-      </figure>
-    ))}
-  </div>
-  )}
-
-  <!-- Visor modal nativo accesible con <dialog> -->
-  <dialog
-    class="gallery-dialog backdrop:bg-ink-deep/80 max-w-4xl w-[92vw] rounded-lg border border-line bg-white p-4 shadow-2xl focus:outline-none"
-    aria-label="Visor ampliado de imagen"
-  >
-    <div class="relative flex flex-col items-center">
-      <button
-        type="button"
-        class="dialog-close-btn absolute -top-2 -right-2 z-10 rounded-full bg-white border border-line p-2 text-ink shadow-sm hover:bg-surface focus-visible:outline-2 focus-visible:outline-ink cursor-pointer"
-        aria-label="Cerrar visor de imagen"
-      >
-        <svg
-          class="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-
-      <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded bg-surface">
-        <img
-          src=""
-          alt=""
-          class="dialog-img max-h-[75vh] max-w-full object-contain"
-        />
+{
+  hasImages && (
+    <div class={`gallery-container space-y-4 ${className}`}>
+      <div class={`grid gap-4 ${colClasses[columns]}`}>
+        {images.map((img, index) => (
+          <figure class="group relative m-0 overflow-hidden rounded border border-line bg-surface">
+            <button
+              type="button"
+              class="gallery-trigger block w-full text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2"
+              data-index={index}
+              data-src={img.src.src}
+              data-alt={img.alt}
+              data-caption={img.caption || ''}
+              aria-label={`Ampliar imagen: ${img.alt}`}
+            >
+              <div class="aspect-4/3 w-full overflow-hidden bg-surface">
+                <Picture
+                  src={img.src}
+                  formats={['avif', 'webp']}
+                  alt={img.alt}
+                  widths={[400, 800]}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  class="h-full w-full object-cover transition-transform duration-200 group-hover:scale-102"
+                />
+              </div>
+              <div class="absolute inset-0 flex items-center justify-center bg-ink-deep/0 transition-colors duration-200 group-hover:bg-ink-deep/20">
+                <span class="sr-only">Ampliar imagen</span>
+              </div>
+            </button>
+            {img.caption && (
+              <figcaption class="p-2.5 text-xs text-muted border-t border-line bg-white truncate">
+                {img.caption}
+              </figcaption>
+            )}
+          </figure>
+        ))}
       </div>
 
-      <p class="dialog-caption mt-3 text-sm text-ink text-center"></p>
+      <dialog
+        class="gallery-dialog backdrop:bg-ink-deep/80 max-w-4xl w-[92vw] rounded-lg border border-line bg-white p-4 shadow-2xl focus:outline-none"
+        aria-label="Visor ampliado de imagen"
+      >
+        <div class="relative flex flex-col items-center">
+          <button
+            type="button"
+            class="dialog-close-btn absolute -top-2 -right-2 z-10 rounded-full bg-white border border-line p-2 text-ink shadow-sm hover:bg-surface focus-visible:outline-2 focus-visible:outline-ink cursor-pointer"
+            aria-label="Cerrar visor de imagen"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded bg-surface">
+            <img
+              src=""
+              alt=""
+              class="dialog-img max-h-[75vh] max-w-full object-contain"
+            />
+          </div>
+
+          <p class="dialog-caption mt-3 text-sm text-ink text-center"></p>
+        </div>
+      </dialog>
     </div>
-  </dialog>
-</div>
+  )
+}
 
 <script>
   function setupGallery() {

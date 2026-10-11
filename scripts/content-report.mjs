@@ -97,8 +97,15 @@ function analyzeEntry(col, file) {
   while ((match = numberUnitRegex.exec(textToCheckForNumbers)) !== null) {
     const rawNumber = match[1];
     const fullMatch = match[0];
-    // Check if the number appears in docs/catalogo-texto.md
-    if (catalogoText && !catalogoText.includes(rawNumber)) {
+    // Check if the number appears in docs/catalogo-texto.md (normalizing comma/dot for decimals)
+    const rawWithDot = rawNumber.replace(',', '.');
+    const rawWithComma = rawNumber.replace('.', ',');
+    const inCatalog =
+      catalogoText.includes(rawNumber) ||
+      catalogoText.includes(rawWithDot) ||
+      catalogoText.includes(rawWithComma);
+
+    if (catalogoText && !inCatalog) {
       if (!unconfirmedNumbers.includes(fullMatch)) {
         unconfirmedNumbers.push(fullMatch);
       }

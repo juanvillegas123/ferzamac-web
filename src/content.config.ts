@@ -19,6 +19,7 @@ const soluciones = defineCollection({
         )
         .default([]),
       imagenPrincipal: image().optional(),
+      imagenPrincipalAlt: z.string().optional(),
       notaInterna: z.string().optional(),
       galeria: z
         .array(
@@ -68,6 +69,7 @@ const proyectos = defineCollection({
       alcance: z.array(z.string()),
       resultado: z.string().optional(),
       imagenPrincipal: image().optional(),
+      imagenPrincipalAlt: z.string().optional(),
       notaInterna: z.string().optional(),
       galeria: z
         .array(

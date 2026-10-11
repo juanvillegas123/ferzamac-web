@@ -10,6 +10,7 @@ interface Props {
   location?: string;
   summary: string;
   image?: ImageMetadata;
+  imageAlt?: string;
   imageAspectRatio?: '16/9' | '4/3' | '3/4' | '1/1';
   imagePosition?: string;
   scope?: string[];
@@ -23,6 +24,7 @@ const {
   location,
   summary,
   image,
+  imageAlt,
   imageAspectRatio = '16/9',
   imagePosition = 'object-center',
   scope,
@@ -50,27 +52,19 @@ const areaLabels = {
 <article
   class={`group relative flex flex-col overflow-hidden rounded border border-line bg-white shadow-xs transition-shadow duration-200 hover:shadow-md border-t-4 ${areaAccents[area]} ${className}`}
 >
-  {image ? (
+  {image && (
     <div
       class={`${aspectClasses[imageAspectRatio]} w-full overflow-hidden bg-surface`}
     >
       <Picture
         src={image}
         formats={['avif', 'webp']}
-        alt={title}
+        alt={imageAlt || title}
         widths={[400, 700]}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         class={`h-full w-full object-cover ${imagePosition} transition-transform duration-200 group-hover:scale-102`}
       />
     </div>
-  ) : (
-    import.meta.env.DEV && (
-      <div
-        class={`${aspectClasses[imageAspectRatio]} w-full flex items-center justify-center bg-surface border-b border-line text-xs font-mono text-muted`}
-      >
-        <span>Imagen pendiente</span>
-      </div>
-    )
   )}
 
   <div class="flex flex-1 flex-col p-5 space-y-3">
