@@ -1,32 +1,97 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/ui/Button.astro';
+import Hero from '../components/sections/Hero.astro';
+import AreasSplit from '../components/sections/AreasSplit.astro';
+import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
+import ProcessSteps from '../components/sections/ProcessSteps.astro';
+import EngineeringShowcase from '../components/sections/EngineeringShowcase.astro';
+import CtaBanner from '../components/sections/CtaBanner.astro';
+
+import heroImg from '../assets/images/home/hero-generacion-vapor-huacareta.jpg';
+import render1 from '../assets/images/home/ingenieria-diseno-3d-01.jpg';
+import render2 from '../assets/images/home/ingenieria-diseno-3d-02.jpg';
+import render3 from '../assets/images/home/ingenieria-diseno-3d-03.jpg';
+
+const featuredProjects = await getCollection('proyectos', (p) => p.data.destacado);
+
+const featuredProjectsData = featuredProjects.map((p) => ({
+  title: p.data.title,
+  href: `/proyectos/${p.id}`,
+  area: p.data.area,
+  location: p.data.ubicacion,
+  summary: p.data.resumen,
+  image: p.data.imagenPrincipal,
+  imageAlt: p.data.imagenPrincipalAlt,
+  scope: p.data.alcance,
+}));
+
+const showcaseImages = [
+  { src: render1, alt: 'Diseño 3D de planta', label: 'Render de diseño' },
+  { src: render2, alt: 'Diseño 3D de estructura', label: 'Render de diseño' },
+  { src: render3, alt: 'Diseño 3D de equipo industrial', label: 'Render de diseño' },
+];
 ---
 
 <BaseLayout
-  title="Inicio"
-  description="Ferzamac: diseño, construcción, montaje y mantenimiento industrial y hospitalario en Sucre y Bolivia."
+  title="Ferzamac | Plantas y equipos industriales en Bolivia"
+  description="Diseño, construcción, montaje y mantenimiento de plantas, equipos y máquinas industriales en Sucre y Bolivia."
 >
-  <section class="py-20 bg-surface border-b border-line">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-      <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wider uppercase bg-ink/10 text-ink rounded">
-        Fase F0 · Base operativa
-      </span>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-display font-semibold text-ink tracking-tight">
-        Ferzamac — Ingeniería y Mantenimiento Industrial y Hospitalario
-      </h1>
-      <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-        Soluciones integrales de diseño, construcción, montaje y mantenimiento
-        de plantas, equipos y sistemas hospitalarios en Bolivia.
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-        <Button href="/guia-de-estilo" variant="primary" size="md">
-          Ver guía de estilo (F0)
-        </Button>
-        <Button href="/contacto" variant="secondary" size="md">
-          Contacto y cotizaciones
-        </Button>
-      </div>
-    </div>
-  </section>
+  <!-- Hero -->
+  <Hero
+    title="Diseño, construcción, montaje y mantenimiento de plantas y equipos"
+    subtitle="Plantas, equipos y máquinas industriales, puesta en marcha y servicios de consultoría técnica."
+    backgroundImage={heroImg}
+    primaryCta={{ label: 'Ver proyectos', href: '/proyectos' }}
+    secondaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
+  />
+
+  <!-- AreasSplit -->
+  <AreasSplit
+    eyebrow="Divisiones técnicas"
+    title="Áreas de especialidad"
+    industrialTitle="Área Industrial"
+    industrialDescription="Diseño, construcción, montaje, mantenimiento preventivo y correctivo de plantas, equipos y máquinas industriales."
+    industrialHighlights={[
+      'Plantas y equipos industriales',
+      'Maquinaria y calderería',
+      'Mantenimiento preventivo y correctivo',
+    ]}
+    hospitalariaTitle="Área Hospitalaria"
+    hospitalariaDescription="Plantas de tratamiento de agua purificada, sistemas de aire comprimido y mantenimiento de plantas para hemodiálisis."
+    hospitalariaHighlights={[
+      'Tratamiento de agua purificada',
+      'Sistemas de aire comprimido',
+      'Plantas para hemodiálisis',
+    ]}
+  />
+
+  <!-- FeaturedProjects -->
+  <FeaturedProjects
+    title="Proyectos destacados"
+    intro="Instalaciones y montajes industriales ejecutados por nuestro equipo."
+    projects={featuredProjectsData}
+  />
+
+  <!-- ProcessSteps -->
+  <ProcessSteps
+    eyebrow="Metodología"
+    title="Proceso de trabajo"
+  />
+
+  <!-- EngineeringShowcase -->
+  <EngineeringShowcase
+    title="Diseño de plantas y equipos"
+    images={showcaseImages}
+    ctaHref="/contacto"
+    ctaLabel="Consultar con ingeniería"
+  />
+
+  <!-- CtaBanner -->
+  <CtaBanner
+    title="¿Requiere cotización técnica para su planta o equipo?"
+    description="Consulte con nuestro equipo para asesoramiento técnico y formulación de proyectos industriales y hospitalarios."
+    primaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
+    secondaryCta={{ label: 'Ver proyectos', href: '/proyectos' }}
+  />
 </BaseLayout>

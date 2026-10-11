@@ -11,6 +11,7 @@ export interface FeaturedProjectItem {
   location?: string;
   summary: string;
   image?: ImageMetadata;
+  imageAlt?: string;
   imageAspectRatio?: '16/9' | '4/3' | '3/4' | '1/1';
   imagePosition?: string;
   scope?: string[];
@@ -57,6 +58,7 @@ const hasProjects = projects.length > 0;
             location={project.location}
             summary={project.summary}
             image={project.image}
+            imageAlt={project.imageAlt}
             imageAspectRatio={project.imageAspectRatio}
             imagePosition={project.imagePosition}
             scope={project.scope}
