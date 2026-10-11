@@ -192,10 +192,11 @@ Para cambios grandes: primero un plan breve, luego la implementación en pasos p
 
 - [x] **F0 · Base:** proyecto Astro 7 + Tailwind 4, tokens, fuentes, layout, header/footer, logo.
 - [x] **F1 · Sistema de diseño:** componentes `ui/` y `sections/`, plantillas `DetailLayout` (ver `docs/components.md`).
-- [ ] **F2 · Contenido:**
+- [x] **F2 · Contenido:**
   - [x] **F2a · Esquema y 3 fichas de referencia:** `src/content.config.ts`, 4 colecciones con loader `glob`, auditoría con `npm run content:report`, y fichas de referencia `ensacadora-saco-valvulado`, `huacareta-clasificacion-naranjas-y-vapor` y `sopachuy-linea-embutidos-y-matadero`.
-  - [ ] **F2b · Carga completa:** 8 fichas de proyectos restantes y fichas de soluciones completas.
-- [ ] **F3 · Páginas:** home, áreas, proyectos, consultoría, nosotros, contacto.
+  - [x] **F2b · Carga completa:** 8 fichas de proyectos y 18 de soluciones (26 fichas técnicas validadas).
+- [x] **F3 · Páginas:**
+  - [x] **F3a · Páginas públicas reales:** home (`/`), `/proyectos` y `/proyectos/[slug]`, `/industrial` y `/industrial/[slug]`, `/nosotros`, `/contacto`, más páginas provisionales para `/hospitalaria` y `/consultoria`.
 - [ ] **F4 · SEO, accesibilidad y rendimiento:** JSON-LD, sitemap, Lighthouse.
 - [ ] **F5 · Despliegue:** Cloudflare Pages, dominio, Search Console y perfil de Google Business.
 
