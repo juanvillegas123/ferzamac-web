@@ -1,0 +1,43 @@
+VALIDACIÓN F2b · 23 fichas (17 soluciones + 6 proyectos)
+============================================================
+
+Comprobaciones automáticas (todas superadas, 0 errores):
+ - Campos obligatorios, áreas y tipos válidos, resumen <= 160, seo.title <= 60, seo.description <= 155.
+ - Cada número del texto público (títulos, resúmenes, especificaciones, cuerpos, alt, pies, alcance, SEO) existe en docs/catalogo-texto.md.
+ - Ningún texto público contiene: catálogo, pág., [por confirmar], precisión, mínimo, óptimo, líder, municipal, suministro, frigorífica, continuo, granel, calidad.
+ - Ningún texto público nombra a clientes ni lugares reservados (hospitales, CNS, YLB, EBA, ENVIBOL, Caja Bancaria, plantas de lácteos, La Guardia, Uyuni, Zudañez).
+ - La palabra "integral" aparece solo en la frase literal del catálogo "Reacondicionamiento integral de la estructura metálica".
+ - Todas las imágenes referenciadas existen; todas las galerías tienen alt; todos los alt describen una sola foto.
+ - Todas las referencias entre fichas apuntan a fichas existentes.
+
+Ficha | colección | estado | imágenes | pendientes | largo del resumen
+------------------------------------------------------------
+molino-de-martillos | soluciones | parcial | 2 | 2 | 131
+humidificador-de-granos | soluciones | parcial | 1 | 2 | 119
+tornillo-helicoidal | soluciones | parcial | 2 | 2 | 127
+elevador-de-cangilones | soluciones | completo | 4 | 0 | 144
+planta-separadora-residuos-solidos | soluciones | parcial | 1 | 1 | 87
+sistema-enfriamiento-matadero-pollos | soluciones | parcial | 1 | 2 | 58
+grupo-electrogeno | soluciones | parcial | 3 | 2 | 127
+mantenimiento-transformadores-electricos | soluciones | completo | 3 | 0 | 145
+mantenimiento-balanzas-camioneras-ibmetro | soluciones | parcial | 5 | 2 | 111
+mantenimiento-motores-y-bombas | soluciones | parcial | 5 | 1 | 122
+mantenimiento-campanas-ductos-cocinas-hornos | soluciones | completo | 4 | 0 | 148
+mantenimiento-ollas-marmitas-y-carro-termico | soluciones | parcial | 1 | 2 | 112
+aire-comprimido | soluciones | parcial | 2 | 3 | 150
+sistema-control-monitoreo-remoto | soluciones | parcial | 0 | 2 | 153
+planta-tratamiento-agua-purificada | soluciones | parcial | 2 | 1 | 128
+mantenimiento-planta-agua-hemodialisis | soluciones | parcial | 2 | 1 | 121
+estudios-y-diseno-de-plantas | soluciones | parcial | 2 | 2 | 116
+instalaciones-en-hospital-de-sucre | proyectos | parcial | 6 | 4 | 122
+aire-comprimido-y-sistemas-en-salud | proyectos | parcial | 8 | 4 | 132
+mantenimiento-transformadores-lacteos | proyectos | parcial | 4 | 2 | 103
+mantenimiento-campanas-y-ductos-la-paz | proyectos | parcial | 3 | 2 | 122
+grupo-electrogeno-beni-y-sucre | proyectos | parcial | 9 | 3 | 130
+planta-cuatro-canadas | proyectos | parcial | 9 | 3 | 110
+
+Lo que NO se publicó a propósito:
+ - Plano de la pág. 31 (habla de jugo y néctar de fruta; el título es hortalizas) y de la pág. 34 (es un plano de matadero; el título es empaquetadora de manzana).
+ - Esquemas de las págs. 23 y 26 (traen litros y 138 kVA dentro de la imagen; falta confirmar que son de Ferzamac).
+ - Fotos de la pág. 44 (parecen ollas marmitas, no un carro termo eléctrico) y las imágenes de fabricante de la pág. 20.
+ - Nombres de clientes: quedan solo en el campo interno notaInterna, que no debe mostrarse en la web.
