@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from 'astro:content';
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import Gallery from '../../components/ui/Gallery.astro';
+import VideoFrame from '../../components/ui/VideoFrame.astro';
+import SpecTable from '../../components/ui/SpecTable.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('proyectos');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+
+const isWideScope = project.data.alcance.length > 4;
+---
+
+<DetailLayout
+  title={project.data.title}
+  intro={project.data.resumen}
+  area={project.data.area}
+  eyebrow={`Proyecto · Ubicación: ${project.data.ubicacion}`}
+  tipo="proyecto"
+  image={project.data.imagenPrincipal}
+  imageAlt={project.data.imagenPrincipalAlt || project.data.title}
+  breadcrumbs={[
+    { label: 'Proyectos', href: '/proyectos' },
+    { label: project.data.ubicacion },
+  ]}
+>
+  <Content />
+
+  {project.data.alcance && project.data.alcance.length > 0 && (
+    <div slot="specs" class="space-y-4 pt-4 border-t border-line">
+      <h2 class="font-display text-xl font-semibold text-ink">
+        {project.id === 'sopachuy-linea-embutidos-y-matadero' ? 'Equipamiento registrado' : 'Alcance registrado'}
+      </h2>
+
+      {isWideScope ? (
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-ink">
+          {project.data.alcance.map((item) => (
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-industrial shrink-0" aria-hidden="true"></span>
+              <span class="leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <SpecTable
+          caption="Partidas registradas"
+          rows={project.data.alcance.map((item, idx) => ({
+            label: `Partida ${idx + 1}`,
+            value: item,
+          }))}
+        />
+      )}
+    </div>
+  )}
+
+  <div slot="multimedia" class="space-y-8">
+    {project.data.galeria && project.data.galeria.length > 0 && (
+      <div class="space-y-3">
+        <h3 class="text-base font-display font-semibold text-ink">
+          Registro fotográfico
+        </h3>
+        <Gallery images={project.data.galeria} columns={3} />
+      </div>
+    )}
+
+    {project.data.videos && project.data.videos.length > 0 && (
+      <div class="space-y-4">
+        <h3 class="text-base font-display font-semibold text-ink">
+          Clips de video
+        </h3>
+        <div class={`grid gap-4 ${project.data.videos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md'}`}>
+          {project.data.videos.map((vid) => (
+            <VideoFrame
+              src={vid.src}
+              orientation={vid.orientacion === 'vertical' ? 'vertical' : 'wide'}
+              caption={vid.caption}
+            />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</DetailLayout>

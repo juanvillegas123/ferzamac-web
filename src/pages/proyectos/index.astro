@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/sections/PageHeader.astro';
+import ProjectCard from '../../components/ui/ProjectCard.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+
+const projects = await getCollection('proyectos');
+// Ordenar proyectos: primero destacados
+const sortedProjects = projects.sort((a, b) => {
+  if (a.data.destacado && !b.data.destacado) return -1;
+  if (!a.data.destacado && b.data.destacado) return 1;
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+
+<BaseLayout
+  title="Proyectos ejecutados | Ferzamac"
+  description="Registro de instalaciones, montajes y proyectos industriales y hospitalarios ejecutados por Ferzamac en Bolivia."
+>
+  <PageHeader
+    title="Proyectos ejecutados"
+    breadcrumbs={[{ label: 'Proyectos' }]}
+    intro="Registro de instalaciones, montajes y equipamiento industrial y hospitalario ejecutados por Ferzamac."
+  />
+
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sortedProjects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          href={`/proyectos/${project.id}`}
+          area={project.data.area}
+          location={project.data.ubicacion}
+          summary={project.data.resumen}
+          image={project.data.imagenPrincipal}
+          imageAlt={project.data.imagenPrincipalAlt}
+          scope={project.data.alcance}
+        />
+      ))}
+    </div>
+
+    <CtaBanner
+      title="¿Requiere cotización para un proyecto similar?"
+      description="Consulte con nuestro equipo técnico sobre requerimientos de diseño, montaje y equipamiento."
+      primaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
+      secondaryCta={{ label: 'Ver catálogo industrial', href: '/industrial' }}
+    />
+  </div>
+</BaseLayout>
