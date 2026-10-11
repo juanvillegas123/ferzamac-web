@@ -6,7 +6,7 @@ import Badge from './Badge.astro';
 interface Props {
   title: string;
   href: string;
-  area: 'industrial' | 'hospitalaria';
+  area: 'industrial' | 'hospitalaria' | 'consultoria';
   summary: string;
   specs?: { label: string; value: string }[];
   image?: ImageMetadata;
@@ -39,11 +39,13 @@ const aspectClasses = {
 const areaAccents = {
   industrial: 'border-t-industrial hover:border-industrial/60',
   hospitalaria: 'border-t-hospitalaria hover:border-hospitalaria/60',
+  consultoria: 'border-t-ink hover:border-ink/60',
 };
 
 const areaLabels = {
   industrial: 'Industrial',
   hospitalaria: 'Hospitalaria',
+  consultoria: 'Consultoría',
 };
 ---
 

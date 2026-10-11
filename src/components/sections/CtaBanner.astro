@@ -7,6 +7,8 @@ interface Props {
   description?: string;
   ctaText?: string;
   whatsappMessage?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
   class?: string;
 }
 
@@ -15,14 +17,19 @@ const {
   description = 'Comuníquese con nuestro equipo para evaluar los requerimientos de su planta o proyecto.',
   ctaText = 'Solicitar cotización',
   whatsappMessage = 'Hola, deseo solicitar una cotización técnica',
+  primaryCta,
+  secondaryCta,
   class: className = '',
 } = Astro.props;
 
 const isWhatsAppAvailable = hasWhatsApp();
-const targetHref = isWhatsAppAvailable
-  ? getWhatsAppLink(whatsappMessage)
-  : '/contacto';
-const effectiveCtaText = isWhatsAppAvailable ? ctaText : 'Solicitar cotización';
+const targetHref = primaryCta?.href
+  ?? (isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/contacto');
+const effectiveCtaText = primaryCta?.label
+  ?? (isWhatsAppAvailable ? ctaText : 'Solicitar cotización');
+
+const secondaryHref = secondaryCta?.href ?? '/contacto';
+const secondaryLabel = secondaryCta?.label ?? 'Ver datos de contacto';
 ---
 
 <section
@@ -49,12 +56,12 @@ const effectiveCtaText = isWhatsAppAvailable ? ctaText : 'Solicitar cotización'
           {effectiveCtaText}
         </Button>
         <Button
-          href="/contacto"
+          href={secondaryHref}
           variant="secondary"
           size="lg"
           class="border-white text-white hover:bg-white/10"
         >
-          Ver datos de contacto
+          {secondaryLabel}
         </Button>
       </div>
     </div>
