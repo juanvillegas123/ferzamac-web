@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/sections/PageHeader.astro';
+import Button from '../components/ui/Button.astro';
+import { SITE } from '../lib/site';
+
+// TODO: confirmar con el cliente datos pendientes (WhatsApp, correo y horarios)
+const hasFormEndpoint = Boolean(SITE.formEndpoint && SITE.formEndpoint.trim() !== '');
+---
+
+<BaseLayout
+  title="Contacto | Ferzamac"
+  description="Comuníquese con Ferzamac en Sucre, Bolivia para cotizaciones y consultas técnicas sobre plantas y equipos industriales."
+>
+  <PageHeader
+    title="Contacto"
+    breadcrumbs={[{ label: 'Contacto' }]}
+    intro="Comuníquese directamente con nuestro equipo para cotizaciones, dimensionamiento y consultas técnicas sobre proyectos industriales y hospitalarios."
+  />
+
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <!-- Datos directos de contacto -->
+      <div class="lg:col-span-6 space-y-8">
+        <div class="space-y-4">
+          <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+            Canales de atención
+          </span>
+          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
+            Atención directa y ubicación
+          </h2>
+          <p class="text-base text-muted leading-relaxed">
+            Para coordinar visitas técnicas, solicitud de cotizaciones o consultas de ingeniería:
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Teléfono -->
+          <div class="rounded-lg border border-line bg-surface p-6 shadow-xs space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-muted">
+              Teléfono de contacto
+            </span>
+            <!-- TODO: confirmar con el cliente (viene del sitio actual) -->
+            <div>
+              <a
+                href={`tel:${SITE.phoneRaw}`}
+                class="font-display text-2xl font-bold text-ink hover:underline focus-visible:outline-2 focus-visible:outline-ink rounded"
+              >
+                {SITE.phone}
+              </a>
+            </div>
+            <p class="text-xs text-muted">
+              Llamadas directas para consultas técnicas y cotizaciones.
+            </p>
+          </div>
+
+          <!-- Dirección física -->
+          <div class="rounded-lg border border-line bg-surface p-6 shadow-xs space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-muted">
+              Dirección de taller y oficinas
+            </span>
+            <!-- TODO: confirmar con el cliente (viene del sitio actual) -->
+            <p class="font-display text-lg font-semibold text-ink">
+              {SITE.address}
+            </p>
+            <p class="text-xs text-muted">
+              Sucre, Bolivia.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario condicional Formspree (solo si existe PUBLIC_FORM_ENDPOINT) -->
+      <div class="lg:col-span-6">
+        {hasFormEndpoint ? (
+          <form
+            action={SITE.formEndpoint}
+            method="POST"
+            class="rounded-lg border border-line bg-white p-6 sm:p-8 shadow-xs space-y-6"
+          >
+            <h3 class="font-display text-xl font-semibold text-ink">
+              Enviar solicitud de cotización
+            </h3>
+
+            <div class="space-y-4 text-sm">
+              <div>
+                <label for="name" class="block font-medium text-ink mb-1">
+                  Nombre completo
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full rounded border border-line bg-surface px-3.5 py-2.5 text-ink focus:border-ink focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="block font-medium text-ink mb-1">
+                  Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full rounded border border-line bg-surface px-3.5 py-2.5 text-ink focus:border-ink focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label for="message" class="block font-medium text-ink mb-1">
+                  Detalle del equipo o proyecto
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full rounded border border-line bg-surface px-3.5 py-2.5 text-ink focus:border-ink focus:outline-hidden"
+                ></textarea>
+              </div>
+
+              <Button type="submit" variant="primary" size="md" class="w-full">
+                Enviar mensaje
+              </Button>
+            </div>
+          </form>
+        ) : (
+          <div class="rounded-lg border border-line bg-surface p-8 shadow-xs space-y-4">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+              Cotización técnica
+            </span>
+            <h3 class="font-display text-xl font-semibold text-ink">
+              Solicitudes técnicas y de cotización
+            </h3>
+            <p class="text-sm text-muted leading-relaxed">
+              Comuníquese telefónicamente al número de atención para requerimientos inmediatos de fabricación,
+              reparación o mantenimiento de plantas y equipos.
+            </p>
+            <div class="pt-2">
+              <Button href={`tel:${SITE.phoneRaw}`} variant="primary" size="md">
+                Llamar a {SITE.phone}
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
