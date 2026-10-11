@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/sections/PageHeader.astro';
+import SolutionCard from '../../components/ui/SolutionCard.astro';
+import CtaBanner from '../../components/sections/CtaBanner.astro';
+
+const solutions = await getCollection('soluciones', (s) => s.data.area === 'industrial');
+const sortedSolutions = solutions.sort((a, b) => (a.data.orden ?? 99) - (b.data.orden ?? 99));
+---
+
+<BaseLayout
+  title="Área Industrial | Ferzamac"
+  description="Diseño, construcción, montaje, mantenimiento preventivo y correctivo de plantas, equipos y máquinas industriales en Bolivia."
+>
+  <PageHeader
+    title="Área Industrial"
+    area="industrial"
+    breadcrumbs={[{ label: 'Industrial' }]}
+    intro="Diseño, construcción, montaje, mantenimiento preventivo y correctivo de plantas, equipos y máquinas industriales."
+  />
+
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sortedSolutions.map((solution) => (
+        <SolutionCard
+          title={solution.data.title}
+          href={`/industrial/${solution.id}`}
+          area={solution.data.area}
+          summary={solution.data.resumen}
+          specs={solution.data.specs}
+          image={solution.data.imagenPrincipal}
+          imageAlt={solution.data.imagenPrincipalAlt}
+        />
+      ))}
+    </div>
+
+    <CtaBanner
+      title="¿Requiere cotización técnica para su planta o equipo?"
+      description="Consulte con nuestro equipo para asesoramiento técnico y formulación de proyectos industriales."
+      primaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
+      secondaryCta={{ label: 'Ver proyectos ejecutados', href: '/proyectos' }}
+    />
+  </div>
+</BaseLayout>
