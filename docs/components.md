@@ -20,6 +20,8 @@ Todos los ejemplos expuestos utilizan **marcadores de ejemplo obviamente falsos*
 | **AreaCard** | `src/components/ui/AreaCard.astro` | `title: string`, `href: string`, `area: 'industrial' \| 'hospitalaria'`, `description: string`, `highlights: string[]` | Tarjeta destacada de división técnica con borde superior de color de área y lista de especialidades. |
 | **SolutionCard** | `src/components/ui/SolutionCard.astro` | `title: string`, `href: string`, `area: 'industrial' \| 'hospitalaria'`, `summary: string`, `specs?: { label: string, value: string }[]`, `image?: ImageMetadata`, `imageAlt?: string`, `imageAspectRatio?: string`, `imagePosition?: string` | Ficha resumen de equipo o servicio con acento de área superior, mini-tabla de especificaciones y encuadre personalizable para fotos verticales. Sin marco si no hay foto. |
 | **ProjectCard** | `src/components/ui/ProjectCard.astro` | `title: string`, `href: string`, `area: 'industrial' \| 'hospitalaria'`, `location?: string`, `summary: string`, `image?: ImageMetadata`, `imageAlt?: string`, `imageAspectRatio?: string`, `imagePosition?: string`, `scope?: string[]` | Tarjeta de caso real de proyecto con encuadre personalizable, ubicación y resumen de alcance. Sin marco si no hay foto. |
+| **LocationMap** | `src/components/ui/LocationMap.astro` | `variant?: 'card' \| 'footer'` | Recuadro de dirección con carga diferida de Google Maps bajo demanda (sin carga al inicio), enlace "Cómo llegar" y TODO si falta `mapsUrl`. |
+| **ContactForm** | `src/components/ui/ContactForm.astro` | `variant?: 'compact' \| 'full'`, `title?: string`, `description?: string` | Formulario de contacto con honeypot anti-spam, estados accesibles en vivo y fallback a llamada si falta `PUBLIC_FORM_ENDPOINT`. |
 
 ---
 
@@ -35,6 +37,7 @@ Todos los ejemplos expuestos utilizan **marcadores de ejemplo obviamente falsos*
 | **EngineeringShowcase** | `src/components/sections/EngineeringShowcase.astro` | `title?: string`, `intro?: string`, `images?: ShowcaseImage[]` | Sección técnica con cuadrícula fotográfica rotulada como "Render de diseño". |
 | **FeaturedProjects** | `src/components/sections/FeaturedProjects.astro` | `title?: string`, `intro?: string`, `projects: FeaturedProjectItem[]` | Cuadrícula de proyectos destacados utilizando `ProjectCard`. No renderiza si no se proporcionan proyectos. |
 | **BrandsStrip** | `src/components/sections/BrandsStrip.astro` | `marcas?: { nombre: string, logo: string, mostrar: boolean }[]` | Franja de marcas con las que trabajan en escala de grises. Solo renderiza marcas con `mostrar: true`. |
+| **ClientsStrip** | `src/components/sections/ClientsStrip.astro` | `clientes?: ClientItem[]`, `title?: string` | Franja de clientes en escala de grises. Condicional: solo renderiza si existen logos y `mostrarNombre: true` en la colección. |
 | **CtaBanner** | `src/components/sections/CtaBanner.astro` | `title?: string`, `description?: string`, `ctaText?: string`, `whatsappMessage?: string` | Banner de llamado a la acción con enlace directo a WhatsApp (o `/contacto` si no hay número). |
 
 ---
