@@ -8,7 +8,12 @@ const soluciones = defineCollection({
     z.object({
       title: z.string(),
       area: z.enum(['industrial', 'hospitalaria', 'consultoria']),
-      tipo: z.enum(['diseno-construccion', 'mantenimiento', 'consultoria']),
+      tipo: z.enum([
+        'diseno-construccion',
+        'mantenimiento',
+        'consultoria',
+        'suministro',
+      ]),
       resumen: z.string().max(160),
       specs: z
         .array(

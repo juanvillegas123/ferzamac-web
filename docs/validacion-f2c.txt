@@ -1,0 +1,21 @@
+VALIDACIÓN F2c · 7 fichas nuevas + 2 ajustes
+=======================================================
+
+Fuentes usadas: docs/catalogo-texto.md y docs/sitio-actual-texto.md.
+Comprobaciones superadas: números presentes en las fuentes; resumen <= 160; seo.title <= 60; seo.description <= 155; sin términos prohibidos; sin nombres de clientes reservados (hospitales, YLB, Caja Bancaria, plantas de lácteos, La Guardia).
+Se nombran a propósito solo los 7 clientes que el sitio actual ya muestra con logo: EMAPA, NAABOL, ENDE Corporación, LAPAS, EBA, ENVIBOL y CNS.
+
+ficha | estado | largo del resumen | pendientes
+-------------------------------------------------------
+aspiradora-industrial-planta-san-andres | parcial | 72 | 3
+mantenimiento-cintas-transportadoras-aeropuerto-viru-viru | parcial | 134 | 2
+silenciadores-sistemas-escape-grupos-generadores | parcial | 131 | 2
+mantenimiento-rejas-separacion-solidos | parcial | 139 | 2
+valvula-vapor-solenoide | parcial | 55 | 3
+planta-lavado-de-aji | parcial | 133 | 3
+planta-generadora-oxigeno-medicinal | parcial | 92 | 3
+humidificador-de-granos | parcial | 119 | 3
+elevador-de-cangilones | parcial | 144 | 1
+
+Ajustes a fichas existentes: humidificador-de-granos (pendiente: AISI 316 vs 308) y elevador-de-cangilones (pendiente: datos extra del sitio actual; pasa a "parcial").
+Tipo nuevo: "suministro" (aspiradora y válvula). Hay que agregarlo al enum del esquema antes de copiar las fichas, o `npm run check` fallará.

@@ -29,12 +29,13 @@ galeria:
     alt: "Bandejas metálicas oscuras sobre el suelo de un taller"
     caption: "Bandejas en taller"
 proyectosRelacionados: []
-pendientes: []
+pendientes:
+  - "el sitio actual agrega datos de los tambores (tipo jaula, plancha A36 de 3 mm, paletas A36 de 6 mm) y de los accesorios para cangilones (A36, 130x32 mm, dos perforaciones de 10 mm): confirmar si se agregan"
 seo:
   title: "Tambores y bandejas para elevador de cangilones | Ferzamac"
   description: "Diseño y construcción de tambores y bandejas para elevador de cangilones en acero A36, con material antiabrasivo donde hay mayor contacto."
   keyword: "elevador de cangilones"
-estado: "completo"
+estado: "parcial"
 orden: 5
 ---
 

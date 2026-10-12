@@ -15,6 +15,7 @@ proyectosRelacionados: []
 pendientes:
   - "descripción del funcionamiento"
   - "otros datos técnicos del equipo"
+  - "el sitio actual indica acero inoxidable AISI 316 y el catálogo dice 308: confirmar cuál es el correcto"
 seo:
   title: "Humidificador de granos de 4 t/h | Ferzamac"
   description: "Diseño y construcción de equipo humidificador de granos con capacidad de 4 toneladas por hora, fabricado en acero inoxidable 308."

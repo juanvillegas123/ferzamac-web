@@ -51,7 +51,11 @@ function parseFrontmatter(content) {
 }
 
 const catalogoPath = path.join(rootDir, 'docs', 'catalogo-texto.md');
-const catalogoText = fs.existsSync(catalogoPath) ? fs.readFileSync(catalogoPath, 'utf-8') : '';
+const sitioActualPath = path.join(rootDir, 'docs', 'sitio-actual-texto.md');
+const catalogoText =
+  (fs.existsSync(catalogoPath) ? fs.readFileSync(catalogoPath, 'utf-8') : '') +
+  '\n' +
+  (fs.existsSync(sitioActualPath) ? fs.readFileSync(sitioActualPath, 'utf-8') : '');
 
 const marketingTerms = [
   'alta precisión',

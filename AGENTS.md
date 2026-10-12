@@ -127,7 +127,7 @@ Los tres primeros colores de marca vienen del cliente; `ink-deep`, `surface`, `l
 
 Colecciones (`src/content.config.ts`):
 
-- **soluciones:** `title`, `area` (`industrial` | `hospitalaria` | `consultoria`), `tipo` (`diseno-construccion` | `mantenimiento` | `consultoria`), `resumen` (≤160 caracteres), `specs` (lista `{label, value}`), `imagenPrincipal?`, `imagenNota?`, `galeria?`, `video?`, `proyectosRelacionados?`, `seo` (`title`, `description`, `keyword`), `estado` (`completo` | `parcial`), `orden`.
+- **soluciones:** `title`, `area` (`industrial` | `hospitalaria` | `consultoria`), `tipo` (`diseno-construccion` | `mantenimiento` | `consultoria` | `suministro`), `resumen` (≤160 caracteres), `specs` (lista `{label, value}`), `imagenPrincipal?`, `imagenNota?`, `galeria?`, `video?`, `proyectosRelacionados?`, `seo` (`title`, `description`, `keyword`), `estado` (`completo` | `parcial`), `orden`.
 - **proyectos:** `title`, `cliente?` (referencia opcional), `ubicacion`, `area`, `resumen`, `alcance` (lista), `resultado?`, `imagenPrincipal?`, `imagenNota?`, `galeria?`, `videos` (`src`, `poster`, `orientacion`, `caption`), `solucionesRelacionadas?`, `destacado`, `estado`.
 - **clientes:** `nombre`, `sector`, `ciudad`, **`mostrarNombre` (boolean, `false` por defecto)**, `logo?`.
 - **marcas:** `nombre`, `logo?`, **`mostrar` (boolean, `false` por defecto)**.
@@ -195,6 +195,7 @@ Para cambios grandes: primero un plan breve, luego la implementación en pasos p
 - [x] **F2 · Contenido:**
   - [x] **F2a · Esquema y 3 fichas de referencia:** `src/content.config.ts`, 4 colecciones con loader `glob`, auditoría con `npm run content:report`, y fichas de referencia `ensacadora-saco-valvulado`, `huacareta-clasificacion-naranjas-y-vapor` y `sopachuy-linea-embutidos-y-matadero`.
   - [x] **F2b · Carga completa:** 8 fichas de proyectos y 18 de soluciones (26 fichas técnicas validadas).
+  - [x] **F2c · Validación F2c:** 7 fichas nuevas y 2 ajustes (33 fichas técnicas validadas, nuevo tipo suministro).
 - [x] **F3 · Páginas:**
   - [x] **F3a · Páginas públicas reales:** home (`/`), `/proyectos` y `/proyectos/[slug]`, `/industrial` y `/industrial/[slug]`, `/nosotros`, `/contacto`, más páginas provisionales para `/hospitalaria` y `/consultoria`.
 - [ ] **F4 · SEO, accesibilidad y rendimiento:** JSON-LD, sitemap, Lighthouse.
