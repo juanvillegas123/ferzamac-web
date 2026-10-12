@@ -1,0 +1,62 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+export interface ClientItem {
+  nombre: string;
+  sector?: string;
+  ciudad?: string;
+  mostrarNombre: boolean;
+  logo?: ImageMetadata;
+}
+
+interface Props {
+  clientes?: ClientItem[];
+  title?: string;
+  class?: string;
+}
+
+const {
+  clientes = [],
+  title = 'Empresas y entidades que confían en nosotros',
+  class: className = '',
+} = Astro.props;
+
+// Regla estricta de AGENTS.md y requerimientos F3a:
+// NO renderizar mientras no existan logos autorizados y mostrarNombre: true
+const activeClients = clientes.filter(
+  (c) => c.mostrarNombre === true && Boolean(c.logo)
+);
+const hasActiveClients = activeClients.length > 0;
+---
+
+{hasActiveClients && (
+  <section
+    class={`py-12 bg-surface/50 border-t border-line ${className}`}
+    aria-labelledby="clients-strip-title"
+  >
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <h2
+        id="clients-strip-title"
+        class="text-xs font-bold uppercase tracking-wider text-muted"
+      >
+        {title}
+      </h2>
+
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+        {activeClients.map((client) => (
+          <div class="flex items-center justify-center grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all duration-200">
+            {client.logo && (
+              <Image
+                src={client.logo}
+                alt={client.nombre}
+                class="h-8 sm:h-10 w-auto object-contain"
+                loading="lazy"
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
