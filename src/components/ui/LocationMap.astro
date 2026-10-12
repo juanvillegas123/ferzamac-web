@@ -1,0 +1,168 @@
+---
+import { SITE } from '../../lib/site';
+
+interface Props {
+  variant?: 'card' | 'footer';
+  class?: string;
+}
+
+const { variant = 'card', class: className = '' } = Astro.props;
+
+// Dirección oficial requerida
+const addressText = SITE.address;
+const hasMapsUrl = Boolean(SITE.mapsUrl && SITE.mapsUrl.trim() !== '');
+
+// URL para incrustar cuando se pulsa el botón (solo si mapsUrl está disponible o se activa el mapa)
+// Si mapsUrl está presente, se usa su versión embed o una búsqueda de dirección embebible
+const embedSrc = hasMapsUrl
+  ? (SITE.mapsUrl!.includes('embed')
+      ? SITE.mapsUrl!
+      : `https://www.google.com/maps?q=${encodeURIComponent(addressText)}&output=embed`)
+  : '';
+---
+
+<div
+  class:list={[
+    'location-map-container',
+    variant === 'card' && 'rounded-lg border border-line bg-surface p-6 shadow-xs space-y-4',
+    variant === 'footer' && 'space-y-2 text-sm text-surface',
+    className,
+  ]}
+>
+  {/* Encabezado y dirección */}
+  <div class="space-y-1.5">
+    {variant === 'card' && (
+      <span class="text-xs font-bold uppercase tracking-wider text-muted">
+        Ubicación física
+      </span>
+    )}
+    <div class="flex items-start gap-2">
+      <svg
+        class="h-5 w-5 shrink-0 text-muted mt-0.5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+      <div>
+        <p class:list={[variant === 'card' ? 'font-display text-base font-semibold text-ink' : 'text-sm text-surface']}>
+          {addressText}
+        </p>
+        <p class:list={[variant === 'card' ? 'text-xs text-muted' : 'text-xs text-surface/80']}>
+          Sucre, Bolivia
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {hasMapsUrl ? (
+    <div class="space-y-3 pt-1">
+      <div class="flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          class="btn-load-map inline-flex items-center gap-2 rounded border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink hover:bg-surface focus-visible:outline-2 focus-visible:outline-ink transition-colors shadow-2xs"
+          data-embed-url={embedSrc}
+          aria-expanded="false"
+        >
+          <svg class="h-4 w-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          Ver mapa
+        </button>
+
+        <a
+          href={SITE.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 text-xs font-medium text-ink hover:underline focus-visible:outline-2 focus-visible:outline-ink rounded"
+        >
+          <span>Cómo llegar</span>
+          <svg class="h-3.5 w-3.5 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Contenedor del mapa diferido (sin iframe al cargar la página) */}
+      <div
+        class="map-frame-wrapper hidden w-full overflow-hidden rounded border border-line bg-surface"
+        style="min-height: 220px;"
+      >
+        {/* El iframe se inyecta por JavaScript únicamente al pulsar 'Ver mapa' */}
+      </div>
+    </div>
+  ) : (
+    /* TODO: mapsUrl pendiente en site.ts. Mientras falte la URL del pin de Google Maps, se muestra solo la dirección y no se carga mapa. */
+    <div class="text-xs text-muted/80 pt-0.5">
+      <!-- TODO: URL del pin en Google Maps pendiente en site.ts -->
+    </div>
+  )}
+</div>
+
+<script>
+  function setupMapTriggers() {
+    const containers = document.querySelectorAll('.location-map-container');
+    containers.forEach((container) => {
+      const button = container.querySelector<HTMLButtonElement>('.btn-load-map');
+      const wrapper = container.querySelector<HTMLDivElement>('.map-frame-wrapper');
+
+      if (!button || !wrapper) return;
+
+      button.addEventListener('click', () => {
+        const embedUrl = button.getAttribute('data-embed-url');
+        if (!embedUrl) return;
+
+        // Comprobar si ya existe el iframe
+        if (!wrapper.querySelector('iframe')) {
+          const iframe = document.createElement('iframe');
+          iframe.src = embedUrl;
+          iframe.loading = 'lazy';
+          iframe.width = '100%';
+          iframe.height = '220';
+          iframe.style.border = '0';
+          iframe.title = 'Mapa de ubicación de Ferzamac en Google Maps';
+          iframe.setAttribute('allowfullscreen', '');
+          iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+          wrapper.appendChild(iframe);
+        }
+
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          wrapper.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+          button.innerHTML = `
+            <svg class="h-4 w-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+            Ver mapa
+          `;
+        } else {
+          wrapper.classList.remove('hidden');
+          button.setAttribute('aria-expanded', 'true');
+          button.innerHTML = `
+            <svg class="h-4 w-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Ocultar mapa
+          `;
+        }
+      });
+    });
+  }
+
+  // Ejecutar en carga inicial y en transiciones de página si las hubiera
+  setupMapTriggers();
+  document.addEventListener('astro:page-load', setupMapTriggers);
+</script>

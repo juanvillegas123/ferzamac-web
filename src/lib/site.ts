@@ -17,6 +17,9 @@ export const SITE = {
   // TODO: confirmar con el cliente (viene del sitio actual, no está confirmado)
   address: 'Calle René Moreno Nº 162, Sucre, Bolivia',
 
+  // TODO: URL del pin de Google Maps pendiente de confirmación
+  mapsUrl: null as string | null,
+
   // TODO: confirmar con el cliente (viene del sitio actual, no está confirmado)
   phone: '(+591) 72877116',
   phoneRaw: '+59172877116',

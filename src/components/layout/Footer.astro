@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../../lib/site';
+import LocationMap from '../ui/LocationMap.astro';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -96,11 +97,7 @@ const currentYear = new Date().getFullYear();
         <h3 class="font-display text-sm font-semibold tracking-wider uppercase text-white mb-4">
           Contacto
         </h3>
-        <ul class="space-y-2.5 text-sm text-surface">
-          <li class="flex items-start gap-2">
-            <span class="sr-only">Dirección:</span>
-            <span>{SITE.address}</span>
-          </li>
+        <ul class="space-y-2.5 text-sm text-surface mb-3">
           <li class="flex items-center gap-2">
             <span class="sr-only">Teléfono:</span>
             <a
@@ -124,6 +121,8 @@ const currentYear = new Date().getFullYear();
             <li class="text-xs text-surface">Horario: {SITE.schedule}</li>
           )}
         </ul>
+
+        <LocationMap variant="footer" class="pt-2 border-t border-white/10" />
       </div>
     </div>
 

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/sections/PageHeader.astro';
 import Button from '../components/ui/Button.astro';
+import LocationMap from '../components/ui/LocationMap.astro';
 import { SITE } from '../lib/site';
 
 // TODO: confirmar con el cliente datos pendientes (WhatsApp, correo y horarios)
@@ -54,19 +55,8 @@ const hasFormEndpoint = Boolean(SITE.formEndpoint && SITE.formEndpoint.trim() !=
             </p>
           </div>
 
-          <!-- Dirección física -->
-          <div class="rounded-lg border border-line bg-surface p-6 shadow-xs space-y-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-muted">
-              Dirección de taller y oficinas
-            </span>
-            <!-- TODO: confirmar con el cliente (viene del sitio actual) -->
-            <p class="font-display text-lg font-semibold text-ink">
-              {SITE.address}
-            </p>
-            <p class="text-xs text-muted">
-              Sucre, Bolivia.
-            </p>
-          </div>
+          <!-- Dirección física y mapa diferido -->
+          <LocationMap variant="card" />
         </div>
       </div>
 
