@@ -20,9 +20,11 @@ const directionsUrl = isPinFixed
   : 'https://maps.google.com/?q=Calle+Ren%C3%A9+Moreno,+Sucre,+Bolivia';
 
 // Embed para mapa interactivo (centrado en la zona de René Moreno, Sucre sin fijar pin definitivo)
+// Usamos OpenStreetMap por defecto para máxima compatibilidad y rapidez sin cookies de terceros ni bloqueo de iframes (AGENTS.md §2)
+const defaultOsmEmbed = 'https://www.openstreetmap.org/export/embed.html?bbox=-65.2680%2C-19.0490%2C-65.2510%2C-19.0380&layer=mapnik';
 const embedSrc = isPinFixed && SITE.mapsUrl!.includes('embed')
   ? SITE.mapsUrl!
-  : 'https://maps.google.com/maps?q=Calle+Ren%C3%A9+Moreno,+Sucre,+Bolivia&t=&z=15&ie=UTF8&iwloc=&output=embed';
+  : defaultOsmEmbed;
 ---
 
 <div
