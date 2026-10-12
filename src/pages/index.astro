@@ -7,6 +7,7 @@ import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
 import ProcessSteps from '../components/sections/ProcessSteps.astro';
 import EngineeringShowcase from '../components/sections/EngineeringShowcase.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
+import ClientsStrip from '../components/sections/ClientsStrip.astro';
 import ContactForm from '../components/ui/ContactForm.astro';
 
 import heroImg from '../assets/images/home/hero-generacion-vapor-huacareta.jpg';
@@ -25,6 +26,14 @@ const featuredProjectsData = featuredProjects.map((p) => ({
   image: p.data.imagenPrincipal,
   imageAlt: p.data.imagenPrincipalAlt,
   scope: p.data.alcance,
+}));
+
+// Clientes autorizados para publicación (mostrarNombre: true)
+const clients = await getCollection('clientes', (c) => c.data.mostrarNombre);
+const clientsData = clients.map((c) => ({
+  nombre: c.data.nombre,
+  mostrarNombre: c.data.mostrarNombre,
+  logo: c.data.logo,
 }));
 
 const showcaseImages = [
@@ -46,6 +55,21 @@ const showcaseImages = [
     primaryCta={{ label: 'Ver proyectos', href: '/proyectos' }}
     secondaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
   />
+
+  <!-- Presentación institucional (Texto provisional a aprobar por el cliente) -->
+  <section class="border-b border-line bg-surface py-12 sm:py-14" aria-label="Presentación institucional">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+        Ingeniería, montaje y mantenimiento
+      </span>
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
+        Especialistas en plantas y equipos industriales
+      </h2>
+      <p class="text-base sm:text-lg text-ink/90 leading-relaxed max-w-3xl mx-auto">
+        Ferzamac es una empresa con sede en Bolivia especializada en diseño, construcción, montaje, mantenimiento preventivo y correctivo y puesta en marcha de plantas, equipos y máquinas industriales. También ofrece consultoría en auditoría técnica industrial, valoración, dimensionamiento y memoria de cálculo.
+      </p>
+    </div>
+  </section>
 
   <!-- AreasSplit -->
   <AreasSplit
@@ -87,6 +111,9 @@ const showcaseImages = [
     ctaHref="/contacto"
     ctaLabel="Consultar con ingeniería"
   />
+
+  <!-- Clientes (solo se muestra si existen clientes con logo y mostrarNombre: true) -->
+  <ClientsStrip clientes={clientsData} />
 
   <!-- CtaBanner -->
   <CtaBanner
