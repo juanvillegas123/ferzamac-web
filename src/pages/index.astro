@@ -7,6 +7,7 @@ import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
 import ProcessSteps from '../components/sections/ProcessSteps.astro';
 import EngineeringShowcase from '../components/sections/EngineeringShowcase.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
+import ContactForm from '../components/ui/ContactForm.astro';
 
 import heroImg from '../assets/images/home/hero-generacion-vapor-huacareta.jpg';
 import render1 from '../assets/images/home/ingenieria-diseno-3d-01.jpg';
@@ -94,4 +95,23 @@ const showcaseImages = [
     primaryCta={{ label: 'Solicitar cotización', href: '/contacto' }}
     secondaryCta={{ label: 'Ver proyectos', href: '/proyectos' }}
   />
+
+  <!-- Formulario de contacto rápido antes del footer -->
+  <section class="bg-surface py-12 sm:py-16 border-t border-line" aria-label="Contacto rápido">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-6">
+      <div class="text-center space-y-2">
+        <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+          Contacto directo
+        </span>
+        <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
+          Solicite información técnica o cotización
+        </h2>
+        <p class="text-sm text-muted max-w-xl mx-auto leading-relaxed">
+          Envíenos sus requerimientos para coordinar con nuestro equipo técnico en Sucre, Bolivia.
+        </p>
+      </div>
+
+      <ContactForm variant="compact" />
+    </div>
+  </section>
 </BaseLayout>

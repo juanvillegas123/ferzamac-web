@@ -1,0 +1,269 @@
+---
+import Button from './Button.astro';
+import { SITE } from '../../lib/site';
+
+interface Props {
+  variant?: 'compact' | 'full';
+  title?: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  variant = 'full',
+  title = variant === 'compact' ? 'Consulta rápida' : 'Enviar solicitud de cotización',
+  description,
+  class: className = '',
+} = Astro.props;
+
+// TODO: PUBLIC_FORM_ENDPOINT se obtiene de SITE.formEndpoint
+const formEndpoint = SITE.formEndpoint;
+const hasEndpoint = Boolean(formEndpoint && formEndpoint.trim() !== '');
+
+// ID único para etiquetas accesibles en caso de múltiples formularios en una página
+const instanceId = Math.random().toString(36).substring(2, 7);
+---
+
+<div
+  class:list={[
+    'contact-form-card rounded-lg border border-line bg-white shadow-xs',
+    variant === 'compact' ? 'p-5 sm:p-6' : 'p-6 sm:p-8',
+    className,
+  ]}
+>
+  {hasEndpoint ? (
+    <div class="space-y-4">
+      {title && (
+        <div class="space-y-1">
+          <h3 class:list={['font-display font-semibold text-ink', variant === 'compact' ? 'text-lg' : 'text-xl']}>
+            {title}
+          </h3>
+          {description && (
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              {description}
+            </p>
+          )}
+        </div>
+      )}
+
+      <form
+        action={formEndpoint}
+        method="POST"
+        class="contact-ajax-form space-y-4 text-sm"
+        novalidate
+      >
+        {/* Campo Honeypot oculto anti-spam */}
+        <div class="hidden" aria-hidden="true" style="display: none !important;">
+          <label for={`cf-gotcha-${instanceId}`}>No complete este campo</label>
+          <input
+            type="text"
+            id={`cf-gotcha-${instanceId}`}
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for={`cf-name-${instanceId}`} class="block font-medium text-ink mb-1">
+              Nombre o empresa <span class="text-red-600" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id={`cf-name-${instanceId}`}
+              name="nombre"
+              required
+              autocomplete="name"
+              placeholder="Ej. Ing. Juan Pérez"
+              class="w-full rounded border border-line bg-surface px-3 py-2 text-ink placeholder:text-muted/60 focus:border-ink focus:bg-white focus:outline-hidden"
+            />
+          </div>
+
+          <div>
+            <label for={`cf-phone-${instanceId}`} class="block font-medium text-ink mb-1">
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              id={`cf-phone-${instanceId}`}
+              name="telefono"
+              autocomplete="tel"
+              placeholder="Ej. (+591) 72877116"
+              class="w-full rounded border border-line bg-surface px-3 py-2 text-ink placeholder:text-muted/60 focus:border-ink focus:bg-white focus:outline-hidden"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for={`cf-email-${instanceId}`} class="block font-medium text-ink mb-1">
+            Correo electrónico <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="email"
+            id={`cf-email-${instanceId}`}
+            name="email"
+            required
+            autocomplete="email"
+            placeholder="correo@ejemplo.com"
+            class="w-full rounded border border-line bg-surface px-3 py-2 text-ink placeholder:text-muted/60 focus:border-ink focus:bg-white focus:outline-hidden"
+          />
+        </div>
+
+        <div>
+          <label for={`cf-message-${instanceId}`} class="block font-medium text-ink mb-1">
+            Detalle del equipo o requerimiento <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id={`cf-message-${instanceId}`}
+            name="mensaje"
+            rows={variant === 'compact' ? 3 : 4}
+            required
+            placeholder={
+              variant === 'compact'
+                ? 'Indique el equipo, máquina o servicio de mantenimiento requerido'
+                : 'Detalle los requerimientos técnicos de su planta, equipo o servicio de mantenimiento...'
+            }
+            class="w-full rounded border border-line bg-surface px-3 py-2 text-ink placeholder:text-muted/60 focus:border-ink focus:bg-white focus:outline-hidden"
+          ></textarea>
+        </div>
+
+        {/* Mensaje de estado accesible (en vivo) */}
+        <div
+          class="form-feedback hidden rounded p-3 text-xs leading-relaxed"
+          role="status"
+          aria-live="polite"
+        ></div>
+
+        <div class="pt-1">
+          <Button
+            type="submit"
+            variant="primary"
+            size="md"
+            class="submit-button w-full sm:w-auto text-center justify-center"
+          >
+            <span class="btn-text">Enviar mensaje</span>
+            <span class="btn-spinner hidden ml-2">...</span>
+          </Button>
+        </div>
+      </form>
+    </div>
+  ) : (
+    /* TODO: PUBLIC_FORM_ENDPOINT no configurado. Muestra datos directos de contacto. */
+    <div class="space-y-4">
+      <!-- TODO: Variable de entorno PUBLIC_FORM_ENDPOINT no configurada en site.ts -->
+      <div class="space-y-1">
+        <span class="text-xs font-bold uppercase tracking-wider text-muted">
+          Contacto directo
+        </span>
+        <h3 class="font-display text-lg sm:text-xl font-semibold text-ink">
+          Solicitud de cotización técnica
+        </h3>
+      </div>
+
+      <p class="text-sm text-muted leading-relaxed">
+        Comuníquese directamente con nuestro equipo para coordinar requerimientos de plantas,
+        equipos industriales, sistemas hospitalarios o visitas de inspección técnica:
+      </p>
+
+      <div class="rounded border border-line bg-surface p-4 space-y-2">
+        <p class="text-xs font-bold uppercase text-muted">Teléfono de atención directa</p>
+        <p>
+          <a
+            href={`tel:${SITE.phoneRaw}`}
+            class="font-display text-xl font-bold text-ink hover:underline focus-visible:outline-2 focus-visible:outline-ink rounded"
+          >
+            {SITE.phone}
+          </a>
+        </p>
+        <p class="text-xs text-muted">{SITE.address}</p>
+      </div>
+
+      <div>
+        <Button href={`tel:${SITE.phoneRaw}`} variant="primary" size="md" class="w-full sm:w-auto">
+          Llamar a {SITE.phone}
+        </Button>
+      </div>
+    </div>
+  )}
+</div>
+
+<script>
+  function setupContactForms() {
+    const forms = document.querySelectorAll<HTMLFormElement>('.contact-ajax-form');
+
+    forms.forEach((form) => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const feedback = form.querySelector<HTMLDivElement>('.form-feedback');
+        const submitBtn = form.querySelector<HTMLButtonElement>('.submit-button');
+        const btnText = form.querySelector<HTMLSpanElement>('.btn-text');
+        const btnSpinner = form.querySelector<HTMLSpanElement>('.btn-spinner');
+
+        // Validación honeypot: bots que completen _gotcha se descartan silenciosamente
+        const gotchaInput = form.querySelector<HTMLInputElement>('input[name="_gotcha"]');
+        if (gotchaInput && gotchaInput.value.trim() !== '') {
+          if (feedback) {
+            feedback.className = 'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
+            feedback.textContent = 'Mensaje enviado correctamente. Nos comunicaremos a la brevedad.';
+            feedback.classList.remove('hidden');
+          }
+          form.reset();
+          return;
+        }
+
+        // Validación básica HTML5
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // Estado de envío
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnText) btnText.textContent = 'Enviando...';
+        if (btnSpinner) btnSpinner.classList.remove('hidden');
+        if (feedback) {
+          feedback.classList.add('hidden');
+          feedback.textContent = '';
+        }
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              Accept: 'application/json',
+            },
+          });
+
+          if (response.ok) {
+            form.reset();
+            if (feedback) {
+              feedback.className = 'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
+              feedback.textContent = 'Mensaje recibido con éxito. Nuestro equipo técnico se pondrá en contacto a la brevedad.';
+              feedback.classList.remove('hidden');
+            }
+          } else {
+            throw new Error(`Error ${response.status}`);
+          }
+        } catch (error) {
+          if (feedback) {
+            feedback.className = 'form-feedback rounded border border-[#FCA5A5] bg-[#FDF2F2] p-3 text-xs text-[#991B1B] leading-relaxed';
+            feedback.textContent = 'No se pudo enviar el mensaje en este momento. Por favor llame directamente a nuestro teléfono de atención: (+591) 72877116.';
+            feedback.classList.remove('hidden');
+          }
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+          if (btnText) btnText.textContent = 'Enviar mensaje';
+          if (btnSpinner) btnSpinner.classList.add('hidden');
+        }
+      });
+    });
+  }
+
+  setupContactForms();
+  document.addEventListener('astro:page-load', setupContactForms);
+</script>
