@@ -1,0 +1,72 @@
+---
+import { getCollection, render } from 'astro:content';
+import DetailLayout from '../../layouts/DetailLayout.astro';
+import SpecTable from '../../components/ui/SpecTable.astro';
+import Gallery from '../../components/ui/Gallery.astro';
+import VideoFrame from '../../components/ui/VideoFrame.astro';
+
+export async function getStaticPaths() {
+  const solutions = await getCollection('soluciones', (s) => s.data.area === 'hospitalaria');
+  return solutions.map((solution) => ({
+    params: { slug: solution.id },
+    props: { solution },
+  }));
+}
+
+const { solution } = Astro.props;
+const { Content } = await render(solution);
+---
+
+<DetailLayout
+  title={solution.data.title}
+  description={solution.data.seo?.description || solution.data.resumen}
+  intro={solution.data.resumen}
+  area="hospitalaria"
+  tipo="solucion"
+  eyebrow={solution.data.tipo === 'mantenimiento' ? 'Mantenimiento hospitalario' : 'Ingeniería hospitalaria'}
+  image={solution.data.imagenPrincipal}
+  imageAlt={solution.data.imagenPrincipalAlt || solution.data.title}
+  breadcrumbs={[
+    { label: 'Hospitalaria', href: '/hospitalaria' },
+    { label: solution.data.title },
+  ]}
+>
+  <Content />
+
+  {solution.data.specs && solution.data.specs.length > 0 && (
+    <div slot="specs" class="space-y-4 pt-4 border-t border-line">
+      <SpecTable
+        caption="Especificaciones técnicas documentadas"
+        rows={solution.data.specs}
+      />
+    </div>
+  )}
+
+  <div slot="multimedia" class="space-y-8">
+    {solution.data.galeria && solution.data.galeria.length > 0 && (
+      <div class="space-y-3">
+        <h3 class="text-base font-display font-semibold text-ink">
+          Registro fotográfico
+        </h3>
+        <Gallery images={solution.data.galeria} columns={3} />
+      </div>
+    )}
+
+    {solution.data.videos && solution.data.videos.length > 0 && (
+      <div class="space-y-4">
+        <h3 class="text-base font-display font-semibold text-ink">
+          Clips de video
+        </h3>
+        <div class={`grid gap-4 ${solution.data.videos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md'}`}>
+          {solution.data.videos.map((vid) => (
+            <VideoFrame
+              src={vid.src}
+              orientation={vid.orientacion === 'vertical' ? 'vertical' : 'wide'}
+              caption={vid.caption}
+            />
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</DetailLayout>

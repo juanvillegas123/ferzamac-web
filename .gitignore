@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# raw media and large docs
+docs/*.mp4
+docs/*.xlsx

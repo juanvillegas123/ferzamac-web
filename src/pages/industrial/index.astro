@@ -7,6 +7,10 @@ import CtaBanner from '../../components/sections/CtaBanner.astro';
 
 const solutions = await getCollection('soluciones', (s) => s.data.area === 'industrial');
 const sortedSolutions = solutions.sort((a, b) => (a.data.orden ?? 99) - (b.data.orden ?? 99));
+
+const disenoCount = solutions.filter((s) => s.data.tipo === 'diseno-construccion').length;
+const mantenimientoCount = solutions.filter((s) => s.data.tipo === 'mantenimiento').length;
+const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').length;
 ---
 
 <BaseLayout
@@ -20,18 +24,57 @@ const sortedSolutions = solutions.sort((a, b) => (a.data.orden ?? 99) - (b.data.
     intro="Diseño, construcción, montaje, mantenimiento preventivo y correctivo de plantas, equipos y máquinas industriales."
   />
 
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
+    <!-- Barra de filtrado por tipo de servicio / equipo -->
+    <div class="flex flex-wrap items-center gap-2 border-b border-line pb-4" role="tablist" aria-label="Filtrar por tipo de solución">
+      <button
+        type="button"
+        class="filter-btn rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors bg-ink text-white shadow-2xs"
+        data-filter="all"
+        aria-selected="true"
+      >
+        Todos ({solutions.length})
+      </button>
+      <button
+        type="button"
+        class="filter-btn rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors bg-surface text-ink hover:bg-line"
+        data-filter="diseno-construccion"
+        aria-selected="false"
+      >
+        Diseño y construcción ({disenoCount})
+      </button>
+      <button
+        type="button"
+        class="filter-btn rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors bg-surface text-ink hover:bg-line"
+        data-filter="mantenimiento"
+        aria-selected="false"
+      >
+        Mantenimiento ({mantenimientoCount})
+      </button>
+      <button
+        type="button"
+        class="filter-btn rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors bg-surface text-ink hover:bg-line"
+        data-filter="suministro"
+        aria-selected="false"
+      >
+        Suministro ({suministroCount})
+      </button>
+    </div>
+
+    <!-- Catálogo de soluciones industriales -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="solutions-grid">
       {sortedSolutions.map((solution) => (
-        <SolutionCard
-          title={solution.data.title}
-          href={`/industrial/${solution.id}`}
-          area={solution.data.area}
-          summary={solution.data.resumen}
-          specs={solution.data.specs}
-          image={solution.data.imagenPrincipal}
-          imageAlt={solution.data.imagenPrincipalAlt}
-        />
+        <div class="solution-item" data-tipo={solution.data.tipo}>
+          <SolutionCard
+            title={solution.data.title}
+            href={`/industrial/${solution.id}`}
+            area={solution.data.area}
+            summary={solution.data.resumen}
+            specs={solution.data.specs}
+            image={solution.data.imagenPrincipal}
+            imageAlt={solution.data.imagenPrincipalAlt}
+          />
+        </div>
       ))}
     </div>
 
@@ -43,3 +86,38 @@ const sortedSolutions = solutions.sort((a, b) => (a.data.orden ?? 99) - (b.data.
     />
   </div>
 </BaseLayout>
+
+<script>
+  function setupTypeFilter() {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.solution-item');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        filterButtons.forEach((b) => {
+          b.setAttribute('aria-selected', 'false');
+          b.classList.remove('bg-ink', 'text-white', 'shadow-2xs');
+          b.classList.add('bg-surface', 'text-ink');
+        });
+
+        btn.setAttribute('aria-selected', 'true');
+        btn.classList.remove('bg-surface', 'text-ink');
+        btn.classList.add('bg-ink', 'text-white', 'shadow-2xs');
+
+        cards.forEach((card) => {
+          const tipo = card.getAttribute('data-tipo');
+          if (filter === 'all' || tipo === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  setupTypeFilter();
+  document.addEventListener('astro:page-load', setupTypeFilter);
+</script>
