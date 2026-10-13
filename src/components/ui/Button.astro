@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'primary' | 'secondary' | 'inverted';
+  variant?: 'primary' | 'secondary' | 'inverted' | 'outline-white';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -30,6 +30,8 @@ const variantStyles = {
   secondary: 'bg-transparent text-ink border border-ink hover:bg-surface',
   inverted:
     'bg-white text-ink hover:bg-surface border border-white shadow-xs font-semibold',
+  'outline-white':
+    'bg-transparent text-white border border-white hover:bg-white/10 font-medium',
 };
 
 const sizeStyles = {
