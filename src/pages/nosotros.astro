@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/sections/PageHeader.astro';
 import ProcessSteps from '../components/sections/ProcessSteps.astro';
+import BrandsStrip from '../components/sections/BrandsStrip.astro';
+import ClientsStrip from '../components/sections/ClientsStrip.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
 
 const disciplinas = [
@@ -102,6 +104,12 @@ const disciplinas = [
       eyebrow="Metodología"
       title="Fases de desarrollo técnico"
     />
+
+    <!-- Marcas de tecnología y componentes (Carrusel) -->
+    <BrandsStrip />
+
+    <!-- Clientes que confían en nosotros (Carrusel) -->
+    <ClientsStrip />
 
     <CtaBanner
       title="¿Requiere asesoramiento para su proyecto?"

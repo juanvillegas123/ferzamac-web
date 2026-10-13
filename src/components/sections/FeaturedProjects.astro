@@ -15,6 +15,8 @@ export interface FeaturedProjectItem {
   imageAspectRatio?: '16/9' | '4/3' | '3/4' | '1/1';
   imagePosition?: string;
   scope?: string[];
+  clientLogo?: ImageMetadata;
+  clientName?: string;
 }
 
 interface Props {
@@ -62,6 +64,8 @@ const hasProjects = projects.length > 0;
             imageAspectRatio={project.imageAspectRatio}
             imagePosition={project.imagePosition}
             scope={project.scope}
+            clientLogo={project.clientLogo}
+            clientName={project.clientName}
           />
         ))}
       </div>

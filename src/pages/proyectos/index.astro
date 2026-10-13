@@ -6,6 +6,16 @@ import ProjectCard from '../../components/ui/ProjectCard.astro';
 import CtaBanner from '../../components/sections/CtaBanner.astro';
 
 const projects = await getCollection('proyectos');
+const allClients = await getCollection('clientes');
+const clientsMap = new Map(allClients.map((c) => [c.id, c.data]));
+
+const projectClientMap: Record<string, string> = {
+  'grupo-electrogeno-beni-y-sucre': 'eba',
+  'aire-comprimido-y-sistemas-en-salud': 'cns',
+  'instalaciones-en-hospital-de-sucre': 'cns',
+  'mantenimiento-transformadores-lacteos': 'eba',
+};
+
 // Ordenar proyectos: primero destacados
 const sortedProjects = projects.sort((a, b) => {
   if (a.data.destacado && !b.data.destacado) return -1;
@@ -26,18 +36,25 @@ const sortedProjects = projects.sort((a, b) => {
 
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {sortedProjects.map((project) => (
-        <ProjectCard
-          title={project.data.title}
-          href={`/proyectos/${project.id}`}
-          area={project.data.area}
-          location={project.data.ubicacion}
-          summary={project.data.resumen}
-          image={project.data.imagenPrincipal}
-          imageAlt={project.data.imagenPrincipalAlt}
-          scope={project.data.alcance}
-        />
-      ))}
+      {sortedProjects.map((project) => {
+        const clientKey = project.data.cliente?.id || projectClientMap[project.id];
+        const clientData = clientKey ? clientsMap.get(clientKey) : undefined;
+
+        return (
+          <ProjectCard
+            title={project.data.title}
+            href={`/proyectos/${project.id}`}
+            area={project.data.area}
+            location={project.data.ubicacion}
+            summary={project.data.resumen}
+            image={project.data.imagenPrincipal}
+            imageAlt={project.data.imagenPrincipalAlt}
+            scope={project.data.alcance}
+            clientLogo={clientData?.logo}
+            clientName={clientData?.nombre}
+          />
+        );
+      })}
     </div>
 
     <CtaBanner

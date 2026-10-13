@@ -1,48 +1,113 @@
 ---
-export interface BrandItem {
-  nombre: string;
-  logo: string;
-  mostrar: boolean;
-}
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 interface Props {
-  marcas?: BrandItem[];
+  title?: string;
+  subtitle?: string;
   class?: string;
 }
 
-const { marcas = [], class: className = '' } = Astro.props;
+const {
+  title = 'Marcas con las que trabajamos',
+  subtitle = 'Equipos, componentes y tecnología industrial de respaldo internacional',
+  class: className = '',
+} = Astro.props;
 
-// Regla estricta de AGENTS.md: solo renderizar marcas autorizadas con mostrar: true
-const activeBrands = marcas.filter((b) => b.mostrar === true);
-const hasActiveBrands = activeBrands.length > 0;
+// Obtener marcas autorizadas desde la colección
+const marcas = await getCollection('marcas', (m) => m.data.mostrar);
+const hasBrands = marcas.length > 0;
+
+// Duplicar elementos para animación de carrusel continuo infinito (seamless marquee)
+const marqueeBrands = [...marcas, ...marcas];
 ---
 
-{hasActiveBrands && (
+{hasBrands && (
   <section
-    class={`py-12 bg-surface/60 border-t border-line ${className}`}
-    aria-labelledby="brands-title"
+    class={`relative py-14 sm:py-16 bg-surface/70 border-t border-line overflow-hidden ${className}`}
+    aria-labelledby="brands-carousel-title"
   >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-3 mb-8">
+      <p class="text-xs font-bold uppercase tracking-wider text-muted">
+        Tecnología y componentes
+      </p>
       <h2
-        id="brands-title"
-        class="text-xs font-bold uppercase tracking-wider text-muted"
+        id="brands-carousel-title"
+        class="font-display text-xl sm:text-2xl font-semibold text-ink"
       >
-        Marcas con las que trabajamos
+        {title}
       </h2>
-      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 opacity-80">
-        {activeBrands.map((brand) => (
-          <div class="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-200">
-            <img
-              src={brand.logo}
-              alt={brand.nombre}
-              class="h-8 sm:h-10 w-auto object-contain"
-              loading="lazy"
-              width="120"
-              height="40"
-            />
+      {subtitle && (
+        <p class="text-xs sm:text-sm text-muted max-w-xl mx-auto">
+          {subtitle}
+        </p>
+      )}
+    </div>
+
+    {/* Contenedor del carrusel con máscaras de gradiente laterales */}
+    <div class="relative w-full overflow-hidden" role="region" aria-label="Carrusel continuo de marcas">
+      {/* Máscara de desvanecimiento izquierda */}
+      <div
+        class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-surface to-transparent z-10"
+        aria-hidden="true"
+      ></div>
+
+      {/* Máscara de desvanecimiento derecha */}
+      <div
+        class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-surface to-transparent z-10"
+        aria-hidden="true"
+      ></div>
+
+      {/* Pista animada de logos */}
+      <div class="marquee-track flex items-center gap-6 sm:gap-8 py-2">
+        {marqueeBrands.map((brand) => (
+          <div
+            class="brand-card flex items-center justify-center h-20 w-44 sm:w-48 shrink-0 rounded-lg border border-line bg-white px-5 py-3 shadow-2xs transition-all duration-300 hover:shadow-xs hover:border-ink/25 hover:scale-102"
+            title={brand.data.nombre}
+          >
+            {brand.data.logo ? (
+              <Image
+                src={brand.data.logo}
+                alt={`Logo de ${brand.data.nombre}`}
+                class="h-9 sm:h-10 w-auto max-w-[130px] object-contain opacity-90 transition-all duration-300 hover:opacity-100 hover:scale-105"
+                loading="eager"
+              />
+            ) : (
+              <span class="text-xs font-semibold text-ink">{brand.data.nombre}</span>
+            )}
           </div>
         ))}
       </div>
     </div>
   </section>
 )}
+
+<style>
+  .marquee-track {
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      overflow-x: auto;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+</style>

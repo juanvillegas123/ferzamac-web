@@ -1,6 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { Picture } from 'astro:assets';
+import { Picture, Image } from 'astro:assets';
 import Badge from './Badge.astro';
 
 interface Props {
@@ -14,6 +14,8 @@ interface Props {
   imageAspectRatio?: '16/9' | '4/3' | '3/4' | '1/1';
   imagePosition?: string;
   scope?: string[];
+  clientLogo?: ImageMetadata;
+  clientName?: string;
   class?: string;
 }
 
@@ -28,6 +30,8 @@ const {
   imageAspectRatio = '16/9',
   imagePosition = 'object-center',
   scope,
+  clientLogo,
+  clientName,
   class: className = '',
 } = Astro.props;
 
@@ -56,7 +60,7 @@ const areaLabels = {
 >
   {image && (
     <div
-      class={`${aspectClasses[imageAspectRatio]} w-full overflow-hidden bg-surface`}
+      class={`${aspectClasses[imageAspectRatio]} relative w-full overflow-hidden bg-surface`}
     >
       <Picture
         src={image}
@@ -66,14 +70,41 @@ const areaLabels = {
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         class={`h-full w-full object-cover ${imagePosition} transition-transform duration-200 group-hover:scale-102`}
       />
+      {clientLogo && (
+        <div
+          class="absolute top-3 right-3 z-10 flex items-center justify-center rounded bg-white/95 px-2.5 py-1.5 shadow-xs border border-line/90 backdrop-blur-xs transition-transform duration-200 group-hover:scale-105"
+          title={clientName ? `Proyecto ejecutado para: ${clientName}` : 'Cliente / Entidad contratante'}
+        >
+          <Image
+            src={clientLogo}
+            alt={clientName ? `Logo de ${clientName}` : 'Logo del cliente'}
+            class="h-6 w-auto max-w-[85px] object-contain"
+            loading="eager"
+          />
+        </div>
+      )}
     </div>
   )}
 
   <div class="flex flex-1 flex-col p-5 space-y-3">
     <div class="flex items-center justify-between gap-2">
       <Badge variant={area}>{areaLabels[area]}</Badge>
-      {location && (
-        <span class="text-xs text-muted font-medium">{location}</span>
+      {clientLogo && !image ? (
+        <div
+          class="flex items-center justify-center rounded bg-surface px-2 py-1 border border-line shadow-2xs"
+          title={clientName ? `Proyecto ejecutado para: ${clientName}` : 'Cliente'}
+        >
+          <Image
+            src={clientLogo}
+            alt={clientName || 'Cliente'}
+            class="h-5 w-auto max-w-[75px] object-contain"
+            loading="eager"
+          />
+        </div>
+      ) : (
+        location && (
+          <span class="text-xs text-muted font-medium">{location}</span>
+        )
       )}
     </div>
 

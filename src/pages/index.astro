@@ -7,6 +7,7 @@ import FeaturedProjects from '../components/sections/FeaturedProjects.astro';
 import ProcessSteps from '../components/sections/ProcessSteps.astro';
 import EngineeringShowcase from '../components/sections/EngineeringShowcase.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
+import BrandsStrip from '../components/sections/BrandsStrip.astro';
 import ClientsStrip from '../components/sections/ClientsStrip.astro';
 import ContactForm from '../components/ui/ContactForm.astro';
 
@@ -16,17 +17,33 @@ import render2 from '../assets/images/home/ingenieria-diseno-3d-02.jpg';
 import render3 from '../assets/images/home/ingenieria-diseno-3d-03.jpg';
 
 const featuredProjects = await getCollection('proyectos', (p) => p.data.destacado);
+const allClients = await getCollection('clientes');
+const clientsMap = new Map(allClients.map((c) => [c.id, c.data]));
 
-const featuredProjectsData = featuredProjects.map((p) => ({
-  title: p.data.title,
-  href: `/proyectos/${p.id}`,
-  area: p.data.area,
-  location: p.data.ubicacion,
-  summary: p.data.resumen,
-  image: p.data.imagenPrincipal,
-  imageAlt: p.data.imagenPrincipalAlt,
-  scope: p.data.alcance,
-}));
+const projectClientMap: Record<string, string> = {
+  'grupo-electrogeno-beni-y-sucre': 'eba',
+  'aire-comprimido-y-sistemas-en-salud': 'cns',
+  'instalaciones-en-hospital-de-sucre': 'cns',
+  'mantenimiento-transformadores-lacteos': 'eba',
+};
+
+const featuredProjectsData = featuredProjects.map((p) => {
+  const clientKey = p.data.cliente?.id || projectClientMap[p.id];
+  const clientData = clientKey ? clientsMap.get(clientKey) : undefined;
+
+  return {
+    title: p.data.title,
+    href: `/proyectos/${p.id}`,
+    area: p.data.area,
+    location: p.data.ubicacion,
+    summary: p.data.resumen,
+    image: p.data.imagenPrincipal,
+    imageAlt: p.data.imagenPrincipalAlt,
+    scope: p.data.alcance,
+    clientLogo: clientData?.logo,
+    clientName: clientData?.nombre,
+  };
+});
 
 // Clientes autorizados para publicación (mostrarNombre: true)
 const clients = await getCollection('clientes', (c) => c.data.mostrarNombre);
@@ -112,7 +129,10 @@ const showcaseImages = [
     ctaLabel="Consultar con ingeniería"
   />
 
-  <!-- Clientes (solo se muestra si existen clientes con logo y mostrarNombre: true) -->
+  <!-- Marcas de tecnología y componentes con las que trabajamos (Carrusel) -->
+  <BrandsStrip />
+
+  <!-- Clientes y contratantes que confían en nosotros (Carrusel) -->
   <ClientsStrip clientes={clientsData} />
 
   <!-- CtaBanner -->

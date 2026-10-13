@@ -8,6 +8,18 @@ import CtaBanner from '../../components/sections/CtaBanner.astro';
 const solutions = await getCollection('soluciones', (s) => s.data.area === 'industrial');
 const sortedSolutions = solutions.sort((a, b) => (a.data.orden ?? 99) - (b.data.orden ?? 99));
 
+const allClients = await getCollection('clientes');
+const clientsMap = new Map(allClients.map((c) => [c.id, c.data]));
+
+const solutionClientMap: Record<string, string> = {
+  'aspiradora-industrial-planta-san-andres': 'emapa',
+  'mantenimiento-cintas-transportadoras-aeropuerto-viru-viru': 'naabol',
+  'silenciadores-sistemas-escape-grupos-generadores': 'ende',
+  'mantenimiento-rejas-separacion-solidos': 'elapas',
+  'valvula-vapor-solenoide': 'cns',
+  'mantenimiento-motores-y-bombas': 'envibol',
+};
+
 const disenoCount = solutions.filter((s) => s.data.tipo === 'diseno-construccion').length;
 const mantenimientoCount = solutions.filter((s) => s.data.tipo === 'mantenimiento').length;
 const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').length;
@@ -63,19 +75,26 @@ const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').le
 
     <!-- Catálogo de soluciones industriales -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="solutions-grid">
-      {sortedSolutions.map((solution) => (
-        <div class="solution-item" data-tipo={solution.data.tipo}>
-          <SolutionCard
-            title={solution.data.title}
-            href={`/industrial/${solution.id}`}
-            area={solution.data.area}
-            summary={solution.data.resumen}
-            specs={solution.data.specs}
-            image={solution.data.imagenPrincipal}
-            imageAlt={solution.data.imagenPrincipalAlt}
-          />
-        </div>
-      ))}
+      {sortedSolutions.map((solution) => {
+        const clientKey = solutionClientMap[solution.id];
+        const clientData = clientKey ? clientsMap.get(clientKey) : undefined;
+
+        return (
+          <div class="solution-item" data-tipo={solution.data.tipo}>
+            <SolutionCard
+              title={solution.data.title}
+              href={`/industrial/${solution.id}`}
+              area={solution.data.area}
+              summary={solution.data.resumen}
+              specs={solution.data.specs}
+              image={solution.data.imagenPrincipal}
+              imageAlt={solution.data.imagenPrincipalAlt}
+              clientLogo={clientData?.logo}
+              clientName={clientData?.nombre}
+            />
+          </div>
+        );
+      })}
     </div>
 
     <CtaBanner
