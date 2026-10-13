@@ -6,11 +6,15 @@ resumen: "Diseño e instalación de sistema de control y monitoreo remoto por me
 specs:
   - label: "Tipos de llamada"
     value: "Llamador de supervisor; llamada de emergencia a personal técnico"
-galeria: []
+imagenPrincipal: "../../assets/images/soluciones/sistema-control-monitoreo-remoto/sistema-control-monitoreo-remoto-01.jpeg"
+imagenPrincipalAlt: "Módulo de interfaz y tablero de control y monitoreo remoto"
+galeria:
+  - src: "../../assets/images/soluciones/sistema-control-monitoreo-remoto/sistema-control-monitoreo-remoto-01.jpeg"
+    alt: "Módulo de interfaz y tablero de control y monitoreo remoto"
+    caption: "Tablero y panel de monitoreo remoto"
 proyectosRelacionados: []
 pendientes:
   - "aplicación y lugares donde se instala (confirmar si es de uso hospitalario)"
-  - "fotos propias del sistema: las de la pág. 20 son de fabricante"
 seo:
   title: "Control y monitoreo remoto | Ferzamac"
   description: "Diseño e instalación de sistema de control y monitoreo remoto con dispositivos electrónicos, llamador de supervisor y llamada de emergencia."

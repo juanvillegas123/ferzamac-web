@@ -8,11 +8,15 @@ specs:
     value: "NAABOL"
   - label: "Lugar"
     value: "Aeropuerto internacional de Viru Viru, Santa Cruz"
-galeria: []
+imagenPrincipal: "../../assets/images/soluciones/mantenimiento-cintas-transportadoras-viru-viru/cinta-transportadora-viru-viru-01.jpeg"
+imagenPrincipalAlt: "Mantenimiento de cintas transportadoras de equipaje en Aeropuerto Viru Viru para NAABOL"
+galeria:
+  - src: "../../assets/images/soluciones/mantenimiento-cintas-transportadoras-viru-viru/cinta-transportadora-viru-viru-01.jpeg"
+    alt: "Mantenimiento de cintas transportadoras de equipaje en Aeropuerto Viru Viru para NAABOL"
+    caption: "Cinta transportadora de equipaje en Viru Viru"
 proyectosRelacionados: []
 pendientes:
   - "alcance del servicio y fecha"
-  - "foto real (la del sitio actual tiene marca de agua de un banco de imágenes)"
 seo:
   title: "Mantenimiento de cintas de equipaje, Viru Viru | Ferzamac"
   description: "Servicio de mantenimiento de cintas transportadoras de equipaje del aeropuerto internacional de Viru Viru, en Santa Cruz."

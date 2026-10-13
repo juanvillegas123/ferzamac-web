@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../../lib/site';
+import { getWhatsAppLink } from '../../lib/whatsapp';
 import LocationMap from '../ui/LocationMap.astro';
 
 const currentYear = new Date().getFullYear();
@@ -105,6 +106,16 @@ const currentYear = new Date().getFullYear();
               class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
             >
               {SITE.phone}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getWhatsAppLink('Hola Ferzamac, deseo consultar sobre un proyecto.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-white text-[#99DFAB] transition-colors focus-visible:outline-2 focus-visible:outline-white"
+            >
+              WhatsApp directo
             </a>
           </li>
           {SITE.email && (

@@ -8,11 +8,15 @@ specs:
     value: "Grupos generadores cabinados BAH12 y BAH14"
   - label: "Cliente"
     value: "ENDE Corporación"
-galeria: []
+imagenPrincipal: "../../assets/images/soluciones/silenciadores-sistemas-escape-grupos-generadores/silenciadores-bh12-bh14-01.jpg"
+imagenPrincipalAlt: "Instalación y montaje de silenciadores y sistemas de escape para grupos generadores cabinados BAH12 y BAH14 de ENDE"
+galeria:
+  - src: "../../assets/images/soluciones/silenciadores-sistemas-escape-grupos-generadores/silenciadores-bh12-bh14-01.jpg"
+    alt: "Instalación y montaje de silenciadores y sistemas de escape para grupos generadores cabinados BAH12 y BAH14 de ENDE"
+    caption: "Silenciadores y sistemas de escape para grupos generadores"
 proyectosRelacionados: []
 pendientes:
   - "alcance, fecha y lugar de la instalación"
-  - "foto real (la del sitio actual no está confirmada como propia)"
 seo:
   title: "Silenciadores y escape para grupos generadores | Ferzamac"
   description: "Servicio de instalación y montaje de silenciadores y sistemas de escape para grupos generadores cabinados BAH12 y BAH14."

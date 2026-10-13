@@ -6,12 +6,16 @@ resumen: "Adquisición de una válvula de vapor solenoide para CNS."
 specs:
   - label: "Cliente"
     value: "CNS"
-galeria: []
+imagenPrincipal: "../../assets/images/soluciones/valvulas-de-vapor/valvula-vapor-solenoide-01.jpeg"
+imagenPrincipalAlt: "Válvula solenoide de vapor para CNS"
+galeria:
+  - src: "../../assets/images/soluciones/valvulas-de-vapor/valvula-vapor-solenoide-01.jpeg"
+    alt: "Válvula solenoide de vapor para CNS"
+    caption: "Válvula solenoide de vapor"
 proyectosRelacionados: []
 pendientes:
   - "modelo, presión y datos de la válvula"
   - "fecha y lugar"
-  - "foto real (la del sitio actual es de un catálogo comercial)"
 seo:
   title: "Válvula de vapor solenoide | Ferzamac"
   description: "Adquisición de una válvula de vapor solenoide para CNS."

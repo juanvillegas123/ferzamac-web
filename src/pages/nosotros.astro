@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/sections/PageHeader.astro';
 import ProcessSteps from '../components/sections/ProcessSteps.astro';
@@ -6,96 +7,186 @@ import BrandsStrip from '../components/sections/BrandsStrip.astro';
 import ClientsStrip from '../components/sections/ClientsStrip.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
 
+import workshopImg from '../assets/images/home/hero-generacion-vapor-huacareta.jpg';
+import cadImg from '../assets/images/home/ingenieria-diseno-3d-01.jpg';
+
 const disciplinas = [
-  'Ingeniería Industrial',
-  'Ingeniería Mecánica',
-  'Ingeniería Mecatrónica',
-  'Ingeniería Eléctrica y Electrónica',
-  'Especialistas en Automatización de Procesos',
-  'Personal técnico especializado',
+  { nombre: 'Ingeniería Industrial', icono: 'factory' },
+  { nombre: 'Ingeniería Mecánica', icono: 'cog' },
+  { nombre: 'Ingeniería Mecatrónica', icono: 'cpu' },
+  { nombre: 'Ingeniería Eléctrica y Electrónica', icono: 'zap' },
+  { nombre: 'Especialistas en Automatización', icono: 'sliders' },
+  { nombre: 'Personal Técnico Especializado', icono: 'tool' },
 ];
 ---
 
 <BaseLayout
   title="Nosotros | Ferzamac"
-  description="Empresa especializada en diseño, construcción, montaje y mantenimiento de plantas, equipos y máquinas industriales en Sucre, Bolivia."
+  description="Empresa boliviana de ingeniería especializada en diseño, montaje, mantenimiento y consultoría de plantas y equipos industriales y hospitalarios."
 >
   <PageHeader
     title="Nosotros"
     breadcrumbs={[{ label: 'Nosotros' }]}
-    intro="Empresa especializada en diseño, construcción, montaje, mantenimiento y consultoría de plantas, equipos y maquinaria industrial."
+    intro="Ingeniería integrada, construcción y mantenimiento industrial y hospitalario con base operativa en Sucre y cobertura técnica en Bolivia."
   />
 
-  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-16">
-    <!-- Presentación de la empresa (Texto provisional a aprobar por el cliente / Catálogo pág. 2) -->
-    <section class="max-w-4xl space-y-6">
-      <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
-        Perfil empresarial
-      </span>
-      <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
-        Ingeniería, montaje y mantenimiento industrial
-      </h2>
-      <div class="space-y-4 text-base sm:text-lg text-ink/90 leading-relaxed">
-        <p>
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 space-y-12">
+    <!-- Perfil empresarial: Diseño compacto en 2 columnas con imagen real -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center" aria-label="Perfil empresarial">
+      <div class="lg:col-span-7 space-y-5">
+        <div class="space-y-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-bold uppercase tracking-wider text-muted border border-line">
+            <span class="h-1.5 w-1.5 rounded-full bg-industrial"></span>
+            Perfil institucional
+          </span>
+          <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink leading-tight">
+            Ingeniería integrada y mantenimiento de plantas industriales
+          </h2>
+        </div>
+
+        <p class="text-base text-ink/90 leading-relaxed">
           Ferzamac es una empresa con sede en Bolivia especializada en diseño, construcción, montaje, mantenimiento preventivo y correctivo y puesta en marcha de plantas, equipos y máquinas industriales. También ofrece consultoría en auditoría técnica industrial, valoración, dimensionamiento y memoria de cálculo.
         </p>
+
+        <!-- Pilares rápidos de actuación técnica -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+          <div class="rounded-lg border border-line bg-surface p-3">
+            <p class="text-xs font-bold uppercase tracking-wider text-muted">Área</p>
+            <p class="text-sm font-semibold text-ink mt-0.5">Industrial</p>
+            <p class="text-[11px] text-muted">Plantas y calderería</p>
+          </div>
+          <div class="rounded-lg border border-line bg-surface p-3">
+            <p class="text-xs font-bold uppercase tracking-wider text-muted">Área</p>
+            <p class="text-sm font-semibold text-ink mt-0.5">Hospitalaria</p>
+            <p class="text-[11px] text-muted">Gases y agua tratada</p>
+          </div>
+          <div class="rounded-lg border border-line bg-surface p-3 col-span-2 sm:col-span-1">
+            <p class="text-xs font-bold uppercase tracking-wider text-muted">Servicio</p>
+            <p class="text-sm font-semibold text-ink mt-0.5">Consultoría 3D</p>
+            <p class="text-[11px] text-muted">Cálculo y auditoría</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta visual con imagen real -->
+      <div class="lg:col-span-5">
+        <div class="relative overflow-hidden rounded-xl border border-line bg-white shadow-xs group">
+          <div class="relative h-64 sm:h-72 w-full overflow-hidden bg-ink-deep">
+            <Image
+              src={workshopImg}
+              alt="Montaje de caldero y equipos industriales ejecutado por Ferzamac"
+              width={640}
+              height={360}
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-linear-to-t from-ink-deep via-transparent to-transparent"></div>
+            <div class="absolute bottom-3 left-4 right-4 text-white">
+              <span class="inline-block rounded bg-industrial px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                Trabajo en terreno
+              </span>
+              <p class="font-display text-sm font-semibold mt-1">
+                Fabricación y montaje técnico en maestranza
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Misión y Visión -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" aria-label="Misión y Visión">
-      <div class="rounded-lg border border-line bg-surface p-6 sm:p-8 space-y-3">
-        <div class="flex items-center gap-2">
-          <span class="h-2 w-2 rounded-full bg-industrial" aria-hidden="true"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-muted">
-            Propósito
-          </span>
+    <!-- Misión y Visión: Compacto, balanceado y visualmente vivo -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6" aria-label="Misión y Visión">
+      <div class="relative overflow-hidden rounded-xl border-l-4 border-l-industrial border-y border-r border-line bg-white p-6 shadow-xs space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#EAF7ED] text-[#00B020]">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-muted">Propósito</span>
+          </div>
+          <span class="text-[11px] font-semibold text-[#0B6B22] bg-[#EAF7ED] px-2.5 py-0.5 rounded-full">Enfoque</span>
         </div>
-        <h3 class="font-display text-xl font-semibold text-ink">
-          Misión
-        </h3>
-        <p class="text-sm sm:text-base text-ink/90 leading-relaxed">
+        <h3 class="font-display text-lg font-bold text-ink">Misión</h3>
+        <p class="text-sm text-ink/90 leading-relaxed">
           Poner a disposición de nuestros clientes la aplicación de la ingeniería integrada con el objeto de optimizar procesos a través de la automatización, con perspectiva económica, sostenible y segura.
         </p>
       </div>
 
-      <div class="rounded-lg border border-line bg-surface p-6 sm:p-8 space-y-3">
-        <div class="flex items-center gap-2">
-          <span class="h-2 w-2 rounded-full bg-hospitalaria" aria-hidden="true"></span>
-          <span class="text-xs font-bold uppercase tracking-wider text-muted">
-            Proyección
-          </span>
+      <div class="relative overflow-hidden rounded-xl border-l-4 border-l-hospitalaria border-y border-r border-line bg-white p-6 shadow-xs space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-[#EBF7FC] text-[#1DA1D2]">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-wider text-muted">Proyección</span>
+          </div>
+          <span class="text-[11px] font-semibold text-[#0E7A9E] bg-[#EBF7FC] px-2.5 py-0.5 rounded-full">Horizonte</span>
         </div>
-        <h3 class="font-display text-xl font-semibold text-ink">
-          Visión
-        </h3>
-        <p class="text-sm sm:text-base text-ink/90 leading-relaxed">
+        <h3 class="font-display text-lg font-bold text-ink">Visión</h3>
+        <p class="text-sm text-ink/90 leading-relaxed">
           Ser reconocidos a nivel nacional como la empresa líder en brindar servicios y equipos innovadores y de excelente calidad, de forma transparente, humana y sostenible, generando valor a nuestros clientes y grupos de interés.
         </p>
       </div>
     </section>
 
-    <!-- Nuestro equipo de trabajo (Catálogo pág. 3) -->
-    <section class="rounded-lg border border-line bg-surface p-8 sm:p-10 space-y-8">
-      <div class="max-w-3xl space-y-2">
-        <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
-          Capacidad técnica
-        </span>
-        <h2 class="font-display text-2xl sm:text-3xl font-semibold text-ink">
-          Nuestro equipo de trabajo
-        </h2>
-        <p class="text-sm sm:text-base text-muted leading-relaxed">
-          Contamos con personal especializado en las siguientes áreas de ingeniería y técnica industrial:
+    <!-- Equipo multidisciplinario e ingeniería 3D: Bloque compacto integrado con imagen CAD -->
+    <section class="rounded-xl border border-line bg-surface p-6 sm:p-8 space-y-6" aria-label="Capacidad técnica y equipo">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+            Especialidades
+          </span>
+          <h2 class="font-display text-xl sm:text-2xl font-semibold text-ink">
+            Nuestro equipo multidisciplinario de trabajo
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-muted max-w-md">
+          Personal especializado en diseño técnico, modelado 3D, cálculo y automatización industrial:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {disciplinas.map((item) => (
-          <div class="flex items-center gap-3 rounded border border-line bg-white p-4 shadow-xs">
-            <span class="h-2 w-2 rounded-full bg-industrial shrink-0" aria-hidden="true"></span>
-            <span class="font-display text-sm font-semibold text-ink">{item}</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <!-- Grid de especialidades (8 columnas) -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {disciplinas.map((item) => (
+            <div class="flex items-center gap-3 rounded-lg border border-line bg-white px-4 py-3 shadow-2xs hover:border-ink/30 transition-colors">
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-surface text-ink text-xs font-bold">
+                •
+              </span>
+              <span class="font-display text-xs sm:text-sm font-semibold text-ink">{item.nombre}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Tarjeta con imagen CAD 3D (5 columnas) -->
+        <div class="lg:col-span-5">
+          <div class="relative overflow-hidden rounded-xl border border-line bg-white shadow-xs group">
+            <div class="relative h-48 w-full overflow-hidden bg-ink-deep">
+              <Image
+                src={cadImg}
+                alt="Modelado y simulación 3D de planta y equipos industriales"
+                width={500}
+                height={280}
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-ink-deep via-transparent to-transparent"></div>
+              <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                <span class="inline-block rounded bg-hospitalaria/90 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+                  Ingeniería de detalle
+                </span>
+                <p class="font-display text-xs font-semibold mt-0.5">
+                  Modelado 3D y dimensionamiento técnico
+                </p>
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
     </section>
 
@@ -105,12 +196,13 @@ const disciplinas = [
       title="Fases de desarrollo técnico"
     />
 
-    <!-- Marcas de tecnología y componentes (Carrusel) -->
-    <BrandsStrip />
+    <!-- Carruseles continuos de respaldo técnico y clientes -->
+    <div class="space-y-8 pt-2">
+      <BrandsStrip />
+      <ClientsStrip />
+    </div>
 
-    <!-- Clientes que confían en nosotros (Carrusel) -->
-    <ClientsStrip />
-
+    <!-- Banner de cotización -->
     <CtaBanner
       title="¿Requiere asesoramiento para su proyecto?"
       description="Consulte directamente con nuestro equipo de ingeniería."

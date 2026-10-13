@@ -6,12 +6,25 @@ resumen: "Planta de lavado de ají: recepción y selección, prelavado, lavado c
 specs:
   - label: "Equipos"
     value: "Lavadoras, tanques, cintas, secadores y equipos de desinfección"
-galeria: []
+imagenPrincipal: "../../assets/images/soluciones/planta-lavado-aji/planta-lavado-aji-01.jpg"
+imagenPrincipalAlt: "Línea de lavado y selección de ají con operarios y tanque de inmersión en acero inoxidable"
+galeria:
+  - src: "../../assets/images/soluciones/planta-lavado-aji/planta-lavado-aji-01.jpg"
+    alt: "Línea de lavado y selección de ají con operarios y tanque de inmersión en acero inoxidable"
+    caption: "Línea de lavado y selección en operación"
+  - src: "../../assets/images/soluciones/planta-lavado-aji/planta-lavado-aji-02.jpg"
+    alt: "Tolva de recepción y transporte de ají"
+    caption: "Recepción y alimentación"
+  - src: "../../assets/images/soluciones/planta-lavado-aji/planta-lavado-aji-03.jpg"
+    alt: "Proceso de lavado con agua e inspección"
+    caption: "Lavado y enjuague"
+  - src: "../../assets/images/soluciones/planta-lavado-aji/planta-lavado-aji-04.jpg"
+    alt: "Vista general de la planta de lavado de ají y faja transportadora"
+    caption: "Planta de lavado de ají instalada"
 proyectosRelacionados: []
 pendientes:
   - "confirmar el alcance de Ferzamac (diseño, construcción o montaje)"
   - "cliente, lugar y capacidad"
-  - "fotos y video propios (el sitio actual muestra un video de la planta)"
 seo:
   title: "Planta de lavado de ají | Ferzamac"
   description: "Planta de lavado de ají: recepción y selección, prelavado, lavado con desinfectante, enjuague, escurrido, inspección y empaque."
