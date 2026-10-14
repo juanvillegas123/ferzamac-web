@@ -42,12 +42,21 @@ Todos los ejemplos expuestos utilizan **marcadores de ejemplo obviamente falsos*
 
 ---
 
-## 3. Plantillas de Layout (`src/layouts/`)
+## 3. Componentes SEO y Datos Estructurados (`src/components/seo/`)
+
+| Componente | Ruta | Props principales | Descripción |
+|---|---|---|---|
+| **SEO** | `src/components/seo/SEO.astro` | `title: string`, `description: string`, `image?: string`, `noindex?: boolean` | Metadatos primarios, canonical condicional a `PUBLIC_SITE_URL` (emite TODO si no existe), Open Graph y Twitter Cards. |
+| **JsonLd** | `src/components/seo/JsonLd.astro` | `type?: 'website' \| 'service' \| 'project'`, `breadcrumbs?: BreadcrumbItem[]`, `serviceName?: string`, `serviceDescription?: string` | Inyección de JSON-LD semántico: `Organization` + `LocalBusiness` (nombre, dirección, teléfono, logo sin valoraciones ni horarios inventados), `Service` (área Bolivia) y `BreadcrumbList` en páginas internas. |
+
+---
+
+## 4. Plantillas de Layout (`src/layouts/`)
 
 | Plantilla | Ruta | Props principales | Descripción |
 |---|---|---|---|
-| **BaseLayout** | `src/layouts/BaseLayout.astro` | `title?: string`, `description?: string`, `image?: string`, `noindex?: boolean` | Estructura base en español, metaetiquetas SEO, favicons de `/logo/`, skip link accesible, Header, Footer y WhatsAppButton. |
-| **DetailLayout** | `src/layouts/DetailLayout.astro` | `title: string`, `description?: string`, `breadcrumbs: BreadcrumbItem[]`, `intro?: string`, `area: 'industrial' \| 'hospitalaria'` | Plantilla para fichas técnicas: PageHeader, grilla 8/4 cols con slots para descripción, `specs`, `multimedia` y barra lateral sticky desde `lg` con CTA de cotización. |
+| **BaseLayout** | `src/layouts/BaseLayout.astro` | `title?: string`, `description?: string`, `image?: string`, `noindex?: boolean`, `breadcrumbs?: BreadcrumbItem[]`, `type?: string` | Estructura base en español, preload de fuentes self-hosted (Sora y Manrope latin), skip link accesible, Header, Footer, WhatsAppButton, SEO y JsonLd. Previene títulos duplicados con el nombre del sitio. |
+| **DetailLayout** | `src/layouts/DetailLayout.astro` | `title: string`, `description?: string`, `breadcrumbs: BreadcrumbItem[]`, `intro?: string`, `area: string`, `tipo?: 'solucion' \| 'proyecto'` | Plantilla para fichas técnicas: PageHeader, grilla 8/4 cols con slots para descripción, `specs`, `multimedia` y barra lateral sticky desde `lg` con CTA de cotización hacia WhatsApp y formulario. Pasa metadatos a BaseLayout para esquema `Service` o migas de pan. |
 
 ---
 

@@ -18,8 +18,10 @@ export const SITE = {
   address: 'Calle René Moreno Nº 162, Sucre, Bolivia',
 
   // Google Maps pin referencial para Ferzamac en Sucre
-  mapsUrl: 'https://maps.google.com/?q=Ferzamac,+Calle+Ren%C3%A9+Moreno+162,+Sucre,+Bolivia',
-  mapsEmbedUrl: 'https://maps.google.com/maps?q=Ferzamac%2C%20Calle%20Ren%C3%A9%20Moreno%20162%2C%20Sucre%20Bolivia&t=m&z=16&output=embed&iwloc=near',
+  mapsUrl:
+    'https://maps.google.com/?q=Ferzamac,+Calle+Ren%C3%A9+Moreno+162,+Sucre,+Bolivia',
+  mapsEmbedUrl:
+    'https://maps.google.com/maps?q=Ferzamac%2C%20Calle%20Ren%C3%A9%20Moreno%20162%2C%20Sucre%20Bolivia&t=m&z=16&output=embed&iwloc=near',
 
   phone: '(+591) 72877116',
   phoneRaw: '+59172877116',

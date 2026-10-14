@@ -5,8 +5,13 @@ import PageHeader from '../../components/sections/PageHeader.astro';
 import SolutionCard from '../../components/ui/SolutionCard.astro';
 import CtaBanner from '../../components/sections/CtaBanner.astro';
 
-const solutions = await getCollection('soluciones', (s) => s.data.area === 'industrial');
-const sortedSolutions = solutions.sort((a, b) => (a.data.orden ?? 99) - (b.data.orden ?? 99));
+const solutions = await getCollection(
+  'soluciones',
+  (s) => s.data.area === 'industrial'
+);
+const sortedSolutions = solutions.sort(
+  (a, b) => (a.data.orden ?? 99) - (b.data.orden ?? 99)
+);
 
 const allClients = await getCollection('clientes');
 const clientsMap = new Map(allClients.map((c) => [c.id, c.data]));
@@ -20,14 +25,21 @@ const solutionClientMap: Record<string, string> = {
   'mantenimiento-motores-y-bombas': 'envibol',
 };
 
-const disenoCount = solutions.filter((s) => s.data.tipo === 'diseno-construccion').length;
-const mantenimientoCount = solutions.filter((s) => s.data.tipo === 'mantenimiento').length;
-const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').length;
+const disenoCount = solutions.filter(
+  (s) => s.data.tipo === 'diseno-construccion'
+).length;
+const mantenimientoCount = solutions.filter(
+  (s) => s.data.tipo === 'mantenimiento'
+).length;
+const suministroCount = solutions.filter(
+  (s) => s.data.tipo === 'suministro'
+).length;
 ---
 
 <BaseLayout
   title="Área Industrial | Ferzamac"
   description="Diseño, construcción, montaje, mantenimiento preventivo y correctivo de plantas, equipos y máquinas industriales en Bolivia."
+  breadcrumbs={[{ label: 'Industrial', href: '/industrial' }]}
 >
   <PageHeader
     title="Área Industrial"
@@ -38,7 +50,11 @@ const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').le
 
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-10">
     <!-- Barra de filtrado por tipo de servicio / equipo -->
-    <div class="flex flex-wrap items-center gap-2 border-b border-line pb-4" role="tablist" aria-label="Filtrar por tipo de solución">
+    <div
+      class="flex flex-wrap items-center gap-2 border-b border-line pb-4"
+      role="tablist"
+      aria-label="Filtrar por tipo de solución"
+    >
       <button
         type="button"
         class="filter-btn rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors bg-ink text-white shadow-2xs"
@@ -74,7 +90,10 @@ const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').le
     </div>
 
     <!-- Catálogo de soluciones industriales -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="solutions-grid">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      id="solutions-grid"
+    >
       {sortedSolutions.map((solution) => {
         const clientKey = solutionClientMap[solution.id];
         const clientData = clientKey ? clientsMap.get(clientKey) : undefined;
@@ -108,7 +127,8 @@ const suministroCount = solutions.filter((s) => s.data.tipo === 'suministro').le
 
 <script>
   function setupTypeFilter() {
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const filterButtons =
+      document.querySelectorAll<HTMLButtonElement>('.filter-btn');
     const cards = document.querySelectorAll<HTMLElement>('.solution-item');
 
     filterButtons.forEach((btn) => {

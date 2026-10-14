@@ -58,203 +58,223 @@ const whatsappHref = isWhatsAppAvailable
 const ogImage = typeof image === 'string' ? image : image?.src;
 ---
 
-{
-  embedded ? (
-    <div class="rounded-lg border border-line bg-white shadow-xs overflow-hidden">
-      <PageHeader
-        title={title}
-        breadcrumbs={breadcrumbs}
-        intro={intro}
-        area={area}
-        eyebrow={eyebrow}
-      />
+{embedded ? (
+  <div class="rounded-lg border border-line bg-white shadow-xs overflow-hidden">
+    <PageHeader
+      title={title}
+      breadcrumbs={breadcrumbs}
+      intro={intro}
+      area={area}
+      eyebrow={eyebrow}
+    />
 
-      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div class="lg:col-span-8 space-y-10">
-            {image && (
-              <div class={`overflow-hidden rounded-lg border border-line bg-surface shadow-xs ${imageCompact ? 'max-w-md' : 'w-full'}`}>
-                {typeof image === 'string' ? (
-                  <img
-                    src={image}
-                    alt={imageAlt || title}
-                    class="w-full h-auto aspect-16/9 object-cover"
-                  />
-                ) : (
-                  <Picture
-                    src={image}
-                    formats={['avif', 'webp']}
-                    alt={imageAlt || title}
-                    widths={[500, 800, 1200]}
-                    sizes={imageCompact ? '450px' : '(max-width: 1024px) 100vw, 800px'}
-                    class="w-full h-auto aspect-16/9 object-cover"
-                    fetchpriority="high"
-                  />
-                )}
-              </div>
-            )}
-            <div class="prose prose-slate max-w-none text-ink leading-relaxed space-y-6">
-              <slot />
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-8 space-y-10">
+          {image && (
+            <div
+              class={`overflow-hidden rounded-lg border border-line bg-surface shadow-xs ${imageCompact ? 'max-w-md' : 'w-full'}`}
+            >
+              {typeof image === 'string' ? (
+                <img
+                  src={image}
+                  alt={imageAlt || title}
+                  class="w-full h-auto aspect-16/9 object-cover"
+                />
+              ) : (
+                <Picture
+                  src={image}
+                  formats={['avif', 'webp']}
+                  alt={imageAlt || title}
+                  widths={[500, 800, 1200]}
+                  sizes={
+                    imageCompact ? '450px' : '(max-width: 1024px) 100vw, 800px'
+                  }
+                  class="w-full h-auto aspect-16/9 object-cover"
+                  fetchpriority="high"
+                />
+              )}
             </div>
-            <slot name="specs" />
-            <slot name="multimedia" />
+          )}
+          <div class="prose prose-slate max-w-none text-ink leading-relaxed space-y-6">
+            <slot />
           </div>
+          <slot name="specs" />
+          <slot name="multimedia" />
+        </div>
 
-          <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            <div class="rounded border border-line bg-surface p-6 shadow-xs space-y-4">
-              <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
-                Cotización técnica
-              </span>
-              <h2 class="font-display text-lg font-semibold text-ink">
-                {sidebarHeading}
-              </h2>
-              <p class="text-xs sm:text-sm text-muted leading-relaxed">
-                Consulte con nuestro equipo.
-              </p>
+        <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+          <div class="rounded border border-line bg-surface p-6 shadow-xs space-y-4">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+              Cotización técnica
+            </span>
+            <h2 class="font-display text-lg font-semibold text-ink">
+              {sidebarHeading}
+            </h2>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              Consulte con nuestro equipo.
+            </p>
 
-              <div class="pt-2 flex flex-col gap-2.5">
-                {isWhatsAppAvailable ? (
-                  <>
-                    <Button href={whatsappHref} variant="primary" size="md" class="w-full">
-                      WhatsApp
-                    </Button>
-                    <Button
-                      href="/contacto"
-                      variant="secondary"
-                      size="md"
-                      class="w-full"
-                    >
-                      Formulario de contacto
-                    </Button>
-                  </>
-                ) : (
+            <div class="pt-2 flex flex-col gap-2.5">
+              {isWhatsAppAvailable ? (
+                <>
                   <Button
-                    href="/contacto"
+                    href={whatsappHref}
                     variant="primary"
                     size="md"
                     class="w-full"
                   >
-                    Solicitar cotización
+                    WhatsApp
                   </Button>
-                )}
-              </div>
-
-              <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
-                <span>Atención telefónica:</span>
-                <a
-                  href={`tel:${SITE.phoneRaw}`}
-                  class="font-semibold text-ink hover:underline"
+                  <Button
+                    href="/contacto"
+                    variant="secondary"
+                    size="md"
+                    class="w-full"
+                  >
+                    Formulario de contacto
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  href="/contacto"
+                  variant="primary"
+                  size="md"
+                  class="w-full"
                 >
-                  {SITE.phone}
-                </a>
-              </div>
+                  Solicitar cotización
+                </Button>
+              )}
             </div>
 
-            <slot name="sidebar" />
-          </aside>
-        </div>
+            <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
+              <span>Atención telefónica:</span>
+              <a
+                href={`tel:${SITE.phoneRaw}`}
+                class="font-semibold text-ink hover:underline"
+              >
+                {SITE.phone}
+              </a>
+            </div>
+          </div>
+
+          <slot name="sidebar" />
+        </aside>
       </div>
     </div>
-  ) : (
-    <BaseLayout
+  </div>
+) : (
+  <BaseLayout
+    title={title}
+    description={description || intro}
+    image={ogImage}
+    noindex={noindex}
+    type={isProject ? 'project' : 'service'}
+    breadcrumbs={breadcrumbs}
+    serviceName={title}
+    serviceDescription={description || intro}
+  >
+    <PageHeader
       title={title}
-      description={description || intro}
-      image={ogImage}
-      noindex={noindex}
-    >
-      <PageHeader
-        title={title}
-        breadcrumbs={breadcrumbs}
-        intro={intro}
-        area={area}
-        eyebrow={eyebrow}
-      />
+      breadcrumbs={breadcrumbs}
+      intro={intro}
+      area={area}
+      eyebrow={eyebrow}
+    />
 
-      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div class="lg:col-span-8 space-y-10">
-            {image && (
-              <div class={`overflow-hidden rounded-lg border border-line bg-surface shadow-xs ${imageCompact ? 'max-w-md' : 'w-full'}`}>
-                {typeof image === 'string' ? (
-                  <img
-                    src={image}
-                    alt={imageAlt || title}
-                    class="w-full h-auto aspect-16/9 object-cover"
-                  />
-                ) : (
-                  <Picture
-                    src={image}
-                    formats={['avif', 'webp']}
-                    alt={imageAlt || title}
-                    widths={[500, 800, 1200]}
-                    sizes={imageCompact ? '450px' : '(max-width: 1024px) 100vw, 800px'}
-                    class="w-full h-auto aspect-16/9 object-cover"
-                    fetchpriority="high"
-                  />
-                )}
-              </div>
-            )}
-            <div class="prose prose-slate max-w-none text-ink leading-relaxed space-y-6">
-              <slot />
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-8 space-y-10">
+          {image && (
+            <div
+              class={`overflow-hidden rounded-lg border border-line bg-surface shadow-xs ${imageCompact ? 'max-w-md' : 'w-full'}`}
+            >
+              {typeof image === 'string' ? (
+                <img
+                  src={image}
+                  alt={imageAlt || title}
+                  class="w-full h-auto aspect-16/9 object-cover"
+                />
+              ) : (
+                <Picture
+                  src={image}
+                  formats={['avif', 'webp']}
+                  alt={imageAlt || title}
+                  widths={[500, 800, 1200]}
+                  sizes={
+                    imageCompact ? '450px' : '(max-width: 1024px) 100vw, 800px'
+                  }
+                  class="w-full h-auto aspect-16/9 object-cover"
+                  fetchpriority="high"
+                />
+              )}
             </div>
-            <slot name="specs" />
-            <slot name="multimedia" />
+          )}
+          <div class="prose prose-slate max-w-none text-ink leading-relaxed space-y-6">
+            <slot />
           </div>
+          <slot name="specs" />
+          <slot name="multimedia" />
+        </div>
 
-          <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            <div class="rounded border border-line bg-surface p-6 shadow-xs space-y-4">
-              <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
-                Cotización técnica
-              </span>
-              <h2 class="font-display text-lg font-semibold text-ink">
-                {sidebarHeading}
-              </h2>
-              <p class="text-xs sm:text-sm text-muted leading-relaxed">
-                Consulte con nuestro equipo.
-              </p>
+        <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+          <div class="rounded border border-line bg-surface p-6 shadow-xs space-y-4">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
+              Cotización técnica
+            </span>
+            <h2 class="font-display text-lg font-semibold text-ink">
+              {sidebarHeading}
+            </h2>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed">
+              Consulte con nuestro equipo.
+            </p>
 
-              <div class="pt-2 flex flex-col gap-2.5">
-                {isWhatsAppAvailable ? (
-                  <>
-                    <Button href={whatsappHref} variant="primary" size="md" class="w-full">
-                      WhatsApp
-                    </Button>
-                    <Button
-                      href="/contacto"
-                      variant="secondary"
-                      size="md"
-                      class="w-full"
-                    >
-                      Formulario de contacto
-                    </Button>
-                  </>
-                ) : (
+            <div class="pt-2 flex flex-col gap-2.5">
+              {isWhatsAppAvailable ? (
+                <>
                   <Button
-                    href="/contacto"
+                    href={whatsappHref}
                     variant="primary"
                     size="md"
                     class="w-full"
                   >
-                    Solicitar cotización
+                    WhatsApp
                   </Button>
-                )}
-              </div>
-
-              <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
-                <span>Atención telefónica:</span>
-                <a
-                  href={`tel:${SITE.phoneRaw}`}
-                  class="font-semibold text-ink hover:underline"
+                  <Button
+                    href="/contacto"
+                    variant="secondary"
+                    size="md"
+                    class="w-full"
+                  >
+                    Formulario de contacto
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  href="/contacto"
+                  variant="primary"
+                  size="md"
+                  class="w-full"
                 >
-                  {SITE.phone}
-                </a>
-              </div>
+                  Solicitar cotización
+                </Button>
+              )}
             </div>
 
-            <slot name="sidebar" />
-          </aside>
-        </div>
+            <div class="pt-3 border-t border-line text-xs text-muted flex items-center justify-between">
+              <span>Atención telefónica:</span>
+              <a
+                href={`tel:${SITE.phoneRaw}`}
+                class="font-semibold text-ink hover:underline"
+              >
+                {SITE.phone}
+              </a>
+            </div>
+          </div>
+
+          <slot name="sidebar" />
+        </aside>
       </div>
-    </BaseLayout>
-  )
-}
+    </div>
+  </BaseLayout>
+)}

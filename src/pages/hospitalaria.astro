@@ -5,14 +5,17 @@ import PageHeader from '../components/sections/PageHeader.astro';
 import SolutionCard from '../components/ui/SolutionCard.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
 
-const solutions = await getCollection('soluciones', (s) => s.data.area === 'hospitalaria');
+const solutions = await getCollection(
+  'soluciones',
+  (s) => s.data.area === 'hospitalaria'
+);
 const hasSolutions = solutions.length > 0;
 ---
 
 <BaseLayout
   title="Área Hospitalaria | Ferzamac"
   description="Plantas de tratamiento de agua purificada, aire comprimido y mantenimiento de plantas hospitalarias en Bolivia."
-  noindex={true}
+  breadcrumbs={[{ label: 'Hospitalaria', href: '/hospitalaria' }]}
 >
   <PageHeader
     title="Área Hospitalaria"
@@ -29,13 +32,17 @@ const hasSolutions = solutions.length > 0;
       </h2>
       <div class="space-y-4 text-sm sm:text-base text-ink/90 leading-relaxed">
         <p>
-          Ferzamac ejecuta diseño, construcción, montaje y puesta en marcha de plantas de tratamiento de agua purificada
-          de tipo industrial y hospitalario, incluyendo etapas de preparación, pretratamiento, tratamiento y distribución
-          (tanques de filtros de sedimento, carbón activado, resina catiónica, ósmosis inversa y desinfección UV).
+          Ferzamac ejecuta diseño, construcción, montaje y puesta en marcha de
+          plantas de tratamiento de agua purificada de tipo industrial y
+          hospitalario, incluyendo etapas de preparación, pretratamiento,
+          tratamiento y distribución (tanques de filtros de sedimento, carbón
+          activado, resina catiónica, ósmosis inversa y desinfección UV).
         </p>
         <p>
-          Asimismo, desarrolla diseño y montaje de sistemas generadores de aire comprimido con compresores, condensadores de aire,
-          filtros, secadores y redes de tuberías, y servicios de mantenimiento preventivo y correctivo de plantas purificadoras de agua para hemodiálisis.
+          Asimismo, desarrolla diseño y montaje de sistemas generadores de aire
+          comprimido con compresores, condensadores de aire, filtros, secadores
+          y redes de tuberías, y servicios de mantenimiento preventivo y
+          correctivo de plantas purificadoras de agua para hemodiálisis.
         </p>
       </div>
     </section>

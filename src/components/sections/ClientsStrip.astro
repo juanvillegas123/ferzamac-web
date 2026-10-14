@@ -31,7 +31,10 @@ let clientList: ClientItem[] = [];
 if (clientes && clientes.length > 0) {
   clientList = clientes;
 } else {
-  const collectionClients = await getCollection('clientes', (c) => c.data.mostrarNombre);
+  const collectionClients = await getCollection(
+    'clientes',
+    (c) => c.data.mostrarNombre
+  );
   clientList = collectionClients.map((c) => ({
     nombre: c.data.nombre,
     sector: c.data.sector,
@@ -66,14 +69,16 @@ const marqueeClients = [...activeClients, ...activeClients];
         {title}
       </h2>
       {subtitle && (
-        <p class="text-xs sm:text-sm text-muted max-w-xl mx-auto">
-          {subtitle}
-        </p>
+        <p class="text-xs sm:text-sm text-muted max-w-xl mx-auto">{subtitle}</p>
       )}
     </div>
 
     {/* Contenedor del carrusel */}
-    <div class="relative w-full overflow-hidden" role="region" aria-label="Carrusel continuo de clientes">
+    <div
+      class="relative w-full overflow-hidden"
+      role="region"
+      aria-label="Carrusel continuo de clientes"
+    >
       {/* Máscaras de desvanecimiento laterales */}
       <div
         class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-surface to-transparent z-10"

@@ -5,14 +5,17 @@ import PageHeader from '../components/sections/PageHeader.astro';
 import SolutionCard from '../components/ui/SolutionCard.astro';
 import CtaBanner from '../components/sections/CtaBanner.astro';
 
-const solutions = await getCollection('soluciones', (s) => s.data.area === 'consultoria');
+const solutions = await getCollection(
+  'soluciones',
+  (s) => s.data.area === 'consultoria'
+);
 const hasSolutions = solutions.length > 0;
 ---
 
 <BaseLayout
   title="Consultoría técnica | Ferzamac"
   description="Servicios de consultoría, auditoría técnica de tipo industrial, valoración, dimensionamiento y elaboración de memorias de cálculo."
-  noindex={true}
+  breadcrumbs={[{ label: 'Consultoría', href: '/consultoria' }]}
 >
   <PageHeader
     title="Consultoría técnica"
@@ -29,12 +32,15 @@ const hasSolutions = solutions.length > 0;
       </h2>
       <div class="space-y-4 text-sm sm:text-base text-ink/90 leading-relaxed">
         <p>
-          Ferzamac brinda servicios especializados de consultoría técnica en auditoría de tipo industrial,
-          valoración, dimensionamiento y elaboración de memorias de cálculo, entre otros.
+          Ferzamac brinda servicios especializados de consultoría técnica en
+          auditoría de tipo industrial, valoración, dimensionamiento y
+          elaboración de memorias de cálculo, entre otros.
         </p>
         <p>
-          Asimismo, elabora estudios y diseños técnicos de plantas industriales de acopio y transformación
-          (maquinaria, equipo industrial, herramientas y líneas de producción para procesamiento de alimentos y agroindustria).
+          Asimismo, elabora estudios y diseños técnicos de plantas industriales
+          de acopio y transformación (maquinaria, equipo industrial,
+          herramientas y líneas de producción para procesamiento de alimentos y
+          agroindustria).
         </p>
       </div>
     </section>

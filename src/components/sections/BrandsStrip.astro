@@ -38,14 +38,16 @@ const marqueeBrands = [...marcas, ...marcas];
         {title}
       </h2>
       {subtitle && (
-        <p class="text-xs sm:text-sm text-muted max-w-xl mx-auto">
-          {subtitle}
-        </p>
+        <p class="text-xs sm:text-sm text-muted max-w-xl mx-auto">{subtitle}</p>
       )}
     </div>
 
     {/* Contenedor del carrusel con máscaras de gradiente laterales */}
-    <div class="relative w-full overflow-hidden" role="region" aria-label="Carrusel continuo de marcas">
+    <div
+      class="relative w-full overflow-hidden"
+      role="region"
+      aria-label="Carrusel continuo de marcas"
+    >
       {/* Máscara de desvanecimiento izquierda */}
       <div
         class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-surface to-transparent z-10"
@@ -73,7 +75,9 @@ const marqueeBrands = [...marcas, ...marcas];
                 loading="eager"
               />
             ) : (
-              <span class="text-xs font-semibold text-ink">{brand.data.nombre}</span>
+              <span class="text-xs font-semibold text-ink">
+                {brand.data.nombre}
+              </span>
             )}
           </div>
         ))}

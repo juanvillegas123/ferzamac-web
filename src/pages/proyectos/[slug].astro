@@ -37,14 +37,19 @@ const isWideScope = project.data.alcance.length > 4;
   {project.data.alcance && project.data.alcance.length > 0 && (
     <div slot="specs" class="space-y-4 pt-4 border-t border-line">
       <h2 class="font-display text-xl font-semibold text-ink">
-        {project.id === 'sopachuy-linea-embutidos-y-matadero' ? 'Equipamiento registrado' : 'Alcance registrado'}
+        {project.id === 'sopachuy-linea-embutidos-y-matadero'
+          ? 'Equipamiento registrado'
+          : 'Alcance registrado'}
       </h2>
 
       {isWideScope ? (
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-ink">
           {project.data.alcance.map((item) => (
             <li class="flex items-start gap-2.5">
-              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-industrial shrink-0" aria-hidden="true"></span>
+              <span
+                class="mt-1.5 h-1.5 w-1.5 rounded-full bg-industrial shrink-0"
+                aria-hidden="true"
+              ></span>
               <span class="leading-relaxed">{item}</span>
             </li>
           ))}
@@ -76,7 +81,9 @@ const isWideScope = project.data.alcance.length > 4;
         <h3 class="text-base font-display font-semibold text-ink">
           Clips de video
         </h3>
-        <div class={`grid gap-4 ${project.data.videos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md'}`}>
+        <div
+          class={`grid gap-4 ${project.data.videos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md'}`}
+        >
           {project.data.videos.map((vid) => (
             <VideoFrame
               src={vid.src}

@@ -23,10 +23,11 @@ const {
 } = Astro.props;
 
 const isWhatsAppAvailable = hasWhatsApp();
-const targetHref = primaryCta?.href
-  ?? (isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/contacto');
-const effectiveCtaText = primaryCta?.label
-  ?? (isWhatsAppAvailable ? ctaText : 'Solicitar cotización');
+const targetHref =
+  primaryCta?.href ??
+  (isWhatsAppAvailable ? getWhatsAppLink(whatsappMessage) : '/contacto');
+const effectiveCtaText =
+  primaryCta?.label ?? (isWhatsAppAvailable ? ctaText : 'Solicitar cotización');
 
 const secondaryHref = secondaryCta?.href ?? '/contacto';
 const secondaryLabel = secondaryCta?.label ?? 'Ver datos de contacto';
@@ -48,18 +49,10 @@ const secondaryLabel = secondaryCta?.label ?? 'Ver datos de contacto';
       </div>
 
       <div class="shrink-0 flex flex-wrap gap-4 items-center">
-        <Button
-          href={targetHref}
-          variant="inverted"
-          size="lg"
-        >
+        <Button href={targetHref} variant="inverted" size="lg">
           {effectiveCtaText}
         </Button>
-        <Button
-          href={secondaryHref}
-          variant="outline-white"
-          size="lg"
-        >
+        <Button href={secondaryHref} variant="outline-white" size="lg">
           {secondaryLabel}
         </Button>
       </div>

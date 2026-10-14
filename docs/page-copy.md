@@ -46,12 +46,13 @@
 | `/nosotros` | Equipo de trabajo — Título | "Nuestro equipo de trabajo" | Catálogo pág. 3 literal |
 | `/nosotros` | Equipo de trabajo — Lista | "Ingeniería Industrial", "Ingeniería Mecánica", "Ingeniería Mecatrónica", "Ingeniería Eléctrica y Electrónica", "Especialistas en Automatización de Procesos", "Personal técnico especializado" | Catálogo pág. 3 literal |
 | `/contacto` | PageHeader — H1 | "Contacto" | Navegación |
-| `/contacto` | Datos de contacto | Dirección: "Calle René Moreno Nº 162, Sucre, Bolivia", Teléfono: "(+591) 72877116" | `src/lib/site.ts` |
-| `/contacto` | LocationMap | Ubicación de taller y oficinas en Sucre, con carga diferida de Google Maps bajo demanda | `src/components/ui/LocationMap.astro` y `site.ts` |
-| `/contacto` | ContactForm | Formulario con campos de nombre, teléfono, correo y mensaje con honeypot y fallback accesible | `src/components/ui/ContactForm.astro` |
+| `/contacto` | Canales directos (3 tarjetas) | WhatsApp Directo: "(+591) 72877116" · Correo electrónico: "info@ferzamac.com" · Dirección: "Calle René Moreno Nº 162, Sucre, Bolivia" | `src/lib/site.ts` |
+| `/contacto` | LocationMap interactivo | Mapa embebido de Google Maps con pin en Ferzamac (Calle René Moreno Nº 162, Sucre) y enlace directo a Google Maps | `src/components/ui/LocationMap.astro` |
+| `/contacto` | ContactForm AJAX / Fallback | Formulario con selector de área técnica, campos de validación, honeypot anti-spam y envío por mailto o WhatsApp | `src/components/ui/ContactForm.astro` |
 | `/hospitalaria` | PageHeader — H1 | "Área Hospitalaria" | Catálogo pág. 18 |
-| `/hospitalaria` | Descripción | "Diseño, construcción, montaje y puesta en marcha de planta de tratamiento de agua purificada, instalación de sistemas de aire comprimido y mantenimiento de plantas de agua para hemodiálisis." | Catálogo págs. 18, 23 y 41 |
-| `/hospitalaria` | Aviso provisional | "Contenido en preparación" (si no hay fichas publicadas en esta área) | Interfaz provisional (`noindex`) |
+| `/hospitalaria` | Resumen técnico | "Instalaciones técnicas para establecimientos de salud: tratamiento de agua purificada, aire comprimido y mantenimiento de sistemas para hemodiálisis." | Catálogo págs. 18, 23 y 41 |
+| `/hospitalaria` | Grilla de soluciones | Plantas de tratamiento de agua purificada y mantenimiento de planta para hemodiálisis | Colección `soluciones` (`area: hospitalaria`) |
 | `/consultoria` | PageHeader — H1 | "Consultoría técnica" | Catálogo pág. 2 y pág. 29 |
-| `/consultoria` | Descripción | "Servicios de consultoría en auditoría técnica de tipo industrial, valoración, dimensionamiento y elaboración de memoria de cálculo, entre otros." | Catálogo pág. 2 literal |
-| `/consultoria` | Aviso provisional | "Contenido en preparación" (si no hay fichas publicadas en esta área) | Interfaz provisional (`noindex`) |
+| `/consultoria` | Resumen técnico | "Servicios de consultoría técnica en auditoría de tipo industrial, valoración, dimensionamiento y elaboración de memorias de cálculo para plantas y equipos." | Catálogo pág. 2 literal |
+| `/consultoria` | Grilla de soluciones | Estudios y diseño técnico de plantas industriales | Colección `soluciones` (`area: consultoria`) |
+| Global | Marcas con las que trabajamos | Atlas Copco, EFCO, ELMEC, Energy Power Perú, Honda, Metabo, Schulz, Sultec | Marcas registradas con las que trabaja la empresa |

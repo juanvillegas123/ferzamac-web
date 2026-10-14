@@ -1,22 +1,22 @@
 ---
-title: "Planta generadora de oxígeno medicinal"
-area: "hospitalaria"
-tipo: "diseno-construccion"
-resumen: "Diseño, construcción y montaje de planta generadora de oxígeno medicinal con tecnología PSA."
+title: 'Planta generadora de oxígeno medicinal'
+area: 'hospitalaria'
+tipo: 'diseno-construccion'
+resumen: 'Diseño, construcción y montaje de planta generadora de oxígeno medicinal con tecnología PSA.'
 specs:
-  - label: "Tecnología"
-    value: "PSA"
+  - label: 'Tecnología'
+    value: 'PSA'
 galeria: []
 proyectosRelacionados: []
 pendientes:
-  - "capacidad y pureza del oxígeno"
-  - "cliente, lugar y fecha de las instalaciones"
-  - "fotos propias en buena resolución (las del sitio actual son capturas de video)"
+  - 'capacidad y pureza del oxígeno'
+  - 'cliente, lugar y fecha de las instalaciones'
+  - 'fotos propias en buena resolución (las del sitio actual son capturas de video)'
 seo:
-  title: "Planta generadora de oxígeno medicinal | Ferzamac"
-  description: "Diseño, construcción y montaje de planta generadora de oxígeno medicinal con tecnología PSA."
-  keyword: "planta generadora de oxígeno medicinal"
-estado: "parcial"
+  title: 'Planta generadora de oxígeno medicinal | Ferzamac'
+  description: 'Diseño, construcción y montaje de planta generadora de oxígeno medicinal con tecnología PSA.'
+  keyword: 'planta generadora de oxígeno medicinal'
+estado: 'parcial'
 orden: 25
 ---
 

@@ -14,7 +14,10 @@ const { items, class: className = '' } = Astro.props;
 // Evitar duplicar "Inicio" si ya viene incluido en items
 const filteredItems = items.filter(
   (item, index) =>
-    !(index === 0 && (item.href === '/' || item.label.toLowerCase() === 'inicio'))
+    !(
+      index === 0 &&
+      (item.href === '/' || item.label.toLowerCase() === 'inicio')
+    )
 );
 ---
 

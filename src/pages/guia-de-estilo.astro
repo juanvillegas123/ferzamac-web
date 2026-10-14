@@ -34,14 +34,22 @@ import { getEntry, render } from 'astro:content';
 import DetailLayout from '../layouts/DetailLayout.astro';
 
 // Carga de las 3 fichas reales de referencia (F2a) desde las colecciones
-const ensacadoraEntry = await getEntry('soluciones', 'ensacadora-saco-valvulado');
-const huacaretaEntry = await getEntry('proyectos', 'huacareta-clasificacion-naranjas-y-vapor');
-const sopachuyEntry = await getEntry('proyectos', 'sopachuy-linea-embutidos-y-matadero');
+const ensacadoraEntry = await getEntry(
+  'soluciones',
+  'ensacadora-saco-valvulado'
+);
+const huacaretaEntry = await getEntry(
+  'proyectos',
+  'huacareta-clasificacion-naranjas-y-vapor'
+);
+const sopachuyEntry = await getEntry(
+  'proyectos',
+  'sopachuy-linea-embutidos-y-matadero'
+);
 
 const ensacadoraRender = ensacadoraEntry ? await render(ensacadoraEntry) : null;
 const huacaretaRender = huacaretaEntry ? await render(huacaretaEntry) : null;
 const sopachuyRender = sopachuyEntry ? await render(sopachuyEntry) : null;
-
 
 const breadcrumbSample = [
   { label: 'Área de ejemplo', href: '#' },
@@ -538,8 +546,10 @@ const featuredProjectsSample = [
           7. Fichas reales de referencia
         </h2>
         <p class="text-sm text-muted max-w-3xl leading-relaxed">
-          Estas 3 fichas se cargan directamente desde las colecciones de contenido (<code>src/content/</code>)
-          y se maquetan utilizando la plantilla <code>DetailLayout</code> con sus slots técnicos (especificaciones, multimedia y cuerpo MDX).
+          Estas 3 fichas se cargan directamente desde las colecciones de
+          contenido (<code>src/content/</code>) y se maquetan utilizando la
+          plantilla <code>DetailLayout</code> con sus slots técnicos
+          (especificaciones, multimedia y cuerpo MDX).
         </p>
       </div>
 
@@ -548,7 +558,9 @@ const featuredProjectsSample = [
         <div class="space-y-4">
           <div class="flex items-center gap-3">
             <Badge variant="industrial">Solución industrial</Badge>
-            <span class="text-xs font-mono text-muted">src/content/soluciones/ensacadora-saco-valvulado.md</span>
+            <span class="text-xs font-mono text-muted">
+              src/content/soluciones/ensacadora-saco-valvulado.md
+            </span>
           </div>
           <DetailLayout
             title={ensacadoraEntry.data.title}
@@ -574,12 +586,15 @@ const featuredProjectsSample = [
               />
             </div>
 
-            {ensacadoraEntry.data.galeria && ensacadoraEntry.data.galeria.length > 0 && (
-              <div slot="multimedia" class="space-y-4">
-                <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico</h3>
-                <Gallery images={ensacadoraEntry.data.galeria} columns={3} />
-              </div>
-            )}
+            {ensacadoraEntry.data.galeria &&
+              ensacadoraEntry.data.galeria.length > 0 && (
+                <div slot="multimedia" class="space-y-4">
+                  <h3 class="text-base font-display font-semibold text-ink">
+                    Registro fotográfico
+                  </h3>
+                  <Gallery images={ensacadoraEntry.data.galeria} columns={3} />
+                </div>
+              )}
           </DetailLayout>
         </div>
       )}
@@ -589,7 +604,9 @@ const featuredProjectsSample = [
         <div class="space-y-4 pt-10 border-t border-line">
           <div class="flex items-center gap-3">
             <Badge variant="industrial">Proyecto industrial</Badge>
-            <span class="text-xs font-mono text-muted">src/content/proyectos/huacareta-clasificacion-naranjas-y-vapor.md</span>
+            <span class="text-xs font-mono text-muted">
+              src/content/proyectos/huacareta-clasificacion-naranjas-y-vapor.md
+            </span>
           </div>
           <DetailLayout
             title={huacaretaEntry.data.title}
@@ -618,27 +635,35 @@ const featuredProjectsSample = [
             </div>
 
             <div slot="multimedia" class="space-y-6">
-              {huacaretaEntry.data.galeria && huacaretaEntry.data.galeria.length > 0 && (
-                <div class="space-y-3">
-                  <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico y fotogramas</h3>
-                  <Gallery images={huacaretaEntry.data.galeria} columns={3} />
-                </div>
-              )}
-
-              {huacaretaEntry.data.videos && huacaretaEntry.data.videos.length > 0 && (
-                <div class="space-y-3">
-                  <h3 class="text-base font-display font-semibold text-ink">Clips de video de la planta</h3>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {huacaretaEntry.data.videos.map((vid) => (
-                      <VideoFrame
-                        src={vid.src}
-                        orientation={vid.orientacion === 'vertical' ? 'vertical' : 'wide'}
-                        caption={vid.caption}
-                      />
-                    ))}
+              {huacaretaEntry.data.galeria &&
+                huacaretaEntry.data.galeria.length > 0 && (
+                  <div class="space-y-3">
+                    <h3 class="text-base font-display font-semibold text-ink">
+                      Registro fotográfico y fotogramas
+                    </h3>
+                    <Gallery images={huacaretaEntry.data.galeria} columns={3} />
                   </div>
-                </div>
-              )}
+                )}
+
+              {huacaretaEntry.data.videos &&
+                huacaretaEntry.data.videos.length > 0 && (
+                  <div class="space-y-3">
+                    <h3 class="text-base font-display font-semibold text-ink">
+                      Clips de video de la planta
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {huacaretaEntry.data.videos.map((vid) => (
+                        <VideoFrame
+                          src={vid.src}
+                          orientation={
+                            vid.orientacion === 'vertical' ? 'vertical' : 'wide'
+                          }
+                          caption={vid.caption}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
             </div>
           </DetailLayout>
         </div>
@@ -649,7 +674,9 @@ const featuredProjectsSample = [
         <div class="space-y-4 pt-10 border-t border-line">
           <div class="flex items-center gap-3">
             <Badge variant="industrial">Proyecto industrial</Badge>
-            <span class="text-xs font-mono text-muted">src/content/proyectos/sopachuy-linea-embutidos-y-matadero.md</span>
+            <span class="text-xs font-mono text-muted">
+              src/content/proyectos/sopachuy-linea-embutidos-y-matadero.md
+            </span>
           </div>
           <DetailLayout
             title={sopachuyEntry.data.title}
@@ -674,7 +701,10 @@ const featuredProjectsSample = [
               <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-ink">
                 {sopachuyEntry.data.alcance.map((item) => (
                   <li class="flex items-start gap-2.5">
-                    <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-industrial shrink-0" aria-hidden="true"></span>
+                    <span
+                      class="mt-1.5 h-1.5 w-1.5 rounded-full bg-industrial shrink-0"
+                      aria-hidden="true"
+                    ></span>
                     <span class="leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -682,25 +712,36 @@ const featuredProjectsSample = [
             </div>
 
             <div slot="multimedia" class="space-y-6">
-              {sopachuyEntry.data.galeria && sopachuyEntry.data.galeria.length > 0 && (
-                <div class="space-y-3">
-                  <h3 class="text-base font-display font-semibold text-ink">Registro fotográfico de la planta</h3>
-                  <Gallery images={sopachuyEntry.data.galeria} columns={3} />
-                </div>
-              )}
-
-              {sopachuyEntry.data.videos && sopachuyEntry.data.videos.length > 0 && (
-                <div class="space-y-3">
-                  <h3 class="text-base font-display font-semibold text-ink">Video de cámara de frío</h3>
-                  <div class="max-w-md">
-                    <VideoFrame
-                      src={sopachuyEntry.data.videos[0].src}
-                      caption={sopachuyEntry.data.videos[0].caption}
-                      orientation={sopachuyEntry.data.videos[0].orientacion === 'vertical' ? 'vertical' : 'wide'}
-                    />
+              {sopachuyEntry.data.galeria &&
+                sopachuyEntry.data.galeria.length > 0 && (
+                  <div class="space-y-3">
+                    <h3 class="text-base font-display font-semibold text-ink">
+                      Registro fotográfico de la planta
+                    </h3>
+                    <Gallery images={sopachuyEntry.data.galeria} columns={3} />
                   </div>
-                </div>
-              )}
+                )}
+
+              {sopachuyEntry.data.videos &&
+                sopachuyEntry.data.videos.length > 0 && (
+                  <div class="space-y-3">
+                    <h3 class="text-base font-display font-semibold text-ink">
+                      Video de cámara de frío
+                    </h3>
+                    <div class="max-w-md">
+                      <VideoFrame
+                        src={sopachuyEntry.data.videos[0].src}
+                        caption={sopachuyEntry.data.videos[0].caption}
+                        orientation={
+                          sopachuyEntry.data.videos[0].orientacion ===
+                          'vertical'
+                            ? 'vertical'
+                            : 'wide'
+                        }
+                      />
+                    </div>
+                  </div>
+                )}
             </div>
           </DetailLayout>
         </div>

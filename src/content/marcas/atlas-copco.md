@@ -1,5 +1,5 @@
 ---
-nombre: "Atlas Copco"
-logo: "./atlas-copco.jpeg"
+nombre: 'Atlas Copco'
+logo: './atlas-copco.jpeg'
 mostrar: true
 ---

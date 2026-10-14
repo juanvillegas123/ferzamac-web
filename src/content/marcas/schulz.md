@@ -1,5 +1,5 @@
 ---
-nombre: "Schulz"
-logo: "./schulz.png"
+nombre: 'Schulz'
+logo: './schulz.png'
 mostrar: true
 ---

@@ -6,7 +6,10 @@ import Gallery from '../../components/ui/Gallery.astro';
 import VideoFrame from '../../components/ui/VideoFrame.astro';
 
 export async function getStaticPaths() {
-  const solutions = await getCollection('soluciones', (s) => s.data.area === 'consultoria');
+  const solutions = await getCollection(
+    'soluciones',
+    (s) => s.data.area === 'consultoria'
+  );
   return solutions.map((solution) => ({
     params: { slug: solution.id },
     props: { solution },
@@ -57,7 +60,9 @@ const { Content } = await render(solution);
         <h3 class="text-base font-display font-semibold text-ink">
           Material audiovisual
         </h3>
-        <div class={`grid gap-4 ${solution.data.videos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md'}`}>
+        <div
+          class={`grid gap-4 ${solution.data.videos.length > 1 ? 'grid-cols-1 md:grid-cols-2' : 'max-w-md'}`}
+        >
           {solution.data.videos.map((vid) => (
             <VideoFrame
               src={vid.src}

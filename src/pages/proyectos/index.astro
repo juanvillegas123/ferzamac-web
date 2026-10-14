@@ -27,6 +27,7 @@ const sortedProjects = projects.sort((a, b) => {
 <BaseLayout
   title="Proyectos ejecutados | Ferzamac"
   description="Registro de instalaciones, montajes y proyectos industriales y hospitalarios ejecutados por Ferzamac en Bolivia."
+  breadcrumbs={[{ label: 'Proyectos', href: '/proyectos' }]}
 >
   <PageHeader
     title="Proyectos ejecutados"
@@ -37,7 +38,8 @@ const sortedProjects = projects.sort((a, b) => {
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 space-y-12">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {sortedProjects.map((project) => {
-        const clientKey = project.data.cliente?.id || projectClientMap[project.id];
+        const clientKey =
+          project.data.cliente?.id || projectClientMap[project.id];
         const clientData = clientKey ? clientsMap.get(clientKey) : undefined;
 
         return (

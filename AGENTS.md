@@ -12,21 +12,21 @@
 
 ## 2. Stack (decidido)
 
-| Capa | Decisión |
-|---|---|
-| Framework | **Astro 7.x** (línea estable actual), salida estática |
-| Estilos | **Tailwind CSS 4.3.x** con `@tailwindcss/vite`. Tokens en `@theme` dentro de `src/styles/global.css`. **Prohibido Bootstrap**, jQuery y librerías de componentes visuales pesadas |
-| Lenguaje | TypeScript estricto |
-| Runtime | Node 22 o superior, gestor **npm** |
-| Contenido | Content collections (`src/content.config.ts`, loader `glob`), Markdown/MDX. Importar Zod desde `astro/zod` |
-| Imágenes | `astro:assets` (`<Image>` / `<Picture>`) con sharp |
-| JS en cliente | Mínimo: scripts vanilla. Nada de React ni otros frameworks sin justificarlo |
-| Fuentes | Fontsource autohospedado: **Sora** (títulos) y **Manrope** (texto) |
-| Íconos | Lucide, como SVG en línea |
-| Formulario | Formspree (endpoint en `PUBLIC_FORM_ENDPOINT`) + botón de WhatsApp |
-| Mapa | Enlace a Google Maps o Leaflet/OpenStreetMap. Sin iframes pesados |
-| SEO | `@astrojs/sitemap` + JSON-LD escrito a mano |
-| Hosting | Cloudflare Pages, **estático, sin adaptador de Cloudflare** |
+| Capa          | Decisión                                                                                                                                                                          |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework     | **Astro 7.x** (línea estable actual), salida estática                                                                                                                             |
+| Estilos       | **Tailwind CSS 4.3.x** con `@tailwindcss/vite`. Tokens en `@theme` dentro de `src/styles/global.css`. **Prohibido Bootstrap**, jQuery y librerías de componentes visuales pesadas |
+| Lenguaje      | TypeScript estricto                                                                                                                                                               |
+| Runtime       | Node 22 o superior, gestor **npm**                                                                                                                                                |
+| Contenido     | Content collections (`src/content.config.ts`, loader `glob`), Markdown/MDX. Importar Zod desde `astro/zod`                                                                        |
+| Imágenes      | `astro:assets` (`<Image>` / `<Picture>`) con sharp                                                                                                                                |
+| JS en cliente | Mínimo: scripts vanilla. Nada de React ni otros frameworks sin justificarlo                                                                                                       |
+| Fuentes       | Fontsource autohospedado: **Sora** (títulos) y **Manrope** (texto)                                                                                                                |
+| Íconos        | Lucide, como SVG en línea                                                                                                                                                         |
+| Formulario    | Formspree (endpoint en `PUBLIC_FORM_ENDPOINT`) + botón de WhatsApp                                                                                                                |
+| Mapa          | Enlace a Google Maps o Leaflet/OpenStreetMap. Sin iframes pesados                                                                                                                 |
+| SEO           | `@astrojs/sitemap` + JSON-LD escrito a mano                                                                                                                                       |
+| Hosting       | Cloudflare Pages, **estático, sin adaptador de Cloudflare**                                                                                                                       |
 
 Al inicializar usa las versiones estables vigentes, fíjalas en `package.json` y **no las degrades**. Si una API cambió, consulta la documentación oficial de la versión instalada en lugar de usar memoria.
 
@@ -93,19 +93,20 @@ Slugs en español, kebab-case, sin tildes ni ñ (`planta-cuatro-canadas`).
 
 **Tokens** (definir en `@theme`):
 
-| Token | Valor | Uso |
-|---|---|---|
-| `ink` | `#0A4D5C` | Texto, títulos, botones principales (texto blanco encima) |
-| `ink-deep` | `#06323C` | Hero, footer, bandas oscuras |
-| `industrial` | `#00B020` | Acento del área Industrial |
-| `hospitalaria` | `#1DA1D2` | Acento del área Hospitalaria |
-| `surface` | `#F4F8F9` | Fondos alternos |
-| `line` | `#D9E4E7` | Bordes y separadores |
-| `muted` | `#4F6D75` | Texto secundario (≈5,5:1 sobre blanco) |
+| Token          | Valor     | Uso                                                       |
+| -------------- | --------- | --------------------------------------------------------- |
+| `ink`          | `#0A4D5C` | Texto, títulos, botones principales (texto blanco encima) |
+| `ink-deep`     | `#06323C` | Hero, footer, bandas oscuras                              |
+| `industrial`   | `#00B020` | Acento del área Industrial                                |
+| `hospitalaria` | `#1DA1D2` | Acento del área Hospitalaria                              |
+| `surface`      | `#F4F8F9` | Fondos alternos                                           |
+| `line`         | `#D9E4E7` | Bordes y separadores                                      |
+| `muted`        | `#4F6D75` | Texto secundario (≈5,5:1 sobre blanco)                    |
 
 Los tres primeros colores de marca vienen del cliente; `ink-deep`, `surface`, `line` y `muted` son derivados propuestos: valida su contraste al implementar.
 
 **Reglas de color y contraste**
+
 - Verde y celeste sobre blanco rinden ≈3:1: **solo íconos, bordes, subrayados y textos grandes en negrita**. Nunca texto pequeño.
 - Sobre `ink-deep` el verde y el celeste sí alcanzan ≈4,6:1 y pueden usarse como texto.
 - Botón principal: fondo `ink`, texto blanco. Botón secundario: borde `ink`.
@@ -133,6 +134,7 @@ Colecciones (`src/content.config.ts`):
 - **marcas:** `nombre`, `logo?`, **`mostrar` (boolean, `false` por defecto)**.
 
 **Reglas**
+
 1. **No inventes datos técnicos.** Usa solo lo que está en `docs/catalogo-texto.md` y `docs/inventory.csv`. Lo que falte se marca `[por confirmar]` y sale en `docs/pending.csv`.
 2. **Clientes:** si `mostrarNombre` es `false`, publica el proyecto sin nombrar al cliente ("hospital de Sucre"). Esto aplica a hospitales, CNS, YLB, EBA, ENVIBOL, Caja Bancaria Estatal de Salud y el municipio de La Guardia hasta que haya permiso. En proyectos sin cliente documentado, `cliente` se omite y se usa solo `ubicacion`.
 3. **Marcas (Atlas Copco, Schulz, Kaeser, Honda, etc.):** son marcas con las que trabajan, no clientes. Título: "Marcas con las que trabajamos". No insinuar distribución autorizada.
@@ -169,12 +171,14 @@ Colecciones (`src/content.config.ts`):
 ## 11. Reglas duras
 
 **Siempre**
+
 - Seguir los tokens y componentes existentes antes de crear nuevos.
 - Código, nombres de archivo y comentarios técnicos en **inglés**; textos de interfaz y contenido en **español**.
 - Componentes en PascalCase, utilidades en camelCase, archivos de contenido en kebab-case.
 - Hacer commits pequeños con mensajes claros (`feat:`, `fix:`, `content:`, `docs:`).
 
 **Nunca**
+
 - Usar Bootstrap, jQuery o dependencias nuevas sin explicar por qué en el commit.
 - Inventar cifras, capacidades, clientes, certificaciones o testimonios.
 - Subir logos de marcas de terceros sin SVG ni permiso confirmado.
@@ -182,6 +186,7 @@ Colecciones (`src/content.config.ts`):
 - Usar `localStorage` para nada que el sitio necesite para funcionar.
 
 **Pregunta antes de**
+
 - Cambiar la paleta, la tipografía o el stack.
 - Agregar una página nueva fuera de `docs/site-pages.csv`.
 - Eliminar contenido existente.
@@ -198,7 +203,8 @@ Para cambios grandes: primero un plan breve, luego la implementación en pasos p
   - [x] **F2c · Validación F2c:** 7 fichas nuevas y 2 ajustes (33 fichas técnicas validadas, nuevo tipo suministro).
 - [x] **F3 · Páginas:**
   - [x] **F3a · Páginas públicas reales:** home (`/`), `/proyectos` y `/proyectos/[slug]`, `/industrial` y `/industrial/[slug]`, `/nosotros`, `/contacto`, más páginas provisionales para `/hospitalaria` y `/consultoria`.
-- [ ] **F4 · SEO, accesibilidad y rendimiento:** JSON-LD, sitemap, Lighthouse.
+  - [x] **F3b · Ajustes finales de interfaz:** mapa interactivo en contacto (con pin de Ferzamac en Sucre), eliminación de redundancia de contacto, integración de marcas aliadas y fotogramas de proyectos.
+- [x] **F4 · SEO, accesibilidad y rendimiento:** JSON-LD (Organization, LocalBusiness, Service, BreadcrumbList), sitemap y robots condicionales a `PUBLIC_SITE_URL`, exclusión de `/guia-de-estilo` en producción con posbuild, accesibilidad validada (1 h1 por página verificado con script automático), auditoría de seguridad y cabeceras CSP/HSTS, rendimiento móvil Lighthouse con notas 96-100.
 - [ ] **F5 · Despliegue:** Cloudflare Pages, dominio, Search Console y perfil de Google Business.
 
 **Definición de terminado de una página:** H1 único · `title` y `description` · imágenes con `alt` y dimensiones · CTA de cotización con WhatsApp prellenado ("Hola, quiero cotizar {título}") · enlaces internos · `npm run check` y `npm run build` sin errores.

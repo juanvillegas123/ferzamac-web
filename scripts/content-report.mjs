@@ -42,7 +42,10 @@ function parseFrontmatter(content) {
       if (!Array.isArray(frontmatter[currentKey])) {
         frontmatter[currentKey] = [];
       }
-      const itemVal = line.replace(/^\s+-\s+/, '').trim().replace(/^["']|["']$/g, '');
+      const itemVal = line
+        .replace(/^\s+-\s+/, '')
+        .trim()
+        .replace(/^["']|["']$/g, '');
       frontmatter[currentKey].push(itemVal);
     }
   }
@@ -55,7 +58,9 @@ const sitioActualPath = path.join(rootDir, 'docs', 'sitio-actual-texto.md');
 const catalogoText =
   (fs.existsSync(catalogoPath) ? fs.readFileSync(catalogoPath, 'utf-8') : '') +
   '\n' +
-  (fs.existsSync(sitioActualPath) ? fs.readFileSync(sitioActualPath, 'utf-8') : '');
+  (fs.existsSync(sitioActualPath)
+    ? fs.readFileSync(sitioActualPath, 'utf-8')
+    : '');
 
 const marketingTerms = [
   'alta precisión',
@@ -77,7 +82,9 @@ function analyzeEntry(col, file) {
   const { frontmatter, body, rawFm } = parseFrontmatter(raw);
 
   const title = frontmatter.title || frontmatter.nombre || file;
-  const estado = frontmatter.estado || (col === 'clientes' || col === 'marcas' ? 'n/a' : 'sin-definir');
+  const estado =
+    frontmatter.estado ||
+    (col === 'clientes' || col === 'marcas' ? 'n/a' : 'sin-definir');
   const slug = file.replace(/\.(md|mdx)$/, '');
 
   // Body prohibited content checks
@@ -96,7 +103,8 @@ function analyzeEntry(col, file) {
   // Número con unidad en specs, resumen y cuerpo que deba aparecer en docs/catalogo-texto.md
   const unconfirmedNumbers = [];
   const textToCheckForNumbers = `${frontmatter.resumen || ''} ${body} ${rawFm}`;
-  const numberUnitRegex = /\b(\d+(?:[.,]\d+)?)\s*(kg|s|seg|segundos|t|toneladas|tonelada|plg|pulgadas|metros|metro|m|lt|l|litros|bar|bhp|kw|hp|mm|cm|v|w|hz|°|%)\b/gi;
+  const numberUnitRegex =
+    /\b(\d+(?:[.,]\d+)?)\s*(kg|s|seg|segundos|t|toneladas|tonelada|plg|pulgadas|metros|metro|m|lt|l|litros|bar|bhp|kw|hp|mm|cm|v|w|hz|°|%)\b/gi;
   let match;
   while ((match = numberUnitRegex.exec(textToCheckForNumbers)) !== null) {
     const rawNumber = match[1];
@@ -129,12 +137,17 @@ function analyzeEntry(col, file) {
   }
 
   // Pendientes list
-  const pendientes = Array.isArray(frontmatter.pendientes) ? frontmatter.pendientes : [];
+  const pendientes = Array.isArray(frontmatter.pendientes)
+    ? frontmatter.pendientes
+    : [];
 
   // Images analysis
-  const hasMainImage = Boolean(frontmatter.imagenPrincipal && frontmatter.imagenPrincipal !== '');
+  const hasMainImage = Boolean(
+    frontmatter.imagenPrincipal && frontmatter.imagenPrincipal !== ''
+  );
   const notaInterna = frontmatter.notaInterna || frontmatter.imagenNota || null;
-  const rawFmHasGaleria = /galeria:\s*(\r?\n\s+-\s+|\s*\[\s*\{|\s*\[\s*["'])/.test(rawFm);
+  const rawFmHasGaleria =
+    /galeria:\s*(\r?\n\s+-\s+|\s*\[\s*\{|\s*\[\s*["'])/.test(rawFm);
   const rawFmHasEmptyGaleria = /galeria:\s*\[\s*\]/.test(rawFm);
   const hasGallery = rawFmHasGaleria && !rawFmHasEmptyGaleria;
 
@@ -188,7 +201,9 @@ for (const col of collections) {
     continue;
   }
 
-  console.log(`📁 Colección: ${col.toUpperCase()} (${files.length} entrada${files.length > 1 ? 's' : ''})`);
+  console.log(
+    `📁 Colección: ${col.toUpperCase()} (${files.length} entrada${files.length > 1 ? 's' : ''})`
+  );
   console.log('─'.repeat(60));
 
   for (const file of files) {
@@ -197,9 +212,12 @@ for (const col of collections) {
 
     if (data.estado === 'parcial') totalParcial++;
     if (data.estado === 'completo') totalCompleto++;
-    if (!data.hasMainImage && (col === 'soluciones' || col === 'proyectos')) totalSinImgPrincipal++;
-    if (!data.hasGallery && (col === 'soluciones' || col === 'proyectos')) totalSinGaleria++;
-    if (col === 'clientes' && data.mostrarNombre === false) totalPrivateClients++;
+    if (!data.hasMainImage && (col === 'soluciones' || col === 'proyectos'))
+      totalSinImgPrincipal++;
+    if (!data.hasGallery && (col === 'soluciones' || col === 'proyectos'))
+      totalSinGaleria++;
+    if (col === 'clientes' && data.mostrarNombre === false)
+      totalPrivateClients++;
 
     if (data.bodyViolations.length > 0) {
       allViolations.push({
@@ -239,7 +257,9 @@ for (const col of collections) {
     }
 
     if (col === 'clientes') {
-      console.log(`  mostrarNombre:        ${data.mostrarNombre} (privacidad ${data.mostrarNombre ? 'pública' : 'protegida/anónima'})`);
+      console.log(
+        `  mostrarNombre:        ${data.mostrarNombre} (privacidad ${data.mostrarNombre ? 'pública' : 'protegida/anónima'})`
+      );
     }
 
     if (data.clientRef) {
@@ -256,15 +276,21 @@ for (const col of collections) {
     }
 
     if (data.bodyViolations.length > 0) {
-      console.log(`  ⚠️ VIOLACIONES EN CUERPO: ${data.bodyViolations.join(', ')}`);
+      console.log(
+        `  ⚠️ VIOLACIONES EN CUERPO: ${data.bodyViolations.join(', ')}`
+      );
     }
 
     if (data.unconfirmedNumbers.length > 0) {
-      console.log(`  ❌ NÚMEROS NO CONFIRMADOS EN CATÁLOGO: ${data.unconfirmedNumbers.join(', ')}`);
+      console.log(
+        `  ❌ NÚMEROS NO CONFIRMADOS EN CATÁLOGO: ${data.unconfirmedNumbers.join(', ')}`
+      );
     }
 
     if (data.marketingWarnings.length > 0) {
-      console.log(`  ⚠️ ADVERTENCIA MARKETING: ${data.marketingWarnings.join(', ')}`);
+      console.log(
+        `  ⚠️ ADVERTENCIA MARKETING: ${data.marketingWarnings.join(', ')}`
+      );
     }
 
     console.log('');
@@ -286,24 +312,34 @@ let hasErrors = false;
 
 if (allViolations.length > 0) {
   hasErrors = true;
-  console.error('❌ ERROR: Se detectaron notas internas o menciones prohibidas en cuerpos Markdown:');
+  console.error(
+    '❌ ERROR: Se detectaron notas internas o menciones prohibidas en cuerpos Markdown:'
+  );
   for (const v of allViolations) {
     console.error(`   - ${v.entry}: ${v.violations.join(', ')}`);
   }
-  console.error('El cuerpo Markdown no debe incluir [por confirmar], catálogo ni pág.\n');
+  console.error(
+    'El cuerpo Markdown no debe incluir [por confirmar], catálogo ni pág.\n'
+  );
 }
 
 if (allUnconfirmedNumbers.length > 0) {
   hasErrors = true;
-  console.error('❌ ERROR: Se detectaron números con unidad no respaldados en docs/catalogo-texto.md:');
+  console.error(
+    '❌ ERROR: Se detectaron números con unidad no respaldados en docs/catalogo-texto.md:'
+  );
   for (const item of allUnconfirmedNumbers) {
     console.error(`   - ${item.entry}: ${item.numbers.join(', ')}`);
   }
-  console.error('Todos los números técnicos deben provenir de docs/catalogo-texto.md.\n');
+  console.error(
+    'Todos los números técnicos deben provenir de docs/catalogo-texto.md.\n'
+  );
 }
 
 if (allMarketingWarnings.length > 0) {
-  console.warn('⚠️ ADVERTENCIA: Se detectaron frases de marketing no respaldadas (revisar para evitar adjetivos sin sustento):');
+  console.warn(
+    '⚠️ ADVERTENCIA: Se detectaron frases de marketing no respaldadas (revisar para evitar adjetivos sin sustento):'
+  );
   for (const item of allMarketingWarnings) {
     console.warn(`   - ${item.entry}: ${item.warnings.join(', ')}`);
   }
@@ -313,6 +349,8 @@ if (allMarketingWarnings.length > 0) {
 if (hasErrors) {
   process.exit(1);
 } else {
-  console.log('✅ Validación de contenido aprobada (sin menciones prohibidas ni números inventados).\n');
+  console.log(
+    '✅ Validación de contenido aprobada (sin menciones prohibidas ni números inventados).\n'
+  );
   process.exit(0);
 }

@@ -1,5 +1,5 @@
 ---
-nombre: "Energy Power Perú"
-logo: "./energy.jpeg"
+nombre: 'Energy Power Perú'
+logo: './energy.jpeg'
 mostrar: true
 ---

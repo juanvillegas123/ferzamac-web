@@ -1,5 +1,5 @@
 ---
-nombre: "Honda"
-logo: "./honda.jpeg"
+nombre: 'Honda'
+logo: './honda.jpeg'
 mostrar: true
 ---

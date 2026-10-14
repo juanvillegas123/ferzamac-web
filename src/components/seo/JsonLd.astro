@@ -1,0 +1,134 @@
+---
+import { SITE } from '../../lib/site';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  type?: 'website' | 'service' | 'project';
+  title?: string;
+  description?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  serviceName?: string;
+  serviceDescription?: string;
+  image?: string;
+}
+
+const {
+  type = 'website',
+  title = SITE.name,
+  description = SITE.tagline,
+  breadcrumbs = [],
+  serviceName,
+  serviceDescription,
+  image,
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : null;
+const logoUrl = siteUrl
+  ? `${siteUrl}/logo/logo-ferzamac.svg`
+  : '/logo/logo-ferzamac.svg';
+const currentUrl = siteUrl
+  ? new URL(Astro.url.pathname, siteUrl).href
+  : Astro.url.pathname;
+
+// 1. Organization + LocalBusiness (sin horarios, valoraciones ni sameAs mientras no existan)
+const organizationSchema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  name: 'Ferzamac',
+  legalName: 'Ferzamac',
+  description:
+    'Diseño, construcción, montaje y mantenimiento de plantas, equipos industriales y sistemas hospitalarios en Bolivia.',
+  telephone: SITE.phoneRaw,
+  email: SITE.email || 'info@ferzamac.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Calle René Moreno Nº 162',
+    addressLocality: 'Sucre',
+    addressRegion: 'Chuquisaca',
+    addressCountry: 'BO',
+  },
+  logo: logoUrl,
+  ...(siteUrl ? { url: siteUrl } : {}),
+};
+
+// 2. Service Schema (para páginas de soluciones técnicas)
+let serviceSchema: Record<string, unknown> | null = null;
+if (type === 'service') {
+  serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: serviceName || title,
+    description: serviceDescription || description,
+    areaServed: 'Bolivia',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Ferzamac',
+      telephone: SITE.phoneRaw,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Calle René Moreno Nº 162',
+        addressLocality: 'Sucre',
+        addressRegion: 'Chuquisaca',
+        addressCountry: 'BO',
+      },
+      ...(siteUrl ? { url: siteUrl } : {}),
+    },
+    ...(image
+      ? {
+          image:
+            siteUrl && image.startsWith('/') ? `${siteUrl}${image}` : image,
+        }
+      : {}),
+  };
+}
+
+// 3. BreadcrumbList Schema (para páginas internas con navegación de migas de pan)
+let breadcrumbSchema: Record<string, unknown> | null = null;
+if (breadcrumbs && breadcrumbs.length > 0) {
+  const fullCrumbs: BreadcrumbItem[] = [
+    { label: 'Inicio', href: '/' },
+    ...breadcrumbs,
+  ];
+
+  breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: fullCrumbs.map((crumb, index) => {
+      const itemUrl = crumb.href
+        ? siteUrl
+          ? new URL(crumb.href, siteUrl).href
+          : crumb.href
+        : currentUrl;
+
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.label,
+        item: itemUrl,
+      };
+    }),
+  };
+}
+---
+
+<!-- JSON-LD: Organization & LocalBusiness -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(organizationSchema)}
+/>
+<!-- JSON-LD: Service (si aplica) -->
+{serviceSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+)}
+
+<!-- JSON-LD: BreadcrumbList (si aplica) -->
+{breadcrumbSchema && (
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbSchema)}
+  />
+)}

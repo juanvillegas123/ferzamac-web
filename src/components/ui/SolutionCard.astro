@@ -71,7 +71,11 @@ const areaLabels = {
       {clientLogo && (
         <div
           class="absolute top-3 right-3 z-10 flex items-center justify-center rounded bg-white/95 px-2.5 py-1.5 shadow-xs border border-line/90 backdrop-blur-xs transition-transform duration-200 group-hover:scale-105"
-          title={clientName ? `Solución / equipo para: ${clientName}` : 'Cliente / Entidad'}
+          title={
+            clientName
+              ? `Solución / equipo para: ${clientName}`
+              : 'Cliente / Entidad'
+          }
         >
           <Image
             src={clientLogo}

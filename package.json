@@ -7,14 +7,17 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/postbuild-cleanup.mjs && node scripts/check-headings.mjs",
     "preview": "astro preview",
     "check": "astro check",
+    "check:a11y": "node scripts/check-headings.mjs",
+    "generate:og": "node scripts/generate-og-image.mjs",
     "content:report": "node scripts/content-report.mjs",
     "format": "prettier --write .",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource-variable/sora": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",

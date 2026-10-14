@@ -16,7 +16,10 @@ import render1 from '../assets/images/home/ingenieria-diseno-3d-01.jpg';
 import render2 from '../assets/images/home/ingenieria-diseno-3d-02.jpg';
 import render3 from '../assets/images/home/ingenieria-diseno-3d-03.jpg';
 
-const featuredProjects = await getCollection('proyectos', (p) => p.data.destacado);
+const featuredProjects = await getCollection(
+  'proyectos',
+  (p) => p.data.destacado
+);
 const allClients = await getCollection('clientes');
 const clientsMap = new Map(allClients.map((c) => [c.id, c.data]));
 
@@ -56,7 +59,11 @@ const clientsData = clients.map((c) => ({
 const showcaseImages = [
   { src: render1, alt: 'Diseño 3D de planta', label: 'Render de diseño' },
   { src: render2, alt: 'Diseño 3D de estructura', label: 'Render de diseño' },
-  { src: render3, alt: 'Diseño 3D de equipo industrial', label: 'Render de diseño' },
+  {
+    src: render3,
+    alt: 'Diseño 3D de equipo industrial',
+    label: 'Render de diseño',
+  },
 ];
 ---
 
@@ -74,7 +81,10 @@ const showcaseImages = [
   />
 
   <!-- Presentación institucional (Texto provisional a aprobar por el cliente) -->
-  <section class="border-b border-line bg-surface py-12 sm:py-14" aria-label="Presentación institucional">
+  <section
+    class="border-b border-line bg-surface py-12 sm:py-14"
+    aria-label="Presentación institucional"
+  >
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center space-y-4">
       <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
         Ingeniería, montaje y mantenimiento
@@ -83,7 +93,11 @@ const showcaseImages = [
         Especialistas en plantas y equipos industriales
       </h2>
       <p class="text-base sm:text-lg text-ink/90 leading-relaxed max-w-3xl mx-auto">
-        Ferzamac es una empresa con sede en Bolivia especializada en diseño, construcción, montaje, mantenimiento preventivo y correctivo y puesta en marcha de plantas, equipos y máquinas industriales. También ofrece consultoría en auditoría técnica industrial, valoración, dimensionamiento y memoria de cálculo.
+        Ferzamac es una empresa con sede en Bolivia especializada en diseño,
+        construcción, montaje, mantenimiento preventivo y correctivo y puesta en
+        marcha de plantas, equipos y máquinas industriales. También ofrece
+        consultoría en auditoría técnica industrial, valoración,
+        dimensionamiento y memoria de cálculo.
       </p>
     </div>
   </section>
@@ -116,10 +130,7 @@ const showcaseImages = [
   />
 
   <!-- ProcessSteps -->
-  <ProcessSteps
-    eyebrow="Metodología"
-    title="Proceso de trabajo"
-  />
+  <ProcessSteps eyebrow="Metodología" title="Proceso de trabajo" />
 
   <!-- EngineeringShowcase -->
   <EngineeringShowcase
@@ -144,7 +155,10 @@ const showcaseImages = [
   />
 
   <!-- Formulario de contacto rápido antes del footer -->
-  <section class="bg-surface py-12 sm:py-16 border-t border-line" aria-label="Contacto rápido">
+  <section
+    class="bg-surface py-12 sm:py-16 border-t border-line"
+    aria-label="Contacto rápido"
+  >
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-6">
       <div class="text-center space-y-2">
         <span class="inline-block text-xs font-bold uppercase tracking-wider text-muted">
@@ -154,7 +168,8 @@ const showcaseImages = [
           Solicite información técnica o cotización
         </h2>
         <p class="text-sm text-muted max-w-xl mx-auto leading-relaxed">
-          Envíenos sus requerimientos para coordinar con nuestro equipo técnico en Sucre, Bolivia.
+          Envíenos sus requerimientos para coordinar con nuestro equipo técnico
+          en Sucre, Bolivia.
         </p>
       </div>
 

@@ -28,8 +28,15 @@ const imageURL =
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-{canonicalURL && <link rel="canonical" href={canonicalURL} />}
-{/* TODO: definir site en astro.config.mjs para generar la etiqueta canonical absoluta */}
+{canonicalURL ? (
+  <link rel="canonical" href={canonicalURL} />
+) : (
+  <Fragment
+    set:html={
+      '<!-- TODO: PUBLIC_SITE_URL no configurada; canonical y sitemap omitidos -->'
+    }
+  />
+)}
 
 <!-- Robots -->
 {noindex ? (

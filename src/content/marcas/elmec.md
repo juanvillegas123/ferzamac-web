@@ -1,5 +1,5 @@
 ---
-nombre: "ELMEC"
-logo: "./elmec.png"
+nombre: 'ELMEC'
+logo: './elmec.png'
 mostrar: true
 ---

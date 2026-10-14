@@ -1,7 +1,7 @@
 ---
-nombre: "Caja Nacional de Salud (CNS)"
-sector: "Salud"
-ciudad: "Chuquisaca"
+nombre: 'Caja Nacional de Salud (CNS)'
+sector: 'Salud'
+ciudad: 'Chuquisaca'
 mostrarNombre: true
-logo: "./cns.jpeg"
+logo: './cns.jpeg'
 ---

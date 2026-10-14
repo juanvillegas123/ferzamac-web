@@ -41,7 +41,9 @@ const soluciones = defineCollection({
           z.object({
             src: z.string(),
             poster: image().optional(),
-            orientacion: z.enum(['horizontal', 'vertical']).default('horizontal'),
+            orientacion: z
+              .enum(['horizontal', 'vertical'])
+              .default('horizontal'),
             caption: z.string().optional(),
           })
         )
@@ -91,7 +93,9 @@ const proyectos = defineCollection({
           z.object({
             src: z.string(),
             poster: image().optional(),
-            orientacion: z.enum(['horizontal', 'vertical']).default('horizontal'),
+            orientacion: z
+              .enum(['horizontal', 'vertical'])
+              .default('horizontal'),
             caption: z.string().optional(),
           })
         )

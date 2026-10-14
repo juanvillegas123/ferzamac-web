@@ -3,14 +3,23 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import WhatsAppButton from '../components/layout/WhatsAppButton.astro';
 import SEO from '../components/seo/SEO.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
+import type { BreadcrumbItem } from '../components/ui/Breadcrumbs.astro';
 import { SITE } from '../lib/site';
 import '../styles/global.css';
+
+import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
+import manropeFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
   noindex?: boolean;
+  type?: 'website' | 'service' | 'project';
+  breadcrumbs?: BreadcrumbItem[];
+  serviceName?: string;
+  serviceDescription?: string;
 }
 
 const {
@@ -18,10 +27,16 @@ const {
   description = `${SITE.name}: diseño, construcción, montaje y mantenimiento de plantas, equipos industriales y sistemas hospitalarios en Bolivia.`,
   image,
   noindex = false,
+  type = 'website',
+  breadcrumbs,
+  serviceName,
+  serviceDescription,
 } = Astro.props;
 
 const pageTitle = title
-  ? `${title} | ${SITE.name}`
+  ? title.includes(SITE.name)
+    ? title
+    : `${title} | ${SITE.name}`
   : `${SITE.name} · Ingeniería y Mantenimiento Industrial y Hospitalario`;
 ---
 
@@ -32,11 +47,37 @@ const pageTitle = title
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Preload fuentes corporativas self-hosted (variantes latin) -->
+    <link
+      rel="preload"
+      href={soraFont}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href={manropeFont}
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
     <SEO
       title={pageTitle}
       description={description}
       image={image}
       noindex={noindex}
+    />
+
+    <JsonLd
+      type={type}
+      title={pageTitle}
+      description={description}
+      breadcrumbs={breadcrumbs}
+      serviceName={serviceName}
+      serviceDescription={serviceDescription}
+      image={image}
     />
 
     <!-- Favicons corporativos oficiales -->

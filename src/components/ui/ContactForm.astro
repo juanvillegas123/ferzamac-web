@@ -11,7 +11,9 @@ interface Props {
 
 const {
   variant = 'full',
-  title = variant === 'compact' ? 'Consulta rápida' : 'Enviar solicitud de cotización técnica',
+  title = variant === 'compact'
+    ? 'Consulta rápida'
+    : 'Enviar solicitud de cotización técnica',
   description = variant === 'compact'
     ? 'Complete el formulario para recibir una propuesta técnica.'
     : 'Complete sus datos y requerimientos. Nuestro equipo de ingeniería le responderá a la brevedad por correo o WhatsApp.',
@@ -35,7 +37,12 @@ const instanceId = Math.random().toString(36).substring(2, 7);
   <div class="space-y-4">
     {title && (
       <div class="space-y-1">
-        <h3 class:list={['font-display font-semibold text-ink', variant === 'compact' ? 'text-lg' : 'text-xl']}>
+        <h3
+          class:list={[
+            'font-display font-semibold text-ink',
+            variant === 'compact' ? 'text-lg' : 'text-xl',
+          ]}
+        >
           {title}
         </h3>
         {description && (
@@ -47,7 +54,11 @@ const instanceId = Math.random().toString(36).substring(2, 7);
     )}
 
     <form
-      action={hasEndpoint ? formEndpoint : `mailto:${SITE.email || 'info@ferzamac.com'}`}
+      action={
+        hasEndpoint
+          ? formEndpoint
+          : `mailto:${SITE.email || 'info@ferzamac.com'}`
+      }
       method={hasEndpoint ? 'POST' : 'GET'}
       class="contact-ajax-form space-y-4 text-sm"
       data-has-endpoint={hasEndpoint ? 'true' : 'false'}
@@ -69,8 +80,14 @@ const instanceId = Math.random().toString(36).substring(2, 7);
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label for={`cf-name-${instanceId}`} class="block font-medium text-ink mb-1">
-            Nombre o empresa <span class="text-red-600" aria-hidden="true">*</span>
+          <label
+            for={`cf-name-${instanceId}`}
+            class="block font-medium text-ink mb-1"
+          >
+            Nombre o empresa{' '}
+            <span class="text-red-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <input
             type="text"
@@ -84,8 +101,14 @@ const instanceId = Math.random().toString(36).substring(2, 7);
         </div>
 
         <div>
-          <label for={`cf-phone-${instanceId}`} class="block font-medium text-ink mb-1">
-            Teléfono / Celular <span class="text-red-600" aria-hidden="true">*</span>
+          <label
+            for={`cf-phone-${instanceId}`}
+            class="block font-medium text-ink mb-1"
+          >
+            Teléfono / Celular{' '}
+            <span class="text-red-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <input
             type="tel"
@@ -101,8 +124,14 @@ const instanceId = Math.random().toString(36).substring(2, 7);
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label for={`cf-email-${instanceId}`} class="block font-medium text-ink mb-1">
-            Correo electrónico <span class="text-red-600" aria-hidden="true">*</span>
+          <label
+            for={`cf-email-${instanceId}`}
+            class="block font-medium text-ink mb-1"
+          >
+            Correo electrónico{' '}
+            <span class="text-red-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <input
             type="email"
@@ -116,7 +145,10 @@ const instanceId = Math.random().toString(36).substring(2, 7);
         </div>
 
         <div>
-          <label for={`cf-area-${instanceId}`} class="block font-medium text-ink mb-1">
+          <label
+            for={`cf-area-${instanceId}`}
+            class="block font-medium text-ink mb-1"
+          >
             Área de interés
           </label>
           <select
@@ -124,17 +156,31 @@ const instanceId = Math.random().toString(36).substring(2, 7);
             name="area"
             class="w-full rounded border border-line bg-surface px-3 py-2 text-ink focus:border-ink focus:bg-white focus:outline-hidden transition-colors"
           >
-            <option value="Industrial">Área Industrial (diseño, montaje, calderos, cintas)</option>
-            <option value="Hospitalaria">Área Hospitalaria (gases medicinales, agua purificada)</option>
-            <option value="Mantenimiento">Mantenimiento preventivo / correctivo</option>
-            <option value="Consultoria">Consultoría técnica e ingeniería 3D</option>
+            <option value="Industrial">
+              Área Industrial (diseño, montaje, calderos, cintas)
+            </option>
+            <option value="Hospitalaria">
+              Área Hospitalaria (gases medicinales, agua purificada)
+            </option>
+            <option value="Mantenimiento">
+              Mantenimiento preventivo / correctivo
+            </option>
+            <option value="Consultoria">
+              Consultoría técnica e ingeniería 3D
+            </option>
           </select>
         </div>
       </div>
 
       <div>
-        <label for={`cf-message-${instanceId}`} class="block font-medium text-ink mb-1">
-          Detalle del requerimiento técnico <span class="text-red-600" aria-hidden="true">*</span>
+        <label
+          for={`cf-message-${instanceId}`}
+          class="block font-medium text-ink mb-1"
+        >
+          Detalle del requerimiento técnico{' '}
+          <span class="text-red-600" aria-hidden="true">
+            *
+          </span>
         </label>
         <textarea
           id={`cf-message-${instanceId}`}
@@ -160,8 +206,19 @@ const instanceId = Math.random().toString(36).substring(2, 7);
           size="md"
           class="submit-button justify-center font-medium"
         >
-          <svg class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <svg
+            class="h-4 w-4 shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
           </svg>
           <span class="btn-text">Enviar por correo</span>
           <span class="btn-spinner hidden ml-2">...</span>
@@ -171,7 +228,11 @@ const instanceId = Math.random().toString(36).substring(2, 7);
           type="button"
           class="btn-send-whatsapp inline-flex items-center justify-center gap-2 rounded-full border border-[#99DFAB] bg-[#EAF7ED] px-4 py-2 text-sm font-semibold text-[#0B6B22] hover:bg-[#D4EED7] focus-visible:outline-2 focus-visible:outline-ink transition-colors cursor-pointer"
         >
-          <svg class="h-4 w-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+          <svg
+            class="h-4 w-4 fill-current shrink-0"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
           </svg>
           <span>Enviar por WhatsApp</span>
@@ -183,32 +244,48 @@ const instanceId = Math.random().toString(36).substring(2, 7);
 
 <script>
   function setupContactForms() {
-    const forms = document.querySelectorAll<HTMLFormElement>('.contact-ajax-form');
+    const forms =
+      document.querySelectorAll<HTMLFormElement>('.contact-ajax-form');
 
     forms.forEach((form) => {
       const feedback = form.querySelector<HTMLDivElement>('.form-feedback');
       const submitBtn = form.querySelector<HTMLButtonElement>('.submit-button');
       const btnText = form.querySelector<HTMLSpanElement>('.btn-text');
       const btnSpinner = form.querySelector<HTMLSpanElement>('.btn-spinner');
-      const btnWhatsapp = form.querySelector<HTMLButtonElement>('.btn-send-whatsapp');
+      const btnWhatsapp =
+        form.querySelector<HTMLButtonElement>('.btn-send-whatsapp');
 
       const hasEndpoint = form.getAttribute('data-has-endpoint') === 'true';
-      const targetEmail = form.getAttribute('data-email') || 'info@ferzamac.com';
-      const targetWhatsapp = form.getAttribute('data-whatsapp') || '59172877116';
+      const targetEmail =
+        form.getAttribute('data-email') || 'info@ferzamac.com';
+      const targetWhatsapp =
+        form.getAttribute('data-whatsapp') || '59172877116';
 
       // Botón "Enviar por WhatsApp" directo
       btnWhatsapp?.addEventListener('click', () => {
-        const nameInput = form.querySelector<HTMLInputElement>('input[name="nombre"]');
-        const phoneInput = form.querySelector<HTMLInputElement>('input[name="telefono"]');
-        const emailInput = form.querySelector<HTMLInputElement>('input[name="email"]');
-        const areaSelect = form.querySelector<HTMLSelectElement>('select[name="area"]');
-        const messageInput = form.querySelector<HTMLTextAreaElement>('textarea[name="mensaje"]');
+        const nameInput = form.querySelector<HTMLInputElement>(
+          'input[name="nombre"]'
+        );
+        const phoneInput = form.querySelector<HTMLInputElement>(
+          'input[name="telefono"]'
+        );
+        const emailInput = form.querySelector<HTMLInputElement>(
+          'input[name="email"]'
+        );
+        const areaSelect = form.querySelector<HTMLSelectElement>(
+          'select[name="area"]'
+        );
+        const messageInput = form.querySelector<HTMLTextAreaElement>(
+          'textarea[name="mensaje"]'
+        );
 
         const nombre = nameInput?.value.trim() || 'Cliente';
         const telefono = phoneInput?.value.trim() || 'No indicado';
         const email = emailInput?.value.trim() || 'No indicado';
         const area = areaSelect?.value || 'General';
-        const mensaje = messageInput?.value.trim() || 'Deseo cotizar un equipo o servicio técnico.';
+        const mensaje =
+          messageInput?.value.trim() ||
+          'Deseo cotizar un equipo o servicio técnico.';
 
         const text = `Hola Ferzamac, mi nombre es ${nombre}.
 *Área de interés:* ${area}
@@ -224,11 +301,14 @@ ${mensaje}`;
       // Submit por formulario (Formspree o Mailto)
       form.addEventListener('submit', async (e) => {
         // Honeypot
-        const gotchaInput = form.querySelector<HTMLInputElement>('input[name="_gotcha"]');
+        const gotchaInput = form.querySelector<HTMLInputElement>(
+          'input[name="_gotcha"]'
+        );
         if (gotchaInput && gotchaInput.value.trim() !== '') {
           e.preventDefault();
           if (feedback) {
-            feedback.className = 'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
+            feedback.className =
+              'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
             feedback.textContent = 'Mensaje enviado correctamente.';
             feedback.classList.remove('hidden');
           }
@@ -246,11 +326,21 @@ ${mensaje}`;
         if (!hasEndpoint) {
           // Si no hay endpoint backend configurado, preparar mailto estructurado
           e.preventDefault();
-          const nameInput = form.querySelector<HTMLInputElement>('input[name="nombre"]');
-          const phoneInput = form.querySelector<HTMLInputElement>('input[name="telefono"]');
-          const emailInput = form.querySelector<HTMLInputElement>('input[name="email"]');
-          const areaSelect = form.querySelector<HTMLSelectElement>('select[name="area"]');
-          const messageInput = form.querySelector<HTMLTextAreaElement>('textarea[name="mensaje"]');
+          const nameInput = form.querySelector<HTMLInputElement>(
+            'input[name="nombre"]'
+          );
+          const phoneInput = form.querySelector<HTMLInputElement>(
+            'input[name="telefono"]'
+          );
+          const emailInput = form.querySelector<HTMLInputElement>(
+            'input[name="email"]'
+          );
+          const areaSelect = form.querySelector<HTMLSelectElement>(
+            'select[name="area"]'
+          );
+          const messageInput = form.querySelector<HTMLTextAreaElement>(
+            'textarea[name="mensaje"]'
+          );
 
           const nombre = nameInput?.value.trim() || '';
           const telefono = phoneInput?.value.trim() || '';
@@ -258,21 +348,25 @@ ${mensaje}`;
           const area = areaSelect?.value || 'Industrial';
           const mensaje = messageInput?.value.trim() || '';
 
-          const subject = encodeURIComponent(`Solicitud de cotización: ${area} - ${nombre}`);
+          const subject = encodeURIComponent(
+            `Solicitud de cotización: ${area} - ${nombre}`
+          );
           const body = encodeURIComponent(
             `Solicitud de cotización técnica enviada desde el sitio web:\n\n` +
-            `Nombre / Empresa: ${nombre}\n` +
-            `Teléfono: ${telefono}\n` +
-            `Correo: ${email}\n` +
-            `Área: ${area}\n\n` +
-            `Requerimiento:\n${mensaje}\n`
+              `Nombre / Empresa: ${nombre}\n` +
+              `Teléfono: ${telefono}\n` +
+              `Correo: ${email}\n` +
+              `Área: ${area}\n\n` +
+              `Requerimiento:\n${mensaje}\n`
           );
 
           window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
 
           if (feedback) {
-            feedback.className = 'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
-            feedback.textContent = 'Abriendo su cliente de correo para enviar la solicitud a info@ferzamac.com.';
+            feedback.className =
+              'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
+            feedback.textContent =
+              'Abriendo su cliente de correo para enviar la solicitud a info@ferzamac.com.';
             feedback.classList.remove('hidden');
           }
           return;
@@ -300,8 +394,10 @@ ${mensaje}`;
           if (response.ok) {
             form.reset();
             if (feedback) {
-              feedback.className = 'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
-              feedback.textContent = 'Mensaje recibido con éxito. Nuestro equipo técnico se pondrá en contacto a la brevedad.';
+              feedback.className =
+                'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
+              feedback.textContent =
+                'Mensaje recibido con éxito. Nuestro equipo técnico se pondrá en contacto a la brevedad.';
               feedback.classList.remove('hidden');
             }
           } else {
@@ -309,8 +405,10 @@ ${mensaje}`;
           }
         } catch {
           if (feedback) {
-            feedback.className = 'form-feedback rounded border border-[#FCA5A5] bg-[#FDF2F2] p-3 text-xs text-[#991B1B] leading-relaxed';
-            feedback.textContent = 'No se pudo enviar automáticamente. Por favor envíe directamente por correo a info@ferzamac.com o por WhatsApp.';
+            feedback.className =
+              'form-feedback rounded border border-[#FCA5A5] bg-[#FDF2F2] p-3 text-xs text-[#991B1B] leading-relaxed';
+            feedback.textContent =
+              'No se pudo enviar automáticamente. Por favor envíe directamente por correo a info@ferzamac.com o por WhatsApp.';
             feedback.classList.remove('hidden');
           }
         } finally {
