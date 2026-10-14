@@ -1,4 +1,6 @@
 ---
+import { pathWithBase } from '../../lib/path';
+
 interface Props {
   variant?: 'primary' | 'secondary' | 'inverted' | 'outline-white';
   size?: 'sm' | 'md' | 'lg';
@@ -20,6 +22,8 @@ const {
   rel,
   ...rest
 } = Astro.props;
+
+const finalHref = href ? pathWithBase(href) : undefined;
 
 const baseStyles =
   'inline-flex items-center justify-center font-medium rounded transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink select-none cursor-pointer text-center';
@@ -44,8 +48,8 @@ const combinedClasses =
   `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`.trim();
 ---
 
-{href ? (
-  <a href={href} class={combinedClasses} target={target} rel={rel} {...rest}>
+{finalHref ? (
+  <a href={finalHref} class={combinedClasses} target={target} rel={rel} {...rest}>
     <slot />
   </a>
 ) : (

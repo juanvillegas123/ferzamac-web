@@ -1,5 +1,6 @@
 ---
 import { NAV_ITEMS } from '../../lib/site';
+import { pathWithBase } from '../../lib/path';
 import Button from '../ui/Button.astro';
 
 interface Props {
@@ -9,10 +10,11 @@ interface Props {
 const currentPath = Astro.props.currentPath ?? Astro.url.pathname;
 
 function isActive(href: string): boolean {
+  const target = pathWithBase(href);
   if (href === '/') {
-    return currentPath === '/';
+    return currentPath === target || currentPath === target.replace(/\/$/, '');
   }
-  return currentPath.startsWith(href);
+  return currentPath.startsWith(target);
 }
 ---
 
@@ -20,12 +22,12 @@ function isActive(href: string): boolean {
   <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
     <!-- Logo -->
     <a
-      href="/"
+      href={pathWithBase('/')}
       class="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-4 rounded"
       aria-label="Ir al inicio de Ferzamac"
     >
       <img
-        src="/logo/logo-ferzamac.svg"
+        src={pathWithBase('/logo/logo-ferzamac.svg')}
         alt="Ferzamac"
         class="h-11 w-auto"
         width="180"
@@ -43,7 +45,7 @@ function isActive(href: string): boolean {
         const active = isActive(item.href);
         return (
           <a
-            href={item.href}
+            href={pathWithBase(item.href)}
             aria-current={active ? 'page' : undefined}
             class={`px-3 py-2 text-sm font-medium transition-colors rounded ${
               active
@@ -59,7 +61,7 @@ function isActive(href: string): boolean {
 
     <!-- Desktop CTA Action -->
     <div class="hidden items-center md:flex">
-      <Button href="/contacto" variant="primary" size="sm">
+      <Button href={pathWithBase('/contacto')} variant="primary" size="sm">
         Solicitar cotización
       </Button>
     </div>
@@ -117,7 +119,7 @@ function isActive(href: string): boolean {
         const active = isActive(item.href);
         return (
           <a
-            href={item.href}
+            href={pathWithBase(item.href)}
             aria-current={active ? 'page' : undefined}
             class={`px-3 py-2.5 text-base font-medium rounded transition-colors ${
               active
@@ -130,7 +132,7 @@ function isActive(href: string): boolean {
         );
       })}
       <div class="pt-4">
-        <Button href="/contacto" variant="primary" size="md" class="w-full">
+        <Button href={pathWithBase('/contacto')} variant="primary" size="md" class="w-full">
           Solicitar cotización
         </Button>
       </div>

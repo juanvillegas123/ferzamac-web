@@ -1,6 +1,7 @@
 ---
 import SectionHeading from '../ui/SectionHeading.astro';
 import AreaCard from '../ui/AreaCard.astro';
+import { pathWithBase } from '../../lib/path';
 
 interface Props {
   eyebrow?: string;
@@ -44,7 +45,7 @@ const {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <AreaCard
         title={industrialTitle}
-        href="/industrial"
+        href={pathWithBase('/industrial')}
         area="industrial"
         description={industrialDescription}
         highlights={industrialHighlights}
@@ -52,7 +53,7 @@ const {
 
       <AreaCard
         title={hospitalariaTitle}
-        href="/hospitalaria"
+        href={pathWithBase('/hospitalaria')}
         area="hospitalaria"
         description={hospitalariaDescription}
         highlights={hospitalariaHighlights}

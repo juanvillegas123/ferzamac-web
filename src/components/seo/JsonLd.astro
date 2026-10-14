@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../../lib/site';
+import { pathWithBase } from '../../lib/path';
 
 interface BreadcrumbItem {
   label: string;
@@ -29,7 +30,7 @@ const {
 const siteUrl = Astro.site ? Astro.site.href.replace(/\/$/, '') : null;
 const logoUrl = siteUrl
   ? `${siteUrl}/logo/logo-ferzamac.svg`
-  : '/logo/logo-ferzamac.svg';
+  : pathWithBase('/logo/logo-ferzamac.svg');
 const currentUrl = siteUrl
   ? new URL(Astro.url.pathname, siteUrl).href
   : Astro.url.pathname;
@@ -80,7 +81,9 @@ if (type === 'service') {
     ...(image
       ? {
           image:
-            siteUrl && image.startsWith('/') ? `${siteUrl}${image}` : image,
+            siteUrl && image.startsWith('/')
+              ? `${siteUrl}${image.startsWith('/') ? image : `/${image}`}`
+              : image,
         }
       : {}),
   };
@@ -100,8 +103,8 @@ if (breadcrumbs && breadcrumbs.length > 0) {
     itemListElement: fullCrumbs.map((crumb, index) => {
       const itemUrl = crumb.href
         ? siteUrl
-          ? new URL(crumb.href, siteUrl).href
-          : crumb.href
+          ? new URL(pathWithBase(crumb.href), siteUrl).href
+          : pathWithBase(crumb.href)
         : currentUrl;
 
       return {

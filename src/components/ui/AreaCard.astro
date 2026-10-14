@@ -1,5 +1,6 @@
 ---
 import Badge from './Badge.astro';
+import { pathWithBase } from '../../lib/path';
 
 interface Props {
   title: string;
@@ -18,6 +19,8 @@ const {
   highlights,
   class: className = '',
 } = Astro.props;
+
+const finalHref = pathWithBase(href);
 
 const areaAccents = {
   industrial: 'border-t-industrial hover:border-industrial',
@@ -45,7 +48,7 @@ const dotColors = {
 
     <h3 class="text-2xl font-display font-semibold text-ink tracking-tight">
       <a
-        href={href}
+        href={finalHref}
         class="focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 rounded"
       >
         <span class="absolute inset-0" aria-hidden="true"></span>

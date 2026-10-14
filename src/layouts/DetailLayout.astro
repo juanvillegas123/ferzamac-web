@@ -7,6 +7,7 @@ import type { BreadcrumbItem } from '../components/ui/Breadcrumbs.astro';
 import Button from '../components/ui/Button.astro';
 import { getWhatsAppLink, hasWhatsApp } from '../lib/whatsapp';
 import { SITE } from '../lib/site';
+import { pathWithBase } from '../lib/path';
 
 interface Props {
   title: string;
@@ -42,7 +43,10 @@ const isProject =
   tipo === 'proyecto' ||
   Boolean(eyebrow?.toLowerCase().includes('proyecto')) ||
   breadcrumbs.some(
-    (b) => b.href === '/proyectos' || b.label.toLowerCase() === 'proyectos'
+    (b) =>
+      b.href === '/proyectos' ||
+      b.href === pathWithBase('/proyectos') ||
+      b.label.toLowerCase() === 'proyectos'
   );
 
 const sidebarHeading = isProject
@@ -53,7 +57,7 @@ const whatsappMessage = `Hola, quiero cotizar: ${title}`;
 const isWhatsAppAvailable = hasWhatsApp();
 const whatsappHref = isWhatsAppAvailable
   ? getWhatsAppLink(whatsappMessage)
-  : '/contacto';
+  : pathWithBase('/contacto');
 
 const ogImage = typeof image === 'string' ? image : image?.src;
 ---

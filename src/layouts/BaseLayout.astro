@@ -6,6 +6,7 @@ import SEO from '../components/seo/SEO.astro';
 import JsonLd from '../components/seo/JsonLd.astro';
 import type { BreadcrumbItem } from '../components/ui/Breadcrumbs.astro';
 import { SITE } from '../lib/site';
+import { pathWithBase } from '../lib/path';
 import '../styles/global.css';
 
 import soraFont from '@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url';
@@ -81,14 +82,14 @@ const pageTitle = title
     />
 
     <!-- Favicons corporativos oficiales -->
-    <link rel="icon" type="image/svg+xml" href="/logo/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={pathWithBase('/logo/favicon.svg')} />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/logo/favicon-32.png"
+      href={pathWithBase('/logo/favicon-32.png')}
     />
-    <link rel="apple-touch-icon" sizes="180x180" href="/logo/favicon-180.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href={pathWithBase('/logo/favicon-180.png')} />
   </head>
   <body class="flex min-h-screen flex-col bg-white text-ink antialiased">
     <!-- Enlace de salto accesible para navegación por teclado -->

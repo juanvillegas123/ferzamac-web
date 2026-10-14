@@ -2,6 +2,7 @@
 import type { ImageMetadata } from 'astro';
 import { Picture, Image } from 'astro:assets';
 import Badge from './Badge.astro';
+import { pathWithBase } from '../../lib/path';
 
 interface Props {
   title: string;
@@ -34,6 +35,8 @@ const {
   clientName,
   class: className = '',
 } = Astro.props;
+
+const finalHref = pathWithBase(href);
 
 const aspectClasses = {
   '16/9': 'aspect-16/9',
@@ -116,7 +119,7 @@ const areaLabels = {
 
     <h3 class="text-lg font-display font-semibold text-ink transition-colors group-hover:text-ink-deep leading-snug">
       <a
-        href={href}
+        href={finalHref}
         class="focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-2 rounded"
       >
         <span class="absolute inset-0" aria-hidden="true"></span>
