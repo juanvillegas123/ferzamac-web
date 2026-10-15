@@ -21,7 +21,7 @@ export const SITE = {
   mapsUrl:
     'https://maps.google.com/?q=Ferzamac,+Calle+Ren%C3%A9+Moreno+162,+Sucre,+Bolivia',
   mapsEmbedUrl:
-    'https://maps.google.com/maps?q=Ferzamac%2C%20Calle%20Ren%C3%A9%20Moreno%20162%2C%20Sucre%20Bolivia&t=m&z=16&output=embed&iwloc=near',
+    'https://www.openstreetmap.org/export/embed.html?bbox=-65.2682%2C-19.0478%2C-65.2602%2C-19.0418&layer=mapnik&marker=-19.0448%2C-65.2642',
 
   // Teléfono principal / Central (número original)
   phone: '(+591) 72877116',
