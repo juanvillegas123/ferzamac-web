@@ -5,14 +5,19 @@ import { SITE } from './site';
  * If no phone number is configured in SITE.whatsapp, falls back to '/contacto'.
  *
  * @param message Optional prefilled text for the chat.
+ * @param targetNumber Optional phone number override (defaults to SITE.whatsapp).
  * @returns Formatted WhatsApp link or '/contacto' fallback.
  */
-export function getWhatsAppLink(message?: string): string {
-  if (!SITE.whatsapp) {
+export function getWhatsAppLink(
+  message?: string,
+  targetNumber: string = SITE.whatsapp
+): string {
+  const numberToUse = targetNumber || SITE.whatsapp;
+  if (!numberToUse) {
     return '/contacto';
   }
 
-  const cleanNumber = SITE.whatsapp.replace(/\D/g, '');
+  const cleanNumber = numberToUse.replace(/\D/g, '');
   if (!cleanNumber) {
     return '/contacto';
   }

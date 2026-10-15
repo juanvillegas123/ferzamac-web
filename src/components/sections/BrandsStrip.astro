@@ -24,16 +24,16 @@ const marqueeBrands = [...marcas, ...marcas];
 
 {hasBrands && (
   <section
-    class={`relative py-14 sm:py-16 bg-surface/70 border-t border-line overflow-hidden ${className}`}
+    class={`relative py-8 sm:py-10 bg-surface/70 border-t border-line overflow-hidden ${className}`}
     aria-labelledby="brands-carousel-title"
   >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-3 mb-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-2 mb-5">
       <p class="text-xs font-bold uppercase tracking-wider text-muted">
         Tecnología y componentes
       </p>
       <h2
         id="brands-carousel-title"
-        class="font-display text-xl sm:text-2xl font-semibold text-ink"
+        class="font-display text-lg sm:text-xl font-semibold text-ink"
       >
         {title}
       </h2>
@@ -46,7 +46,7 @@ const marqueeBrands = [...marcas, ...marcas];
     <div
       class="relative w-full overflow-hidden"
       role="region"
-      aria-label="Carrusel continuo de marcas"
+      aria-label="Carrusel continuo de marcas hacia la izquierda"
     >
       {/* Máscara de desvanecimiento izquierda */}
       <div
@@ -60,22 +60,22 @@ const marqueeBrands = [...marcas, ...marcas];
         aria-hidden="true"
       ></div>
 
-      {/* Pista animada de logos */}
-      <div class="marquee-track flex items-center gap-6 sm:gap-8 py-2">
+      {/* Pista animada de logos (giro a la izquierda) */}
+      <div class="marquee-track-left flex items-center gap-6 sm:gap-8 py-2">
         {marqueeBrands.map((brand) => (
           <div
-            class="brand-card flex items-center justify-center h-20 w-44 sm:w-48 shrink-0 rounded-lg border border-line bg-white px-5 py-3 shadow-2xs transition-all duration-300 hover:shadow-xs hover:border-ink/25 hover:scale-102"
+            class="brand-card flex items-center justify-center h-20 sm:h-22 w-52 sm:w-60 shrink-0 rounded-xl border border-line bg-white px-5 py-3 shadow-2xs transition-all duration-300 hover:shadow-xs hover:border-ink/30 hover:scale-102"
             title={brand.data.nombre}
           >
             {brand.data.logo ? (
               <Image
                 src={brand.data.logo}
                 alt={`Logo de ${brand.data.nombre}`}
-                class="h-9 sm:h-10 w-auto max-w-[130px] object-contain opacity-90 transition-all duration-300 hover:opacity-100 hover:scale-105"
+                class="h-11 sm:h-13 w-auto max-w-[155px] sm:max-w-[185px] object-contain opacity-100 transition-transform duration-300 hover:scale-105"
                 loading="eager"
               />
             ) : (
-              <span class="text-xs font-semibold text-ink">
+              <span class="text-sm font-semibold text-ink">
                 {brand.data.nombre}
               </span>
             )}
@@ -87,16 +87,17 @@ const marqueeBrands = [...marcas, ...marcas];
 )}
 
 <style>
-  .marquee-track {
+  .marquee-track-left {
     width: max-content;
-    animation: marquee 28s linear infinite;
+    display: flex;
+    animation: marquee-left 28s linear infinite;
   }
 
-  .marquee-track:hover {
+  .marquee-track-left:hover {
     animation-play-state: paused;
   }
 
-  @keyframes marquee {
+  @keyframes marquee-left {
     0% {
       transform: translateX(0);
     }
@@ -106,7 +107,7 @@ const marqueeBrands = [...marcas, ...marcas];
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .marquee-track {
+    .marquee-track-left {
       animation: none;
       overflow-x: auto;
       width: 100%;

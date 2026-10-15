@@ -36,7 +36,7 @@ async function generateOgImage() {
         Plantas, equipos industriales y sistemas hospitalarios
       </text>
       <text x="80" y="555" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" fill="#D9E4E7">
-        Sucre, Bolivia · (+591) 72877116 · info@ferzamac.com
+        Sucre, Bolivia · (+591) 72877116 · ferzamac.ind@gmail.com
       </text>
     </svg>
   `);

@@ -23,14 +23,25 @@ export const SITE = {
   mapsEmbedUrl:
     'https://maps.google.com/maps?q=Ferzamac%2C%20Calle%20Ren%C3%A9%20Moreno%20162%2C%20Sucre%20Bolivia&t=m&z=16&output=embed&iwloc=near',
 
+  // Teléfono principal / Central (número original)
   phone: '(+591) 72877116',
   phoneRaw: '+59172877116',
 
-  // Número oficial de WhatsApp corporativo
-  whatsapp: '59172877116',
+  // 1.- Administrativo
+  phoneAdmin: '(+591) 70331571',
+  phoneAdminRaw: '+59170331571',
 
-  // Correo electrónico corporativo confirmado
-  email: 'info@ferzamac.com',
+  // 2.- Área técnica
+  phoneTechnical: '(+591) 70316989',
+  phoneTechnicalRaw: '+59170316989',
+
+  // WhatsApp corporativo
+  whatsapp: '59172877116',
+  whatsappAdmin: '59170331571',
+  whatsappTechnical: '59170316989',
+
+  // Correo electrónico corporativo oficial confirmado
+  email: 'ferzamac.ind@gmail.com',
 
   // Horarios de atención referenciales
   schedule: 'Lunes a Viernes: 08:00 - 18:30 | Sábados: 08:30 - 12:30',

@@ -99,14 +99,34 @@ const currentYear = new Date().getFullYear();
         <h3 class="font-display text-sm font-semibold tracking-wider uppercase text-white mb-4">
           Contacto
         </h3>
-        <ul class="space-y-2.5 text-sm text-surface mb-3">
-          <li class="flex items-center gap-2">
-            <span class="sr-only">Teléfono:</span>
+        <ul class="space-y-2 text-sm text-surface mb-3">
+          <li>
+            <span class="text-xs text-surface/80 block">
+              Central / Teléfono:
+            </span>
             <a
               href={`tel:${SITE.phoneRaw}`}
-              class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+              class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white font-medium"
             >
               {SITE.phone}
+            </a>
+          </li>
+          <li>
+            <span class="text-xs text-surface/80 block">Administrativo:</span>
+            <a
+              href={`tel:${SITE.phoneAdminRaw}`}
+              class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white font-medium"
+            >
+              {SITE.phoneAdmin}
+            </a>
+          </li>
+          <li>
+            <span class="text-xs text-surface/80 block">Área técnica:</span>
+            <a
+              href={`tel:${SITE.phoneTechnicalRaw}`}
+              class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white font-medium"
+            >
+              {SITE.phoneTechnical}
             </a>
           </li>
           <li>
@@ -125,14 +145,16 @@ const currentYear = new Date().getFullYear();
             <li>
               <a
                 href={`mailto:${SITE.email}`}
-                class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white"
+                class="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-white break-all"
               >
                 {SITE.email}
               </a>
             </li>
           )}
           {SITE.schedule && (
-            <li class="text-xs text-surface">Horario: {SITE.schedule}</li>
+            <li class="text-xs text-surface/90 pt-1">
+              Horario: {SITE.schedule}
+            </li>
           )}
         </ul>
 

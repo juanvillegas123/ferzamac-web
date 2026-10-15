@@ -75,7 +75,7 @@ const areaLabels = {
       />
       {clientLogo && (
         <div
-          class="absolute top-3 right-3 z-10 flex items-center justify-center rounded bg-white/95 px-2.5 py-1.5 shadow-xs border border-line/90 backdrop-blur-xs transition-transform duration-200 group-hover:scale-105"
+          class="absolute top-3 right-3 z-10 flex items-center justify-center rounded-lg bg-white px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-md border border-line/80 transition-transform duration-200 group-hover:scale-105"
           title={
             clientName
               ? `Proyecto ejecutado para: ${clientName}`
@@ -85,7 +85,7 @@ const areaLabels = {
           <Image
             src={clientLogo}
             alt={clientName ? `Logo de ${clientName}` : 'Logo del cliente'}
-            class="h-6 w-auto max-w-[85px] object-contain"
+            class="h-8 sm:h-10 w-auto max-w-[115px] sm:max-w-[140px] object-contain"
             loading="eager"
           />
         </div>
@@ -98,7 +98,7 @@ const areaLabels = {
       <Badge variant={area}>{areaLabels[area]}</Badge>
       {clientLogo && !image ? (
         <div
-          class="flex items-center justify-center rounded bg-surface px-2 py-1 border border-line shadow-2xs"
+          class="flex items-center justify-center rounded-lg bg-white px-3 py-1.5 border border-line shadow-xs"
           title={
             clientName ? `Proyecto ejecutado para: ${clientName}` : 'Cliente'
           }
@@ -106,7 +106,7 @@ const areaLabels = {
           <Image
             src={clientLogo}
             alt={clientName || 'Cliente'}
-            class="h-5 w-auto max-w-[75px] object-contain"
+            class="h-7 sm:h-8 w-auto max-w-[105px] sm:max-w-[125px] object-contain"
             loading="eager"
           />
         </div>

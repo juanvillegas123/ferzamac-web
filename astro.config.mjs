@@ -3,7 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-const siteUrl = process.env.PUBLIC_SITE_URL || 'https://juanvillegas123.github.io';
+const siteUrl =
+  process.env.PUBLIC_SITE_URL || 'https://juanvillegas123.github.io';
 const base = process.env.PUBLIC_BASE_PATH || '/ferzamac-web';
 
 // https://astro.build/config

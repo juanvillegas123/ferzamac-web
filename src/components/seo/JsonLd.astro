@@ -43,8 +43,8 @@ const organizationSchema: Record<string, unknown> = {
   legalName: 'Ferzamac',
   description:
     'Diseño, construcción, montaje y mantenimiento de plantas, equipos industriales y sistemas hospitalarios en Bolivia.',
-  telephone: SITE.phoneRaw,
-  email: SITE.email || 'info@ferzamac.com',
+  telephone: [SITE.phoneRaw, SITE.phoneAdminRaw, SITE.phoneTechnicalRaw],
+  email: SITE.email || 'ferzamac.ind@gmail.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Calle René Moreno Nº 162',
@@ -68,7 +68,7 @@ if (type === 'service') {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Ferzamac',
-      telephone: SITE.phoneRaw,
+      telephone: [SITE.phoneRaw, SITE.phoneAdminRaw, SITE.phoneTechnicalRaw],
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Calle René Moreno Nº 162',

@@ -57,12 +57,12 @@ const instanceId = Math.random().toString(36).substring(2, 7);
       action={
         hasEndpoint
           ? formEndpoint
-          : `mailto:${SITE.email || 'info@ferzamac.com'}`
+          : `mailto:${SITE.email || 'ferzamac.ind@gmail.com'}`
       }
       method={hasEndpoint ? 'POST' : 'GET'}
       class="contact-ajax-form space-y-4 text-sm"
       data-has-endpoint={hasEndpoint ? 'true' : 'false'}
-      data-email={SITE.email || 'info@ferzamac.com'}
+      data-email={SITE.email || 'ferzamac.ind@gmail.com'}
       data-whatsapp={SITE.whatsapp || '59172877116'}
       novalidate
     >
@@ -116,7 +116,7 @@ const instanceId = Math.random().toString(36).substring(2, 7);
             name="telefono"
             required
             autocomplete="tel"
-            placeholder="Ej. (+591) 72877116"
+            placeholder="Ej. (+591) 70000000"
             class="w-full rounded border border-line bg-surface px-3 py-2 text-ink placeholder:text-muted/60 focus:border-ink focus:bg-white focus:outline-hidden transition-colors"
           />
         </div>
@@ -257,7 +257,7 @@ const instanceId = Math.random().toString(36).substring(2, 7);
 
       const hasEndpoint = form.getAttribute('data-has-endpoint') === 'true';
       const targetEmail =
-        form.getAttribute('data-email') || 'info@ferzamac.com';
+        form.getAttribute('data-email') || 'ferzamac.ind@gmail.com';
       const targetWhatsapp =
         form.getAttribute('data-whatsapp') || '59172877116';
 
@@ -365,8 +365,7 @@ ${mensaje}`;
           if (feedback) {
             feedback.className =
               'form-feedback rounded border border-[#99DFAB] bg-[#EAF7ED] p-3 text-xs text-ink leading-relaxed';
-            feedback.textContent =
-              'Abriendo su cliente de correo para enviar la solicitud a info@ferzamac.com.';
+            feedback.textContent = `Abriendo su cliente de correo para enviar la solicitud a ${targetEmail}.`;
             feedback.classList.remove('hidden');
           }
           return;
@@ -407,8 +406,7 @@ ${mensaje}`;
           if (feedback) {
             feedback.className =
               'form-feedback rounded border border-[#FCA5A5] bg-[#FDF2F2] p-3 text-xs text-[#991B1B] leading-relaxed';
-            feedback.textContent =
-              'No se pudo enviar automáticamente. Por favor envíe directamente por correo a info@ferzamac.com o por WhatsApp.';
+            feedback.textContent = `No se pudo enviar automáticamente. Por favor envíe directamente por correo a ${targetEmail} o por WhatsApp.`;
             feedback.classList.remove('hidden');
           }
         } finally {

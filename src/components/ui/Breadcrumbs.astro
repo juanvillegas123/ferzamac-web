@@ -18,7 +18,9 @@ const filteredItems = items.filter(
   (item, index) =>
     !(
       index === 0 &&
-      (item.href === '/' || item.href === pathWithBase('/') || item.label.toLowerCase() === 'inicio')
+      (item.href === '/' ||
+        item.href === pathWithBase('/') ||
+        item.label.toLowerCase() === 'inicio')
     )
 );
 ---

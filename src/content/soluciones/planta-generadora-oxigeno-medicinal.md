@@ -6,6 +6,8 @@ resumen: 'Diseño, construcción y montaje de planta generadora de oxígeno medi
 specs:
   - label: 'Tecnología'
     value: 'PSA'
+imagenPrincipal: '../../assets/images/soluciones/planta-generadora-oxigeno-medicinal/planta-generadora-oxigeno-medicinal-01.jpg'
+imagenPrincipalAlt: 'Esquema técnico 3D de planta generadora de oxígeno medicinal con tecnología PSA, compresor y tanques de almacenamiento'
 galeria: []
 proyectosRelacionados: []
 pendientes:
