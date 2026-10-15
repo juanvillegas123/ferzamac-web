@@ -34,3 +34,13 @@ if (!enableStyleguide) {
     'ℹ️ [postbuild] PUBLIC_ENABLE_STYLEGUIDE="true": conservando /guia-de-estilo en dist/.'
   );
 }
+
+// Crear dist/sitemap.xml como copia física de sitemap-index.xml para máxima compatibilidad
+const sitemapIndex = path.join(distDir, 'sitemap-index.xml');
+const sitemapClassic = path.join(distDir, 'sitemap.xml');
+if (fs.existsSync(sitemapIndex)) {
+  fs.copyFileSync(sitemapIndex, sitemapClassic);
+  console.log(
+    '📄 [postbuild] dist/sitemap.xml generado como alias directo de sitemap-index.xml.'
+  );
+}
