@@ -1,4 +1,6 @@
 ---
+import { pathWithBase } from '../../lib/path';
+
 interface Props {
   src: string;
   poster?: string;
@@ -15,6 +17,9 @@ const {
   class: className = '',
 } = Astro.props;
 
+const videoSrc = pathWithBase(src);
+const videoPoster = poster ? pathWithBase(poster) : undefined;
+
 const orientationClasses = {
   wide: 'aspect-16/9 w-full max-w-4xl',
   vertical: 'aspect-9/16 w-full max-w-[300px] sm:max-w-[340px] mx-auto',
@@ -27,12 +32,12 @@ const orientationClasses = {
   >
     <video
       class="video-frame-player h-full w-full object-cover"
-      src={src}
-      poster={poster}
+      src={videoSrc}
+      poster={videoPoster}
       muted
       loop
       playsinline
-      preload="none"
+      preload="metadata"
       aria-label={caption || 'Video de demostración industrial'}
     >
       <p class="p-4 text-xs text-white">
